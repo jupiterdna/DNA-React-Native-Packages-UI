@@ -19,11 +19,11 @@ export function Button({ text, onClick }: ButtonProps) {
   return (
     <TouchableOpacity style={styles.button} onPress={onClick}>
       <Text style={styles.text}>{text}</Text>
-      <Text style={tw('text-red-200')}>eeee</Text>
+      <Text style={tw('text-red-200')}>eeesdsdxxessse</Text>
     </TouchableOpacity>
   );
-}
 
+}
 const styles = StyleSheet.create({
   button: {
     maxWidth: 200,

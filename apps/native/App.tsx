@@ -1,31 +1,34 @@
-import { StyleSheet, Text, View } from "react-native";
-import { Button } from "@repo/ui";
+import React from 'react';
+import {StyleSheet, Text, View} from 'react-native';
+import {Button} from '@repo/ui';
+import {TextField} from '@repo/textfield';
 
-export default function Native() {
+const Native = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>Native</Text>
       <Button
         onClick={() => {
-          console.log("Pressed!");
-
+          console.log('Pressed!');
         }}
         text="Boop"
       />
-
+      <TextField value="eeee" />
     </View>
   );
-}
+};
+
+export default Native;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   header: {
-    fontWeight: "bold",
+    fontWeight: 'bold',
     marginBottom: 20,
     fontSize: 36,
   },
