@@ -22,6 +22,15 @@ yarn dev
 npx changeset 
 ```
 
+### Update version of selected packages
+```sh
+npx changeset version
+```
+### Publish packages
+```sh
+npx changeset publish
+```
+
 ## What's inside?
 
 This Monorepo includes the following packages/apps:
@@ -38,7 +47,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
 Additional tools already setup for you:
 
-- [react-native-cli](https://reactnative.dev/docs/)
+- [react-native-cli](https://reactnative.dev/docs/) for mobile 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [Prettier](https://prettier.io) for code formatting
 - [changeset](https://github.com/changesets/changesets) for multi-package versioning
