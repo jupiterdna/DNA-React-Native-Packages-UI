@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@repo/ui";
-import { TextField } from "@repo/textfield";
+import { Button } from "@dnamobile/ui";
+import { TextField } from "@dnamobile/textfield";
 
 import styles from "../styles/index.module.css";
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Button} from '@repo/ui';
-import {TextField} from '@repo/textfield';
+import {Button} from '@dnamobile/ui';
+import {TextField} from '@dnamobile/textfield';
 
 const Native = () => {
   return (
