@@ -1,5 +1,8 @@
-module.exports = {
+const withMDX = require('@next/mdx')()
+
+const nextConfig = {
   reactStrictMode: true,
+  pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
@@ -11,8 +14,11 @@ module.exports = {
       ".web.jsx",
       ".web.ts",
       ".web.tsx",
+      ".web.mdx",
       ...config.resolve.extensions,
     ];
     return config;
   },
 };
+
+module.exports = withMDX(nextConfig)
