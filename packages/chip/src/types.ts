@@ -1,3 +1,5 @@
+import { GestureResponderEvent } from "react-native";
+
 export interface ChipProps {
     label: string;
     icon?: string;
@@ -8,7 +10,7 @@ export interface ChipProps {
     isDisabled?: boolean;
     color?: "primary" | "secondary" | "info" | "success" | "warning" | "danger" | "default";
     borderRadius?: "squared" | "soft_edged" | "rounded";
-    onPressClose?: () => void;
-    onPress?: () => void;
+    onPressClose?: (event: GestureResponderEvent) => void;
+    onPress?: (event: GestureResponderEvent) => void;
   }
   
