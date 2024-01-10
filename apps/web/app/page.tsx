@@ -6,6 +6,7 @@ import { MDXProvider, useMDXComponents } from '@mdx-js/react'
 import { useThemedStylesWithMdx } from '@theme-ui/mdx'
 import { ThemeUIProvider, Theme } from 'theme-ui'
 import Test from "./component/Test";
+// import { Button } from "@dnamobile/button";
 
 const theme =  {
   initialColorModeName: 'light',
@@ -97,5 +98,15 @@ export default function Web() {
     </Provider>
     
 
+    // <div className={styles.container} style={{padding: 50}}>
+    //   <h1>Web</h1>
+    //   <Button 
+    //     onPress={() => console.log("Pressed!")} 
+    //     label="Sample Button"   
+    //     size="md"
+    //     loadingLabel="test"
+    //     isLoading   
+    //   />
+    // </div>
   );
 }

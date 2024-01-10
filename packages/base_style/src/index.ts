@@ -1,0 +1,1 @@
+export {borderRadiusCls, defaultColors} from './styles'
