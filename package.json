@@ -1,5 +1,4 @@
 {
-  "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
@@ -18,5 +17,6 @@
   "packageManager": "yarn@1.22.19",
   "engines": {
     "node": ">=18"
-  }
+  },
+  "version": "0.0.0"
 }
