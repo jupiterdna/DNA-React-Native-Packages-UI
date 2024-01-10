@@ -1,16 +1,20 @@
 "use client";
 
-import { Button } from "@dnamobile/ui";
-import { TextField } from "@dnamobile/textfield";
+import { Button } from "@dnamobile/button";
 
 import styles from "../styles/index.module.css";
 
 export default function Web() {
   return (
-    <div className={styles.container}>
+    <div className={styles.container} style={{padding: 50}}>
       <h1>Web</h1>
-      <Button onClick={() => console.log("Pressed!")} text="Boop" />
-      <TextField value="eeee" />
+      <Button 
+        onPress={() => console.log("Pressed!")} 
+        label="Sample Button"   
+        size="md"
+        loadingLabel="test"
+        isLoading   
+      />
     </div>
   );
 }
