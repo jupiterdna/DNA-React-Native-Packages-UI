@@ -1,10 +1,12 @@
+import { sizeProps } from "@dnamobile/base_style";
+
 export interface RadioButtonProps {
   label: string;
   options: Option[];
   disabled?: boolean;
-  childrenOptions?: ChildrenOption[]; // Corrected the name
+  childrenOptions?: ChildrenOption[];
   required?: boolean;
-  size?: 'sm' | 'default' | 'md' | 'lg';
+  size?: sizeProps;
   gap_y?: 'compact' | 'default' | 'comfortable';
   gap_x?: 'compact' | 'default' | 'comfortable';
   onChange: (selectedOption: Option) => void;

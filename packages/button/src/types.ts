@@ -1,15 +1,16 @@
 import { GestureResponderEvent } from "react-native";
+import { sizeProps, colorProps, borderRadiusProps, variantProps } from "@dnamobile/base_style";
 
 export interface ButtonProps {
     label: string;
     icon?: string;
     iconPosition?: "left" | "right";
-    size?: "sm" | "default" | "md" | "lg";
+    size?: sizeProps;
     isLoading?: boolean;
     loadingLabel?: string;
-    color?: "primary" | "secondary" | "info" | "success" | "warning" | "danger" | "default";
-    variant?: "solid" | "outlined" | "flat";
-    borderRadius?: "squared" | "soft_edged" | "rounded";
+    color?: colorProps;
+    variant?: variantProps;
+    borderRadius?: borderRadiusProps;
     isDisabled?: boolean;
     fullWidth?: boolean;
     onPress?: (event: GestureResponderEvent) => void;

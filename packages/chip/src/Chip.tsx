@@ -3,8 +3,8 @@ import {
   Text,
   Pressable,
 } from "react-native";
-import {chipSizeCls, textSizeCls, styles} from './styles';
-import {ChipProps} from './types';
+import { chipSizeCls, textSizeCls, styles } from './styles';
+import { ChipProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
 
 //Lacking icon component

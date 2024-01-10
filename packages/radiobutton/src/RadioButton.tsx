@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { RadioButtonProps, Option, ChildrenOption } from './types';
-import { buttonSizeCls, styles, textSizeCls} from './styles';
+import { buttonSizeCls, styles, textSizeCls } from './styles';
 
 export const RadioButton = (props: RadioButtonProps) => {
   const {
