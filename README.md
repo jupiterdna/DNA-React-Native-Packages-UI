@@ -48,6 +48,7 @@ Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 Additional tools already setup for you:
 
 - [react-native-cli](https://reactnative.dev/docs/) for mobile 
+- [react-native-expo](https://expo.dev/) for mobile 
 - [TypeScript](https://www.typescriptlang.org/) for static type checking
 - [Prettier](https://prettier.io) for code formatting
 - [changeset](https://github.com/changesets/changesets) for multi-package versioning
