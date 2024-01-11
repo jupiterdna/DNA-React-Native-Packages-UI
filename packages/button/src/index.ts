@@ -1,2 +1,2 @@
-export {Button} from './Button';
-export type {ButtonProps} from './types'
+export {DNAButton} from './Button';
+export type {DNAButtonProps} from './types'

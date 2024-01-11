@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Chip} from '@dnamobile/chip';
-import {Button} from '@dnamobile/button';
-import {Collapsible} from '@dnamobile/collapsible';
-import {RadioButton} from '@dnamobile/radiobutton';
+// import {Chip} from '@dnamobile/chip';
+// import {Button} from '@dnamobile/button';
+// import {Collapsible} from '@dnamobile/collapsible';
+// import {RadioButton} from '@dnamobile/radiobutton';
 
 const Native = () => {
   const [selectedOption, setSelectedOption] = useState();

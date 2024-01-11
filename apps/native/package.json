@@ -1,6 +1,6 @@
 {
   "name": "TestPod",
-  "version": "0.0.1",
+  "version": "0.0.9",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
@@ -10,10 +10,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "18.2.0",
-    "react-native": "0.73.1",
     "@dnamobile/textfield": "*",
-    "@dnamobile/ui": "*"
+    "@dnamobile/ui": "*",
+    "@rndna/button": "^0.0.9",
+    "react": "18.2.0",
+    "react-native": "0.73.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

@@ -6,13 +6,13 @@ import {
   View,
 } from "react-native";
 import {buttonSizeCls, textSizeCls, styles} from './styles';
-import {ButtonProps} from './types';
+import {DNAButtonProps} from './types';
 import {borderRadiusCls, defaultColors} from "@dnamobile/base_style";
 
 //Lacking icon component
 //Style is not final
 
-export const Button = (props: ButtonProps) => {
+export const DNAButton = (props: DNAButtonProps) => {
   const {
     label = "Button",
     icon,

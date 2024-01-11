@@ -1,6 +1,6 @@
 import { GestureResponderEvent } from "react-native";
 
-export interface ButtonProps {
+export interface DNAButtonProps {
     label: string;
     icon?: string;
     iconPosition?: "left" | "right";

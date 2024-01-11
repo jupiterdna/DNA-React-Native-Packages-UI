@@ -1,11 +1,12 @@
 {
+  "private": true,
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
   "scripts": {
-    "dev": "turbo run dev",
-    "build": "turbo run build",
+    "dev": "turbo run dev --concurrency=100",
+    "build": "turbo run build --concurrency=100%",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore"
   },
@@ -17,6 +18,5 @@
   "packageManager": "yarn@1.22.19",
   "engines": {
     "node": ">=18"
-  },
-  "version": "0.0.0"
+  }
 }
