@@ -8,6 +8,9 @@ export const styles = StyleSheet.create({
       justifyContent: "center",
       flexDirection: "row",
     },
+    gapSize: {
+      gap: 8,
+    },
     buttonIconLeft: {
       flexDirection: "row",
     },

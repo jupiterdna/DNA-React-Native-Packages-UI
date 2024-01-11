@@ -14,7 +14,7 @@ import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
 
 export const DNAButton = (props: DNAButtonProps) => {
   const {
-    label = "Button",
+    label,
     icon,
     iconPosition = "left",
     size = "default",
@@ -48,6 +48,7 @@ export const DNAButton = (props: DNAButtonProps) => {
     <TouchableOpacity
       style={[
         styles.button,
+        (!!loadingLabel || !!label) && styles.gapSize,
         getIconPositionStyle(),
         getVariantStyle(),
         borderRadiusCls[borderRadius],
@@ -59,11 +60,11 @@ export const DNAButton = (props: DNAButtonProps) => {
       disabled={isLoading || isDisabled}
     > 
       {isLoading ? (
-        <View style={[iconPosition === 'left' ? styles.iconLeft : styles.iconRight, styles.loadingSize]} >
+        <View style={styles.loadingSize} >
           <ActivityIndicator color={variant === 'solid' ? 'white' : defaultColors[color]}/> 
         </View>
       ) : (
-        icon && <Text style={[getTextColor(), textSizeCls[size], iconPosition === 'left' ? styles.iconLeft : styles.iconRight]}>{icon}</Text>
+        icon && <Text style={[getTextColor(), textSizeCls[size]]}>{icon}</Text>
       )}
       <Text style={[getTextColor(), textSizeCls[size] ]}>{loadingLabel && isLoading ? loadingLabel : label}</Text>
     </TouchableOpacity>
