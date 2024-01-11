@@ -11,8 +11,9 @@
   },
   "dependencies": {
     "@dnamobile/textfield": "*",
+    "@rndna/button": "*",
+    "@dnamobile/badge": "*",
     "@dnamobile/ui": "*",
-    "@rndna/button": "^0.0.9",
     "react": "18.2.0",
     "react-native": "0.73.1"
   },
