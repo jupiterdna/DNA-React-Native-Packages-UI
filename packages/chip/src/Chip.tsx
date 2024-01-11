@@ -1,11 +1,10 @@
 import React from "react";
 import {
-  TouchableOpacity,
   Text,
   Pressable,
 } from "react-native";
-import {chipSizeCls, textSizeCls, styles} from './styles';
-import {ChipProps} from './types';
+import { chipSizeCls, textSizeCls, styles } from './styles';
+import { ChipProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
 
 //Lacking icon component
@@ -38,7 +37,7 @@ export const Chip = (props: ChipProps) => {
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       style={[
         styles.chip, 
         getVariantStyle(), 
@@ -52,10 +51,10 @@ export const Chip = (props: ChipProps) => {
       {icon && <Text style={[styles.icon, getTextColor() ]}>{icon}</Text>}
       <Text style={[textSizeCls[size], getTextColor() ]}>{label}</Text>
       {isClosable && 
-        <Pressable onPress={onPressClose} disabled={isDisabled} style={[styles.closeIcon ]}>
+        <Pressable onPress={onPressClose} disabled={isDisabled} style={[styles.closeIcon]}>
           <Text style={getTextColor()}>&times;</Text>
         </Pressable>
       }
-    </TouchableOpacity>
+    </Pressable>
   );
 };

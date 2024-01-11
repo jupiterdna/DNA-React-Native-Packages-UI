@@ -1,14 +1,17 @@
+import { GestureResponderEvent } from "react-native";
+import { sizeProps, variantProps, borderRadiusProps, colorProps } from "@dnamobile/base_style";
+
 export interface ChipProps {
     label: string;
     icon?: string;
-    variant?: "solid" | "outlined" | "flat";
+    variant?: variantProps;
     with_avatar?: string;
-    size?: "sm" | "default" | "md" | "lg";
+    size?: sizeProps;
     isClosable?: boolean;
     isDisabled?: boolean;
-    color?: "primary" | "secondary" | "info" | "success" | "warning" | "danger" | "default";
-    borderRadius?: "squared" | "soft_edged" | "rounded";
-    onPressClose?: () => void;
-    onPress?: () => void;
+    color?: colorProps;
+    borderRadius?: borderRadiusProps;
+    onPressClose?: (event: GestureResponderEvent) => void;
+    onPress?: (event: GestureResponderEvent) => void;
   }
   
