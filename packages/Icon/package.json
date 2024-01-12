@@ -4,13 +4,32 @@
   "author": "Juphet Vitualla",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "license": "MIT",
   "module": "./dist/index.js",
   "files": [
-    "dist/",
-    "src/",
+    "dist",
     "README.md",
-    "CHANGELOG.md"
+    "CHANGELOG.md",
+    "package.json",
+    "index.esm.js",
+    "index.js"
   ],
+  "typesVersions": {
+    "*": {
+      "outline": [
+        "./dist/outline/index.d.ts"
+      ],
+      "solid": [
+        "./dist/solid/index.d.ts"
+      ],
+      "outline/*": [
+        "./dist/outline/*.d.ts"
+      ],
+      "solid/*": [
+        "./dist/solid/*.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "build": "yarn gen && tsup",
     "gen": "ts-node --project tsconfig.json --files template/index.ts",
@@ -25,7 +44,7 @@
     "tsup": "^8.0.1",
     "typescript": "^5.3.2",
     "junk": "^3.1.0",
-    "react-native-svg": "^13.10.0",
+    "react-native-svg": "13.14.0",
     "ts-node": "^10.7.0",
     "@svgr/plugin-jsx": "^5.5.0",
     "@svgr/plugin-prettier": "^5.5.0",

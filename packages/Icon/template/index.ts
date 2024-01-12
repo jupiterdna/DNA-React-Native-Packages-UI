@@ -8,6 +8,7 @@ export const template = (
   _opts: any,
   { imports: _imports, componentName, props: _props, jsx, exports }: any
 ) => {
+
   const tsTemplate = template.smart({ plugins: ['typescript'] })
 
   return tsTemplate.ast`
@@ -18,9 +19,16 @@ export const template = (
         size?: NumberProp;
       }
 
-      const ${componentName} = ({ size = 24, ...props }: Props) => {
+      const wrapper= (props: Props) => {
+          return ${jsx}
+      }
+
+      const ${componentName} = ({ size = 24, ...iprops }: Props) => {
+
+        const newProps = {...iprops, width: size, height: size}
+
         return (
-          ${jsx}
+          wrapper(newProps)
         )
       };
 
@@ -28,7 +36,7 @@ export const template = (
     `
 }
 
-const heading = `//generated file`;
+const heading = `//this is auto-generated files please do not edit!`;
 
 const resetSrcDir = async () => {
     try {
@@ -40,6 +48,7 @@ const resetSrcDir = async () => {
     try {
       await fs.mkdir(`./generated`)
       await fs.mkdir(`./generated/solid`)
+      await fs.mkdir(`./generated/icons`)
       await fs.mkdir(`./generated/outline`)
     } catch (error) {
       throw new Error('Failed wiping src folders')
@@ -48,7 +57,7 @@ const resetSrcDir = async () => {
 
 const getIcons = async (projectName: string, typePath:'solid' | 'outline') => {
   const iconDir = `./svg-icons/${projectName}`;
-  console.log("reading")
+  console.log("generating icons please wait...")
   let files = await fs.readdir(`${iconDir}/${typePath}/`);
 
   return Promise.all(
@@ -65,17 +74,19 @@ const exportIcons = async (
     projectName: string,
     style: 'solid'  | 'outline'
   ) => {
-    const icons = await getIcons(projectName, style='solid')
+    const icons = await getIcons(projectName, style)
     for (let { componentName, svg } of icons) {
 
+        const Cname = style === 'solid' ? componentName : `${componentName}Outline`
+
         const svgString = svg?.toString();
-        const jsx = await generateComponent('native', style, componentName, svgString)
+        const jsx = await generateComponent('native', style, Cname, svgString)
         await fs.writeFile(
-            `./generated/${style}/${componentName}.tsx`,
+            `./generated/icons/${Cname}.tsx`,
             heading + '\n' + jsx
         )
-        const exportStr = `export { default as ${componentName} } from './${componentName}';\n`
-        await fs.writeFile(`./generated/${style}/index.ts`, exportStr, {
+        const exportStr = `export { default as ${Cname} } from './${Cname}';\n`
+        await fs.writeFile(`./generated/icons/index.ts`, exportStr, {
             flag: 'a'
         })
     }
@@ -84,6 +95,7 @@ const exportIcons = async (
 async function generateAllIcons () {
     await resetSrcDir()
     await exportIcons('gorentals', 'solid');
+    await exportIcons('gorentals', 'outline');
 }
 
 generateAllIcons()

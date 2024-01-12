@@ -4,7 +4,9 @@ import {Chip} from '@dnamobile/chip';
 import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
 import {Badge} from '@dnamobile/badge';
-import { AgeIcon } from '@rndna/icon';
+
+import {AgeIcon} from '@rndna/icon/';
+
 
 const Native = () => {
   return (
@@ -19,7 +21,8 @@ const Native = () => {
       />
       <DNAButton label="Button" color="info" />
       <Collapsible title="Collapsible Title">
-        <AgeIcon size={40} />
+        <AgeIcon size={50} color={'red'} />
+
         <View>
           <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
         </View>

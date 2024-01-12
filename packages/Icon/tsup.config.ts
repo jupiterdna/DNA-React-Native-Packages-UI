@@ -5,7 +5,9 @@ export default defineConfig((options: Options) => ({
     'generated/outline/index.ts',
     'generated/outline/*.tsx',
     'generated/solid/index.ts',
-    'generated/solid/*.tsx'
+    'generated/solid/*.tsx',
+    'generated/icons/index.ts',
+    'generated/icons/*.tsx'
   ],
   banner: {
     js: "'use client'",
