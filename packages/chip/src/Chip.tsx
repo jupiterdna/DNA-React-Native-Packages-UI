@@ -4,13 +4,13 @@ import {
   Pressable,
 } from "react-native";
 import { chipSizeCls, textSizeCls, styles } from './styles';
-import { ChipProps } from './types';
+import { DNAChipProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
 
 //Lacking icon component
 //Style is not final
 
-export const Chip = (props: ChipProps) => {
+export const DNAChip = (props: DNAChipProps) => {
   const {
     label = 'Chip',
     icon,

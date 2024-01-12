@@ -1,7 +1,7 @@
 import { GestureResponderEvent } from "react-native";
 import { sizeProps, variantProps, borderRadiusProps, colorProps } from "@dnamobile/base_style";
 
-export interface ChipProps {
+export interface DNAChipProps {
     label: string;
     icon?: string;
     variant?: variantProps;
