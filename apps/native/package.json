@@ -12,10 +12,12 @@
   "dependencies": {
     "@dnamobile/textfield": "*",
     "@rndna/button": "*",
+    "@rndna/icon": "*",
     "@dnamobile/badge": "*",
     "@dnamobile/ui": "*",
     "react": "18.2.0",
-    "react-native": "0.73.1"
+    "react-native": "0.73.1",
+    "react-native-svg": "^13.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

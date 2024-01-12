@@ -3,15 +3,30 @@ import junk from 'junk'
 import camelcase from 'camelcase'
 import generateComponent from "../scripts/build";
 
+export const template = (
+  { template }: any,
+  _opts: any,
+  { imports: _imports, componentName, props: _props, jsx, exports }: any
+) => {
+  const tsTemplate = template.smart({ plugins: ['typescript'] })
 
-type templateTypes = {
-  imports?: any;
-  interfaces?: any;
-  componentName: any;
-  props?: any;
-  exports?: any;
-  jsx?: any;
-};
+  return tsTemplate.ast`
+      import * as React from "react";
+      import Svg, { Path, SvgProps, NumberProp } from "react-native-svg";
+
+      interface Props extends SvgProps {
+        size?: NumberProp;
+      }
+
+      const ${componentName} = ({ size = 24, ...props }: Props) => {
+        return (
+          ${jsx}
+        )
+      };
+
+      ${exports}
+    `
+}
 
 const heading = `//generated file`;
 
@@ -30,29 +45,6 @@ const resetSrcDir = async () => {
       throw new Error('Failed wiping src folders')
     }
   }
-  
-
-export const ntemplate = (variables: any, { tpl }: any) => {
-    return tpl`
-  ${variables.imports};
-
-
-  ${variables.interfaces};
-
-  interface Props extends SvgProps {
-    size?: NumberProp;
-  }
-  
-
-  const ${variables.componentName} = (${variables.props}) => (
-    ${variables.jsx}
-  );
-  
-  ${variables.exports};
-  `
-  }
-
-  
 
 const getIcons = async (projectName: string, typePath:'solid' | 'outline') => {
   const iconDir = `./svg-icons/${projectName}`;
@@ -89,13 +81,9 @@ const exportIcons = async (
     }
   }
 
-
 async function generateAllIcons () {
     await resetSrcDir()
     await exportIcons('gorentals', 'solid');
 }
 
 generateAllIcons()
-
-
-// export { template };

@@ -8,6 +8,7 @@ import {
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
+import {AddonIcon} from '@rndna/icon'
 
 //Lacking icon component
 //Style is not final
