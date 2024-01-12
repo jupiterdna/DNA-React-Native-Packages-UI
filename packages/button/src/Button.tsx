@@ -8,25 +8,31 @@ import {
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
+import {AddonIcon, AddonIconOutline} from '@rndna/icon'
 
 //Lacking icon component
 //Style is not final
 
-export const DNAButton = (props: DNAButtonProps) => {
-  const {
-    label = "Button",
-    icon,
-    iconPosition = "left",
-    size = "default",
-    isLoading = false,
-    loadingLabel,
-    color = "primary",
-    variant = "solid",
-    isDisabled = false,
-    fullWidth = false,
-    onPress,
-    borderRadius = "soft_edged",
-  } = props;
+export const DNAButton:React.FC<DNAButtonProps> = React.forwardRef(
+  (
+    {
+      label = "Button",
+      icon,
+      iconPosition = "left",
+      size = "default",
+      isLoading = false,
+      loadingLabel,
+      color = "primary",
+      variant = "solid",
+      isDisabled = false,
+      fullWidth = false,
+      onPress,
+      borderRadius = "soft_edged",
+      ...restProps
+    }: DNAButtonProps,
+    ref: React.Ref<TouchableOpacity>,
+  ) => {
+
 
   const getTextColor = () => {
     return variant === 'solid' ? { color: 'white' } : { color: defaultColors[color] };
@@ -57,6 +63,8 @@ export const DNAButton = (props: DNAButtonProps) => {
       ]}
       onPress={onPress}
       disabled={isLoading || isDisabled}
+      ref={ref}
+      {...restProps}
     > 
       {isLoading ? (
         <View style={[iconPosition === 'left' ? styles.iconLeft : styles.iconRight, styles.loadingSize]} >
@@ -68,5 +76,6 @@ export const DNAButton = (props: DNAButtonProps) => {
       <Text style={[getTextColor(), textSizeCls[size] ]}>{loadingLabel && isLoading ? loadingLabel : label}</Text>
     </TouchableOpacity>
   );
-};
+});
+
 
