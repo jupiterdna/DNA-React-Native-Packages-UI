@@ -93,9 +93,13 @@ const exportIcons = async (
   }
 
 async function generateAllIcons () {
-    await resetSrcDir()
-    await exportIcons('gorentals', 'solid');
-    await exportIcons('gorentals', 'outline');
+    try {
+      await resetSrcDir()
+      await exportIcons('gorentals', 'solid');
+      await exportIcons('gorentals', 'outline');
+    } catch (error) {
+      throw new Error('Failed in generating icons')
+    }
 }
 
 generateAllIcons()
