@@ -8,6 +8,7 @@ import {
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
+import {AddonIcon, AddonIconOutline} from '@rndna/icon'
 
 //Lacking icon component
 //Style is not final
@@ -74,4 +75,3 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     </TouchableOpacity>
   );
 });
-

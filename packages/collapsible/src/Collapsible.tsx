@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 import {CollapsibleProps} from './types'
 import {styles} from './styles'
 import {defaultColors} from "@dnamobile/base_style";
+import { DNAButton } from '@rndna/button';
 
 //Lacking angle icons and standard styling
 
