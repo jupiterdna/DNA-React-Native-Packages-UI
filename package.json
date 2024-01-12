@@ -2,7 +2,8 @@
   "private": true,
   "workspaces": [
     "apps/*",
-    "packages/*"
+    "packages/*",
+    "config-workspace/*"
   ],
   "scripts": {
     "dev": "turbo run dev --concurrency=100",
