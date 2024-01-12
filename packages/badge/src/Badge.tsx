@@ -1,12 +1,12 @@
 import { View, Text } from 'react-native'
 import React, { useState } from 'react'
-import { BadgeProps } from './types'
+import { DNABadgeProps } from './types'
 import { styles } from './styles'
 import { defaultColors } from "@dnamobile/base_style";
 
 //Lacking angle icons and standard styling
 
-export const Badge = (props: BadgeProps) => {
+export const DNABadge = (props: DNABadgeProps) => {
   const { children, value, style, color = 'primary' } = props
   const [badgeWidth, setBadgeWidth] = useState(0);
   
