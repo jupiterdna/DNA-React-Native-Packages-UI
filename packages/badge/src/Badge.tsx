@@ -4,7 +4,26 @@ import { DNABadgeProps } from './types'
 import { styles } from './styles'
 import { defaultColors } from "@dnamobile/base_style";
 
-//Lacking angle icons and standard styling
+/**
+ * A badge is component that the user display a text with custom background color on the upper right hand of the children.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { View, Text } from 'react-native';
+ * import { DNABadge } from '@rndna/badge';
+ *
+ * const ComponentName = () => (
+ *  <DNABadge value="badgeText" size="sm">
+ *     <View>
+ *       <Text>Hello World!</Text>
+ *    </View>
+ *  </DNABadge>
+ * );
+ *
+ * export default ComponentName;
+ * ```
+ */
 
 export const DNABadge = (props: DNABadgeProps) => {
   const { children, value, style, color = 'primary' } = props

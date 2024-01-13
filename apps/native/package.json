@@ -13,7 +13,7 @@
     "@dnamobile/textfield": "*",
     "@rndna/button": "*",
     "@rndna/icon": "*",
-    "@dnamobile/badge": "*",
+    "@rndna/badge": "*",
     "@dnamobile/ui": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",
