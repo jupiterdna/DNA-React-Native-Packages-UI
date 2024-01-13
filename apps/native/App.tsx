@@ -3,7 +3,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Chip} from '@dnamobile/chip';
 import {Button} from '@dnamobile/button';
 import {Collapsible} from '@dnamobile/collapsible';
-import {Badge} from '@dnamobile/badge';
+import {DNABadge} from '@rndna/badge';
 
 const Native = () => {
   return (
@@ -22,9 +22,9 @@ const Native = () => {
           <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
         </View>
       </Collapsible>
-      <Badge>
+      <DNABadge>
         <Button label="Button" color="info" />
-      </Badge>
+      </DNABadge>
     </View>
   );
 };
