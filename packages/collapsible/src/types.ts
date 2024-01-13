@@ -2,7 +2,7 @@ import { StyleProp, ViewStyle } from 'react-native';
 
 export interface CollapsibleProps {
   title: string
-  children?: any
+  children?: React.ReactNode
   style?: StyleProp<ViewStyle>
 }
   

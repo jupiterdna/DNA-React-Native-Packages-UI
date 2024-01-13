@@ -3,7 +3,7 @@ import { colorProps } from '@dnamobile/base_style';
 
 export interface DNABadgeProps {
   value?: string
-  children?: any
+  children?: React.ReactNode
   style?: StyleProp<ViewStyle>
   color?: colorProps;
 }

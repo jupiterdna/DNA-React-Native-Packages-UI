@@ -1,7 +1,7 @@
-import { GestureResponderEvent } from "react-native";
+import { GestureResponderEvent, TouchableOpacityProps } from "react-native";
 import { sizeProps, colorProps, borderRadiusProps, variantProps } from "@dnamobile/base_style";
 
-export interface ButtonProps {
+export interface DNAButtonProps  extends TouchableOpacityProps {
     label: string;
     icon?: string;
     iconPosition?: "left" | "right";
@@ -14,5 +14,6 @@ export interface ButtonProps {
     isDisabled?: boolean;
     fullWidth?: boolean;
     onPress?: (event: GestureResponderEvent) => void;
+
 }
   

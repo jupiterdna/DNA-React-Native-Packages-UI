@@ -1,9 +1,10 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {Chip} from '@dnamobile/chip';
-import {Button} from '@dnamobile/button';
+import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
 import {DNABadge} from '@rndna/badge';
+import {AgeIcon} from '@rndna/icon/';
 
 const Native = () => {
   return (
@@ -16,14 +17,16 @@ const Native = () => {
         onPress={() => console.log('pressed')}
         onPressClose={() => console.log('closeddd')}
       />
-      <Button label="Button" color="info" />
+      <DNAButton label="Button" color="info" />
       <Collapsible title="Collapsible Title">
+        <AgeIcon size={50} color={'red'} />
+
         <View>
           <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
         </View>
       </Collapsible>
       <DNABadge>
-        <Button label="Button" color="info" />
+        <DNAButton label="Button" color="info" />
       </DNABadge>
     </View>
   );
