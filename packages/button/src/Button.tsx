@@ -8,10 +8,27 @@ import {
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
-import {AddonIcon, AddonIconOutline} from '@rndna/icon'
 
-//Lacking icon component
-//Style is not final
+/**
+ * A button is component that the user can press to trigger an action.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNAButton } from '@rndna/button';
+ *
+ * const MyComponent = () => (
+ *  <DNAButton 
+ *    label="ButtonText" 
+ *      onPress={(evt: GestureResponderEvent | undefined) => {
+ *      console.log('pressed')
+ *     }}
+ *  />
+ * );
+ *
+ * export default MyComponent;
+ * ```
+ */
 
 export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   (
