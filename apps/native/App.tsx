@@ -3,10 +3,8 @@ import {StyleSheet, Text, View} from 'react-native';
 import {Chip} from '@dnamobile/chip';
 import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
-import {Badge} from '@dnamobile/badge';
-
+import {DNABadge} from '@rndna/badge';
 import {AgeIcon} from '@rndna/icon/';
-
 
 const Native = () => {
   return (
@@ -27,9 +25,9 @@ const Native = () => {
           <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
         </View>
       </Collapsible>
-      <Badge>
+      <DNABadge>
         <DNAButton label="Button" color="info" />
-      </Badge>
+      </DNABadge>
     </View>
   );
 };
