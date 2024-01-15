@@ -1,35 +1,25 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Chip} from '@dnamobile/chip';
-import {DNAButton} from '@rndna/button';
-import {Collapsible} from '@dnamobile/collapsible';
-import {Badge} from '@dnamobile/badge';
-
-import {AgeIcon} from '@rndna/icon/';
-
+import {DNAText} from '@rndna/text';
 
 const Native = () => {
   return (
     <View style={[styles.container]}>
       <Text style={styles.header}>Native</Text>
-      <Chip
-        label="Chip"
-        isClosable
-        size="default"
-        onPress={() => console.log('pressed')}
-        onPressClose={() => console.log('closeddd')}
-      />
-      <DNAButton label="Button" color="info" />
-      <Collapsible title="Collapsible Title">
-        <AgeIcon size={50} color={'red'} />
-
-        <View>
-          <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
-        </View>
-      </Collapsible>
-      <Badge>
-        <DNAButton label="Button" color="info" />
-      </Badge>
+      <DNAText type="h1">H1</DNAText>
+      <DNAText type="h2">H2</DNAText>
+      <DNAText type="h3">H3</DNAText>
+      <DNAText type="h4">H4</DNAText>
+      <DNAText type="h5">H5</DNAText>
+      <DNAText type="h6">H6</DNAText>
+      <DNAText type="subtitle1">Subtitle 1</DNAText>
+      <DNAText type="subtitle2">Subtitle 2</DNAText>
+      <DNAText type="body1">Body 1</DNAText>
+      <DNAText type="body2">Body 2</DNAText>
+      <DNAText type="button">Button</DNAText>
+      <DNAText type="caption">Caption</DNAText>
+      <DNAText type="overline">overline</DNAText>
+      <DNAText>default fontSize</DNAText>
     </View>
   );
 };
