@@ -4,4 +4,5 @@ export type colorProps = "primary" | "secondary" | "info" | "success" | "warning
 
 export type variantProps = "solid" | "outlined" | "flat";
 
-export type sizeProps = "sm" | "default" | "md" | "lg";
+export type sizeProps = "sm" | "default" | "md" | "lg"; 
+

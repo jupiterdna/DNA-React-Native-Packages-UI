@@ -1,5 +1,5 @@
-import React from "react";
-import { TextInput, Text } from "react-native";
+import React, { createElement } from "react";
+import { TextInput, Text, View } from "react-native";
 import { styles } from "./styles";
 import { DNATextfieldProps } from "./types";
 
@@ -27,9 +27,23 @@ import { DNATextfieldProps } from "./types";
 
 export const DNATextfield: React.FC<DNATextfieldProps> = React.forwardRef(
   (
-    { label, value, ...restProps }: DNATextfieldProps,
+    { label, value, icon, ...restProps }: DNATextfieldProps,
     ref: React.Ref<TextInput>
   ) => {
-    return <TextInput ref={ref} {...restProps} />;
+
+    const renderIcon =
+      typeof icon === "function"
+        ? createElement(icon, {
+            size: 24,
+            color: "red",
+          })
+        : icon;
+
+    return (
+      <View>
+        {renderIcon}
+        <TextInput ref={ref} {...restProps} />
+      </View>
+    );
   }
 );

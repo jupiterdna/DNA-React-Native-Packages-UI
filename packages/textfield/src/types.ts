@@ -14,4 +14,8 @@ export interface DNATextfieldProps   {
    * Changes the variation of the element.
    */
   variant?: 'flat' | 'filled' | 'outlined' 
+  /**
+   * render icon of the input element
+   */
+  icon?: React.JSX.Element 
 }

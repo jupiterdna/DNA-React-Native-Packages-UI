@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@dnamobile/textfield": "*",
+    "@rndna/textfield": "*",
     "@rndna/button": "*",
     "@rndna/icon": "*",
     "@dnamobile/badge": "*",

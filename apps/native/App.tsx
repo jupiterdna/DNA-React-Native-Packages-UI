@@ -6,13 +6,14 @@ import {Collapsible} from '@dnamobile/collapsible';
 import {Badge} from '@dnamobile/badge';
 
 import {AgeIcon} from '@rndna/icon/';
-
+import {DNATextfield} from '@rndna/textfield/';
 
 const Native = () => {
   return (
     <View style={[styles.container]}>
       <Text style={styles.header}>Native</Text>
-      <Chip
+      <DNATextfield value="test" icon={<AgeIcon size={30}/>} />
+      {/* <Chip
         label="Chip"
         isClosable
         size="default"
@@ -29,7 +30,7 @@ const Native = () => {
       </Collapsible>
       <Badge>
         <DNAButton label="Button" color="info" />
-      </Badge>
+      </Badge> */}
     </View>
   );
 };
