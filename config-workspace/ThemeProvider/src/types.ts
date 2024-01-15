@@ -74,7 +74,7 @@ export interface ThemeProviderProps {
   /**
    * configuration of all theme properties
    */
-  config?: configType;
+  config: configType;
   /**
    * set theme either dark or light default is light
    */
