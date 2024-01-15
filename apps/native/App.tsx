@@ -41,7 +41,8 @@ const Native = () => {
           onPress={() => console.log('pressed')}
           onPressClose={() => console.log('closeddd')}
         />
-         <Chip
+        <Chip
+        
           label="Chip"
           isClosable
           color="success"
