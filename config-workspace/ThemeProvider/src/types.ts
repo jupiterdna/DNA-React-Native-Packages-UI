@@ -46,7 +46,7 @@ export type configType = {
     [17]: number;
     [18]: number;
   };
-  colors?: {
+  colors: {
     primary: colorType;
     secondary: colorType;
     info: colorType;
@@ -55,7 +55,7 @@ export type configType = {
     danger: colorType;
     default: colorType;
   };
-  fonts?: {
+  fonts: {
     fontFamily?: string;
     fontWeight?:
       | "bold"
