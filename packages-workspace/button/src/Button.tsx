@@ -8,7 +8,7 @@ import {
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
-
+import { themeConfig, useColor } from "@rndna/theme-provider"
 /**
  * A button is component that the user can press to trigger an action.
  *
@@ -30,6 +30,8 @@ import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
  * ```
  */
 
+
+
 export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   (
     {
@@ -48,6 +50,8 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     }: DNAButtonProps,
     ref: React.Ref<TouchableOpacity>,
   ) => {
+
+    console.log('themeConfig', themeConfig)
 
   const getTextColor = () => {
     return variant === 'solid' ? { color: 'white' } : { color: defaultColors[color] };
