@@ -1,18 +1,19 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {DNAButton} from '@rndna/button';
+import {AddonIcon} from '@rndna/icon';
 
 const Native = () => {
   return (
     <View style={[styles.container]}>
-    <Text style={styles.header}>Native</Text>
-      <Text>Sizes</Text>
+      <Text style={styles.header}>Native</Text>
       <View style={styles.gap}>
-        <DNAButton label="button" size="sm" />
+        <DNAButton label="button" size="md" icon={AddonIcon} />
         <DNAButton label="button" variant="outlined" size="sm" />
-        <DNAButton label="button" size="default" isDisabled />
-        <DNAButton label="button" size="md" isLoading />
+        <DNAButton label="button" isDisabled />
+        <DNAButton label="button" size="md" />
         <DNAButton label="button" color="info" size="lg" />
+        <DNAButton label="button" isDisabled isLoading />
       </View>
     </View>
   );
@@ -35,5 +36,7 @@ const styles = StyleSheet.create({
   },
   gap: {
     gap: 5,
-  }
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });

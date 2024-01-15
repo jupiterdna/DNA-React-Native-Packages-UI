@@ -9,7 +9,7 @@ export interface DNAButtonProps extends TouchableOpacityProps {
      /**
      * Property that enables user to select icon from icon library (Icons were not yet implemented)
      */
-    icon?: string;
+    icon?: any;
     /**
      * Property that toggles the positon of icon on left or right
      */

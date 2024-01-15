@@ -1,4 +1,4 @@
-import React from "react";
+import React, { createElement } from "react";
 import {
   TouchableOpacity,
   ActivityIndicator,
@@ -64,6 +64,13 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const getIconPositionStyle = () => {
     return iconPosition === 'right' ? styles.buttonIconRight : styles.buttonIconLeft
   }
+  const renderIcon =
+      typeof icon === "function"
+        ? createElement(icon, {
+            size: textSizeCls[size].fontSize + 4,
+            color: variant === 'solid' ? "white" : defaultColors[color],
+          })
+        : icon
 
   return (
     <TouchableOpacity
@@ -86,7 +93,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
           <ActivityIndicator color={variant === 'solid' ? 'white' : defaultColors[color]}/> 
         </View>
       ) : (
-        icon && <Text style={[getTextColor(), textSizeCls[size]]}>{icon}</Text>
+        !!icon && renderIcon
       )}
       <Text style={[getTextColor(), textSizeCls[size] ]}>{loadingLabel && isLoading ? loadingLabel : label}</Text>
     </TouchableOpacity>
