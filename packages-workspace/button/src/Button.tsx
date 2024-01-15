@@ -8,7 +8,7 @@ import {
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
 import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
-import { themeConfig, useColor } from "@rndna/theme-provider"
+import { useColor } from "@rndna/theme-provider"
 /**
  * A button is component that the user can press to trigger an action.
  *
@@ -51,16 +51,17 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     ref: React.Ref<TouchableOpacity>,
   ) => {
 
-    console.log('themeConfig', themeConfig)
+  const themeColor = useColor();
+  const defaultColor = themeColor[color]["default"];
 
   const getTextColor = () => {
-    return variant === 'solid' ? { color: 'white' } : { color: defaultColors[color] };
+    return variant === 'solid' ? { color: 'white' } : { color: defaultColor };
   };
 
   const getVariantStyle = () => {
     return {
-      solid: { backgroundColor: defaultColors[color] },
-      outlined: { borderWidth: 1, borderColor: defaultColors[color], backgroundColor: 'transparent' },
+      solid: { backgroundColor: defaultColor },
+      outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
       flat: {},
     }[variant];
   };
@@ -72,7 +73,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       typeof icon === "function"
         ? createElement(icon, {
             size: textSizeCls[size].fontSize + 4,
-            color: variant === 'solid' ? "white" : defaultColors[color],
+            color: variant === 'solid' ? "white" : defaultColor,
           })
         : icon
 
@@ -94,7 +95,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     > 
       {isLoading ? (
         <View style={styles.loadingSize} >
-          <ActivityIndicator color={variant === 'solid' ? 'white' : defaultColors[color]}/> 
+          <ActivityIndicator color={variant === 'solid' ? 'white' : defaultColor }/> 
         </View>
       ) : (
         !!icon && renderIcon

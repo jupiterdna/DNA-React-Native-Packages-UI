@@ -25,6 +25,9 @@
     "tsup": "^8.0.1",
     "typescript": "^5.3.2"
   },
+  "dependencies": {
+    "@rndna/theme-provider": "*"
+  },
   "peerDependencies": {
     "expo": "*",
     "react": "*",

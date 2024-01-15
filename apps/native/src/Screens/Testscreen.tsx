@@ -5,12 +5,8 @@ import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
 import {AgeIcon} from '@rndna/icon';
 import {Badge} from '@dnamobile/badge';
-import {useColor} from '@rndna/theme-provider';
 
 const Testscreen = () => {
- 
-  const color = useColor();
-
   return (
     <View style={{flex: 1}}>
       <View style={[styles.container]}>

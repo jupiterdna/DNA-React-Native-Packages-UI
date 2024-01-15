@@ -5,10 +5,9 @@ import Testscreen from './src/Screens/Testscreen';
 const Native = () => {
   return (
     <ThemeProvider config={themeConfig}>
-        <Testscreen />
+      <Testscreen />
     </ThemeProvider>
   );
 };
 
 export default Native;
-
