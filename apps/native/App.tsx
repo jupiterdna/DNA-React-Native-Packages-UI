@@ -1,4 +1,5 @@
 import React from 'react';
+<<<<<<< HEAD
 import {StyleSheet, Text, View} from 'react-native';
 import {DNAButton} from '@rndna/button';
 import {AddonIcon} from '@rndna/icon';
@@ -16,11 +17,22 @@ const Native = () => {
         <DNAButton label="button" isDisabled isLoading />
       </View>
     </View>
+=======
+import {ThemeProvider, themeConfig} from '@rndna/theme-provider';
+import Testscreen from './src/Screens/Testscreen';
+
+const Native = () => {
+  return (
+    <ThemeProvider config={themeConfig}>
+       <Testscreen />
+    </ThemeProvider>
+>>>>>>> 01cdf4b6cb60019e0bc56c979892526e2029282e
   );
 };
 
 export default Native;
 
+<<<<<<< HEAD
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -40,3 +52,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 });
+=======
+>>>>>>> 01cdf4b6cb60019e0bc56c979892526e2029282e
