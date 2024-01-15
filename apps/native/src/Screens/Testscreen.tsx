@@ -1,5 +1,5 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
+import React from 'react';
 import {Chip} from '@dnamobile/chip';
 import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
