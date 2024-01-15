@@ -1,33 +1,19 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
-import {Chip} from '@dnamobile/chip';
 import {DNAButton} from '@rndna/button';
-import {Collapsible} from '@dnamobile/collapsible';
-import {DNABadge} from '@rndna/badge';
-import {AgeIcon} from '@rndna/icon/';
 
 const Native = () => {
   return (
     <View style={[styles.container]}>
-      <Text style={styles.header}>Native</Text>
-      <Chip
-        label="Chip"
-        isClosable
-        size="default"
-        onPress={() => console.log('pressed')}
-        onPressClose={() => console.log('closeddd')}
-      />
-      <DNAButton label="Button" color="info" />
-      <Collapsible title="Collapsible Title">
-        <AgeIcon size={50} color={'red'} />
-
-        <View>
-          <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
-        </View>
-      </Collapsible>
-      <DNABadge>
-        <DNAButton label="Button" color="info" />
-      </DNABadge>
+    <Text style={styles.header}>Native</Text>
+      <Text>Sizes</Text>
+      <View style={styles.gap}>
+        <DNAButton label="button" size="sm" />
+        <DNAButton label="button" variant="outlined" size="sm" />
+        <DNAButton label="button" size="default" isDisabled />
+        <DNAButton label="button" size="md" isLoading />
+        <DNAButton label="button" color="info" size="lg" />
+      </View>
     </View>
   );
 };
@@ -47,4 +33,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     fontSize: 36,
   },
+  gap: {
+    gap: 5,
+  }
 });
