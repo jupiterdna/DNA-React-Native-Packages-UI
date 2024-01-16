@@ -1,13 +1,14 @@
 import React, { createElement } from "react";
 import {
-  Text,
   Pressable,
   View,
 } from "react-native";
 import { chipSizeCls, textSizeCls, styles } from './styles';
 import { DNAChipProps } from './types';
 import { borderRadiusCls } from "@dnamobile/base_style";
-import { useColor } from "@rndna/theme-provider"
+import { useColor } from "@rndna/theme-provider";
+import { DNAText } from "@rndna/text";
+import { CloseSmallIcon } from "@rndna/icon";
 
 export const DNAChip = (props: DNAChipProps) => {
   const {
@@ -37,14 +38,33 @@ export const DNAChip = (props: DNAChipProps) => {
       flat: {},
     }[variant];
   };
-  
+
   const renderIcon =
       typeof icon === "function"
         ? createElement(icon, {
             size: textSizeCls[size].fontSize,
-            color: variant === 'solid' ? "white" : defaultColor,
+            color: variant === 'solid' ? 'white' : defaultColor,
           })
         : icon
+
+  const getTextSize = () => {
+    switch(size) {
+      case 'sm':
+        return 'overline'
+      case 'md':
+        return 'body2'
+      case 'lg':
+        return 'body1'
+      default: 
+        return 'caption'
+    }
+  }
+
+  const closeIconSize = textSizeCls[size].fontSize -
+
+  const getCloseIconColor = () => {
+    return variant === 'solid' ? 'white' : defaultColor;
+  };
 
   return (
     <Pressable
@@ -58,11 +78,11 @@ export const DNAChip = (props: DNAChipProps) => {
       onPress={onPress}
       disabled={isDisabled}
     >
-      {!!icon && <View>{renderIcon}</View>}
-      <Text style={[textSizeCls[size], getTextColor() ]}>{label}</Text>
+      {!!icon && renderIcon}
+      <DNAText style={getTextColor()} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
-          <Text style={[getTextColor(), textSizeCls[size]]}>&times;</Text>
+          <CloseSmallIcon size={closeIconSize} color={getCloseIconColor()} />
         </Pressable>
       }
     </Pressable>
