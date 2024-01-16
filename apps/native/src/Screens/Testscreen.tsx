@@ -1,26 +1,29 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
+import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
 import {AgeIcon} from '@rndna/icon';
 import {Badge} from '@dnamobile/badge';
-import { useColor } from '@rndna/theme-provider';
-
-const color = useColor();
+import {useColor, getColorTheme} from '@rndna/theme-provider';
 
 const Testscreen = () => {
+  const theme = getColorTheme();
+  const color = useColor();
+
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <View style={{flex: 1}}>
       <View
         style={[
           styles.container,
+          // eslint-disable-next-line react-native/no-inline-styles
           {
             backgroundColor: theme === 'dark' ? '#222' : '#fff',
           },
         ]}>
         <Text style={styles.header}>Native {theme}</Text>
-        <Text style={{color: color.default['default']}}>color {}</Text>
+        <Text style={{color: color.default.default}}>color {}</Text>
         <DNAChip
           label="Chip"
           isClosable
