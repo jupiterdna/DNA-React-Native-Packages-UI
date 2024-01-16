@@ -5,13 +5,11 @@ import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
 import {AgeIcon} from '@rndna/icon';
 import {Badge} from '@dnamobile/badge';
-import {useColor, getColorTheme} from '@rndna/theme-provider';
+import { useColor } from '@rndna/theme-provider';
+
+const color = useColor();
 
 const Testscreen = () => {
-  const theme = getColorTheme();
-  const color = useColor();
-
-  console.log("color", color)
   return (
     <View style={{flex: 1}}>
       <View
@@ -57,6 +55,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     fontSize: 36,
+  },
+  gap: {
+    gap: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 

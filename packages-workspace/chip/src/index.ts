@@ -1,2 +1,2 @@
-export { Chip } from './Chip'
-export type { ChipProps } from './types'
+export { DNAChip } from './Chip'
+export type { DNAChipProps } from './types'
