@@ -2,6 +2,8 @@ import React from "react";
 import { ThemeProviderProps } from './types';
 import {defaultConfig} from './config/'
 import { ThemeContext } from "./context";
+import { useColorScheme} from 'react-native';
+import { darkmodeColor } from "./config/themeColor";
 
 /**
  * A component to set theme provider in your project.
@@ -25,10 +27,14 @@ export const ThemeProvider:React.FC<ThemeProviderProps & {children?: React.JSX.E
 
   const {config, theme , children} = props
 
+  const newConfig = useColorScheme() === 'light' ? defaultConfig : {
+    ...defaultConfig, colors: darkmodeColor
+  }
+
   return (
     <ThemeContext.Provider value={{
-      config: config ? config : defaultConfig,
-      theme: theme ? theme : 'light'
+      config: config ? config : newConfig,
+      theme: theme ? theme : useColorScheme()
     }}>
       {children}
     </ThemeContext.Provider>

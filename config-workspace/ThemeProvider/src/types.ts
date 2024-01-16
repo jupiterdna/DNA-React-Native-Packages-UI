@@ -1,3 +1,5 @@
+import { ColorSchemeName } from "react-native";
+
 export type colorType = {
   ["default"]: string;
   [50]: string;
@@ -78,5 +80,5 @@ export interface ThemeProviderProps {
   /**
    * set theme either dark or light default is light
    */
-  theme?: 'dark' | 'light'
+  theme?: ColorSchemeName
 }

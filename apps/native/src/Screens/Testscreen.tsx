@@ -5,16 +5,24 @@ import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
 import {AgeIcon} from '@rndna/icon';
 import {Badge} from '@dnamobile/badge';
-import {useColor} from '@rndna/theme-provider';
+import {useColor, getColorTheme} from '@rndna/theme-provider';
 
 const Testscreen = () => {
- 
+  const theme = getColorTheme();
   const color = useColor();
 
+  console.log("color", color)
   return (
     <View style={{flex: 1}}>
-      <View style={[styles.container]}>
-        <Text style={styles.header}>Native</Text>
+      <View
+        style={[
+          styles.container,
+          {
+            backgroundColor: theme === 'dark' ? '#222' : '#fff',
+          },
+        ]}>
+        <Text style={styles.header}>Native {theme}</Text>
+        <Text style={{color: color.default['default']}}>color {}</Text>
         <Chip
           label="Chip"
           isClosable
@@ -41,7 +49,6 @@ const Testscreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
