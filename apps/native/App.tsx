@@ -13,17 +13,19 @@ const Native = () => {
           colors: darkmodeColor,
         };
 
- console.log("darkmodeColor", darkmodeColor)
+  console.log('darkmodeColor', darkmodeColor);
 
   return (
     <ThemeProvider config={newConfig}>
-      <Testscreen />
-      <DNAButton
-        onPress={() => {
-          // handleChangeScheme();
-        }}
-        label="Change Color"
-      />
+      <>
+        <Testscreen />
+        <DNAButton
+          onPress={() => {
+            // handleChangeScheme();
+          }}
+          label="Change Color"
+        />
+      </>
     </ThemeProvider>
   );
 };
