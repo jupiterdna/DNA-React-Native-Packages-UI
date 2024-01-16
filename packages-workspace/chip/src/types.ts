@@ -1,7 +1,11 @@
 import { GestureResponderEvent } from "react-native";
 import { sizeProps, variantProps, borderRadiusProps, colorProps } from "@dnamobile/base_style";
 import React from "react";
+import { SvgProps, NumberProp } from 'react-native-svg';
 
+interface IProps extends SvgProps {
+  size?: NumberProp;
+}
 export interface DNAChipProps {
     /**
      * Where you can define the label of the component.
@@ -10,7 +14,7 @@ export interface DNAChipProps {
     /**
      * Property that enables user to select icon from icon library 
      */
-    icon?: React.JSX.Element;
+    icon?: React.JSX.Element | ((e?: IProps | any) => React.JSX.Element)
     /**
      * Changes the variation of the element. 
      */
