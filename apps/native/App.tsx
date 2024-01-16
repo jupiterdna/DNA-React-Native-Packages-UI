@@ -2,7 +2,6 @@ import React from 'react';
 import {ThemeProvider, darkmodeColor, themeConfig} from '@rndna/theme-provider';
 import Testscreen from './src/Screens/Testscreen';
 import {useColorScheme} from 'react-native';
-import {DNAButton} from '@rndna/button';
 
 const Native = () => {
   const newConfig =
@@ -16,12 +15,6 @@ const Native = () => {
   return (
     <ThemeProvider config={newConfig}>
       <Testscreen />
-      <DNAButton
-        onPress={() => {
-          // handleChangeScheme();
-        }}
-        label="Change Color"
-      />
     </ThemeProvider>
   );
 };

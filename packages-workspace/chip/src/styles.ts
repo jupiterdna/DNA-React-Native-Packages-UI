@@ -1,4 +1,7 @@
 import { StyleSheet } from 'react-native';
+import { useFonts } from "@rndna/theme-provider"
+
+const size = useFonts();
 
 export const styles = StyleSheet.create({
   chip: {
@@ -7,12 +10,7 @@ export const styles = StyleSheet.create({
     borderRadius: 99,
     paddingVertical: 4,
     paddingHorizontal: 8,
-  },
-  icon: {
-    marginRight: 4,
-  },
-  closeIcon: {
-    marginLeft: 4,
+    gap: 4,
   },
   buttonDisabled: {
     opacity: 0.5,
@@ -21,34 +19,34 @@ export const styles = StyleSheet.create({
 
 export const textSizeCls = {
   sm: {
-    fontSize: 8,
+    fontSize: size.fontSize?.overline,
   },
   default: {
-    fontSize: 10,
+    fontSize: size.fontSize?.caption,
   },
   md: {
-    fontSize: 12,
+    fontSize: size.fontSize?.body2,
   },
   lg: {
-    fontSize: 14,
+    fontSize: size.fontSize?.body1,
   },
 };
 
 export const chipSizeCls = {
   sm: {
-    paddingVertical: 2,
+    height: 22,
     paddingHorizontal: 6,
   },
   default: {
-    paddingVertical: 4,
+    height: 26,
     paddingHorizontal: 8,
   },
   md: {
-    paddingVertical: 6,
+    height: 30,
     paddingHorizontal: 10,
   },
   lg: {
-    paddingVertical: 8,
+    height: 34,
     paddingHorizontal: 12,
   },
 }
