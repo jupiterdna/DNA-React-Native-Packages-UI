@@ -9,10 +9,15 @@ export const useColor = () => {
 
 export const useFonts = () => {
     const context = useContext<ThemeProviderProps>(ThemeContext)
-    return context.config.fonts
+    return context.config.fonts 
 }
 
 export const useSpacing = () => {
     const context = useContext<ThemeProviderProps>(ThemeContext)
     return context.config.spacing
+}
+
+export const getColorTheme = () => {
+    const context = useContext<ThemeProviderProps>(ThemeContext)
+    return context.theme
 }
