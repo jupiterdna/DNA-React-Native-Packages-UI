@@ -60,7 +60,7 @@ export const DNAChip = (props: DNAChipProps) => {
     }
   }
 
-  const closeIconSize = textSizeCls[size].fontSize -
+  const closeIconSize = textSizeCls[size].fontSize
 
   const getCloseIconColor = () => {
     return variant === 'solid' ? 'white' : defaultColor;
