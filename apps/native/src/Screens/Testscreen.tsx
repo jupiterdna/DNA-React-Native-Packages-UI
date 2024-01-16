@@ -10,9 +10,9 @@ const Testscreen = () => {
         <Text style={styles.header}>Native</Text>
         <View style={styles.gap}>
           <DNAChip
-            label="Chip"
+            label="Chips"
             size="sm"
-            icon={UserIcon}
+            icon={<UserIcon />}
             onPress={() => console.log('pressed')}
             onPressClose={() => console.log('closeddd')}
           />
