@@ -7,7 +7,7 @@ import {AgeIcon} from '@rndna/icon';
 import {Badge} from '@dnamobile/badge';
 import {useColor, getColorTheme} from '@rndna/theme-provider';
 
-const Testscreen = () => {
+const Testscreen: React.FC<any> = () => {
   const theme = getColorTheme();
   const color = useColor();
 
