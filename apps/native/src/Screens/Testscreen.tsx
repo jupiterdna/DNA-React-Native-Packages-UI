@@ -1,7 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
 import {DNAButton} from '@rndna/button';
-import {AgeIcon} from '@rndna/icon';
+import {UserIcon} from '@rndna/icon';
 
 const Testscreen = () => {
   return (
@@ -9,29 +9,29 @@ const Testscreen = () => {
       <View style={[styles.container]}>
         <Text style={styles.header}>Native</Text>
         <View style={styles.gap}>
-          <DNAButton label="Button" color="danger" icon={AgeIcon} size="sm" />
+          <DNAButton label="Button" color="danger" icon={UserIcon} size="sm" />
           <DNAButton
             label="Button"
             color="danger"
-            icon={AgeIcon}
+            icon={UserIcon}
             size="sm"
             isLoading
           />
-          <DNAButton label="Button" color="info" icon={AgeIcon} />
-          <DNAButton label="Button" color="info" icon={AgeIcon} isLoading />
-          <DNAButton label="Button" color="success" icon={AgeIcon} size="md" />
+          <DNAButton label="Button" color="info" icon={UserIcon} />
+          <DNAButton label="Button" color="info" icon={UserIcon} isLoading />
+          <DNAButton label="Button" color="success" icon={UserIcon} size="md" />
           <DNAButton
             label="Button"
             color="success"
-            icon={AgeIcon}
+            icon={UserIcon}
             size="md"
             isLoading
           />
-          <DNAButton label="Button" color="warning" icon={AgeIcon} size="lg" />
+          <DNAButton label="Button" color="warning" icon={UserIcon} size="lg" />
           <DNAButton
             label="Button"
             color="warning"
-            icon={AgeIcon}
+            icon={UserIcon}
             size="lg"
             isLoading
           />
@@ -46,6 +46,7 @@ const Testscreen = () => {
             size="md"
           />
           <DNAButton label="Button" color="warning" size="lg" />
+          <DNAButton label="Button" color="warning" variant="flat" size="lg" />
         </View>
       </View>
     </View>
