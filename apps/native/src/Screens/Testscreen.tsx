@@ -1,17 +1,13 @@
-import {View, Text, StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
-import {Chip} from '@dnamobile/chip';
-import {DNAButton} from '@rndna/button';
-import {Collapsible} from '@dnamobile/collapsible';
-import {AgeIcon} from '@rndna/icon';
-import {Badge} from '@dnamobile/badge';
+import {View, StyleSheet} from 'react-native';
+import React from 'react';
 import {useColor, getColorTheme} from '@rndna/theme-provider';
+import {DNAText} from '@rndna/text';
 
 const Testscreen = () => {
   const theme = getColorTheme();
   const color = useColor();
 
-  console.log("color", color)
+  console.log('color', color);
   return (
     <View style={{flex: 1}}>
       <View
@@ -21,26 +17,20 @@ const Testscreen = () => {
             backgroundColor: theme === 'dark' ? '#222' : '#fff',
           },
         ]}>
-        <Text style={styles.header}>Native {theme}</Text>
-        <Text style={{color: color.default['default']}}>color {}</Text>
-        <Chip
-          label="Chip"
-          isClosable
-          size="default"
-          onPress={() => console.log('pressed')}
-          onPressClose={() => console.log('closeddd')}
-        />
-        <DNAButton label="Button" color="info" />
-        <Collapsible title="Collapsible Title">
-          <AgeIcon size={50} color={'red'} />
-
-          <View>
-            <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
-          </View>
-        </Collapsible>
-        <Badge>
-          <DNAButton label="Button" color="info" />
-        </Badge>
+        <DNAText type="h1">H1</DNAText>
+        <DNAText type="h2">H2</DNAText>
+        <DNAText type="h3">H3</DNAText>
+        <DNAText type="h4">H4</DNAText>
+        <DNAText type="h5">H5</DNAText>
+        <DNAText type="h6">H6</DNAText>
+        <DNAText type="subtitle1">Subtitle 1</DNAText>
+        <DNAText type="subtitle2">Subtitle 2</DNAText>
+        <DNAText type="body1">Body 1</DNAText>
+        <DNAText type="body2">Body 2</DNAText>
+        <DNAText type="button">Button</DNAText>
+        <DNAText type="caption">Caption</DNAText>
+        <DNAText type="overline">overline</DNAText>
+        <DNAText>default fontSize</DNAText>
       </View>
     </View>
   );
