@@ -1,3 +1,5 @@
+import { ColorSchemeName } from "react-native";
+
 export type colorType = {
   ["default"]: string;
   [50]: string;
@@ -46,7 +48,7 @@ export type configType = {
     [17]: number;
     [18]: number;
   };
-  colors?: {
+  colors: {
     primary: colorType;
     secondary: colorType;
     info: colorType;
@@ -55,7 +57,7 @@ export type configType = {
     danger: colorType;
     default: colorType;
   };
-  fonts?: {
+  fonts: {
     fontFamily?: string;
     fontWeight?:
       | "bold"
@@ -74,9 +76,9 @@ export interface ThemeProviderProps {
   /**
    * configuration of all theme properties
    */
-  config?: configType;
+  config: configType;
   /**
    * set theme either dark or light default is light
    */
-  theme?: 'dark' | 'light'
+  theme?: ColorSchemeName
 }

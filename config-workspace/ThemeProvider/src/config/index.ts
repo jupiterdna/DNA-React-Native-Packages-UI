@@ -1,4 +1,5 @@
 import { configType } from "../types";
+import { lightModeColor } from "./themeColor";
 
 export const defaultConfig: configType = {
   spacing: {
@@ -22,71 +23,7 @@ export const defaultConfig: configType = {
     "17": 60,
     "18": 64,
   },
-  colors: {
-    danger: {
-      "50": "#FEE8E7",
-      "100": "#FBBBB6",
-      "200": "#F66156",
-      "400": "#F44336",
-      "600": "#A91409",
-      "700": "#790E07",
-      default: "#A91409",
-    },
-    info: {
-      "50": "#E5F1F0",
-      "100": "#CCE3E1",
-      "200": "#B2D6D2",
-      "400": "#7FBAB4",
-      "600": "#669590",
-      "700": "#334A48",
-      default: "#669590",
-    },
-    default: {
-      "50": "#F2F2F2",
-      "100": "#C9C9C9",
-      "200": "#8C8C8C",
-      "400": "#595959",
-      "600": "#262626",
-      "700": "#OADADA",
-      default: "#262626",
-    },
-    primary: {
-      "50": "#EAF4FB",
-      "100": "#C0DFF2",
-      "200": "#96CAE9",
-      "400": "#359AD4",
-      "600": "#1F6993",
-      "700": "#0D2D3F",
-      default: "#1F6993",
-    },
-    secondary: {
-      "50": "#F0E5FB",
-      "100": "#D4BFEB",
-      "200": "#B69FCE",
-      "400": "#9573AC",
-      "600": "#73508E",
-      "700": "#55386D",
-      default: "#73508E",
-    },
-    success: {
-      "50": "#EDF7EE",
-      "100": "#CAE8CB",
-      "200": "#83C985",
-      "400": "#4CAF50",
-      "600": "#367C39",
-      "700": "#173518",
-      default: "#367C39",
-    },
-    warning: {
-      "50": "#FFFAE0",
-      "100": "#FFF1B8",
-      "200": "#FFE58F",
-      "400": "#FFC538",
-      "600": "#D99E29",
-      "700": "#8C590D",
-      default: "#D99E29",
-    },
-  },
+  colors: lightModeColor,
   fonts: {
     fontFamily: "roboto",
     fontWeight: "normal",
