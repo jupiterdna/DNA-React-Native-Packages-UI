@@ -6,7 +6,6 @@ import { SvgProps, NumberProp } from 'react-native-svg';
 interface IProps extends SvgProps {
   size?: NumberProp;
 }
-
 export interface DNAChipProps {
     /**
      * Where you can define the label of the component.
