@@ -1,7 +1,7 @@
 import { StyleSheet } from 'react-native';
 import { useFonts } from "@rndna/theme-provider"
 
-const fontSize = useFonts();
+const size = useFonts();
 
 export const styles = StyleSheet.create({
     button: {
@@ -45,16 +45,16 @@ export const styles = StyleSheet.create({
 
 export const textSizeCls = {
   sm: {
-    fontSize: 14,
+    fontSize: size.fontSize?.body2,
   },
   default: {
-    fontSize: 16,
+    fontSize: size.fontSize?.body1,
   },
   md: {
     fontSize: 18,
   },
   lg: {
-    fontSize: 20,
+    fontSize: size.fontSize?.h6,
   },
 };
 

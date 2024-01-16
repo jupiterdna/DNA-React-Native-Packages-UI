@@ -2,13 +2,14 @@ import React, { createElement } from "react";
 import {
   TouchableOpacity,
   ActivityIndicator,
-  Text,
   View,
 } from "react-native";
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
-import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
+import { borderRadiusCls } from "@dnamobile/base_style";
 import { useColor } from "@rndna/theme-provider"
+import { DNAText } from "@rndna/text";
+
 /**
  * A button is component that the user can press to trigger an action.
  *
@@ -72,10 +73,23 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const renderIcon =
       typeof icon === "function"
         ? createElement(icon, {
-            size: textSizeCls[size].fontSize + 3,
+            size: textSizeCls[size].fontSize || -1 + 3,
             color: variant === 'solid' ? "white" : defaultColor,
           })
         : icon
+  
+  const getTextSize = () => {
+    switch(size) {
+      case 'sm':
+        return 'body2'
+      case 'md':
+        return 'h6'
+      case 'lg':
+        return 'h6'
+      default: 
+        return 'body1'
+    }
+  }
 
   return (
     <TouchableOpacity
@@ -100,7 +114,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       ) : (
         !!icon && renderIcon
       )}
-      <Text style={[getTextColor(), textSizeCls[size] ]}>{loadingLabel && isLoading ? loadingLabel : label}</Text>
+      <DNAText style={getTextColor()} type={getTextSize()}>{loadingLabel && isLoading ? loadingLabel : label}</DNAText>
     </TouchableOpacity>
   );
 });
