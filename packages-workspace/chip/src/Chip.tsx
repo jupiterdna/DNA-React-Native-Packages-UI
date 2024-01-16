@@ -60,12 +60,12 @@ export const DNAChip = (props: DNAChipProps) => {
     }
   }
 
-  const closeIconSize = textSizeCls[size].fontSize
-
   const getCloseIconColor = () => {
     return variant === 'solid' ? 'white' : defaultColor;
   };
-
+  
+  const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
+  
   return (
     <Pressable
       style={[
@@ -73,7 +73,8 @@ export const DNAChip = (props: DNAChipProps) => {
         getVariantStyle(), 
         borderRadiusCls[borderRadius],
         chipSizeCls[size],
-        isDisabled  && styles.buttonDisabled,
+        isClosable && addSpace,
+        isDisabled && styles.buttonDisabled,
       ]}
       onPress={onPress}
       disabled={isDisabled}
@@ -82,7 +83,7 @@ export const DNAChip = (props: DNAChipProps) => {
       <DNAText style={getTextColor()} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
-          <CloseSmallIcon size={closeIconSize} color={getCloseIconColor()} />
+          <CloseSmallIcon size={textSizeCls[size].fontSize} color={getCloseIconColor()} />
         </Pressable>
       }
     </Pressable>

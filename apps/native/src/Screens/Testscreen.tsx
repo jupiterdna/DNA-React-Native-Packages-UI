@@ -11,7 +11,6 @@ const Testscreen = () => {
         <View style={styles.gap}>
           <DNAChip
             label="Chip"
-            isClosable
             size="sm"
             icon={UserIcon}
             onPress={() => console.log('pressed')}
