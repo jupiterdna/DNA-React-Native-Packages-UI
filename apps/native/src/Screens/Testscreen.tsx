@@ -12,7 +12,7 @@ const Testscreen = () => {
           <DNAChip
             label="Chips"
             size="sm"
-            icon={<UserIcon />}
+            icon={UserIcon}
             onPress={() => console.log('pressed')}
             onPressClose={() => console.log('closeddd')}
           />
