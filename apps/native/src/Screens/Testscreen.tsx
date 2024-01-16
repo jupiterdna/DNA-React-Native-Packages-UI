@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
+import React from 'react';
 import {DNAChip} from '@rndna/chip';
+import {UserIcon} from '@rndna/icon';
 
 const Testscreen = () => {
   return (
@@ -11,6 +12,7 @@ const Testscreen = () => {
           <DNAChip
             label="Chip"
             size="sm"
+            icon={UserIcon}
             onPress={() => console.log('pressed')}
             onPressClose={() => console.log('closeddd')}
           />
@@ -18,12 +20,14 @@ const Testscreen = () => {
             label="Chip"
             isClosable
             size="sm"
+            icon={UserIcon}
             onPress={() => console.log('pressed')}
             onPressClose={() => console.log('closeddd')}
           />
           <DNAChip
             label="Chip"
             isClosable
+            icon={UserIcon}
             size="default"
             onPress={() => console.log('pressed')}
             onPressClose={() => console.log('closeddd')}
@@ -32,6 +36,7 @@ const Testscreen = () => {
             label="Chip"
             isDisabled
             isClosable
+            icon={UserIcon}
             size="default"
             onPress={() => console.log('pressed')}
             onPressClose={() => console.log('closeddd')}
@@ -45,7 +50,6 @@ const Testscreen = () => {
           />
           <DNAChip
             label="Chip"
-            isClosable
             color="success"
             size="lg"
             onPress={() => console.log('pressed')}
