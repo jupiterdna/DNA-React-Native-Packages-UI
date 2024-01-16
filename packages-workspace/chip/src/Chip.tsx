@@ -10,6 +10,31 @@ import { useColor } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import { CloseSmallIcon } from "@rndna/icon";
 
+/**
+ * A Chip to show content with all the props inside a Component.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNAChip } from '@rndna/chip';
+ * import { UserIcon } from '@rndna/icon';
+ *
+ * const ComponentName = () => (
+ *  <DNAChip
+ *    label="Chip"
+ *    isClosable
+ *    isLoading
+ *    icon={UserIcon}
+ *    size="md"
+ *    onPress={() => console.log('pressed')}
+ *    onPressClose={() => console.log('closed')}
+ *    />
+ * );
+ *
+ * export default ComponentName;
+ * ```
+ */
+
 export const DNAChip = (props: DNAChipProps) => {
   const {
     label = 'Chip',

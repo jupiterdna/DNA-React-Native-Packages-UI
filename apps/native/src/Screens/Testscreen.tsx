@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     gap: 4,
     alignItems: 'center',
     justifyContent: 'center',
-  }
+  },
 });
 
 export default Testscreen;
