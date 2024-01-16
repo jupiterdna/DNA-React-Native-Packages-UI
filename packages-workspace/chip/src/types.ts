@@ -4,7 +4,7 @@ import React from "react";
 
 export interface DNAChipProps {
     label: string;
-    icon?: React.JSX.Element;
+    icon?:  () => React.JSX.Element | React.JSX.Element
     variant?: variantProps;
     with_avatar?: string;
     size?: sizeProps;
