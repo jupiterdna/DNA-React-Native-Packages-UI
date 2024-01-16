@@ -1,6 +1,10 @@
 import { GestureResponderEvent, TouchableOpacityProps } from "react-native";
 import { sizeProps, colorProps, borderRadiusProps, variantProps } from "@dnamobile/base_style";
+import { SvgProps, NumberProp } from 'react-native-svg';
 
+interface IProps extends SvgProps {
+size?: NumberProp;
+}
 export interface DNAButtonProps extends TouchableOpacityProps {
     /**
      * Where you can define the label of the component.
@@ -9,7 +13,7 @@ export interface DNAButtonProps extends TouchableOpacityProps {
      /**
      * Property that enables user to select icon from icon library (Icons were not yet implemented)
      */
-    icon?: React.JSX.Element;
+    icon?: React.JSX.Element | ((e?: IProps | any) => React.JSX.Element)
     /**
      * Property that toggles the positon of icon on left or right
      */

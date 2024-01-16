@@ -51,7 +51,7 @@ export const textSizeCls = {
     fontSize: size.fontSize?.body1,
   },
   md: {
-    fontSize: 18,
+    fontSize: size.fontSize?.label,
   },
   lg: {
     fontSize: size.fontSize?.h6,
