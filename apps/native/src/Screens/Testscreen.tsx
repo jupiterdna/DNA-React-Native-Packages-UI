@@ -1,34 +1,52 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
-import {Chip} from '@dnamobile/chip';
 import {DNAButton} from '@rndna/button';
-import {Collapsible} from '@dnamobile/collapsible';
 import {AgeIcon} from '@rndna/icon';
-import {Badge} from '@dnamobile/badge';
 
 const Testscreen = () => {
   return (
     <View style={{flex: 1}}>
       <View style={[styles.container]}>
         <Text style={styles.header}>Native</Text>
-        <Chip
-          label="Chip"
-          isClosable
-          size="default"
-          onPress={() => console.log('pressed')}
-          onPressClose={() => console.log('closeddd')}
-        />
-        <DNAButton label="Button" color="info" />
-        <Collapsible title="Collapsible Title">
-          <AgeIcon size={50} color={'red'} />
-
-          <View>
-            <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
-          </View>
-        </Collapsible>
-        <Badge>
-          <DNAButton label="Button" color="info" />
-        </Badge>
+        <View style={styles.gap}>
+          <DNAButton label="Button" color="danger" icon={AgeIcon} size="sm" />
+          <DNAButton
+            label="Button"
+            color="danger"
+            icon={AgeIcon}
+            size="sm"
+            isLoading
+          />
+          <DNAButton label="Button" color="info" icon={AgeIcon} />
+          <DNAButton label="Button" color="info" icon={AgeIcon} isLoading />
+          <DNAButton label="Button" color="success" icon={AgeIcon} size="md" />
+          <DNAButton
+            label="Button"
+            color="success"
+            icon={AgeIcon}
+            size="md"
+            isLoading
+          />
+          <DNAButton label="Button" color="warning" icon={AgeIcon} size="lg" />
+          <DNAButton
+            label="Button"
+            color="warning"
+            icon={AgeIcon}
+            size="lg"
+            isLoading
+          />
+        </View>
+        <View style={styles.gap}>
+          <DNAButton label="Button" color="danger" size="sm" />
+          <DNAButton label="Button" color="info" size="default" />
+          <DNAButton
+            label="Button"
+            color="success"
+            variant="outlined"
+            size="md"
+          />
+          <DNAButton label="Button" color="warning" size="lg" />
+        </View>
       </View>
     </View>
   );
@@ -46,6 +64,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     fontSize: 36,
+  },
+  gap: {
+    marginBottom: 8,
+    gap: 4,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

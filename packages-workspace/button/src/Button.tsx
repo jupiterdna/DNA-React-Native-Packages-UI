@@ -72,7 +72,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const renderIcon =
       typeof icon === "function"
         ? createElement(icon, {
-            size: textSizeCls[size].fontSize + 4,
+            size: textSizeCls[size].fontSize + 3,
             color: variant === 'solid' ? "white" : defaultColor,
           })
         : icon
@@ -94,8 +94,8 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       {...restProps}
     > 
       {isLoading ? (
-        <View style={styles.loadingSize} >
-          <ActivityIndicator color={variant === 'solid' ? 'white' : defaultColor }/> 
+        <View style={styles.loadingSize}>
+          <ActivityIndicator color={variant === 'solid' ? 'white' : defaultColor } /> 
         </View>
       ) : (
         !!icon && renderIcon
