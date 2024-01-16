@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet} from 'react-native';
 import React, {useContext} from 'react';
-import {Chip} from '@dnamobile/chip';
+import {DNAChip} from '@rndna/chip';
 import {DNAButton} from '@rndna/button';
 import {Collapsible} from '@dnamobile/collapsible';
 import {AgeIcon} from '@rndna/icon';
@@ -23,7 +23,7 @@ const Testscreen = () => {
         ]}>
         <Text style={styles.header}>Native {theme}</Text>
         <Text style={{color: color.default['default']}}>color {}</Text>
-        <Chip
+        <DNAChip
           label="Chip"
           isClosable
           size="default"
