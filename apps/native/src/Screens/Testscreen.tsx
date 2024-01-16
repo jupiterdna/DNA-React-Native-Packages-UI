@@ -1,4 +1,4 @@
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Text} from 'react-native';
 import React from 'react';
 import {DNAButton} from '@rndna/button';
 import {UserIcon} from '@rndna/icon';

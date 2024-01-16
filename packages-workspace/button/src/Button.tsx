@@ -2,7 +2,6 @@ import React, { createElement } from "react";
 import {
   TouchableOpacity,
   ActivityIndicator,
-  Text,
   View,
 } from "react-native";
 import { buttonSizeCls, textSizeCls, styles } from './styles';
@@ -116,7 +115,6 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
         !!icon && renderIcon
       )}
       <DNAText style={getTextColor()} type={getTextSize()}>{loadingLabel && isLoading ? loadingLabel : label}</DNAText>
-      <Text style={[getTextColor(), textSizeCls[size] ]}>{loadingLabel && isLoading ? loadingLabel : label}</Text>
     </TouchableOpacity>
   );
 });
