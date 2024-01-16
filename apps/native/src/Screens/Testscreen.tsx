@@ -3,7 +3,7 @@ import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {UserIcon} from '@rndna/icon';
 
-const Testscreen = () => {
+const Testscreen: React.FC = () => {
   return (
     <View style={{flex: 1}}>
       <View style={[styles.container]}>
