@@ -10,6 +10,31 @@ import { useColor } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import { CloseSmallIcon } from "@rndna/icon";
 
+/**
+ * A Chip to show content with all the props inside a Component.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNAChip } from '@rndna/chip';
+ * import { UserIcon } from '@rndna/icon';
+ *
+ * const ComponentName = () => (
+ *  <DNAChip
+ *    label="Chip"
+ *    isClosable
+ *    isLoading
+ *    icon={UserIcon}
+ *    size="md"
+ *    onPress={() => console.log('pressed')}
+ *    onPressClose={() => console.log('closed')}
+ *    />
+ * );
+ *
+ * export default ComponentName;
+ * ```
+ */
+
 export const DNAChip = (props: DNAChipProps) => {
   const {
     label = 'Chip',
@@ -60,12 +85,12 @@ export const DNAChip = (props: DNAChipProps) => {
     }
   }
 
-  const closeIconSize = textSizeCls[size].fontSize
-
   const getCloseIconColor = () => {
     return variant === 'solid' ? 'white' : defaultColor;
   };
-
+  
+  const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
+  
   return (
     <Pressable
       style={[
@@ -73,7 +98,8 @@ export const DNAChip = (props: DNAChipProps) => {
         getVariantStyle(), 
         borderRadiusCls[borderRadius],
         chipSizeCls[size],
-        isDisabled  && styles.buttonDisabled,
+        isClosable && addSpace,
+        isDisabled && styles.buttonDisabled,
       ]}
       onPress={onPress}
       disabled={isDisabled}
@@ -82,7 +108,7 @@ export const DNAChip = (props: DNAChipProps) => {
       <DNAText style={getTextColor()} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
-          <CloseSmallIcon size={closeIconSize} color={getCloseIconColor()} />
+          <CloseSmallIcon size={textSizeCls[size].fontSize} color={getCloseIconColor()} />
         </Pressable>
       }
     </Pressable>

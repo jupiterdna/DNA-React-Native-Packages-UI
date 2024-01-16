@@ -1,4 +1,7 @@
 import { StyleSheet } from 'react-native';
+import { useFonts } from "@rndna/theme-provider"
+
+const size = useFonts();
 
 export const styles = StyleSheet.create({
   chip: {
@@ -16,16 +19,16 @@ export const styles = StyleSheet.create({
 
 export const textSizeCls = {
   sm: {
-    fontSize: 10,
+    fontSize: size.fontSize?.overline,
   },
   default: {
-    fontSize: 12,
+    fontSize: size.fontSize?.caption,
   },
   md: {
-    fontSize: 14,
+    fontSize: size.fontSize?.body2,
   },
   lg: {
-    fontSize: 16,
+    fontSize: size.fontSize?.body1,
   },
 };
 

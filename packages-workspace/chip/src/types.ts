@@ -3,16 +3,45 @@ import { sizeProps, variantProps, borderRadiusProps, colorProps } from "@dnamobi
 import React from "react";
 
 export interface DNAChipProps {
+    /**
+     * Where you can define the label of the component.
+     */
     label: string;
+    /**
+     * Property that enables user to select icon from icon library 
+     */
     icon?:  () => React.JSX.Element | React.JSX.Element
+    /**
+     * Changes the variation of the element. 
+     */
     variant?: variantProps;
-    with_avatar?: string;
+    /**
+     * Property that defines the size of the component or a selection
+     */
     size?: sizeProps;
+    /**
+     * Property that places a Closable button as X icon on the component to make it closable
+     */
     isClosable?: boolean;
+    /**
+     * Property where the user can enable or disable the certain attribute or field
+     */
     isDisabled?: boolean;
+    /**
+     * Property where the user can enable or disable the certain attribute or field
+     */
     color?: colorProps;
+    /**
+     * Defines the border dimensions of the component
+     */
     borderRadius?: borderRadiusProps;
+    /**
+     * Handler when the component is about to close
+     */
     onPressClose?: (event: GestureResponderEvent) => void;
+    /**
+     * Handler when the component is clicked
+     */
     onPress?: (event: GestureResponderEvent) => void;
   }
   
