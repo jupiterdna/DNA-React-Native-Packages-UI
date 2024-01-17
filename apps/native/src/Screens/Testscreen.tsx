@@ -70,7 +70,7 @@ const Testscreen: React.FC<any> = () => {
           <DNABadge color="success">
             <DNAChip
               label="Chip"
-              color="success"
+              color="info"
               size="lg"
               onPress={() => console.log('pressed')}
               onPressClose={() => console.log('closeddd')}
