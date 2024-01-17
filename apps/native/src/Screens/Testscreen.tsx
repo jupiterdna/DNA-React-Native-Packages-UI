@@ -28,9 +28,9 @@ const Testscreen: React.FC<any> = () => {
           <View style={styles.gap}>
             <DNAButton label="primary" color="primary" />
             <DNAButton icon={UserIcon} label="primary" color="primary" />
-            <DNAChip isClosable label="secondary" color="primary" />
+            <DNAChip isClosable label="default" color="default" />
             <DNABadge value="badge" color="danger">
-              <DNAChip label="secondary" color="default" />
+              <DNAChip label="default" color="default" />
             </DNABadge>
           </View>
           <View style={styles.gap}>
@@ -43,12 +43,12 @@ const Testscreen: React.FC<any> = () => {
             />
             <DNAChip
               isClosable
-              label="secondary"
-              color="primary"
+              label="default"
+              color="default"
               variant="outlined"
             />
             <DNABadge color="danger">
-              <DNAChip label="secondary" color="primary" variant="outlined" />
+              <DNAChip label="default" color="default" variant="outlined" />
             </DNABadge>
           </View>
         </DNACollapsible>
