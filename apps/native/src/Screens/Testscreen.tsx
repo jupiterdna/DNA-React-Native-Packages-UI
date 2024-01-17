@@ -16,7 +16,7 @@ const Testscreen: React.FC<any> = () => {
 
   const color = useColor();
 
-  console.log('color', color.default);
+  console.log('color', color.default['100']);
 
   return (
     // eslint-disable-next-line react-native/no-inline-styles
@@ -26,8 +26,8 @@ const Testscreen: React.FC<any> = () => {
           style={[
             styles.header,
             {
-              color: color.default['700'],
-            },
+              fontFamily: 'Roboto-Light',
+            }
           ]}>
           Native : {useColorScheme()} Mode
         </Text>
