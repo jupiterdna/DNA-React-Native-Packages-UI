@@ -1,7 +1,7 @@
 import React, { createElement } from "react";
+import { useColorScheme } from "react-native";
 import {
   Pressable,
-  View,
 } from "react-native";
 import { chipSizeCls, textSizeCls, styles } from './styles';
 import { DNAChipProps } from './types';
@@ -51,11 +51,15 @@ export const DNAChip = (props: DNAChipProps) => {
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
+  const colorScheme = useColorScheme();
+  const useDarkColor = themeColor[color][100];
   
-  const getTextColor = () => {
-    return variant === 'solid' ? { color: 'white' } : { color: defaultColor };
+  const getTextColor = {
+    color: colorScheme === 'light'
+      ? variant === 'solid' ? 'white' : defaultColor
+      : variant === 'solid' ? useDarkColor : defaultColor,
   };
-
+  
   const getVariantStyle = () => {
     return {
       solid: { backgroundColor: defaultColor },
@@ -68,7 +72,9 @@ export const DNAChip = (props: DNAChipProps) => {
       typeof icon === "function"
         ? createElement(icon, {
             size: textSizeCls[size].fontSize,
-            color: variant === 'solid' ? 'white' : defaultColor,
+            color: colorScheme === 'light'
+            ? variant === 'solid' ? 'white' : defaultColor
+            : variant === 'solid' ? useDarkColor : defaultColor,
           })
         : icon
 
@@ -85,9 +91,10 @@ export const DNAChip = (props: DNAChipProps) => {
     }
   }
 
-  const getCloseIconColor = () => {
-    return variant === 'solid' ? 'white' : defaultColor;
-  };
+  const getCloseIconColor =
+    colorScheme === 'light'
+      ? variant === 'solid' ? 'white' : defaultColor
+      : variant === 'solid' ? useDarkColor : defaultColor
   
   const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
   
@@ -105,10 +112,10 @@ export const DNAChip = (props: DNAChipProps) => {
       disabled={isDisabled}
     >
       {!!icon && renderIcon}
-      <DNAText style={getTextColor()} type={getTextSize()}>{label}</DNAText>
+      <DNAText style={getTextColor} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
-          <CloseSmallIcon size={textSizeCls[size].fontSize} color={getCloseIconColor()} />
+          <CloseSmallIcon size={textSizeCls[size].fontSize} color={getCloseIconColor} />
         </Pressable>
       }
     </Pressable>
