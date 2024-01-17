@@ -6,6 +6,25 @@ import { useColor } from "@rndna/theme-provider"
 import {ChevronUpSmallIcon, ChevronDownSmallIcon} from "@rndna/icon"
 import {DNAText} from '@rndna/text'
 
+/**
+ * This component lets users show and hide sections to save vertical space.
+ * 
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNACollapsible } from '@rndna/collapsible';
+ *
+ * const MyComponent = () => (
+ *  <DNACollapsible title="Sample Title">
+ *    //your children components
+ *  </DNACollapsible>
+ * );
+ *
+ * export default MyComponent;
+ * ```
+ */
+
+
 export const DNACollapsible = (props: DNACollapsibleProps) => {
 
   const { children, title, color = "primary"} = props
@@ -43,7 +62,7 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
         </View>
       </TouchableOpacity>
       {open ? <View style={styles.panelBody}>
-       {children}
+       {/* children */}
       </View> : null}
     </View>
   )
