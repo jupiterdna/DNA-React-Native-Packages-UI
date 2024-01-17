@@ -2,7 +2,7 @@ import { View, Text } from 'react-native'
 import React, { useState } from 'react'
 import { DNABadgeProps } from './types'
 import { styles } from './styles'
-import { defaultColors } from "@dnamobile/base_style";
+import { useColor } from "@rndna/theme-provider"
 
 /**
  * A badge is component that the user display a text with custom background color on the upper right hand of the children.
@@ -33,8 +33,11 @@ export const DNABadge = (props: DNABadgeProps) => {
     setBadgeWidth(event.nativeEvent.layout.width);
   };
 
+  const themeColor = useColor();
+  const defaultColor = themeColor[color]["default"];
+
   const backgroundColor = () => {
-    return { backgroundColor: defaultColors[color]}
+    return { backgroundColor: defaultColor }
   }
 
   return (

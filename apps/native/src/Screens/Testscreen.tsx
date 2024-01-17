@@ -1,6 +1,7 @@
 import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
+import {DNABadge} from '@rndna/badge';
 import {UserIcon} from '@rndna/icon';
 import {useColor} from '@rndna/theme-provider';
 
@@ -68,13 +69,15 @@ const Testscreen: React.FC<any> = () => {
             onPress={() => console.log('pressed')}
             onPressClose={() => console.log('closeddd')}
           />
-          <DNAChip
-            label="Chip"
-            color="success"
-            size="lg"
-            onPress={() => console.log('pressed')}
-            onPressClose={() => console.log('closeddd')}
-          />
+          <DNABadge color="success">
+            <DNAChip
+              label="Chip"
+              color="success"
+              size="lg"
+              onPress={() => console.log('pressed')}
+              onPressClose={() => console.log('closeddd')}
+            />
+          </DNABadge>
         </View>
       </View>
     </View>
