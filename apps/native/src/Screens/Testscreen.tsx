@@ -1,13 +1,36 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {UserIcon} from '@rndna/icon';
+import {useColor} from '@rndna/theme-provider';
 
 const Testscreen: React.FC<any> = () => {
+  const bg: ViewStyle =
+    useColorScheme() === 'dark'
+      ? {
+          backgroundColor: '#333',
+        }
+      : {
+          backgroundColor: '#fff',
+        };
+
+  const color = useColor();
+
+  console.log('color', color.default);
+
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <View style={{flex: 1}}>
-      <View style={[styles.container]}>
-        <Text style={styles.header}>Native</Text>
+      <View style={[styles.container, bg]}>
+        <Text
+          style={[
+            styles.header,
+            {
+              color: color.default['700'],
+            },
+          ]}>
+          Native : {useColorScheme()} Mode
+        </Text>
         <View style={styles.gap}>
           <DNAChip
             label="Chips"
