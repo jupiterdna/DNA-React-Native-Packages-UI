@@ -1,47 +1,81 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
-import {DNAButton} from '@rndna/button';
-import {Collapsible} from '@dnamobile/collapsible';
-import {AgeIcon} from '@rndna/icon';
-import {Badge} from '@dnamobile/badge';
-import {useColor, getColorTheme} from '@rndna/theme-provider';
+import {UserIcon} from '@rndna/icon';
+import {useColor} from '@rndna/theme-provider';
 
 const Testscreen: React.FC<any> = () => {
-  const theme = getColorTheme();
+  const bg: ViewStyle =
+    useColorScheme() === 'dark'
+      ? {
+          backgroundColor: '#333',
+        }
+      : {
+          backgroundColor: '#fff',
+        };
+
   const color = useColor();
+
+  console.log('color', color.default);
 
   return (
     // eslint-disable-next-line react-native/no-inline-styles
     <View style={{flex: 1}}>
-      <View
-        style={[
-          styles.container,
-          // eslint-disable-next-line react-native/no-inline-styles
-          {
-            backgroundColor: theme === 'dark' ? '#222' : '#fff',
-          },
-        ]}>
-        <Text style={styles.header}>Native {theme}</Text>
-        <Text style={{color: color.default.default}}>color {}</Text>
-        <DNAChip
-          label="Chip"
-          isClosable
-          size="default"
-          onPress={() => console.log('pressed')}
-          onPressClose={() => console.log('closeddd')}
-        />
-        <DNAButton label="Button" color="info" />
-        <Collapsible title="Collapsible Title">
-          <AgeIcon size={50} color={'red'} />
-
-          <View>
-            <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
-          </View>
-        </Collapsible>
-        <Badge>
-          <DNAButton label="Button" color="info" />
-        </Badge>
+      <View style={[styles.container, bg]}>
+        <Text
+          style={[
+            styles.header,
+            {
+              color: color.default['700'],
+            },
+          ]}>
+          Native : {useColorScheme()} Mode
+        </Text>
+        <View style={styles.gap}>
+          <DNAChip
+            label="Chips"
+            size="sm"
+            icon={UserIcon}
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isClosable
+            size="sm"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isClosable
+            size="default"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isDisabled
+            isClosable
+            size="default"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isClosable
+            size="md"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            color="success"
+            size="lg"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+        </View>
       </View>
     </View>
   );
