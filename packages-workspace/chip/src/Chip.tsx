@@ -1,16 +1,41 @@
-import React from "react";
+import React, { createElement } from "react";
 import {
-  Text,
   Pressable,
+  View,
 } from "react-native";
 import { chipSizeCls, textSizeCls, styles } from './styles';
-import { ChipProps } from './types';
-import { borderRadiusCls, defaultColors } from "@dnamobile/base_style";
+import { DNAChipProps } from './types';
+import { borderRadiusCls } from "@dnamobile/base_style";
+import { useColor } from "@rndna/theme-provider";
+import { DNAText } from "@rndna/text";
+import { CloseSmallIcon } from "@rndna/icon";
 
-//Lacking icon component
-//Style is not final
+/**
+ * A Chip to show content with all the props inside a Component.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNAChip } from '@rndna/chip';
+ * import { UserIcon } from '@rndna/icon';
+ *
+ * const ComponentName = () => (
+ *  <DNAChip
+ *    label="Chip"
+ *    isClosable
+ *    isLoading
+ *    icon={UserIcon}
+ *    size="md"
+ *    onPress={() => console.log('pressed')}
+ *    onPressClose={() => console.log('closed')}
+ *    />
+ * );
+ *
+ * export default ComponentName;
+ * ```
+ */
 
-export const Chip = (props: ChipProps) => {
+export const DNAChip = (props: DNAChipProps) => {
   const {
     label = 'Chip',
     icon,
@@ -23,19 +48,49 @@ export const Chip = (props: ChipProps) => {
     onPressClose,
     borderRadius = "rounded",
   } = props;
+
+  const themeColor = useColor();
+  const defaultColor = themeColor[color]["default"];
   
   const getTextColor = () => {
-    return variant === 'solid' ? { color: 'white' } : { color: defaultColors[color] };
+    return variant === 'solid' ? { color: 'white' } : { color: defaultColor };
   };
 
   const getVariantStyle = () => {
     return {
-      solid: { backgroundColor: defaultColors[color] },
-      outlined: { borderWidth: 1, borderColor: defaultColors[color], backgroundColor: 'transparent' },
+      solid: { backgroundColor: defaultColor },
+      outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
       flat: {},
     }[variant];
   };
 
+  const renderIcon =
+      typeof icon === "function"
+        ? createElement(icon, {
+            size: textSizeCls[size].fontSize,
+            color: variant === 'solid' ? 'white' : defaultColor,
+          })
+        : icon
+
+  const getTextSize = () => {
+    switch(size) {
+      case 'sm':
+        return 'overline'
+      case 'md':
+        return 'body2'
+      case 'lg':
+        return 'body1'
+      default: 
+        return 'caption'
+    }
+  }
+
+  const getCloseIconColor = () => {
+    return variant === 'solid' ? 'white' : defaultColor;
+  };
+  
+  const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
+  
   return (
     <Pressable
       style={[
@@ -43,16 +98,17 @@ export const Chip = (props: ChipProps) => {
         getVariantStyle(), 
         borderRadiusCls[borderRadius],
         chipSizeCls[size],
-        isDisabled  && styles.buttonDisabled,
+        isClosable && addSpace,
+        isDisabled && styles.buttonDisabled,
       ]}
       onPress={onPress}
       disabled={isDisabled}
     >
-      {icon && <Text style={[styles.icon, getTextColor() ]}>{icon}</Text>}
-      <Text style={[textSizeCls[size], getTextColor() ]}>{label}</Text>
+      {!!icon && renderIcon}
+      <DNAText style={getTextColor()} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
-        <Pressable onPress={onPressClose} disabled={isDisabled} style={[styles.closeIcon]}>
-          <Text style={getTextColor()}>&times;</Text>
+        <Pressable onPress={onPressClose} disabled={isDisabled}>
+          <CloseSmallIcon size={textSizeCls[size].fontSize} color={getCloseIconColor()} />
         </Pressable>
       }
     </Pressable>

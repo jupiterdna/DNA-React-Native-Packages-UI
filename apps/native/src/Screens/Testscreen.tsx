@@ -1,46 +1,58 @@
 import {View, Text, StyleSheet} from 'react-native';
-import React, {useContext} from 'react';
-import {Chip} from '@dnamobile/chip';
-import {DNAButton} from '@rndna/button';
-import {Collapsible} from '@dnamobile/collapsible';
-import {AgeIcon} from '@rndna/icon';
-import {Badge} from '@dnamobile/badge';
-import {useColor, getColorTheme} from '@rndna/theme-provider';
+import React from 'react';
+import {DNAChip} from '@rndna/chip';
+import {UserIcon} from '@rndna/icon';
 
-const Testscreen = () => {
-  const theme = getColorTheme();
-  const color = useColor();
-
-  console.log("color", color)
+const Testscreen: React.FC<any> = () => {
   return (
     <View style={{flex: 1}}>
-      <View
-        style={[
-          styles.container,
-          {
-            backgroundColor: theme === 'dark' ? '#222' : '#fff',
-          },
-        ]}>
-        <Text style={styles.header}>Native {theme}</Text>
-        <Text style={{color: color.default['default']}}>color {}</Text>
-        <Chip
-          label="Chip"
-          isClosable
-          size="default"
-          onPress={() => console.log('pressed')}
-          onPressClose={() => console.log('closeddd')}
-        />
-        <DNAButton label="Button" color="info" />
-        <Collapsible title="Collapsible Title">
-          <AgeIcon size={50} color={'red'} />
-
-          <View>
-            <Text>Sample Children: Lorem ipsum dolor sit amet</Text>
-          </View>
-        </Collapsible>
-        <Badge>
-          <DNAButton label="Button" color="info" />
-        </Badge>
+      <View style={[styles.container]}>
+        <Text style={styles.header}>Native</Text>
+        <View style={styles.gap}>
+          <DNAChip
+            label="Chips"
+            size="sm"
+            icon={UserIcon}
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isClosable
+            size="sm"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isClosable
+            size="default"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isDisabled
+            isClosable
+            size="default"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            isClosable
+            size="md"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+          <DNAChip
+            label="Chip"
+            color="success"
+            size="lg"
+            onPress={() => console.log('pressed')}
+            onPressClose={() => console.log('closeddd')}
+          />
+        </View>
       </View>
     </View>
   );
@@ -57,6 +69,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     fontSize: 36,
+  },
+  gap: {
+    gap: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });
 
