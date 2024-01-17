@@ -1,13 +1,21 @@
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {DNABadge} from '@rndna/badge';
 import {UserIcon} from '@rndna/icon';
-import {useColor, getColorTheme } from '@rndna/theme-provider';
+import {useColor} from '@rndna/theme-provider';
 
 const Testscreen: React.FC<any> = () => {
-  const theme = getColorTheme();
   const color = useColor();
+
+  const bg: ViewStyle =
+    useColorScheme() === 'dark'
+      ? {
+          backgroundColor: '#333',
+        }
+      : {
+          backgroundColor: '#fff',
+        };
 
   return (
     // eslint-disable-next-line react-native/no-inline-styles
