@@ -1,12 +1,19 @@
 import { StyleSheet } from 'react-native';
+import { useFonts } from "@rndna/theme-provider"
+
+const size = useFonts();
 
 export const styles = StyleSheet.create({
     button: {
-      paddingVertical: 12,
+      height: 34,
       paddingHorizontal: 16,
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "row",
+      minWidth: "auto",
+    },
+    gapSize: {
+      gap: 8,
     },
     buttonIconLeft: {
       flexDirection: "row",
@@ -30,40 +37,42 @@ export const styles = StyleSheet.create({
       marginRight: 8,
     },
     loadingSize: {
-        transform: [{scale: 0.74}]
+        transform: [{scale: 0.72}],
+        width: 20,
+        height: 20,
     }
 });
 
 export const textSizeCls = {
   sm: {
-    fontSize: 12,
+    fontSize: size.fontSize?.body2,
   },
   default: {
-    fontSize: 14,
+    fontSize: size.fontSize?.body1,
   },
   md: {
-    fontSize: 16,
+    fontSize: size.fontSize?.label,
   },
   lg: {
-    fontSize: 18,
+    fontSize: size.fontSize?.h6,
   },
 };
 
 export const buttonSizeCls = {
   sm: {
-    paddingVertical: 10,
-    paddingHorizontal: 14,
+    height: 28,
+    paddingHorizontal: 8,
   },
   default: {
-    paddingVertical: 12,
-    paddingHorizontal: 16,
+    height: 34,
+    paddingHorizontal: 12,
   },
   md: {
-    paddingVertical: 14,
-    paddingHorizontal: 18,
+    height: 40,
+    paddingHorizontal: 16,
   },
   lg: {
-    paddingVertical: 18,
+    height: 48,
     paddingHorizontal: 20,
   },
 }
