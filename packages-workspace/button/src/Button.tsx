@@ -32,8 +32,6 @@ import { DNAText } from "@rndna/text";
  * ```
  */
 
-
-
 export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   (
     {
@@ -55,13 +53,15 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
-  const colorScheme = useColorScheme();
   const useDarkColor = themeColor[color][100];
 
-  const getTextColor = {
-    color: colorScheme === 'light'
+  const colorVariant = 
+    useColorScheme() === 'light'
       ? variant === 'solid' ? 'white' : defaultColor
-      : variant === 'solid' ? useDarkColor : defaultColor,
+      : variant === 'solid' ? useDarkColor : defaultColor
+
+  const getTextColor = {
+    color: colorVariant
   };
   
   const getVariantStyle = () => {
@@ -79,7 +79,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       typeof icon === "function"
         ? createElement(icon, {
             size: textSizeCls[size].fontSize || -1 + 3,
-            color: variant === 'solid' ? "white" : defaultColor,
+            color: colorVariant
           })
         : icon
   
@@ -114,7 +114,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     > 
       {isLoading ? (
         <View style={styles.loadingSize}>
-          <ActivityIndicator color={variant === 'solid' ? 'white' : defaultColor } /> 
+          <ActivityIndicator color={colorVariant} /> 
         </View>
       ) : (
         !!icon && renderIcon
