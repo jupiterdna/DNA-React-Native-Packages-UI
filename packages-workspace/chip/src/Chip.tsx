@@ -51,13 +51,15 @@ export const DNAChip = (props: DNAChipProps) => {
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
-  const colorScheme = useColorScheme();
   const useDarkColor = themeColor[color][100];
-  
-  const getTextColor = {
-    color: colorScheme === 'light'
+
+  const colorVariant = 
+    useColorScheme() === 'light'
       ? variant === 'solid' ? 'white' : defaultColor
-      : variant === 'solid' ? useDarkColor : defaultColor,
+      : variant === 'solid' ? useDarkColor : defaultColor
+
+  const getTextColor = {
+    color: colorVariant
   };
   
   const getVariantStyle = () => {
@@ -72,9 +74,7 @@ export const DNAChip = (props: DNAChipProps) => {
       typeof icon === "function"
         ? createElement(icon, {
             size: textSizeCls[size].fontSize,
-            color: colorScheme === 'light'
-            ? variant === 'solid' ? 'white' : defaultColor
-            : variant === 'solid' ? useDarkColor : defaultColor,
+            color: colorVariant
           })
         : icon
 
@@ -91,11 +91,6 @@ export const DNAChip = (props: DNAChipProps) => {
     }
   }
 
-  const getCloseIconColor =
-    colorScheme === 'light'
-      ? variant === 'solid' ? 'white' : defaultColor
-      : variant === 'solid' ? useDarkColor : defaultColor
-  
   const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
   
   return (
@@ -115,7 +110,7 @@ export const DNAChip = (props: DNAChipProps) => {
       <DNAText style={getTextColor} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
-          <CloseSmallIcon size={textSizeCls[size].fontSize} color={getCloseIconColor} />
+          <CloseSmallIcon size={textSizeCls[size].fontSize} color={colorVariant} />
         </Pressable>
       }
     </Pressable>
