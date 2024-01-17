@@ -1,16 +1,13 @@
-import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
+import {View, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {DNABadge} from '@rndna/badge';
 import {DNACollapsible} from '@rndna/collapsible';
 import {DNAButton} from '@rndna/button';
 import {UserIcon} from '@rndna/icon';
-import {useColor} from '@rndna/theme-provider';
 import {DNAText} from '@rndna/text';
 
 const Testscreen: React.FC<any> = () => {
-  const color = useColor();
-
   const bg: ViewStyle =
     useColorScheme() === 'dark'
       ? {
@@ -21,18 +18,11 @@ const Testscreen: React.FC<any> = () => {
         };
 
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View style={{flex: 1}}>
+    <View style={styles.flex}>
       <View style={[styles.container, bg]}>
-        <Text
-          style={[
-            styles.header,
-            {
-              color: color.default['700'],
-            },
-          ]}>
-          Native : {useColorScheme()} Mode
-        </Text>
+        <DNAText type="h4" style={styles.header}>
+          Native: {useColorScheme()} Mode
+        </DNAText>
         <DNACollapsible title={'collapsible'} color="danger">
           <DNAText>"Lorem ipsum dolor sit amet, consectetur adipiscing</DNAText>
           <View style={styles.gap}>
@@ -68,6 +58,9 @@ const Testscreen: React.FC<any> = () => {
 };
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
@@ -77,7 +70,7 @@ const styles = StyleSheet.create({
   header: {
     fontWeight: 'bold',
     marginBottom: 20,
-    fontSize: 36,
+    textTransform: 'capitalize',
   },
   gap: {
     marginBottom: 8,
