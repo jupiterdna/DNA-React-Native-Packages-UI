@@ -2,9 +2,11 @@ import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {DNABadge} from '@rndna/badge';
+import {DNACollapsible} from '@rndna/collapsible';
 import {DNAButton} from '@rndna/button';
 import {UserIcon} from '@rndna/icon';
 import {useColor} from '@rndna/theme-provider';
+import {DNAText} from '@rndna/text';
 
 const Testscreen: React.FC<any> = () => {
   const color = useColor();
@@ -31,32 +33,35 @@ const Testscreen: React.FC<any> = () => {
           ]}>
           Native : {useColorScheme()} Mode
         </Text>
-        <View style={styles.gap}>
-          <DNAButton label="primary" color="primary" />
-          <DNAButton icon={UserIcon} label="primary" color="primary" />
-          <DNAChip isClosable label="secondary" color="primary" />
-          <DNABadge value="badge" color="danger">
-            <DNAChip label="secondary" color="danger" />
-          </DNABadge>
-        </View>
-        <View style={styles.gap}>
-          <DNAButton label="primary" color="primary" variant="outlined" />
-          <DNAButton
-            icon={UserIcon}
-            label="primary"
-            color="primary"
-            variant="outlined"
-          />
-          <DNAChip
-            isClosable
-            label="secondary"
-            color="primary"
-            variant="outlined"
-          />
-          <DNABadge color="danger">
-            <DNAChip label="secondary" color="primary" variant="outlined" />
-          </DNABadge>
-        </View>
+        <DNACollapsible title={'collapsible'} color="danger">
+          <DNAText>"Lorem ipsum dolor sit amet, consectetur adipiscing</DNAText>
+          <View style={styles.gap}>
+            <DNAButton label="primary" color="primary" />
+            <DNAButton icon={UserIcon} label="primary" color="primary" />
+            <DNAChip isClosable label="secondary" color="primary" />
+            <DNABadge value="badge" color="danger">
+              <DNAChip label="secondary" color="danger" />
+            </DNABadge>
+          </View>
+          <View style={styles.gap}>
+            <DNAButton label="primary" color="primary" variant="outlined" />
+            <DNAButton
+              icon={UserIcon}
+              label="primary"
+              color="primary"
+              variant="outlined"
+            />
+            <DNAChip
+              isClosable
+              label="secondary"
+              color="primary"
+              variant="outlined"
+            />
+            <DNABadge color="danger">
+              <DNAChip label="secondary" color="primary" variant="outlined" />
+            </DNABadge>
+          </View>
+        </DNACollapsible>
       </View>
     </View>
   );
