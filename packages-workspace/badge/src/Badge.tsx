@@ -1,8 +1,9 @@
-import { View, Text } from 'react-native'
+import { View, useColorScheme } from 'react-native'
 import React, { useState } from 'react'
 import { DNABadgeProps } from './types'
 import { styles } from './styles'
 import { useColor } from "@rndna/theme-provider"
+import { DNAText } from "@rndna/text"
 
 /**
  * A badge is component that the user display a text with custom background color on the upper right hand of the children.
@@ -35,11 +36,17 @@ export const DNABadge = (props: DNABadgeProps) => {
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
+  const useDarkColor = themeColor[color][100];
+
+  const colorVariant = useColorScheme() === 'light' ? 'white' : useDarkColor
+
+  const getTextColor = {
+    color: colorVariant
+  };
 
   const backgroundColor = () => {
     return { backgroundColor: defaultColor }
   }
-
   return (
     <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>
       <View style={[
@@ -49,7 +56,7 @@ export const DNABadge = (props: DNABadgeProps) => {
           styles.shadowProp,
           style, 
         ]}>
-        {value && <Text style={styles.badgdeText}>{value}</Text>}
+        {value && <DNAText type="overline" style={getTextColor}>{value}</DNAText>}
       </View>
       {children}
     </View>

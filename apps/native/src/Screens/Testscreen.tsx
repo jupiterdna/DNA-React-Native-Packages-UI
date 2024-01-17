@@ -36,7 +36,7 @@ const Testscreen: React.FC<any> = () => {
           <DNAButton icon={UserIcon} label="primary" color="primary" />
           <DNAChip isClosable label="secondary" color="primary" />
           <DNABadge value="badge" color="danger">
-            <DNAChip label="secondary" color="primary" />
+            <DNAChip label="secondary" color="danger" />
           </DNABadge>
         </View>
         <View style={styles.gap}>
@@ -53,7 +53,7 @@ const Testscreen: React.FC<any> = () => {
             color="primary"
             variant="outlined"
           />
-          <DNABadge value="badge" color="danger">
+          <DNABadge color="danger">
             <DNAChip label="secondary" color="primary" variant="outlined" />
           </DNABadge>
         </View>
