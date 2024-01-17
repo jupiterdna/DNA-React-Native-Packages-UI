@@ -1,13 +1,37 @@
-import {View, StyleSheet, Text} from 'react-native';
+import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
-import {DNAButton} from '@rndna/button';
+import {DNAChip} from '@rndna/chip';
+import {DNABadge} from '@rndna/badge';
+import { DNAButton } from '@rndna/button';
 import {UserIcon} from '@rndna/icon';
+import {useColor} from '@rndna/theme-provider';
 
 const Testscreen: React.FC<any> = () => {
+  const color = useColor();
+
+  const bg: ViewStyle =
+    useColorScheme() === 'dark'
+      ? {
+          backgroundColor: '#333',
+        }
+      : {
+          backgroundColor: '#fff',
+        };
+
   return (
-    <View style={[styles.container]}>
-      <Text style={styles.header}>Native</Text>
-      <View style={styles.gap}>
+    // eslint-disable-next-line react-native/no-inline-styles
+    <View style={{flex: 1}}>
+      <View style={[styles.container, bg]}>
+        <Text
+          style={[
+            styles.header,
+            {
+              color: color.default['700'],
+            },
+          ]}>
+          Native : {useColorScheme()} Mode
+        </Text>
+        <View style={styles.gap}>
         <DNAButton label="Button" color="danger" icon={UserIcon} size="sm" />
         <DNAButton
           label="Button"
@@ -46,6 +70,7 @@ const Testscreen: React.FC<any> = () => {
         />
         <DNAButton label="Button" color="warning" size="lg" />
         <DNAButton label="Button" color="warning" variant="flat" size="lg" />
+      </View>
       </View>
     </View>
   );

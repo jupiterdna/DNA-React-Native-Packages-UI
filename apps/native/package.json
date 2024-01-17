@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
   },
   "dependencies": {
     "@dnamobile/textfield": "*",
@@ -15,7 +16,7 @@
     "@rndna/button": "*",
     "@rndna/icon": "*",
     "@rndna/chip": "*",
-    "@dnamobile/badge": "*",
+    "@rndna/badge": "*",
     "@rndna/text": "*",
     "@dnamobile/ui": "*",
     "react": "18.2.0",
