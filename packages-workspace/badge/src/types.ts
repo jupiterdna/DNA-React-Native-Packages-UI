@@ -1,5 +1,5 @@
 import { StyleProp, ViewStyle } from 'react-native';
-import { colorProps } from '@dnamobile/base_style';
+import { colorProps } from '@rndna/base_style';
 
 export interface DNABadgeProps {
   /**

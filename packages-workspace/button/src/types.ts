@@ -1,5 +1,5 @@
 import { GestureResponderEvent, TouchableOpacityProps } from "react-native";
-import { sizeProps, colorProps, borderRadiusProps, variantProps } from "@dnamobile/base_style";
+import { sizeProps, colorProps, borderRadiusProps, variantProps } from "@rndna/base_style";
 import { SvgProps, NumberProp } from 'react-native-svg';
 
 interface IProps extends SvgProps {

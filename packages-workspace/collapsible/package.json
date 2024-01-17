@@ -20,7 +20,7 @@
     "react": "^18.2.0",
     "react-native": "^0.72.7",
     "@dnamobile/typescript-config": "*",
-    "@dnamobile/base_style": "*",
+    "@rndna/base_style": "*",
     "@rndna/button": "*"
   }
 }

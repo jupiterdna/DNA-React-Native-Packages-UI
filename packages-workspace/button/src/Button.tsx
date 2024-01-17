@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
-import { borderRadiusCls } from "@dnamobile/base_style";
+import { borderRadiusCls } from "@rndna/base_style";
 import { useColor } from "@rndna/theme-provider"
 import { DNAText } from "@rndna/text";
 

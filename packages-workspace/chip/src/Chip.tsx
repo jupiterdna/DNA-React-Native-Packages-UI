@@ -5,7 +5,7 @@ import {
 } from "react-native";
 import { chipSizeCls, textSizeCls, styles } from './styles';
 import { DNAChipProps } from './types';
-import { borderRadiusCls } from "@dnamobile/base_style";
+import { borderRadiusCls } from "@rndna/base_style";
 import { useColor } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import { CloseSmallIcon } from "@rndna/icon";

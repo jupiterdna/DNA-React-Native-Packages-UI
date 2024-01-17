@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { defaultColors } from "@dnamobile/base_style";
+import { defaultColors } from "@rndna/base_style";
 
 export const styles = StyleSheet.create({
   label: {

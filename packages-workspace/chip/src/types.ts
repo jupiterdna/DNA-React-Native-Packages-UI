@@ -1,5 +1,5 @@
 import { GestureResponderEvent } from "react-native";
-import { sizeProps, variantProps, borderRadiusProps, colorProps } from "@dnamobile/base_style";
+import { sizeProps, variantProps, borderRadiusProps, colorProps } from "@rndna/base_style";
 import React from "react";
 import { SvgProps, NumberProp } from 'react-native-svg';
 

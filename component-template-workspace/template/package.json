@@ -28,6 +28,6 @@
     "react": "*",
     "react-native": "*",
     "@dnamobile/typescript-config": "*",
-    "@dnamobile/base_style": "*"
+    "@rndna/base_style": "*"
   }
 }
