@@ -39,19 +39,17 @@ const Testscreen: React.FC<any> = () => {
           <DNAButton label="warning" color="warning" />
           <DNAButton label="default" color="default" />
           <DNAButton label="info" color="info" />
+
         </View>
-        {/* <View style={styles.gap}>
-          <DNAButton label="Button" color="danger" size="sm" />
-          <DNAButton label="Button" color="info" size="default" />
-          <DNAButton
-            label="Button"
-            color="success"
-            variant="outlined"
-            size="md"
-          />
-          <DNAButton label="Button" color="warning" size="lg" />
-          <DNAButton label="Button" color="warning" variant="flat" size="lg" />
-        </View> */}
+        <View style={styles.gap}>
+         <DNAButton label="primary" variant="outlined" color="primary" />
+          <DNAButton label="secondary" variant="outlined" color="secondary" />
+          <DNAButton label="success" variant="outlined" color="success" />
+          <DNAButton label="danger" variant="outlined" color="danger" />
+          <DNAButton label="warning" variant="outlined" color="warning" />
+          <DNAButton label="default" variant="outlined" color="default" />
+          <DNAButton label="info" variant="outlined" color="info" />
+        </View>
       </View>
     </View>
   );

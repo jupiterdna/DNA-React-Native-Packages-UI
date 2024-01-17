@@ -1,4 +1,5 @@
 import React, { createElement } from "react";
+import { useColorScheme } from "react-native";
 import {
   TouchableOpacity,
   ActivityIndicator,
@@ -54,11 +55,15 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
+  const colorScheme = useColorScheme();
+  const useDarkColor = themeColor[color][100];
 
-  const getTextColor = () => {
-    return variant === 'solid' ? { color: 'white' } : { color: defaultColor };
+  const getTextColor = {
+    color: colorScheme === 'light'
+      ? variant === 'solid' ? 'white' : defaultColor
+      : variant === 'solid' ? useDarkColor : defaultColor,
   };
-
+  
   const getVariantStyle = () => {
     return {
       solid: { backgroundColor: defaultColor },
@@ -70,7 +75,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const getIconPositionStyle = () => {
     return iconPosition === 'right' ? styles.buttonIconRight : styles.buttonIconLeft
   }
-  const renderIcon =
+  const renderIcon = 
       typeof icon === "function"
         ? createElement(icon, {
             size: textSizeCls[size].fontSize || -1 + 3,
@@ -114,7 +119,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       ) : (
         !!icon && renderIcon
       )}
-      <DNAText style={getTextColor()} type={getTextSize()}>{loadingLabel && isLoading ? loadingLabel : label}</DNAText>
+      <DNAText style={getTextColor} type={getTextSize()}>{loadingLabel && isLoading ? loadingLabel : label}</DNAText>
     </TouchableOpacity>
   );
 });
