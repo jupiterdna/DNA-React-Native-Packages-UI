@@ -1,13 +1,13 @@
 import {View, TouchableOpacity, Text } from 'react-native'
 import React, {useState} from 'react'
-import {CollapsibleProps} from './types'
+import {DNACollapsibleProps} from './types'
 import {styles} from './styles'
 import {defaultColors} from "@rndna/base_style";
 import { DNAButton } from '@rndna/button';
 
 //Lacking angle icons and standard styling
 
-export const Collapsible = (props: CollapsibleProps) => {
+export const DNACollapsible = (props: DNACollapsibleProps) => {
 
   const { children, title, style } = props
   const [open, setOpen] = useState(true)

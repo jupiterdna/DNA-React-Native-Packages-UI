@@ -1,2 +1,2 @@
-export { Collapsible } from './Collapsible';
-export type { CollapsibleProps } from './types';
+export { DNACollapsible } from './Collapsible';
+export type { DNACollapsibleProps } from './types';

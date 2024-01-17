@@ -13,6 +13,7 @@
   "dependencies": {
     "@dnamobile/textfield": "*",
     "@rndna/theme-provider": "*",
+    "@rndna/collapsible": "*",
     "@rndna/button": "*",
     "@rndna/icon": "*",
     "@rndna/chip": "*",
