@@ -19,6 +19,7 @@ const Testscreen: React.FC<any> = () => {
   console.log('color', color.default);
 
   return (
+    // eslint-disable-next-line react-native/no-inline-styles
     <View style={{flex: 1}}>
       <View style={[styles.container, bg]}>
         <Text
