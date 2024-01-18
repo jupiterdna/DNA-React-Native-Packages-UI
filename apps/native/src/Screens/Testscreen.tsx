@@ -4,7 +4,7 @@ import {DNAChip} from '@rndna/chip';
 import {DNABadge} from '@rndna/badge';
 import {DNACollapsible} from '@rndna/collapsible';
 import {DNAButton} from '@rndna/button';
-import {UserIcon} from '@rndna/icon';
+import {HelpCircleIcon} from '@rndna/icon';
 import {DNAText} from '@rndna/text';
 
 const Testscreen: React.FC<any> = () => {
@@ -26,19 +26,19 @@ const Testscreen: React.FC<any> = () => {
         <DNACollapsible title={'collapsible'} color="danger">
           <DNAText>"Lorem ipsum dolor sit amet, consectetur adipiscing</DNAText>
           <View style={styles.gap}>
-            <DNAButton label="primary" color="primary" />
-            <DNAButton icon={UserIcon} label="primary" color="primary" />
+            <DNAButton label="primary" />
+            <DNAButton icon={HelpCircleIcon} label="primary" />
+            <DNAButton icon={HelpCircleIcon} />
             <DNAChip isClosable label="default" color="default" />
             <DNABadge value="badge" color="danger">
               <DNAChip label="default" color="default" />
             </DNABadge>
           </View>
           <View style={styles.gap}>
-            <DNAButton label="primary" color="primary" variant="outlined" />
+            <DNAButton label="primary" variant="outlined" />
             <DNAButton
-              icon={UserIcon}
+              icon={HelpCircleIcon}
               label="primary"
-              color="primary"
               variant="outlined"
             />
             <DNAChip

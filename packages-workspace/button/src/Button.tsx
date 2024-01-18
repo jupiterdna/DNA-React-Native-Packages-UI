@@ -96,11 +96,17 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     }
   }
 
+  const iconBtnSizes = {
+      width: buttonSizeCls[size].height,
+      height: buttonSizeCls[size].height,
+      paddingHorizontal: 0,
+  };
+
   return (
     <TouchableOpacity
       style={[
         styles.button,
-        (!!loadingLabel || !!label) && styles.gapSize,
+        (!!loadingLabel || !!label) ? styles.gapSize : iconBtnSizes,
         getIconPositionStyle(),
         getVariantStyle(),
         borderRadiusCls[borderRadius],
