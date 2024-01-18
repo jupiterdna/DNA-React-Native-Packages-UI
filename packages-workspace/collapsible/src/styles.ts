@@ -2,15 +2,17 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   collapsible: {
-    padding: 8,
-    borderBottomWidth: 0.5,
-    backgroundColor: "#F5F6F5",
+    width: '100%',
+    borderWidth: 1,
+    borderRadius: 4,
+  },
+  panelHeader: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    width: '100%',
+    padding: 8,
   },
-  childrenStyle: {
+  panelBody: {
     padding: 8,
   }
 });

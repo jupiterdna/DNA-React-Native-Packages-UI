@@ -21,8 +21,9 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-native": "^0.72.7",
-    "@dnamobile/base_style": "*",
-    "@rndna/text": "*"
+    "@rndna/base_style": "*",
+    "@rndna/text": "*",
+    "@rndna/theme-provider": "*"
   },
   "peerDependencies": {
     "@rndna/icon": "*"

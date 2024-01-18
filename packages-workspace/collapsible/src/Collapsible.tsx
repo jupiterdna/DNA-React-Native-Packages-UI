@@ -1,36 +1,67 @@
-import {View, TouchableOpacity, Text } from 'react-native'
-import React, {useState} from 'react'
-import {CollapsibleProps} from './types'
+import {View, TouchableOpacity, Text, useColorScheme } from 'react-native'
+import React, {createElement, useState} from 'react'
+import {DNACollapsibleProps} from './types';
 import {styles} from './styles'
-import {defaultColors} from "@dnamobile/base_style";
-import { DNAButton } from '@rndna/button';
+import { useColor } from "@rndna/theme-provider"
+import {ChevronUpSmallIcon, ChevronDownSmallIcon} from "@rndna/icon"
+import {DNAText} from '@rndna/text'
 
-//Lacking angle icons and standard styling
+/**
+ * This component lets users show and hide sections to save vertical space.
+ * 
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNACollapsible } from '@rndna/collapsible';
+ *
+ * const MyComponent = () => (
+ *  <DNACollapsible title="Sample Title">
+ *    //your children components
+ *  </DNACollapsible>
+ * );
+ *
+ * export default MyComponent;
+ * ```
+ */
 
-export const Collapsible = (props: CollapsibleProps) => {
 
-  const { children, title, style } = props
+export const DNACollapsible = (props: DNACollapsibleProps) => {
+
+  const { children, title, color = "primary"} = props
   const [open, setOpen] = useState(true)
-  
-  const borderColor = () => {
-    return { borderColor: !open ? defaultColors.default : defaultColors.primary }
-  }
-  const textColor = () => {
-    return { color: !open ? defaultColors.default : defaultColors.primary }
-  }
 
+  const themeColor = useColor();
+  const defaultColor = themeColor[color]["default"];
+  const panelBgColor = themeColor[color][50];
+  const chevronIcon = !open ? ChevronDownSmallIcon : ChevronUpSmallIcon
+
+  const renderIcon =
+      createElement(chevronIcon, {
+        size: 24,
+        color: defaultColor
+      })
+  
+  const panelBorderRadius = {
+      borderTopRightRadius: 4,
+      borderTopLeftRadius: 4,
+      borderBottomRightRadius: !open ? 4 : 0,
+      borderBottomLeftRadius: !open ? 4 : 0,
+  };
+    
   return (
-    <View style={style}>
+    <View style={[styles.collapsible, { borderColor: defaultColor  }]}>
       <TouchableOpacity 
         onPress={() => {
           setOpen(prev => !prev)
         }}
-        style={[styles.collapsible, borderColor()]}
+        style={[styles.panelHeader, { backgroundColor: panelBgColor }, panelBorderRadius]}
         >
-        <Text style={textColor()}>{title}</Text>
-        <Text style={textColor()}>{!open ? '\u25BC' : '\u25B2'}</Text>
+        <DNAText style={{ color: defaultColor }}>{title}</DNAText>
+        <View>
+        {renderIcon}
+        </View>
       </TouchableOpacity>
-      {open ? <View style={styles.childrenStyle}>
+      {open ? <View style={styles.panelBody}>
        {children}
       </View> : null}
     </View>

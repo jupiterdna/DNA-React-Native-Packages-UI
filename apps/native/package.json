@@ -11,15 +11,16 @@
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'"
   },
   "dependencies": {
-    "@dnamobile/badge": "*",
     "@dnamobile/textfield": "*",
+    "@rndna/theme-provider": "*",
+    "@rndna/collapsible": "*",
+    "@rndna/badge": "*",
     "@dnamobile/ui": "*",
     "@rndna/button": "*",
     "@rndna/chip": "*",
     "@rndna/icon": "*",
     "@rndna/fonts": "*",
     "@rndna/text": "*",
-    "@rndna/theme-provider": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",
     "react-native-svg": "13.14.0"

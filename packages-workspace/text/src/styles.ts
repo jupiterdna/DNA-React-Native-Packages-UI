@@ -1,56 +1,40 @@
 import { StyleSheet } from 'react-native';
+import { useFonts } from '@rndna/theme-provider';
+ 
+const size = useFonts();
 
 export const textSizeCls = StyleSheet.create({
   h1: {
-    fontSize: 96,
-    //letterSpacing: -1.5,
+    fontSize: size.fontSize?.h1,
   },
   h2: {
-    fontSize: 60,
-    //letterSpacing: -0.5,
+    fontSize: size.fontSize?.h2,
   },
   h3: {
-    fontSize: 48,
-    //letterSpacing: 0,
+    fontSize: size.fontSize?.h3,
   },
   h4: {
-    fontSize: 34,
-    //letterSpacing: 0.25,
+    fontSize: size.fontSize?.h4,
   },
   h5: {
-    fontSize: 24,
-    //letterSpacing: 0,
+    fontSize: size.fontSize?.h5,
   },
   h6: {
-    fontSize: 20,
-    //letterSpacing: 0.15,
+    fontSize: size.fontSize?.h6,
   },
-  subtitle1: {
-    fontSize: 16,
-    //letterSpacing: 0.15,
-  },
-  subtitle2: {
-    fontSize: 14,
-    //letterSpacing: 0.1,
+  label: {
+    fontSize: size.fontSize?.label,
   },
   body1: {
-    fontSize: 16,
-    //letterSpacing: 0.5,
+    fontSize: size.fontSize?.body1,
   },
   body2: {
-    fontSize: 14,
-    //letterSpacing: 0.25,
-  },
-  button: {
-    fontSize: 14,
-    //letterSpacing: 1.25,
+    fontSize: size.fontSize?.body2,
   },
   caption: {
-    fontSize: 12,
-    //letterSpacing: 0.4,
+    fontSize: size.fontSize?.caption,
   },
   overline: {
-    fontSize: 10,
-    //letterSpacing: 1.5,
+    fontSize: size.fontSize?.overline,
   },
 });

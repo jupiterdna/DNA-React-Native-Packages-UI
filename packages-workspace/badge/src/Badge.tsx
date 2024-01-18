@@ -1,12 +1,32 @@
-import { View, Text } from 'react-native'
+import { View, useColorScheme } from 'react-native'
 import React, { useState } from 'react'
-import { BadgeProps } from './types'
+import { DNABadgeProps } from './types'
 import { styles } from './styles'
-import { defaultColors } from "@dnamobile/base_style";
+import { useColor } from "@rndna/theme-provider"
+import { DNAText } from "@rndna/text"
 
-//Lacking angle icons and standard styling
+/**
+ * A badge is component that the user display a text with custom background color on the upper right hand of the children.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { View, Text } from 'react-native';
+ * import { DNABadge } from '@rndna/badge';
+ *
+ * const ComponentName = () => (
+ *  <DNABadge value="badgeText" size="sm">
+ *     <View>
+ *       <Text>Hello World!</Text>
+ *    </View>
+ *  </DNABadge>
+ * );
+ *
+ * export default ComponentName;
+ * ```
+ */
 
-export const Badge = (props: BadgeProps) => {
+export const DNABadge = (props: DNABadgeProps) => {
   const { children, value, style, color = 'primary' } = props
   const [badgeWidth, setBadgeWidth] = useState(0);
   
@@ -14,10 +34,19 @@ export const Badge = (props: BadgeProps) => {
     setBadgeWidth(event.nativeEvent.layout.width);
   };
 
-  const backgroundColor = () => {
-    return { backgroundColor: defaultColors[color]}
-  }
+  const themeColor = useColor();
+  const defaultColor = themeColor[color]["default"];
+  const useDarkColor = themeColor[color][100];
 
+  const colorVariant = useColorScheme() === 'light' ? 'white' : useDarkColor
+
+  const getTextColor = {
+    color: colorVariant
+  };
+
+  const backgroundColor = () => {
+    return { backgroundColor: defaultColor }
+  }
   return (
     <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>
       <View style={[
@@ -27,7 +56,7 @@ export const Badge = (props: BadgeProps) => {
           styles.shadowProp,
           style, 
         ]}>
-        {value && <Text style={styles.badgdeText}>{value}</Text>}
+        {value && <DNAText type="overline" style={getTextColor}>{value}</DNAText>}
       </View>
       {children}
     </View>

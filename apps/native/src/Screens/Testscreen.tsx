@@ -1,12 +1,13 @@
-import {View, Text, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
+import {View, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
-import {UserIcon} from '@rndna/icon';
-import {useColor} from '@rndna/theme-provider';
-import {useFont} from '@rndna/fonts';
+import {DNABadge} from '@rndna/badge';
+import {DNACollapsible} from '@rndna/collapsible';
+import {DNAButton} from '@rndna/button';
+import {HelpIcon, InfoCircleIcon} from '@rndna/icon';
+import {DNAText} from '@rndna/text';
 
 const Testscreen: React.FC<any> = () => {
-  console.log("useFont('Lato', 'bold')", useFont('OpenSans', 'bold', 'italic'));
   const bg: ViewStyle =
     useColorScheme() === 'dark'
       ? {
@@ -17,84 +18,63 @@ const Testscreen: React.FC<any> = () => {
         };
 
   return (
-    // eslint-disable-next-line react-native/no-inline-styles
-    <View style={{flex: 1}}>
+    <View style={styles.flex}>
       <View style={[styles.container, bg]}>
-        <Text style={[styles.header]}>Native : {useColorScheme()} Modes</Text>
-        <Text
-          style={[
-            useFont('OpenSans', 'light', 'italic'),
-            {
-              fontSize: 30,
-            },
-          ]}>
-          testss
-        </Text>
-        <View style={styles.gap}>
-          <DNAChip
-            label="Chips"
-            size="sm"
-            icon={UserIcon}
-            onPress={() => console.log('pressed')}
-            onPressClose={() => console.log('closeddd')}
-          />
-          <DNAChip
-            label="Chip"
-            isClosable
-            size="sm"
-            onPress={() => console.log('pressed')}
-            onPressClose={() => console.log('closeddd')}
-          />
-          <DNAChip
-            label="Chip"
-            isClosable
-            size="default"
-            onPress={() => console.log('pressed')}
-            onPressClose={() => console.log('closeddd')}
-          />
-          <DNAChip
-            label="Chip"
-            isDisabled
-            isClosable
-            size="default"
-            onPress={() => console.log('pressed')}
-            onPressClose={() => console.log('closeddd')}
-          />
-          <DNAChip
-            label="Chip"
-            isClosable
-            size="md"
-            onPress={() => console.log('pressed')}
-            onPressClose={() => console.log('closeddd')}
-          />
-          <DNAChip
-            label="Chip"
-            color="success"
-            size="lg"
-            onPress={() => console.log('pressed')}
-            onPressClose={() => console.log('closeddd')}
-          />
-        </View>
+        <DNAText type="h4" style={styles.header}>
+          Native: {useColorScheme()} Mode
+        </DNAText>
+        <DNACollapsible title={'Buttons'}>
+          <DNAText style={styles.title}>basic</DNAText>
+          <View style={styles.gap}>
+            <DNAButton label="Button" size="sm" />
+            <DNAButton label="Button" size="default" />
+            <DNAButton label="Button" size="md" />
+            <DNAButton label="Button" size="lg" />
+          </View>
+          <View style={styles.gap}>
+            <DNAText style={styles.title}>w-icon</DNAText>
+            <DNAButton icon={InfoCircleIcon} label="Button" size="sm" />
+            <DNAButton icon={InfoCircleIcon} label="Button" size="default" />
+            <DNAButton icon={InfoCircleIcon} label="Button" size="md" />
+            <DNAButton icon={InfoCircleIcon} label="Button" size="lg" />
+          </View>
+          <View style={styles.gap}>
+            <DNAText style={styles.title}>icon only</DNAText>
+            <DNAButton icon={InfoCircleIcon} size="sm" />
+            <DNAButton icon={InfoCircleIcon} size="default" />
+            <DNAButton icon={InfoCircleIcon} size="md" />
+            <DNAButton icon={InfoCircleIcon} size="lg" />
+          </View>
+        </DNACollapsible>
       </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
   container: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 20,
   },
+  title: {
+    textAlign: 'center',
+    marginTop: 10,
+    marginBottom: 5,
+  },
   header: {
     marginBottom: 20,
-    fontSize: 36,
+    textTransform: 'capitalize',
   },
   gap: {
+    marginBottom: 8,
     gap: 4,
-    alignItems: 'center',
     justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

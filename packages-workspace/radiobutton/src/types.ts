@@ -1,4 +1,4 @@
-import { sizeProps } from "@dnamobile/base_style";
+import { sizeProps } from "@rndna/base_style";
 
 export interface RadioButtonProps {
   label: string;
