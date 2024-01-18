@@ -100,6 +100,7 @@ const findFont = (fontName: fontNameType, fontWeight?: fontWeightType, fontStyle
       }
 };
 
+
 export const convertFontWeight = (weight?: fontWeightType) => {
     if(weight === 'black') {
         return "900"
