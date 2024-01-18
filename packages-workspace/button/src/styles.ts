@@ -5,8 +5,8 @@ const size = useFonts();
 
 export const styles = StyleSheet.create({
     button: {
-      height: 34,
-      paddingHorizontal: 16,
+      height: 36,
+      paddingHorizontal: 12,
       alignItems: "center",
       justifyContent: "center",
       flexDirection: "row",
@@ -60,19 +60,19 @@ export const textSizeCls = {
 
 export const buttonSizeCls = {
   sm: {
-    height: 28,
-    paddingHorizontal: 8,
+    height: 32,
+    paddingHorizontal: 9,
   },
   default: {
-    height: 34,
+    height: 36,
     paddingHorizontal: 12,
   },
   md: {
     height: 40,
-    paddingHorizontal: 16,
+    paddingHorizontal: 12,
   },
   lg: {
     height: 48,
-    paddingHorizontal: 20,
+    paddingHorizontal: 15,
   },
 }

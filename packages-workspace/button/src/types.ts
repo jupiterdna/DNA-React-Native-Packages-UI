@@ -1,15 +1,15 @@
-import { GestureResponderEvent, TouchableOpacityProps } from "react-native";
+import { GestureResponderEvent, PressableProps } from "react-native";
 import { sizeProps, colorProps, borderRadiusProps, variantProps } from "@rndna/base_style";
 import { SvgProps, NumberProp } from 'react-native-svg';
 
 interface IProps extends SvgProps {
 size?: NumberProp;
 }
-export interface DNAButtonProps extends TouchableOpacityProps {
+export interface DNAButtonProps extends PressableProps {
     /**
      * Where you can define the label of the component.
      */
-    label: string;
+    label?: string;
      /**
      * Property that enables user to select icon from icon library (Icons were not yet implemented)
      */

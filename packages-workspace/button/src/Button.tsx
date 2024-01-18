@@ -1,9 +1,9 @@
 import React, { createElement } from "react";
-import { useColorScheme } from "react-native";
 import {
-  TouchableOpacity,
+  Pressable,
   ActivityIndicator,
   View,
+  useColorScheme
 } from "react-native";
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
@@ -48,7 +48,8 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       borderRadius = "soft_edged",
       ...restProps
     }: DNAButtonProps,
-    ref: React.Ref<TouchableOpacity>,
+    //any should be replaced to Pressable
+    ref: React.Ref<any>,
   ) => {
 
   const themeColor = useColor();
@@ -103,7 +104,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   };
 
   return (
-    <TouchableOpacity
+    <Pressable
       style={[
         styles.button,
         (!!loadingLabel || !!label) ? styles.gapSize : iconBtnSizes,
@@ -126,6 +127,6 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
         !!icon && renderIcon
       )}
       <DNAText style={getTextColor} type={getTextSize()}>{loadingLabel && isLoading ? loadingLabel : label}</DNAText>
-    </TouchableOpacity>
+    </Pressable>
   );
 });
