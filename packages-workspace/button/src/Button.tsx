@@ -78,7 +78,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const renderIcon = 
       typeof icon === "function"
         ? createElement(icon, {
-            size: textSizeCls[size].fontSize || -1 + 3,
+            size: (textSizeCls[size].fontSize || -1) + 7,
             color: colorVariant
           })
         : icon

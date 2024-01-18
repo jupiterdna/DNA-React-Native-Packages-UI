@@ -14,5 +14,3 @@ export interface DNACollapsibleProps {
    */
   color?: colorProps;
 }
-  
-  
