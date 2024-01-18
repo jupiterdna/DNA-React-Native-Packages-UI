@@ -62,7 +62,7 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
         </View>
       </TouchableOpacity>
       {open ? <View style={styles.panelBody}>
-       {/* children */}
+       {children}
       </View> : null}
     </View>
   )
