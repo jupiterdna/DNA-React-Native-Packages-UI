@@ -3,8 +3,11 @@ import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {UserIcon} from '@rndna/icon';
 import {useColor} from '@rndna/theme-provider';
+import {useFont} from '@rndna/fonts';
+import {G} from 'react-native-svg';
 
 const Testscreen: React.FC<any> = () => {
+  console.log("useFont('Lato', 'bold')", useFont('Lato', 'bold', 'italic'));
   const bg: ViewStyle =
     useColorScheme() === 'dark'
       ? {
@@ -14,22 +17,19 @@ const Testscreen: React.FC<any> = () => {
           backgroundColor: '#fff',
         };
 
-  const color = useColor();
-
-  console.log('color', color.default['100']);
-
   return (
     // eslint-disable-next-line react-native/no-inline-styles
     <View style={{flex: 1}}>
       <View style={[styles.container, bg]}>
+        <Text style={[styles.header]}>Native : {useColorScheme()} Modes</Text>
         <Text
           style={[
-            styles.header,
+            useFont('Lato', 'light'),
             {
-              fontFamily: 'Roboto-Light',
-            }
+              fontSize: 30,
+            },
           ]}>
-          Native : {useColorScheme()} Mode
+          testss
         </Text>
         <View style={styles.gap}>
           <DNAChip
@@ -89,7 +89,6 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   header: {
-    fontWeight: 'bold',
     marginBottom: 20,
     fontSize: 36,
   },
