@@ -4,10 +4,9 @@ import {DNAChip} from '@rndna/chip';
 import {UserIcon} from '@rndna/icon';
 import {useColor} from '@rndna/theme-provider';
 import {useFont} from '@rndna/fonts';
-import {G} from 'react-native-svg';
 
 const Testscreen: React.FC<any> = () => {
-  console.log("useFont('Lato', 'bold')", useFont('Lato', 'bold', 'italic'));
+  console.log("useFont('Lato', 'bold')", useFont('OpenSans', 'bold', 'italic'));
   const bg: ViewStyle =
     useColorScheme() === 'dark'
       ? {
@@ -24,7 +23,7 @@ const Testscreen: React.FC<any> = () => {
         <Text style={[styles.header]}>Native : {useColorScheme()} Modes</Text>
         <Text
           style={[
-            useFont('Lato', 'light'),
+            useFont('OpenSans', 'light', 'italic'),
             {
               fontSize: 30,
             },

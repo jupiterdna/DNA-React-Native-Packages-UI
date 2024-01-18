@@ -32,7 +32,7 @@ const removeFiles = async () =>{
     console.log("genereting config and font files...")
     try {
         fs.copySync(sourceDir, destDir, { recursive: true })
-        console.log('success!')
+        console.log('successfully generated rndna fonts and config')
       } catch (err) {
         console.error(err)
       }
