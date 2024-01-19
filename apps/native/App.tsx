@@ -1,12 +1,20 @@
 import React from 'react';
 import {useColorScheme} from 'react-native';
-import {ThemeProvider, darkmodeColor, themeConfig} from '@rndna/theme-provider';
+import {
+  ThemeProvider,
+  configType,
+  darkmodeColor,
+  themeConfig,
+} from '@rndna/theme-provider';
 import Testscreen from './src/Screens/Testscreen';
 
 const Native = () => {
-  const rnConfig =
+  const rnConfig: configType =
     useColorScheme() === 'light'
-      ? themeConfig
+      ? {
+          ...themeConfig,
+          fonts: {...themeConfig.fonts, fontFamily: 'Lato'},
+        }
       : {
           ...themeConfig,
           colors: darkmodeColor,

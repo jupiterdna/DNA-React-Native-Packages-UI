@@ -111,7 +111,7 @@ export const DNAChip = (props: DNAChipProps) => {
       disabled={isDisabled}
     >
       {!!icon && renderIcon}
-      <DNAText style={[Font(selfont.fontFamily, 'normal', 'italic'), getTextColor]} type={getTextSize()}>{label}</DNAText>
+      <DNAText style={[Font(selfont.fontFamily, 'normal'), getTextColor]} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
           <CloseSmallIcon size={textSizeCls[size].fontSize} color={colorVariant} />
