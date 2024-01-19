@@ -5,8 +5,7 @@ import { DNAChipProps } from './types';
 import { useColor } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import { CloseSmallIcon } from "@rndna/icon";
-import { Font } from "@rndna/fonts";
-import { useFonts, darkmodeColor } from "@rndna/theme-provider";
+import { darkmodeColor } from "@rndna/theme-provider";
 
 /**
  * A Chip to show content with all the props inside a Component.
@@ -61,8 +60,6 @@ export const DNAChip = (props: DNAChipProps) => {
     color: colorVariant
   };
 
-  const selfont = useFonts();
-  
   const getVariantStyle = () => {
     return {
       solid: { backgroundColor: defaultColor },
@@ -97,7 +94,7 @@ export const DNAChip = (props: DNAChipProps) => {
   }
 
   const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
-  
+
   return (
     <Pressable
       style={[
@@ -112,7 +109,7 @@ export const DNAChip = (props: DNAChipProps) => {
       disabled={isDisabled}
     >
       {!!icon && renderIcon}
-      <DNAText style={[Font(selfont.fontFamily, 'normal'), getTextColor]} type={getTextSize()}>{label}</DNAText>
+      <DNAText style={getTextColor} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
           <CloseSmallIcon size={textSizeCls[size].fontSize} color={colorVariant} />

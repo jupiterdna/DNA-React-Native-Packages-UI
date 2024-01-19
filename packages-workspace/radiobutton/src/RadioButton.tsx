@@ -10,7 +10,7 @@ export const RadioButton = (props: RadioButtonProps) => {
     orientation = 'vertical',
     disabled,
     required = false,
-    size = 'default',
+    size = 'md',
     gap_y = 'default',
     gap_x = 'default',
     onChange,
