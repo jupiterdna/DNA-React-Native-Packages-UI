@@ -69,7 +69,6 @@ export const DNAChip = (props: DNAChipProps) => {
     return {
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
-      flat: {},
       soft: {},
     }[variant];
   };

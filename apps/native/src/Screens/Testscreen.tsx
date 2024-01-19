@@ -47,7 +47,7 @@ const Testscreen: React.FC<any> = () => {
         </DNACollapsible>
         <DNACollapsible title={'Chips'}>
           <View style={styles.gap}>
-            <DNAChip label="Chip" size="xs" />
+            <DNAChip label="Chip" size="xs" variant="soft" />
             <DNAChip label="Chip" size="sm" />
             <DNAChip label="Chip" size="md" />
             <DNAChip label="Chip" size="lg" />
