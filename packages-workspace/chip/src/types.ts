@@ -18,7 +18,7 @@ export interface DNAChipProps {
     /**
      * Changes the variation of the element. 
      */
-    variant?: variantProps;
+    variant?: Exclude<variantProps, "flat">;
     /**
      * Property that defines the size of the component or a selection
      */
@@ -38,7 +38,7 @@ export interface DNAChipProps {
     /**
      * Defines the border dimensions of the component
      */
-    borderRadius?: Exclude<borderRadiusProps, 'squared'>;
+    borderRadius?: Exclude<borderRadiusProps, "squared">;
     /**
      * Handler when the component is about to close
      */
