@@ -33,7 +33,6 @@
   "scripts": {
     "build": "yarn gen && tsup",
     "gen": "ts-node --project tsconfig.json --files template/index.ts",
-    "dev": "tsup --watch",
     "clean": "rm -rf dist"
   },
   "devDependencies": {
