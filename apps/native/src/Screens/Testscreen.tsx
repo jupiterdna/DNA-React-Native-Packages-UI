@@ -32,7 +32,7 @@ const Testscreen: React.FC<any> = () => {
           <ScrollView>
             <View style={styles.gap}>
               <DNAButton label="Button" size="xs" variant="soft" />
-              <DNAButton label="Button" size="sm" />
+              <DNAButton label="Button" size="sm" variant="outlined" />
               <DNAButton label="Button" size="md" />
               <DNAButton label="Button" size="lg" />
               <DNAButton label="Button" size="xl" />

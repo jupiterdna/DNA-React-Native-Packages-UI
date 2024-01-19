@@ -1,15 +1,12 @@
 import React, { createElement } from "react";
-import { useColorScheme } from "react-native";
-import {
-  Pressable,
-} from "react-native";
+import { useColorScheme, Pressable } from "react-native";
 import { chipSizeCls, textSizeCls, styles, borderRadiusCls } from './styles';
 import { DNAChipProps } from './types';
 import { useColor } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import { CloseSmallIcon } from "@rndna/icon";
 import { Font } from "@rndna/fonts";
-import { useFonts } from "@rndna/theme-provider";
+import { useFonts, darkmodeColor } from "@rndna/theme-provider";
 
 /**
  * A Chip to show content with all the props inside a Component.
@@ -52,12 +49,13 @@ export const DNAChip = (props: DNAChipProps) => {
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
-  const useDarkColor = themeColor[color][100];
+  const secondaryColor = themeColor[color][100];
+  const useDarkColor = darkmodeColor[color]["default"];
 
   const colorVariant = 
     useColorScheme() === 'light'
       ? variant === 'solid' ? 'white' : defaultColor
-      : variant === 'solid' ? useDarkColor : defaultColor
+      : variant === 'solid' ? secondaryColor : useDarkColor
 
   const getTextColor = {
     color: colorVariant
@@ -69,7 +67,7 @@ export const DNAChip = (props: DNAChipProps) => {
     return {
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
-      soft: { backgroundColor: useDarkColor },
+      soft: { backgroundColor:  useColorScheme() === 'light' ? useDarkColor : secondaryColor },
     }[variant];
   };
 

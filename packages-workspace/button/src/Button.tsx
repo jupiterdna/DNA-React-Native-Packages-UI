@@ -8,7 +8,7 @@ import {
 import { buttonSizeCls, textSizeCls, styles } from './styles';
 import { DNAButtonProps } from './types';
 import { borderRadiusCls } from "@rndna/base_style";
-import { useColor } from "@rndna/theme-provider"
+import { darkmodeColor, useColor } from "@rndna/theme-provider"
 import { DNAText } from "@rndna/text";
 
 /**
@@ -53,24 +53,26 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
-  const useDarkColor = themeColor[color][100];
+  const secondaryColor = themeColor[color][100];
+  const useDarkColor = darkmodeColor[color]["default"];
 
-  const colorVariant = 
+  const colorVariant =
     useColorScheme() === 'light'
       ? variant === 'solid' ? 'white' : defaultColor
-      : variant === 'solid' ? useDarkColor : defaultColor
+      : variant === 'solid' ? secondaryColor : useDarkColor
 
   const getTextColor = {
     color: colorVariant
   };
-  
+
   const getVariantStyle = () => {
     return {
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
       flat: {},
-      soft: { backgroundColor: useDarkColor},
+      soft: { backgroundColor: useColorScheme() === 'light' ? useDarkColor : secondaryColor },
     }[variant];
+    
   };
 
   const getIconPositionStyle = () => {
