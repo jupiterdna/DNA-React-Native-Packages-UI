@@ -13,12 +13,12 @@ const Native = () => {
     useColorScheme() === 'light'
       ? {
           ...themeConfig,
-          fonts: {...themeConfig.fonts, fontFamily: 'Lato'},
+          fonts: {...themeConfig.fonts, fontFamily: 'Roboto'},
         }
       : {
           ...themeConfig,
           colors: darkmodeColor,
-          fonts: {...themeConfig.fonts, fontFamily: 'Lato'},
+          fonts: {...themeConfig.fonts, fontFamily: 'Roboto'},
         };
 
   return (
