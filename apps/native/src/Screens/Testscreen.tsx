@@ -1,4 +1,10 @@
-import {View, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  useColorScheme,
+  ViewStyle,
+  ScrollView,
+} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {DNACollapsible} from '@rndna/collapsible';
@@ -23,53 +29,57 @@ const Testscreen: React.FC<any> = () => {
           Native: {useColorScheme()} Mode
         </DNAText>
         <DNACollapsible title={'Buttons'}>
-          <View style={styles.gap}>
-            <DNAButton label="Button" size="xs" variant="soft" />
-            <DNAButton label="Button" size="sm" />
-            <DNAButton label="Button" size="md" />
-            <DNAButton label="Button" size="lg" />
-            <DNAButton label="Button" size="xl" />
-          </View>
-          <View style={styles.gap}>
-            <DNAButton
-              icon={InfoCircleIcon}
-              label="Button"
-              size="xs"
-              variant="soft"
-            />
-            <DNAButton icon={InfoCircleIcon} label="Button" size="sm" />
-            <DNAButton icon={InfoCircleIcon} label="Button" size="md" />
-            <DNAButton icon={InfoCircleIcon} label="Button" size="lg" />
-            <DNAButton icon={InfoCircleIcon} label="Button" size="xl" />
-          </View>
-          <View style={styles.gap}>
-            <DNAButton icon={InfoCircleIcon} size="xs" variant="soft" />
-            <DNAButton icon={InfoCircleIcon} size="sm" />
-            <DNAButton icon={InfoCircleIcon} size="md" />
-            <DNAButton icon={InfoCircleIcon} size="lg" />
-            <DNAButton icon={InfoCircleIcon} size="xl" />
-          </View>
+          <ScrollView>
+            <View style={styles.gap}>
+              <DNAButton label="Button" size="xs" variant="soft" />
+              <DNAButton label="Button" size="sm" />
+              <DNAButton label="Button" size="md" />
+              <DNAButton label="Button" size="lg" />
+              <DNAButton label="Button" size="xl" />
+            </View>
+            <View style={styles.gap}>
+              <DNAButton
+                icon={InfoCircleIcon}
+                label="Button"
+                size="xs"
+                variant="soft"
+              />
+              <DNAButton icon={InfoCircleIcon} label="Button" size="sm" />
+              <DNAButton icon={InfoCircleIcon} label="Button" size="md" />
+              <DNAButton icon={InfoCircleIcon} label="Button" size="lg" />
+              <DNAButton icon={InfoCircleIcon} label="Button" size="xl" />
+            </View>
+            <View style={styles.gap}>
+              <DNAButton icon={InfoCircleIcon} size="xs" variant="soft" />
+              <DNAButton icon={InfoCircleIcon} size="sm" />
+              <DNAButton icon={InfoCircleIcon} size="md" />
+              <DNAButton icon={InfoCircleIcon} size="lg" />
+              <DNAButton icon={InfoCircleIcon} size="xl" />
+            </View>
+          </ScrollView>
         </DNACollapsible>
         <DNACollapsible title={'Chips'}>
-          <View style={styles.gap}>
-            <DNAChip label="Chip" size="xs" variant="soft" />
-            <DNAChip label="Chip" size="sm" />
-            <DNAChip label="Chip" size="md" />
-            <DNAChip label="Chip" size="lg" />
-            <DNAChip label="Chip" size="xl" />
-          </View>
-          <View style={styles.gap}>
-            <DNAChip
-              icon={InfoCircleIcon}
-              label="Chip"
-              size="xs"
-              variant="soft"
-            />
-            <DNAChip icon={InfoCircleIcon} label="Chip" size="sm" />
-            <DNAChip icon={InfoCircleIcon} label="Chip" size="md" />
-            <DNAChip icon={InfoCircleIcon} label="Chip" size="lg" />
-            <DNAChip icon={InfoCircleIcon} label="Chip" size="xl" />
-          </View>
+          <ScrollView>
+            <View style={styles.gap}>
+              <DNAChip label="Chip" size="xs" variant="soft" />
+              <DNAChip label="Chip" size="sm" />
+              <DNAChip label="Chip" size="md" />
+              <DNAChip label="Chip" size="lg" />
+              <DNAChip label="Chip" size="xl" />
+            </View>
+            <View style={styles.gap}>
+              <DNAChip
+                icon={InfoCircleIcon}
+                label="Chip"
+                size="xs"
+                variant="soft"
+              />
+              <DNAChip icon={InfoCircleIcon} label="Chip" size="sm" />
+              <DNAChip icon={InfoCircleIcon} label="Chip" size="md" />
+              <DNAChip icon={InfoCircleIcon} label="Chip" size="lg" />
+              <DNAChip icon={InfoCircleIcon} label="Chip" size="xl" />
+            </View>
+          </ScrollView>
         </DNACollapsible>
       </View>
     </View>

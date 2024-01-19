@@ -67,9 +67,9 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
         {renderIcon}
         </View>
       </TouchableOpacity>
-      {open ? <ScrollView style={[styles.panelBody, { height: height }]}>
+      {open ? <View style={[styles.panelBody,{ height: height }]}>
        {children}
-      </ScrollView> : null}
+      </View> : null}
     </View>
   )
 }

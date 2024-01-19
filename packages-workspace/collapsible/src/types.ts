@@ -14,7 +14,7 @@ export interface DNACollapsibleProps {
    */
   color?: colorProps;
   /**
-   * Property that changes theme/state of the selection i.e. background and text color
+   * Property that allows you to set a height of the content inside this component
    */
   height?: number;
 }
