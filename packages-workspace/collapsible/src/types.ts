@@ -13,4 +13,8 @@ export interface DNACollapsibleProps {
    * Property that changes theme/state of the selection i.e. background and text color
    */
   color?: colorProps;
+  /**
+   * Property that changes theme/state of the selection i.e. background and text color
+   */
+  height?: number;
 }

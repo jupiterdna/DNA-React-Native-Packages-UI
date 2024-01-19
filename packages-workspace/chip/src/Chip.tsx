@@ -3,9 +3,8 @@ import { useColorScheme } from "react-native";
 import {
   Pressable,
 } from "react-native";
-import { chipSizeCls, textSizeCls, styles } from './styles';
+import { chipSizeCls, textSizeCls, styles, borderRadiusCls } from './styles';
 import { DNAChipProps } from './types';
-import { borderRadiusCls } from "@rndna/base_style";
 import { useColor } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import { CloseSmallIcon } from "@rndna/icon";
@@ -42,7 +41,7 @@ export const DNAChip = (props: DNAChipProps) => {
     label = 'Chip',
     icon,
     variant = "solid",
-    size = "default",
+    size = "md",
     isClosable = false,
     isDisabled = false,
     color = "primary",
@@ -71,6 +70,7 @@ export const DNAChip = (props: DNAChipProps) => {
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
       flat: {},
+      soft: {},
     }[variant];
   };
 
@@ -84,14 +84,18 @@ export const DNAChip = (props: DNAChipProps) => {
 
   const getTextSize = () => {
     switch(size) {
-      case 'sm':
+      case 'xs': 
         return 'overline'
+      case 'sm':
+        return 'caption'
       case 'md':
         return 'body2'
       case 'lg':
         return 'body1'
+      case 'xl':
+        return 'label'
       default: 
-        return 'caption'
+        return 'body2'
     }
   }
 

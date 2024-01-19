@@ -3,7 +3,7 @@ import { sizeProps, colorProps, borderRadiusProps, variantProps } from "@rndna/b
 import { SvgProps, NumberProp } from 'react-native-svg';
 
 interface IProps extends SvgProps {
-size?: NumberProp;
+    size?: NumberProp;
 }
 export interface DNAButtonProps extends PressableProps {
     /**
@@ -27,7 +27,7 @@ export interface DNAButtonProps extends PressableProps {
      */
     isLoading?: boolean;
     /**
-     * Property that helps in esbalishing loading text.
+     * Property that helps in esbalishing loading text.r
      */
     loadingLabel?: string;
     /**

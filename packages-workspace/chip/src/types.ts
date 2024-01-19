@@ -38,7 +38,7 @@ export interface DNAChipProps {
     /**
      * Defines the border dimensions of the component
      */
-    borderRadius?: borderRadiusProps;
+    borderRadius?: Exclude<borderRadiusProps, 'squared'>;
     /**
      * Handler when the component is about to close
      */

@@ -38,7 +38,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       label,
       icon,
       iconPosition = "left",
-      size = "default",
+      size = "md",
       isLoading = false,
       loadingLabel,
       color = "primary",
@@ -48,7 +48,6 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       borderRadius = "soft_edged",
       ...restProps
     }: DNAButtonProps,
-    //any should be replaced to Pressable
     ref: React.Ref<any>,
   ) => {
 
@@ -70,6 +69,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
       flat: {},
+      soft: {},
     }[variant];
   };
 
@@ -86,17 +86,21 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   
   const getTextSize = () => {
     switch(size) {
+      case 'xs': 
+        return 'caption'
       case 'sm':
         return 'body2'
       case 'md':
-        return 'label'
+        return 'body1'
       case 'lg':
+        return 'label'
+      case 'xl':
         return 'h6'
       default: 
         return 'body1'
     }
   }
-
+  
   const iconBtnSizes = {
       width: buttonSizeCls[size].height,
       height: buttonSizeCls[size].height,

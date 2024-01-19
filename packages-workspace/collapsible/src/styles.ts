@@ -13,6 +13,7 @@ export const styles = StyleSheet.create({
     padding: 8,
   },
   panelBody: {
+    height: 250,
     padding: 8,
   }
 });

@@ -1,4 +1,4 @@
-import {View, TouchableOpacity, Text, useColorScheme } from 'react-native'
+import {View, TouchableOpacity, ScrollView } from 'react-native'
 import React, {createElement, useState} from 'react'
 import {DNACollapsibleProps} from './types';
 import {styles} from './styles'
@@ -27,7 +27,13 @@ import {DNAText} from '@rndna/text'
 
 export const DNACollapsible = (props: DNACollapsibleProps) => {
 
-  const { children, title, color = "primary"} = props
+  const { 
+    children, 
+    title, 
+    color = "primary", 
+    height = 250
+  } = props
+
   const [open, setOpen] = useState(true)
 
   const themeColor = useColor();
@@ -61,9 +67,9 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
         {renderIcon}
         </View>
       </TouchableOpacity>
-      {open ? <View style={styles.panelBody}>
+      {open ? <ScrollView style={[styles.panelBody, { height: height }]}>
        {children}
-      </View> : null}
+      </ScrollView> : null}
     </View>
   )
 }
