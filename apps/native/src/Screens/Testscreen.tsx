@@ -24,21 +24,26 @@ const Testscreen: React.FC<any> = () => {
         </DNAText>
         <DNACollapsible title={'Buttons'}>
           <View style={styles.gap}>
-            <DNAButton label="Button" size="xs" />
+            <DNAButton label="Button" size="xs" variant="soft" />
             <DNAButton label="Button" size="sm" />
             <DNAButton label="Button" size="md" />
             <DNAButton label="Button" size="lg" />
             <DNAButton label="Button" size="xl" />
           </View>
           <View style={styles.gap}>
-            <DNAButton icon={InfoCircleIcon} label="Button" size="xs" />
+            <DNAButton
+              icon={InfoCircleIcon}
+              label="Button"
+              size="xs"
+              variant="soft"
+            />
             <DNAButton icon={InfoCircleIcon} label="Button" size="sm" />
             <DNAButton icon={InfoCircleIcon} label="Button" size="md" />
             <DNAButton icon={InfoCircleIcon} label="Button" size="lg" />
             <DNAButton icon={InfoCircleIcon} label="Button" size="xl" />
           </View>
           <View style={styles.gap}>
-            <DNAButton icon={InfoCircleIcon} size="xs" />
+            <DNAButton icon={InfoCircleIcon} size="xs" variant="soft" />
             <DNAButton icon={InfoCircleIcon} size="sm" />
             <DNAButton icon={InfoCircleIcon} size="md" />
             <DNAButton icon={InfoCircleIcon} size="lg" />
@@ -54,7 +59,12 @@ const Testscreen: React.FC<any> = () => {
             <DNAChip label="Chip" size="xl" />
           </View>
           <View style={styles.gap}>
-            <DNAChip icon={InfoCircleIcon} label="Chip" size="xs" />
+            <DNAChip
+              icon={InfoCircleIcon}
+              label="Chip"
+              size="xs"
+              variant="soft"
+            />
             <DNAChip icon={InfoCircleIcon} label="Chip" size="sm" />
             <DNAChip icon={InfoCircleIcon} label="Chip" size="md" />
             <DNAChip icon={InfoCircleIcon} label="Chip" size="lg" />

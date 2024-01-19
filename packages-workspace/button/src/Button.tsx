@@ -69,7 +69,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
       flat: {},
-      soft: {},
+      soft: { backgroundColor: useDarkColor},
     }[variant];
   };
 
