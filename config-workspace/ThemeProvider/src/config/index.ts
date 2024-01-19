@@ -25,7 +25,7 @@ export const defaultConfig: configType = {
   },
   colors: lightModeColor,
   fonts: {
-    fontFamily: "roboto",
+    fontFamily: "Roboto",
     fontWeight: "normal",
     fontSize: {
       h1: 96,
