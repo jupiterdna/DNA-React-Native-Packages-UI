@@ -1,12 +1,14 @@
 import { sizeProps } from "@rndna/base_style";
 
+type radiopSizeType = Exclude<sizeProps, 'xs' | 'xl'> | 'default'
+
 export interface RadioButtonProps {
   label: string;
   options: Option[];
   disabled?: boolean;
   childrenOptions?: ChildrenOption[];
   required?: boolean;
-  size?: sizeProps;
+  size?: radiopSizeType
   gap_y?: 'compact' | 'default' | 'comfortable';
   gap_x?: 'compact' | 'default' | 'comfortable';
   onChange: (selectedOption: Option) => void;

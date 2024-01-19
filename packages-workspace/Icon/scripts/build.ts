@@ -15,6 +15,7 @@ export const generateComponent = async (
   ) => {
       if (format === 'native' && style === 'solid') {
         try {
+          //@ts-ignore
           return await transform(
             svg,
             {
@@ -51,6 +52,7 @@ export const generateComponent = async (
       }
       else if (format === 'native' && style === 'outline') {
         try {
+          //@ts-ignore
           return await transform(
             svg,
             {

@@ -19,7 +19,6 @@
   "scripts": {
     "build": "yarn gen &&  tsup",
     "gen": "ts-node --project tsconfig.json --files src/utils/index.ts",
-    "dev": "tsup --watch",
     "clean": "rm -rf dist",
     "start": "node bin/index.ts"
   },
