@@ -1,6 +1,6 @@
 import { sizeProps } from "@rndna/base_style";
 
-type radiopSizeType = Exclude<sizeProps, 'xs' | 'xl'> | 'default'
+type radiopSizeType = sizeProps
 
 export interface RadioButtonProps {
   label: string;
