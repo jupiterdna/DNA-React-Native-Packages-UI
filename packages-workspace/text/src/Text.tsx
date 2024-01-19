@@ -4,7 +4,8 @@ import {
 } from "react-native";
 import { textSizeCls } from './styles';
 import { DNATextProps } from './types';
-import { useColor } from '@rndna/theme-provider';
+import { useColor, useFonts } from '@rndna/theme-provider';
+import { Font } from "@rndna/fonts";
 
 /**
  * A component to display heading 1 or h1 type of text. 
@@ -34,9 +35,12 @@ export const DNAText:React.FC<DNATextProps> = React.forwardRef(
 
   const themeColor = useColor();
   const defaultColor = themeColor.default[900]  
+  const defaultFont = useFonts();
+
+  console.log('textSizeCls', textSizeCls)
 
   return (
-   <Text {...restProps} ref={ref} style={[textSizeCls[type], { color: defaultColor }, restProps.style]} />
+   <Text {...restProps} ref={ref} style={[Font(defaultFont.fontFamily, 'normal'), textSizeCls[type], { color: defaultColor }, restProps.style]} />
   );
 });
 

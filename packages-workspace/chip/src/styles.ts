@@ -9,8 +9,8 @@ export const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderRadius: 99,
-    paddingVertical: 4,
     paddingHorizontal: 8,
+    height: 26,
     gap: 4,
   },
   buttonDisabled: {

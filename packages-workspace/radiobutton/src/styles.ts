@@ -55,35 +55,42 @@ export const styles = StyleSheet.create({
 });
 
 export const buttonSizeCls = {
+  xs: {
+    width: 14,
+    height: 16,
+  },
   sm: {
     width: 16,
     height: 16,
   },
-  default: {
+  md: {
     width: 18,
     height: 18,
   },
-  md: {
+  lg: {
     width: 20,
     height: 20,
   },
-  lg: {
+  xl: {
     width: 24,
     height: 24,
   },
 };
 
 export const textSizeCls = {
+  xs: {
+    fontSize: 10,
+  },
   sm: {
     fontSize: 12,
   },
-  default: {
+  md: {
     fontSize: 14,
   },
-  md: {
+  lg: {
     fontSize: 16,
   },
-  lg: {
+  xl: {
     fontSize: 18,
   },
 };

@@ -1,15 +1,11 @@
 import React, { createElement } from "react";
-import { useColorScheme } from "react-native";
-import {
-  Pressable,
-} from "react-native";
+import { useColorScheme, Pressable } from "react-native";
 import { chipSizeCls, textSizeCls, styles, borderRadiusCls } from './styles';
 import { DNAChipProps } from './types';
 import { useColor } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import { CloseSmallIcon } from "@rndna/icon";
-import { Font } from "@rndna/fonts";
-import { useFonts } from "@rndna/theme-provider";
+import { darkmodeColor } from "@rndna/theme-provider";
 
 /**
  * A Chip to show content with all the props inside a Component.
@@ -52,24 +48,23 @@ export const DNAChip = (props: DNAChipProps) => {
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
-  const useDarkColor = themeColor[color][100];
+  const secondaryColor = themeColor[color][100];
+  const useDarkColor = darkmodeColor[color]["default"];
 
   const colorVariant = 
     useColorScheme() === 'light'
       ? variant === 'solid' ? 'white' : defaultColor
-      : variant === 'solid' ? useDarkColor : defaultColor
+      : variant === 'solid' ? secondaryColor : useDarkColor
 
   const getTextColor = {
     color: colorVariant
   };
 
-  const selfont = useFonts();
-  
   const getVariantStyle = () => {
     return {
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
-      soft: { backgroundColor: useDarkColor },
+      soft: { backgroundColor:  useColorScheme() === 'light' ? useDarkColor : secondaryColor },
     }[variant];
   };
 
@@ -99,7 +94,7 @@ export const DNAChip = (props: DNAChipProps) => {
   }
 
   const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
-  
+
   return (
     <Pressable
       style={[
@@ -114,7 +109,7 @@ export const DNAChip = (props: DNAChipProps) => {
       disabled={isDisabled}
     >
       {!!icon && renderIcon}
-      <DNAText style={[Font(selfont.fontFamily, 'normal'), getTextColor]} type={getTextSize()}>{label}</DNAText>
+      <DNAText style={getTextColor} type={getTextSize()}>{label}</DNAText>
       {isClosable && 
         <Pressable onPress={onPressClose} disabled={isDisabled}>
           <CloseSmallIcon size={textSizeCls[size].fontSize} color={colorVariant} />
