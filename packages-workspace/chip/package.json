@@ -23,7 +23,8 @@
     "react-native": "^0.72.7",
     "@rndna/base_style": "*",
     "@rndna/text": "*",
-    "@rndna/theme-provider": "*"
+    "@rndna/theme-provider": "*",
+    "@rndna/fonts": "*"
   },
   "peerDependencies": {
     "@rndna/icon": "*"

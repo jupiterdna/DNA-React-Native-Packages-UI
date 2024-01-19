@@ -10,6 +10,7 @@ const Native = () => {
       : {
           ...themeConfig,
           colors: darkmodeColor,
+          fonts: {...themeConfig.fonts, fontFamily: 'Lato'},
         };
 
   return (

@@ -1,4 +1,5 @@
 import { ColorSchemeName } from "react-native";
+import {fontNameType} from '@rndna/fonts'
 
 export type colorType = {
   ["default"]: string;
@@ -61,7 +62,7 @@ export type configType = {
     default: colorType;
   };
   fonts: {
-    fontFamily?: string;
+    fontFamily?: fontNameType;
     fontWeight?:
       | "bold"
       | "semi-bold"

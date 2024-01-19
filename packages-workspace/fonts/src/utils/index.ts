@@ -44,7 +44,7 @@ const generateTypes = async () => {
         }, ``)
 
         await fs.promises.writeFile(`./src/types.ts`,
-        `export type fontNameType = ${concatFonts}
+        `export type fontNameType = ${concatFonts} | undefined
 
 export type fontWeightType = 'bold' | 'normal' | 'semibold'  | 'light' | 'thin' | 'black' 
         

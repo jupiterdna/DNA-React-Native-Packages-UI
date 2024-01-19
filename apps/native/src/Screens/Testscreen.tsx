@@ -1,6 +1,7 @@
 import {View, StyleSheet, useColorScheme, ViewStyle} from 'react-native';
 import React from 'react';
 import {DNAChip} from '@rndna/chip';
+import {Font} from '@rndna/fonts';
 import {DNABadge} from '@rndna/badge';
 import {DNACollapsible} from '@rndna/collapsible';
 import {DNAButton} from '@rndna/button';
@@ -24,7 +25,8 @@ const Testscreen: React.FC<any> = () => {
           Native: {useColorScheme()} Mode
         </DNAText>
         <DNACollapsible title={'Buttons'}>
-          <DNAText style={styles.title}>basic</DNAText>
+          <DNAText style={Font('Lato', 'bold')}>basic</DNAText>
+          <DNAChip label="testt" />
           <View style={styles.gap}>
             <DNAButton label="Button" size="sm" />
             <DNAButton label="Button" size="default" />

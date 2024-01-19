@@ -1,4 +1,4 @@
-export type fontNameType = "Lato" | "OpenSans" | "Roboto"
+export type fontNameType = "Lato" | "OpenSans" | "Roboto" | undefined
 
 export type fontWeightType = 'bold' | 'normal' | 'semibold'  | 'light' | 'thin' | 'black' 
         
