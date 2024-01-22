@@ -9,8 +9,9 @@ import React from 'react';
 import {DNAChip} from '@rndna/chip';
 import {DNACollapsible} from '@rndna/collapsible';
 import {DNAButton} from '@rndna/button';
-import {HelpIcon, InfoCircleIcon} from '@rndna/icon';
+import {InfoCircleIcon, UserIcon} from '@rndna/icon';
 import {DNAText} from '@rndna/text';
+import {DNAAvatar} from '@rndna/avatar';
 
 const Testscreen: React.FC<any> = () => {
   const bg: ViewStyle =
@@ -79,6 +80,67 @@ const Testscreen: React.FC<any> = () => {
               <DNAChip icon={InfoCircleIcon} label="Chip" size="md" />
               <DNAChip icon={InfoCircleIcon} label="Chip" size="lg" />
               <DNAChip icon={InfoCircleIcon} label="Chip" size="xl" />
+            </View>
+          </ScrollView>
+        </DNACollapsible>
+        <DNACollapsible title={'Avatar'}>
+          <ScrollView>
+            <View style={styles.gap}>
+              <DNAAvatar size="xs" />
+              <DNAAvatar size="sm" />
+              <DNAAvatar size="md" />
+              <DNAAvatar size="lg" />
+              <DNAAvatar size="xl" />
+            </View>
+            <View style={styles.gap}>
+              <DNAAvatar size="xs" name="Junie Rosales" />
+              <DNAAvatar size="sm" name="Junie Rosales" />
+              <DNAAvatar size="md" name="Junie Rosales" />
+              <DNAAvatar size="lg" name="Junie Rosales" />
+              <DNAAvatar size="xl" name="Junie Rosales" />
+            </View>
+            <View style={styles.gap}>
+              <DNAAvatar
+                size="xs"
+                name="Junie Rosales"
+                icon={UserIcon}
+                imageSource={
+                  'https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                }
+              />
+              <DNAAvatar
+                size="sm"
+                name="Junie Rosales"
+                icon={UserIcon}
+                imageSource={
+                  'https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                }
+              />
+              <DNAAvatar
+                size="md"
+                borderRadius="squared"
+                name="Junie Rosales"
+                icon={UserIcon}
+                imageSource={
+                  'https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                }
+              />
+              <DNAAvatar
+                size="lg"
+                name="Junie Rosales"
+                icon={UserIcon}
+                imageSource={
+                  'https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                }
+              />
+              <DNAAvatar
+                size="xl"
+                name="Junie Rosales"
+                icon={UserIcon}
+                imageSource={
+                  'https://images.unsplash.com/photo-1589729132389-8f0e0b55b91e?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
+                }
+              />
             </View>
           </ScrollView>
         </DNACollapsible>
