@@ -37,8 +37,6 @@ export const DNAText:React.FC<DNATextProps> = React.forwardRef(
   const defaultColor = themeColor.default[900]  
   const defaultFont = useFonts();
 
-  console.log('textSizeCls', textSizeCls)
-
   return (
    <Text {...restProps} ref={ref} style={[Font(defaultFont.fontFamily, 'normal'), textSizeCls[type], { color: defaultColor }, restProps.style]} />
   );
