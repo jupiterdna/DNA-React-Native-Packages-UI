@@ -1,5 +1,4 @@
 import React from "react";
-import { View, Text } from "react-native";
 import { DNAAvatar } from "../../Avatar"
 import { DNAAvatarProps, DNAAvatarPropsWithBadge } from "../../types";
 import { DNABadge } from "@rndna/badge";
