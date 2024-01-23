@@ -16,6 +16,7 @@ import {
   DNAAvatarWithStatus,
   DNAAvatarWithBadge,
 } from '@rndna/avatar';
+import {DNAAvatarGroup} from '@rndna/avatar_group';
 
 const Testscreen: React.FC<any> = () => {
   const bg: ViewStyle =
@@ -27,13 +28,53 @@ const Testscreen: React.FC<any> = () => {
           backgroundColor: '#fff',
         };
 
+  const group_data = [
+    {
+      alt: 'John Doe Picture',
+      id: 'john-doe',
+      name: 'John Doe',
+      src: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      alt: 'Jane Smith Picture',
+      id: 'jane-smith',
+      name: 'Jane Smith',
+      src: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      alt: 'Andrei Colin Picture',
+      id: 'andrei-colin',
+      name: 'Andrei Colin',
+      src: 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    },
+    {
+      alt: 'Cendy Carter Picture',
+      id: 'cendy-carter',
+      name: 'Cendy Carter',
+      src: 'https://images.pexels.com/photos/3771639/pexels-photo-3771639.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
+    {
+      alt: 'James Brown Picture',
+      id: 'james-brown',
+      name: 'James Brown',
+      src: 'https://images.pexels.com/photos/9222625/pexels-photo-9222625.jpeg?auto=compress&cs=tinysrgb&w=1600',
+    },
+  ];
+
   return (
     <View style={styles.flex}>
       <View style={[styles.container, bg]}>
         <DNAText type="h4" style={styles.header}>
           Native: {useColorScheme()} Mode
         </DNAText>
-        <DNACollapsible title={'Buttons'}>
+        <DNACollapsible title={'Avatar Group'}>
+          <DNAAvatarGroup options={group_data} color="info" size="xs" />
+          <DNAAvatarGroup options={group_data} color="danger" size="sm" />
+          <DNAAvatarGroup options={group_data} color="warning" size="md" />
+          <DNAAvatarGroup options={group_data} color="success" size="lg" />
+          <DNAAvatarGroup options={group_data} color="default" size="xl" />
+        </DNACollapsible>
+        {/* <DNACollapsible title={'Buttons'}>
           <ScrollView>
             <View style={styles.gap}>
               <DNAButton label="Button" size="xs" variant="soft" />
@@ -221,7 +262,7 @@ const Testscreen: React.FC<any> = () => {
               />
             </View>
           </ScrollView>
-        </DNACollapsible>
+        </DNACollapsible> */}
       </View>
     </View>
   );

@@ -15,6 +15,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       imageSource,
       color = "default",
       name,
+      alt,
       icon = UserIcon,
       ...restProps
     }: DNAAvatarProps,
@@ -81,12 +82,12 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
     >
       {!!name && <View style={[styles.overlay, avatarSizeCls[size], borderRadiusCls[borderRadius]]} /> }
       {!!imageSource ? (
-        <Image
-          style={{ width: '100%', height: '100%' }}
-          source={{ uri: imageSource }}
-          resizeMethod="auto"
-
-        />
+          <Image
+            style={[{ width: '100%', height: '100%'}, borderRadiusCls[borderRadius]]}
+            source={{ uri: imageSource }}
+            resizeMethod="auto"
+            alt={alt}
+          />
       ) : !!name ?  (
         <DNAText style={getTextColor} type={getTextSize()}>{filteredName}</DNAText>
       ) : (

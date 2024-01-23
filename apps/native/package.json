@@ -21,6 +21,7 @@
     "@rndna/icon": "*",
     "@rndna/text": "*",
     "@rndna/avatar": "*",
+    "@rndna/avatar_group": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",
     "react-native-svg": "13.14.0"
