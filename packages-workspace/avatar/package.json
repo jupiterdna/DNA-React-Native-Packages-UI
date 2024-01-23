@@ -21,6 +21,7 @@
     "@dnamobile/typescript-config": "*",
     "@rndna/base_style": "*",
     "@rndna/text": "*",
+    "@rndna/badge": "*",
     "react-native-svg": "13.14.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.2"

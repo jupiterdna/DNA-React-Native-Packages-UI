@@ -11,7 +11,11 @@ import {DNACollapsible} from '@rndna/collapsible';
 import {DNAButton} from '@rndna/button';
 import {InfoCircleIcon, UserIcon} from '@rndna/icon';
 import {DNAText} from '@rndna/text';
-import {DNAAvatar} from '@rndna/avatar';
+import {
+  DNAAvatar,
+  DNAAvatarWithStatus,
+  DNAAvatarWithBadge,
+} from '@rndna/avatar';
 
 const Testscreen: React.FC<any> = () => {
   const bg: ViewStyle =
@@ -85,6 +89,80 @@ const Testscreen: React.FC<any> = () => {
         </DNACollapsible>
         <DNACollapsible title={'Avatar'}>
           <ScrollView>
+            <View style={styles.gap}>
+              <DNAAvatarWithBadge
+                size="xs"
+                badge={{
+                  value: '99+',
+                  color: 'danger',
+                }}
+              />
+              <DNAAvatarWithBadge
+                size="sm"
+                badge={{
+                  value: '99+',
+                  color: 'danger',
+                }}
+              />
+              <DNAAvatarWithBadge
+                size="md"
+                badge={{
+                  value: '99+',
+                  color: 'danger',
+                }}
+              />
+              <DNAAvatarWithBadge
+                size="lg"
+                badge={{
+                  value: '99+',
+                  color: 'danger',
+                }}
+              />
+              <DNAAvatarWithBadge
+                size="xl"
+                badge={{
+                  value: '999+',
+                  color: 'danger',
+                }}
+              />
+            </View>
+            <View style={styles.gap}>
+              <DNAAvatarWithStatus
+                size="xs"
+                status={{
+                  option: 'online',
+                  value: 'test',
+                }}
+              />
+              <DNAAvatarWithStatus
+                size="sm"
+                status={{
+                  option: 'offline',
+                  value: 'test',
+                }}
+              />
+              <DNAAvatarWithStatus
+                size="md"
+                status={{
+                  option: 'inactive',
+                  value: 'test',
+                }}
+              />
+              <DNAAvatarWithStatus
+                size="lg"
+                status={{
+                  option: 'busy',
+                  value: 'test',
+                }}
+              />
+              <DNAAvatarWithStatus
+                size="xl"
+                status={{
+                  option: 'online',
+                  value: 'test',
+                }}
+              />
+            </View>
             <View style={styles.gap}>
               <DNAAvatar size="xs" />
               <DNAAvatar size="sm" />

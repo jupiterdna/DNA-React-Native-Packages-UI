@@ -16,9 +16,6 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       color = "default",
       name,
       icon = UserIcon,
-      // withStatus = false,
-      // withBadge = false,
-      // statusColor = "primary",
       ...restProps
     }: DNAAvatarProps,
     ref: React.Ref<any>,
@@ -37,31 +34,6 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
   const getBgColor = {
    backgroundColor: defaultColor,
   }
-
-  // const getStatusIndicator = () => {
-  //   if (withStatusIndicator) {
-  //     return (
-  //       <View
-  //         style={[
-  //           styles.avatarStatusIndicator,
-  //           { backgroundColor: defaultColor },
-  //         ]}
-  //       />
-  //     );
-  //   }
-  //   return null;
-  // };
-
-  // const getNotificationIndicator = () => {
-  //   if (withNotifications) {
-  //     return (
-  //       <View style={styles.avatarNotificationIndicator}>
-  //         <DNAText style={styles.notificationCountText}>3</DNAText>
-  //       </View>
-  //     );
-  //   }
-  //   return null;
-  // };
 
   const getTextSize = () => {
     switch(size) {
@@ -83,7 +55,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
   const renderIcon = 
   typeof icon === "function"
     ? createElement(icon, {
-        size: (textSizeCls[size].fontSize || -1) + 6,
+        size: size !== 'xs' ? (textSizeCls[size].fontSize || -1) + 4 : textSizeCls[size].fontSize, 
         color: colorVariant
       })
     : icon
@@ -95,7 +67,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
           .slice(0, 2)
           .map(word => word.charAt(0).toUpperCase())
           .join("")
-      
+
   return (
     <Pressable
       style={[

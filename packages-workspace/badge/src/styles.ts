@@ -27,12 +27,11 @@ export const styles = StyleSheet.create({
   badgeSpace: {
     paddingVertical: 2,
     paddingHorizontal: 4,
-    minWidth: 18,
     minHeight: 18,
   },
   badgeSize: {
     width: 10,
     height: 10,
-    right: 0,
+    right: 1,
   }
 });

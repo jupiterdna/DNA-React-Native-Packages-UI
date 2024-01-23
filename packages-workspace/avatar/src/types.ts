@@ -16,4 +16,21 @@ export interface DNAAvatarProps extends PressableProps {
     icon?: React.JSX.Element | ((e?: IProps | any) => React.JSX.Element)
     onPress?: (event: GestureResponderEvent) => void;
 }
+export type DNAAvatarPropsWithStatus = DNAAvatarProps & {
+    status: IWithStatusType;
+} 
+
+export type IWithStatusType = {
+    option?: "online" | "offline" | "inactive" | "busy" | undefined;
+    value?: string;
+}
+  
+export type DNAAvatarPropsWithBadge = DNAAvatarProps & {
+    badge: IWithBadgeType;
+} 
+
+export type IWithBadgeType = {
+    color?: colorProps;
+    value?: string;
+}
   

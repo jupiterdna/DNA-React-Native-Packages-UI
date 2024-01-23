@@ -52,7 +52,7 @@ export const DNABadge = (props: DNABadgeProps) => {
       <View style={[
           styles.badge, 
           backgroundColor(), 
-          !!value ? [{ left: badgeWidth - 5 }, styles.badgeSpace] : styles.badgeSize,
+          !!value ? [{ left: badgeWidth - 8 }, styles.badgeSpace] : styles.badgeSize,
           styles.shadowProp,
           style, 
         ]}>

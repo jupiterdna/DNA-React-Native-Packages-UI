@@ -15,7 +15,15 @@ export const styles = StyleSheet.create({
     right: 0,
     left: 0,
     bottom: 0,
-  }
+  },
+  status: {
+    borderRadius: 99,
+    position: 'absolute',
+    borderWidth: 1,
+    bottom: 1,
+    right: 1,
+    zIndex: 999,
+  },
 });
 
 export const textSizeCls = {
@@ -29,7 +37,7 @@ export const textSizeCls = {
     fontSize: size.fontSize?.body2,
   },
   lg: {
-    fontSize: size.fontSize?.body2,
+    fontSize: size.fontSize?.body1,
   },
   xl: {
     fontSize: size.fontSize?.h6,
