@@ -23,9 +23,7 @@ const AvatarGroup = (Component: React.FC<DNAAvatarProps>) =>
 
   return (
     <View style={styles.avatarContainer}>
-      {(max > 0 ? options.slice(0, max) : options).map((option, index) => {
-
-        const lastItem = options.length -1 === index;
+      {(max > 0 ? options.slice(0, max) : options).map((option) => {
         
         return (
           <View style={avatarWrapperStyle} key={option.id}>
@@ -34,7 +32,7 @@ const AvatarGroup = (Component: React.FC<DNAAvatarProps>) =>
               color={color} 
               borderRadius={borderRadius} 
               name={option.name} 
-              imageSource={!lastItem ? option.src : ''}
+              imageSource={option.src }
               alt={alt}
             />
           </View>
