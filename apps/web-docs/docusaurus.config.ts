@@ -72,6 +72,8 @@ const config: Config = {
         },
       };
     },
+    require.resolve('docusaurus-lunr-search')
+    // '@aldridged/docusaurus-plugin-lunr'
   ],
 
   themeConfig: {
@@ -84,22 +86,27 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
+      
       title: 'DNA React Native Packages',
       logo: {
         alt: 'DNA React Native Packages',
         src: 'img/logo.png',
       },
       items: [
-        {to: '/blog', label: 'Blog', position: 'left'},
         {
-          type: 'docsVersionDropdown',
-          position: 'right',
-          label: 'Versions',
-          dropdownItemsAfter: [{ to: 'versions', label: 'All versions' }],
-          // Do not add the link active class when browsing docs.
-          dropdownActiveClassDisabled: true,
-          docsPluginId: 'default',
+          type: 'search',
+          position: 'left',
         },
+        {to: '/blog', label: 'Blog', position: 'left'},
+        // {
+        //   type: 'docsVersionDropdown',
+        //   position: 'right',
+        //   label: 'Versions',
+        //   dropdownItemsAfter: [{ to: 'versions', label: 'All versions' }],
+        //   // Do not add the link active class when browsing docs.
+        //   dropdownActiveClassDisabled: true,
+        //   docsPluginId: 'default',
+        // },
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
@@ -115,7 +122,7 @@ const config: Config = {
           items: [
             {
               label: 'Tutorial',
-              to: '/docs/intro',
+              to: '/docs/getting-started/installation',
             },
           ],
         },
