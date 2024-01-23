@@ -1,0 +1,13 @@
+.menu .menu__list .theme-doc-sidebar-item-category-level-1 .menu__link{
+    font-weight: bold;
+    font-size: .9rem;
+}
+
+.menu .menu__list .theme-doc-sidebar-item-link .menu__link,
+.menu .menu__list .theme-doc-sidebar-item-category-level-2 .menu__link
+{
+    font-size: .8rem;
+    font-weight: normal;
+}   
+
+

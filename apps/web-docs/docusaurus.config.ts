@@ -90,13 +90,16 @@ const config: Config = {
         src: 'img/logo.png',
       },
       items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'tutorialSidebar',
-          position: 'left',
-          label: 'Tutorial',
-        },
         {to: '/blog', label: 'Blog', position: 'left'},
+        {
+          type: 'docsVersionDropdown',
+          position: 'right',
+          label: 'Versions',
+          dropdownItemsAfter: [{ to: 'versions', label: 'All versions' }],
+          // Do not add the link active class when browsing docs.
+          dropdownActiveClassDisabled: true,
+          docsPluginId: 'default',
+        },
         {
           href: 'https://github.com/facebook/docusaurus',
           label: 'GitHub',
