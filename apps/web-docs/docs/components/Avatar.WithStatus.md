@@ -1,5 +1,5 @@
 ---
-id: avatar_with_status
+id: avatar-with-status
 title: Avatar With Status
 ---
 # Avatar With Status

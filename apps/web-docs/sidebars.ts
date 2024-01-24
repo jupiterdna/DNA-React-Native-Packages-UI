@@ -31,8 +31,8 @@ const sidebars: SidebarsConfig = {
             link: { type: 'doc', id: 'components/avatar' },
             label: 'Avatar',
             items: [
-              'components/avatar_with_status',
-              'components/avatar_with_badge',
+              'components/avatar-with-status',
+              'components/avatar-with-badge',
             ],
           },
           'components/badge',
