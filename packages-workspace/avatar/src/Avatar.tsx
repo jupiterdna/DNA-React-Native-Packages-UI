@@ -7,6 +7,29 @@ import { useColor } from "@rndna/theme-provider";
 import { DNAAvatarProps } from "./types";
 import { UserIcon } from "@rndna/icon"
 
+/**
+ * An Avatar can be used to portray people or objects. It supports images, icons, or letters.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNAAvatar } from '@rndna/avatar';
+ *
+ * const MyComponent = () => (
+ *  <DNAAvatar 
+ *   name="John Smith"
+ *   size="md"
+ *   src="https://images.pexels.com/photos/1707828/pexels-photo-1707828.jpeg"
+ *   onPress={(evt: GestureResponderEvent | undefined) => {
+ *      console.log('pressed')
+ *    }}
+ *  />
+ * );
+ *
+ * export default MyComponent;
+ * ```
+ */
+
 export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
   (
     {
