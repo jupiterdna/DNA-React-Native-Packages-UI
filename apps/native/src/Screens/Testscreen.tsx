@@ -76,7 +76,7 @@ const Testscreen: React.FC<any> = () => {
             <DNAAvatarGroup options={group_data} color="default" size="xl" />
           </View>
         </DNACollapsible>
-        {/* <DNACollapsible title={'Buttons'}>
+        <DNACollapsible title={'Buttons'}>
           <ScrollView>
             <View style={styles.gap}>
               <DNAButton label="Button" size="xs" variant="soft" />
@@ -264,7 +264,7 @@ const Testscreen: React.FC<any> = () => {
               />
             </View>
           </ScrollView>
-        </DNACollapsible> */}
+        </DNACollapsible>
       </View>
     </View>
   );

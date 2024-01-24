@@ -34,7 +34,7 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
     height = 250
   } = props
 
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
