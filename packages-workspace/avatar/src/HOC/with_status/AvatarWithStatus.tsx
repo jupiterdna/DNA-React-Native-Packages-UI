@@ -6,8 +6,9 @@ import { useColor } from "@rndna/theme-provider";
 import { styles, avatarSizeCls } from "../../styles";
 
 /**
- * An Avatar With Status control can be used to display specific status of the avatar you've displayed.
- * Where it'll be "online" | "offline" | "inactive" | "busy" 
+ * An Avatar With Status control can be used to display small circle component 
+ * on the lower right corner of your avatar typically a numerical value where it will be 
+ * "online" | "offline" | "inactive" | "busy"
  * 
  *
  * ## Usage

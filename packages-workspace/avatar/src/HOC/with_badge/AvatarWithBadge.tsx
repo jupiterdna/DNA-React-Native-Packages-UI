@@ -4,8 +4,8 @@ import { DNAAvatarProps, DNAAvatarPropsWithBadge } from "../../types";
 import { DNABadge } from "@rndna/badge";
 
 /**
- * An Avatar With Status control can be used to display a badge of the avatar you've displayed.
- * 
+ * An Avatar With Badge control can be used to display small components 
+ * on the upper right corner of your avatar typically a numerical value.
  *
  * ## Usage
  * ```js
