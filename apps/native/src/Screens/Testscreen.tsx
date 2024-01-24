@@ -68,11 +68,13 @@ const Testscreen: React.FC<any> = () => {
           Native: {useColorScheme()} Mode
         </DNAText>
         <DNACollapsible title={'Avatar Group'}>
-          <DNAAvatarGroup options={group_data} color="info" size="xs" />
-          <DNAAvatarGroup options={group_data} color="danger" size="sm" />
-          <DNAAvatarGroup options={group_data} color="warning" size="md" />
-          <DNAAvatarGroup options={group_data} color="success" size="lg" />
-          <DNAAvatarGroup options={group_data} color="default" size="xl" />
+          <View style={styles.gap}>
+            <DNAAvatarGroup options={group_data} color="info" size="xs" />
+            <DNAAvatarGroup options={group_data} color="danger" size="sm" />
+            <DNAAvatarGroup options={group_data} color="warning" size="md" />
+            <DNAAvatarGroup options={group_data} color="success" size="lg" />
+            <DNAAvatarGroup options={group_data} color="default" size="xl" />
+          </View>
         </DNACollapsible>
         {/* <DNACollapsible title={'Buttons'}>
           <ScrollView>

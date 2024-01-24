@@ -5,8 +5,7 @@ import { DNAAvatarProps, DNAAvatarPropsWithStatus } from "../../types";
 import { useColor } from "@rndna/theme-provider";
 import { styles, avatarSizeCls } from "../../styles";
 
-const AvatarWithStatus =
-  (Component: React.FC<DNAAvatarProps>) =>
+const AvatarWithStatus = (Component: React.FC<DNAAvatarProps>) =>
   (props: DNAAvatarPropsWithStatus) => {
     const {
       status,

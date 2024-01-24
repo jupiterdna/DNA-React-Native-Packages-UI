@@ -7,7 +7,8 @@ import { PlusIcon } from "@rndna/icon";
 import { borderRadiusCls } from "@rndna/base_style";
 
 const AvatarGroup = (Component: React.FC<DNAAvatarProps>) => 
-  ({ 
+  (props: DNAAvatarGroupProps) => {
+  const {
     options, 
     borderRadius = "rounded", 
     color = "default", 
@@ -16,7 +17,7 @@ const AvatarGroup = (Component: React.FC<DNAAvatarProps>) =>
     addable = false, 
     alt,
     onPress, 
-  }: DNAAvatarGroupProps) => {
+  } = props;
 
   const remainingItem = options.length - max;
   const avatarWrapperStyle = [styles.avatarWrapper, borderRadiusCls[borderRadius]];
@@ -32,7 +33,7 @@ const AvatarGroup = (Component: React.FC<DNAAvatarProps>) =>
               color={color} 
               borderRadius={borderRadius} 
               name={option.name} 
-              imageSource={option.src }
+              imageSource={option.src}
               alt={alt}
             />
           </View>
