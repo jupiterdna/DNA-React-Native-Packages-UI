@@ -1,5 +1,5 @@
 import {View, TouchableOpacity, ScrollView } from 'react-native'
-import React, {createElement, useState} from 'react'
+import React, {createElement, useEffect, useState} from 'react'
 import {DNACollapsibleProps} from './types';
 import {styles} from './styles'
 import { useColor } from "@rndna/theme-provider"
@@ -31,7 +31,8 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
     children, 
     title, 
     color = "primary", 
-    height = 250
+    height = 250,
+    isOpen = false,
   } = props
 
   const [open, setOpen] = useState(false)
@@ -46,13 +47,17 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
         size: 24,
         color: defaultColor
       })
-  
+
   const panelBorderRadius = {
       borderTopRightRadius: 4,
       borderTopLeftRadius: 4,
       borderBottomRightRadius: !open ? 4 : 0,
       borderBottomLeftRadius: !open ? 4 : 0,
   };
+
+  useEffect(() => {
+    setOpen(isOpen);
+  }, [isOpen]);
     
   return (
     <View style={[styles.collapsible, { borderColor: defaultColor  }]}>

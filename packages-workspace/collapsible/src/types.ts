@@ -17,4 +17,8 @@ export interface DNACollapsibleProps {
    * Property that allows you to set a height of the content inside this component
    */
   height?: number;
+  /**
+   * Property that allows you to set display or hide the content by default
+   */
+  isOpen?: boolean;
 }
