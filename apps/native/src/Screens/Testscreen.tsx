@@ -45,7 +45,7 @@ const Testscreen: React.FC<any> = () => {
       alt: 'Andrei Colin Picture',
       id: 'andrei-colin',
       name: 'Andrei Colin',
-      src: 'https://images.pexels.com/photos/762020/pexels-photo-762020.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+      src: '',
     },
     {
       alt: 'Cendy Carter Picture',
@@ -57,7 +57,7 @@ const Testscreen: React.FC<any> = () => {
       alt: 'James Brown Picture',
       id: 'james-brown',
       name: 'James Brown',
-      src: 'https://images.pexels.com/photos/9222625/pexels-photo-9222625.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      src: '',
     },
   ];
 
