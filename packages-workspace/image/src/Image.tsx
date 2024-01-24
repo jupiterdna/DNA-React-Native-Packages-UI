@@ -6,8 +6,9 @@ import { imageSizeCls, styles, imageRatioCls } from "./styles";
 import FastImage from 'react-native-fast-image'
 
 /**
- * The Avatar component can display profile pictures, initials, or a fallback image to represent a user.
- *
+ * Image component to displaydifferent types of images, including network images, static resources, 
+ * temporary local images, and images from local disk, such as the camera roll
+ * 
  * ## Usage
  * ```js
  * import * as React from 'react';
@@ -15,13 +16,10 @@ import FastImage from 'react-native-fast-image'
  *
  * const MyComponent = () => (
  *  <DNAImage 
- *   name="John Smith"
  *   size="md"
  *   src="https://images.pexels.com/photos/1707828/pexels-photo-1707828.jpeg"
- *   onPress={(evt: GestureResponderEvent | undefined) => {
- *      console.log('pressed')
- *    }}
- *  />
+ *   fit="contain"
+ *   ratio="1:1"
  * );
  *
  * export default MyComponent;
