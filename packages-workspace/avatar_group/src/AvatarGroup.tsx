@@ -6,6 +6,29 @@ import { styles } from './styles';
 import { PlusIcon } from "@rndna/icon";
 import { borderRadiusCls } from "@rndna/base_style";
 
+/**
+ * An avatar group displays a number of avatars grouped together in a stack
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNAAvatarGroup } from '@rndna/avatar_group';
+ *
+ * const MyComponent = () => (
+ *  <DNAAvatarGroup
+ *   options={group_data}
+ *   color="warning"
+ *   size="md"
+ *   onPress={(evt: GestureResponderEvent | undefined) => {
+ *      console.log('pressed')
+ *    }}
+ *  />
+ * );
+ *
+ * export default MyComponent;
+ * ```
+ */
+
 const AvatarGroup = (Component: React.FC<DNAAvatarProps>) => 
   (props: DNAAvatarGroupProps) => {
   const {

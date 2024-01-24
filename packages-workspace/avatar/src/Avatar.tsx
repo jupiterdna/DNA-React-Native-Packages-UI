@@ -8,7 +8,7 @@ import { DNAAvatarProps } from "./types";
 import { UserIcon } from "@rndna/icon"
 
 /**
- * An Avatar can be used to portray people or objects. It supports images, icons, or letters.
+ * The Avatar component can display profile pictures, initials, or a fallback image to represent a user.
  *
  * ## Usage
  * ```js
