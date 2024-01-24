@@ -5,6 +5,30 @@ import { DNAAvatarProps, DNAAvatarPropsWithStatus } from "../../types";
 import { useColor } from "@rndna/theme-provider";
 import { styles, avatarSizeCls } from "../../styles";
 
+/**
+ * An Avatar With Status control can be used to display specific status of the avatar you've displayed.
+ * Where it'll be "online" | "offline" | "inactive" | "busy" 
+ * 
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { DNAAvatarWithStatus } from '@rndna/avatar';
+ *
+ * const MyComponent = () => (
+ *   <DNAAvatarWithStatus
+ *     size="md"
+ *     status={{
+ *       option: 'online',
+ *       value: 'test',
+ *     }}
+ *   />
+ *
+ * export default MyComponent;
+ * ```
+ */
+
+
 const AvatarWithStatus = (Component: React.FC<DNAAvatarProps>) =>
   (props: DNAAvatarPropsWithStatus) => {
     const {
