@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import type { CTextInput } from './types';
 import { styles } from './styles';
+import {DNAText} from '@rndna/text'
 
 const ic_close = require('../assets/close.png');
 
@@ -61,6 +62,7 @@ const TextInputComponent: CTextInput = (props) => {
               source={ic_close}
               style={StyleSheet.flatten([styles.icon, iconStyle])}
             />
+            <DNAText type='body1'>Icon</DNAText>
           </TouchableOpacity>
         );
       }

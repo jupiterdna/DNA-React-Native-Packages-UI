@@ -1,4 +1,11 @@
-import {View, StyleSheet} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  ViewStyle,
+  useColorScheme,
+  Text,
+} from 'react-native';
 import React, {useState} from 'react';
 import {Dropdown} from '@rndna/dropdown';
 
@@ -14,23 +21,60 @@ const data = [
 ];
 
 const DropdownScreen: React.FC<any> = () => {
+  const bg: ViewStyle =
+    useColorScheme() === 'dark'
+      ? {
+          backgroundColor: '#333',
+        }
+      : {
+          backgroundColor: '#fff',
+        };
+
   const [value, setValue] = useState<any>(null);
-  const [isFocus, setIsFocus] = useState(false);
+  const [isFocus, setIsFocus] = useState<any>(null);
+  const [value2, setValue2] = useState<any>(null);
+  const [isFocus2, setIsFocus2] = useState(false);
+
+  const renderLabel = () => {
+    if (value || isFocus) {
+      return (
+        <Text style={[styles.label, isFocus && {color: 'blue'}]}>
+          Dropdown label
+        </Text>
+      );
+    }
+    return null;
+  };
 
   return (
-    <View style={styles.flex}>
-      <Dropdown
-        labelField={'label'}
-        valueField={'value'}
-        data={data}
-        onFocus={() => setIsFocus(true)}
-        onBlur={() => setIsFocus(false)}
-        value={value}
-        onChange={item => {
-          setValue(item.value);
-          setIsFocus(false);
-        }}
-      />
+    <View style={[styles.flex, bg]}>
+      <ScrollView>
+        <View style={styles.container}>
+          {renderLabel()}
+          <Dropdown
+            style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
+            placeholderStyle={styles.placeholderStyle}
+            selectedTextStyle={styles.selectedTextStyle}
+            inputSearchStyle={styles.inputSearchStyle}
+            iconStyle={styles.iconStyle}
+            data={data}
+            search
+            maxHeight={300}
+            labelField="label"
+            valueField="value"
+            searchPlaceholder="Search..."
+            value={value}
+            onFocus={() => setIsFocus(true)}
+            onBlur={() => setIsFocus(false)}
+            onChange={item => {
+              setValue(item.value);
+              setIsFocus(false);
+            }}
+          />
+        </View>
+
+  
+      </ScrollView>
     </View>
   );
 };
@@ -38,28 +82,44 @@ const DropdownScreen: React.FC<any> = () => {
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    padding: 50
+    padding: 50,
   },
   container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 20,
+    backgroundColor: 'white',
+    padding: 16,
   },
-  title: {
-    textAlign: 'center',
-    marginTop: 10,
-    marginBottom: 5,
+  dropdown: {
+    height: 50,
+    borderColor: 'gray',
+    borderWidth: 0.5,
+    borderRadius: 8,
+    paddingHorizontal: 8,
   },
-  header: {
-    marginBottom: 20,
-    textTransform: 'capitalize',
+  icon: {
+    marginRight: 5,
   },
-  gap: {
-    marginBottom: 8,
-    gap: 4,
-    justifyContent: 'center',
-    alignItems: 'center',
+  label: {
+    position: 'absolute',
+    backgroundColor: 'white',
+    left: 22,
+    top: 8,
+    zIndex: 999,
+    paddingHorizontal: 8,
+    fontSize: 14,
+  },
+  placeholderStyle: {
+    fontSize: 16,
+  },
+  selectedTextStyle: {
+    fontSize: 16,
+  },
+  iconStyle: {
+    width: 20,
+    height: 20,
+  },
+  inputSearchStyle: {
+    height: 40,
+    fontSize: 16,
   },
 });
 

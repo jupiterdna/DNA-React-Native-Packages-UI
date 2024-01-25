@@ -18,18 +18,19 @@ import {
   KeyboardEvent,
   Modal,
   StyleSheet,
-  Text,
   TouchableHighlight,
   TouchableWithoutFeedback,
   View,
   ViewStyle,
   StatusBar,
 } from 'react-native';
+import {DNAText} from '@rndna/text'
 import { useDetectDevice } from './utils/utils';
 import { useDeviceOrientation } from './utils/useOrientation';
 import CInput from './component/TextInput';
 import { DropdownProps } from './types';
 import { styles } from './styles';
+
 
 const { isTablet } = useDetectDevice;
 const ic_down = require('./assets/down.png');
@@ -373,7 +374,7 @@ const DropdownComponent: <T>(
         >
           <View style={styles.dropdown}>
             {renderLeftIcon?.(visible)}
-            <Text
+            <DNAText
               style={[
                 styles.textItem,
                 isSelected !== null ? selectedTextStyle : placeholderStyle,
@@ -384,18 +385,11 @@ const DropdownComponent: <T>(
               {isSelected !== null
                 ? _.get(currentValue, labelField)
                 : placeholder}
-            </Text>
+            </DNAText>
             {renderRightIcon ? (
               renderRightIcon(visible)
             ) : (
-              <Image
-                source={ic_down}
-                style={StyleSheet.flatten([
-                  styles.icon,
-                  { tintColor: iconColor },
-                  iconStyle,
-                ])}
-              />
+              <DNAText>Icon</DNAText>
             )}
           </View>
         </TouchableWithoutFeedback>
@@ -431,7 +425,7 @@ const DropdownComponent: <T>(
                 renderItem(item, selected)
               ) : (
                 <View style={styles.item}>
-                  <Text
+                  <DNAText
                     style={StyleSheet.flatten([
                       styles.textItem,
                       itemTextStyle,
@@ -439,7 +433,7 @@ const DropdownComponent: <T>(
                     ])}
                   >
                     {_.get(item, labelField)}
-                  </Text>
+                  </DNAText>
                 </View>
               )}
             </View>
