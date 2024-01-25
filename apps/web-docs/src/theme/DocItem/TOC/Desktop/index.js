@@ -17,7 +17,6 @@ export default function DesktopWrapper(props) {
   };
 
   const render = componentMapper(doc.frontMatter.id);
-
   const styleCls = state?.open ? 'w-full opacity-1' : 'w-0 opacity-0 h-0'
 
   return (

@@ -17,6 +17,7 @@
     "@rndna/badge": "*",
     "@rndna/fonts": "*",
     "@rndna/button": "*",
+    "@rndna/dropdown": "*",
     "@rndna/chip": "*",
     "@rndna/icon": "*",
     "@rndna/text": "*",

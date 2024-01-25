@@ -7,6 +7,7 @@ import {
   themeConfig,
 } from '@rndna/theme-provider';
 import Testscreen from './src/Screens/Testscreen';
+import DropdownScreen from './src/Screens/DropdownScreen';
 
 const Native = () => {
   const rnConfig: configType =
@@ -24,7 +25,7 @@ const Native = () => {
   return (
     <ThemeProvider config={rnConfig}>
       <>
-        <Testscreen />
+        <DropdownScreen />
       </>
     </ThemeProvider>
   );
