@@ -18,6 +18,7 @@
     "@rndna/fonts": "*",
     "@rndna/button": "*",
     "@rndna/dropdown": "*",
+    "@rndna/menu": "*",
     "@rndna/chip": "*",
     "@rndna/icon": "*",
     "@rndna/text": "*",
