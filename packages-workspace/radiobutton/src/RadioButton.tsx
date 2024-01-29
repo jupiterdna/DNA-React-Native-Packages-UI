@@ -4,7 +4,8 @@ import { DNARadioButtonProps } from './types';
 import { buttonSizeCls, styles, textSizeCls } from './styles';
 
 /**
- * This component lets users show and hide sections to save vertical space.
+ * This component meant for easy selection and decision-making. 
+ * By convention, only one button at a time can be selected
  * 
  * ## Usage
  * ```js
