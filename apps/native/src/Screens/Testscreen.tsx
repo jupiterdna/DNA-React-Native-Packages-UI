@@ -13,7 +13,12 @@ import {DNAImage} from '@rndna/image';
 import {DNARadioButton} from '@rndna/radiobutton';
 
 const Testscreen: React.FC<any> = () => {
-  const [selectedOption, setSelectedOption] = useState('1');
+  const [options, setOptions] = useState([
+    {id: '1', label: 'Option 1', checked: true},
+    {id: '2', label: 'Option 2', checked: false},
+    {id: '3', label: 'Option 3', checked: false},
+  ]);
+
   const bg: ViewStyle =
     useColorScheme() === 'dark'
       ? {
@@ -56,15 +61,16 @@ const Testscreen: React.FC<any> = () => {
     },
   ];
 
-  const options = [
-    {id: '1', label: 'Option 1'},
-    {id: '2', label: 'Option 2'},
-    {id: '3', label: 'Option 3'},
-  ];
-
   const handleRadioButtonPress = (id: string) => {
-    setSelectedOption(id);
+    setOptions(prevOptions =>
+      prevOptions.map(option => ({
+        ...option,
+        checked: option.id === id,
+      })),
+    );
   };
+
+  console.log('options', options);
 
   return (
     <View style={styles.flex}>
@@ -122,12 +128,14 @@ const Testscreen: React.FC<any> = () => {
                 <DNARadioButton
                   key={option.id}
                   id={option.id}
-                  checked={selectedOption === option.id}
+                  checked={option.checked}
                   label={option.label}
                   onPress={() => handleRadioButtonPress(option.id)}
                 />
               ))}
-              <Text>Selected Option: {selectedOption}</Text>
+              <Text>
+                Selected Option: {options.find(option => option.checked)?.id}
+              </Text>
             </View>
           </View>
         </DNACollapsible>

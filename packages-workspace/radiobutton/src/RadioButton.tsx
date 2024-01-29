@@ -14,15 +14,21 @@ import { buttonSizeCls, styles, textSizeCls } from './styles';
  * import { DNARadioButton } from '@rndna/radiobutton';
  *
  * const MyComponent = () => {
- *  const options = [
- *    {id: '1', label: 'Option 1'},
- *    {id: '2', label: 'Option 2'},
- *    {id: '3', label: 'Option 3'},
- *  ];
+ *  //Sample options
+ *  const [options, setOptions] = useState([
+ *    {id: '1', label: 'Option 1', checked: true},
+ *    {id: '2', label: 'Option 2', checked: false},
+ *    {id: '3', label: 'Option 3', checked: false},
+ *  ]);
  *  
- *  const handleRadioButtonPress = (id: string) => {
- *    setSelectedOption(id);
- *  };
+ * const handleRadioButtonPress = (id: string) => {
+ *   setOptions(prevOptions =>
+ *     prevOptions.map(option => ({
+ *       ...option,
+ *       checked: option.id === id,
+ *     })),
+ *   );
+ * };
  *    
  *  return (
  *    <View style={styles.gap}>
@@ -30,13 +36,14 @@ import { buttonSizeCls, styles, textSizeCls } from './styles';
  *         <DNARadioButton
  *           key={option.id}
  *           id={option.id}
- *           checked={selectedOption === option.id}
+ *           checked={options.checked}
  *           label={option.label}
  *           onPress={() => handleRadioButtonPress(option.id)}
  *         />
  *       ))}
  *    </View>
- *    <Text>Selected Option: {selectedOption}</Text>
+ *    // Display selected option
+ *    <Text>Selected Option: {options.find((option) => option.checked)?.id}</Text>
  *   );
  * };
  * 
