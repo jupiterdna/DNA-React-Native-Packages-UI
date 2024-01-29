@@ -43,7 +43,7 @@ export interface DNAButtonProps extends PressableProps {
      */
     borderRadius?: borderRadiusProps;
     /**
-     * Defines the border dimensions of the component
+     * Property where the user can enable or disable the certain attribute or field
      */
     isDisabled?: boolean;
     /**
