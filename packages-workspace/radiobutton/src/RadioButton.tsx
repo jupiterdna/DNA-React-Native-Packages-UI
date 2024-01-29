@@ -9,7 +9,7 @@ import { buttonSizeCls, styles, textSizeCls } from './styles';
  * 
  * ## Usage
  * ```js
- * import * as React from 'react';
+ * import * as React, { useState } from 'react';
  * import { View, StyleSheet } from 'react-native';
  * import { DNARadioButton } from '@rndna/radiobutton';
  *
