@@ -1,7 +1,8 @@
 import React from 'react';
-import { View, Text, Pressable, GestureResponderEvent } from 'react-native';
+import { View, Pressable, GestureResponderEvent } from 'react-native';
 import { DNARadioButtonProps } from './types';
-import { buttonSizeCls, styles, textSizeCls } from './styles';
+import { buttonSizeCls, styles } from './styles';
+import { DNAText } from '@rndna/text'
 
 /**
  * This component meant for easy selection and decision-making. 
@@ -86,6 +87,23 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
     }
   };
 
+  const getTextSize = () => {
+    switch(size) {
+      case 'xs': 
+        return 'overline'
+      case 'sm':
+        return 'caption'
+      case 'md':
+        return 'body2'
+      case 'lg':
+        return 'body1'
+      case 'xl':
+        return 'label'
+      default: 
+        return 'body2'
+    }
+  }
+
   return (
     <Pressable
       {...restProps}
@@ -101,7 +119,7 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       <View style={[styles.radioInner, buttonSizeCls[size]]}>
         <View style={[calculatedButtonSize, checked ? styles.checked : null]} />
       </View>
-      <Text style={textSizeCls[size]}>{label}</Text>
+      <DNAText type={getTextSize()}>{label}</DNAText>
     </Pressable>
   );
 });

@@ -58,21 +58,3 @@ export const buttonSizeCls = {
     height: 24,
   },
 };
-
-export const textSizeCls = {
-  xs: {
-    fontSize: 10,
-  },
-  sm: {
-    fontSize: 12,
-  },
-  md: {
-    fontSize: 14,
-  },
-  lg: {
-    fontSize: 16,
-  },
-  xl: {
-    fontSize: 18,
-  },
-};
