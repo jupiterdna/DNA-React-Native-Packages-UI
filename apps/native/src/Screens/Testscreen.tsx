@@ -11,14 +11,19 @@ import {DNACollapsible} from '@rndna/collapsible';
 import {DNAText} from '@rndna/text';
 import {DNAImage} from '@rndna/image';
 import {DNARadioButton} from '@rndna/radiobutton';
+import {DNACheckbox} from '@rndna/checkbox';
 
 const Testscreen: React.FC<any> = () => {
-  const [options, setOptions] = useState([
+  const optionItems = [
     {id: '1', label: 'Option 1', checked: true},
     {id: '2', label: 'Option 2', checked: false},
     {id: '3', label: 'Option 3', checked: false},
     {id: '4', label: 'Option 4', checked: false},
-  ]);
+  ];
+
+  const [options, setOptions] = useState(optionItems);
+
+  const [cOptions, setCoptions] = useState(optionItems);
 
   const bg: ViewStyle =
     useColorScheme() === 'dark'
@@ -74,15 +79,13 @@ const Testscreen: React.FC<any> = () => {
 
   //Handle for checkbox
   const handleCheckboxPress = (id: string) => {
-    setOptions(prevOptions =>
+    setCoptions(prevOptions =>
       prevOptions.map(option => ({
         ...option,
         checked: option.id === id ? !option.checked : option.checked,
       })),
     );
   };
-
-  console.log('options', options);
 
   return (
     <View style={styles.flex}>
@@ -143,6 +146,21 @@ const Testscreen: React.FC<any> = () => {
                   checked={option.checked}
                   label={option.label}
                   onPress={() => handleRadioButtonPress(option.id)}
+                />
+              ))}
+            </View>
+          </View>
+        </DNACollapsible>
+        <DNACollapsible title={'Checkbox'} isOpen>
+          <View style={styles.gap}>
+            <View>
+              {cOptions.map(option => (
+                <DNACheckbox
+                  key={option.id}
+                  id={option.id}
+                  checked={option.checked}
+                  label={option.label}
+                  onPress={() => handleCheckboxPress(option.id)}
                 />
               ))}
             </View>

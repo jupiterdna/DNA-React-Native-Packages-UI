@@ -1,9 +1,9 @@
 import React from 'react';
-import { View, Pressable, GestureResponderEvent } from 'react-native';
-import { DNARadioButtonProps } from './types';
+import { View, Pressable, GestureResponderEvent, useColorScheme } from 'react-native';
+import { DNACheckboxProps } from './types';
 import { buttonSizeCls, styles } from './styles';
 import { DNAText } from '@rndna/text';
-import { CircleIcon } from '@rndna/icon';
+import { CheckSmallIcon } from '@rndna/icon';
 import { useColor } from '@rndna/theme-provider';
 
 /**
@@ -14,7 +14,7 @@ import { useColor } from '@rndna/theme-provider';
  * ```js
  * import * as React, { useState } from 'react';
  * import { View, StyleSheet } from 'react-native';
- * import { DNARadioButton } from '@rndna/radiobutton';
+ * import { DNACheckbox } from '@rndna/Checkbox';
  *
  * const MyComponent = () => {
  *  //Sample options
@@ -24,11 +24,11 @@ import { useColor } from '@rndna/theme-provider';
  *    {id: '3', label: 'Option 3', checked: false},
  *  ]);
  *  
- * const handleRadioButtonPress = (id: string) => {
- *   setOptions(prevOptions =>
+ * const handleCheckboxPress = (id: string) => {
+ *   setCoptions(prevOptions =>
  *     prevOptions.map(option => ({
  *       ...option,
- *       checked: option.id === id,
+ *       checked: option.id === id ? !option.checked : option.checked,
  *     })),
  *   );
  * };
@@ -36,12 +36,12 @@ import { useColor } from '@rndna/theme-provider';
  *  return (
  *    <View style={styles.gap}>
  *       {options.map(option => (
- *         <DNARadioButton
+ *         <DNACheckbox
  *           key={option.id}
  *           id={option.id}
  *           checked={options.checked}
  *           label={option.label}
- *           onPress={() => handleRadioButtonPress(option.id)}
+ *           onPress={() => handleCheckboxPress(option.id)}
  *         />
  *       ))}
  *    </View>
@@ -62,7 +62,7 @@ import { useColor } from '@rndna/theme-provider';
  */
 
 
-export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
+export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
   (
     {
       label,
@@ -72,17 +72,14 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       id,
       onPress,
       ...restProps
-    }: DNARadioButtonProps,
+    }: DNACheckboxProps,
     ref: React.Ref<any>,
   ) => {
-
+    
   const themeColor = useColor();
-  const defaultColors = themeColor["primary"]["default"];
+  const secondaryColor = themeColor["primary"][100];
 
-  const calculatedButtonSize = {
-    width: buttonSizeCls[size]?.width - 6,
-    height: buttonSizeCls[size]?.height - 6,
-  };
+  const checkColor = useColorScheme() === "light" ? "white" : secondaryColor;
 
   const handlePress = (event: GestureResponderEvent) => {
     if (onPress) {
@@ -113,14 +110,19 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       ref={ref}
       key={id}
       style={[
-        styles.radio,
+        styles.check,
         disabled || disabled ? styles.disabled : null,
       ]}
       disabled={disabled || disabled}
       onPress={handlePress}
     >
-      <View style={[styles.radioInner, buttonSizeCls[size]]}>
-        { checked ? <CircleIcon size={buttonSizeCls[size]?.width - 4} color={defaultColors}/> : null }
+      <View  
+        style={[
+          styles.innerWrapper, 
+          buttonSizeCls[size], 
+          checked ? styles.checkedInner : styles.unCheckedInner
+        ]}>
+        { checked ? <CheckSmallIcon size={buttonSizeCls[size]?.width} color={checkColor} /> : null }
       </View>
       <DNAText type={getTextSize()}>{label}</DNAText>
     </Pressable>
