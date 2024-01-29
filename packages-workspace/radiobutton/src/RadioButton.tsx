@@ -2,7 +2,9 @@ import React from 'react';
 import { View, Pressable, GestureResponderEvent } from 'react-native';
 import { DNARadioButtonProps } from './types';
 import { buttonSizeCls, styles } from './styles';
-import { DNAText } from '@rndna/text'
+import { DNAText } from '@rndna/text';
+import { CircleIcon } from '@rndna/icon';
+import { useColor } from '@rndna/theme-provider';
 
 /**
  * This component meant for easy selection and decision-making. 
@@ -76,9 +78,12 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
     ref: React.Ref<any>,
   ) => {
 
+  const themeColor = useColor();
+  const defaultColors = themeColor["primary"]["default"];
+
   const calculatedButtonSize = {
-    width: buttonSizeCls[size].width - 6,
-    height: buttonSizeCls[size].height - 6,
+    width: buttonSizeCls[size]?.width - 6,
+    height: buttonSizeCls[size]?.height - 6,
   };
 
   const handlePress = (event: GestureResponderEvent) => {
@@ -117,7 +122,7 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       onPress={handlePress}
     >
       <View style={[styles.radioInner, buttonSizeCls[size]]}>
-        <View style={[calculatedButtonSize, checked ? styles.checked : null]} />
+        { checked ? <CircleIcon size={buttonSizeCls[size]?.width - 4} color={defaultColors}/> : null }
       </View>
       <DNAText type={getTextSize()}>{label}</DNAText>
     </Pressable>
