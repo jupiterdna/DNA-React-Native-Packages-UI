@@ -124,7 +124,6 @@ const Testscreen: React.FC<any> = () => {
                   id={option.id}
                   checked={selectedOption === option.id}
                   label={option.label}
-                  size="xs"
                   onPress={() => handleRadioButtonPress(option.id)}
                 />
               ))}
