@@ -17,6 +17,7 @@ const Testscreen: React.FC<any> = () => {
     {id: '1', label: 'Option 1', checked: true},
     {id: '2', label: 'Option 2', checked: false},
     {id: '3', label: 'Option 3', checked: false},
+    {id: '4', label: 'Option 4', checked: false},
   ]);
 
   const bg: ViewStyle =
@@ -61,11 +62,22 @@ const Testscreen: React.FC<any> = () => {
     },
   ];
 
+  //Handle for radiobutton
   const handleRadioButtonPress = (id: string) => {
     setOptions(prevOptions =>
       prevOptions.map(option => ({
         ...option,
         checked: option.id === id,
+      })),
+    );
+  };
+
+  //Handle for checkbox
+  const handleCheckboxPress = (id: string) => {
+    setOptions(prevOptions =>
+      prevOptions.map(option => ({
+        ...option,
+        checked: option.id === id ? !option.checked : option.checked,
       })),
     );
   };
@@ -133,9 +145,6 @@ const Testscreen: React.FC<any> = () => {
                   onPress={() => handleRadioButtonPress(option.id)}
                 />
               ))}
-              <Text>
-                Selected Option: {options.find(option => option.checked)?.id}
-              </Text>
             </View>
           </View>
         </DNACollapsible>
