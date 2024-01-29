@@ -4,22 +4,16 @@ import {
   useColorScheme,
   ViewStyle,
   ScrollView,
+  Text,
 } from 'react-native';
-import React from 'react';
-import {DNAChip} from '@rndna/chip';
+import React, {useState} from 'react';
 import {DNACollapsible} from '@rndna/collapsible';
-import {DNAButton} from '@rndna/button';
-import {InfoCircleIcon, UserIcon} from '@rndna/icon';
 import {DNAText} from '@rndna/text';
-import {
-  DNAAvatar,
-  DNAAvatarWithStatus,
-  DNAAvatarWithBadge,
-} from '@rndna/avatar';
-import {DNAAvatarGroup} from '@rndna/avatar_group';
 import {DNAImage} from '@rndna/image';
+import {DNARadioButton} from '@rndna/radiobutton';
 
 const Testscreen: React.FC<any> = () => {
+  const [selectedOption, setSelectedOption] = useState('1');
   const bg: ViewStyle =
     useColorScheme() === 'dark'
       ? {
@@ -62,6 +56,15 @@ const Testscreen: React.FC<any> = () => {
     },
   ];
 
+  const options = [
+    {id: '1', label: 'Option 1'},
+    {id: '2', label: 'Option 2'},
+    {id: '3', label: 'Option 3'},
+  ];
+
+  const handleRadioButtonPress = (id: string) => {
+    setSelectedOption(id);
+  };
 
   return (
     <View style={styles.flex}>
@@ -69,14 +72,39 @@ const Testscreen: React.FC<any> = () => {
         <DNAText type="h4" style={styles.header}>
           Native: {useColorScheme()} Mode
         </DNAText>
-        <DNACollapsible title={'DNA Image'} isOpen height={600}>
+        <DNACollapsible title={'DNA Image'} height={600}>
           <ScrollView>
             <View style={styles.gap}>
-              <DNAImage src={group_data[0].src} fit="contain" ratio="4:3" size="xs" />
-              <DNAImage src={group_data[0].src} fit="contain" ratio="4:3" size="sm" />
-              <DNAImage src={group_data[0].src} fit="contain" ratio="4:3" size="md" />
-              <DNAImage src={group_data[0].src} fit="contain" ratio="4:3" size="lg" />
-              <DNAImage src={group_data[0].src} fit="contain" ratio="4:3" size="xl" />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="xs"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="sm"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="md"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="lg"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="xl"
+              />
             </View>
             <View style={styles.gap}>
               <DNAImage src={group_data[0].src} ratio="4:3" size="xs" />
@@ -86,6 +114,23 @@ const Testscreen: React.FC<any> = () => {
               <DNAImage src={group_data[0].src} ratio="4:3" size="xl" />
             </View>
           </ScrollView>
+        </DNACollapsible>
+        <DNACollapsible title={'RadioButton'} isOpen>
+          <View style={styles.gap}>
+            <View>
+              {options.map(option => (
+                <DNARadioButton
+                  key={option.id}
+                  id={option.id}
+                  checked={selectedOption === option.id}
+                  label={option.label}
+                  size="xs"
+                  onPress={() => handleRadioButtonPress(option.id)}
+                />
+              ))}
+              <Text>Selected Option: {selectedOption}</Text>
+            </View>
+          </View>
         </DNACollapsible>
         {/* <DNACollapsible title={'Avatar Group'}>
           <View style={styles.gap}>

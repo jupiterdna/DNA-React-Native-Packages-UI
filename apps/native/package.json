@@ -22,6 +22,7 @@
     "@rndna/text": "*",
     "@rndna/avatar": "*",
     "@rndna/image": "*",
+    "@rndna/radiobutton": "*",
     "@rndna/avatar_group": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",

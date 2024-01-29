@@ -1,5 +1,8 @@
 import { StyleSheet } from 'react-native';
-import { defaultColors } from "@rndna/base_style";
+import { useColor } from '@rndna/theme-provider';
+
+const themeColor = useColor();
+const defaultColors = themeColor["primary"]["default"];
 
 export const styles = StyleSheet.create({
   label: {
@@ -9,12 +12,6 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
   },
-  vertical: {
-    flexDirection: 'column',
-  },
-  horizontal: {
-    flexDirection: 'row',
-  },
   radioInner: {
     width: 16,
     height: 16,
@@ -22,7 +19,7 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: defaultColors.primary,
+    borderColor: defaultColors,
     marginRight: 6,
   },
   radioWrapper: {
@@ -31,33 +28,18 @@ export const styles = StyleSheet.create({
     width: '100%',
   },
   checked: {
-    backgroundColor: defaultColors.primary,
+    backgroundColor: defaultColors,
     borderRadius: 99,
-  },
-  compactGap: {
-    marginBottom: 4,
-    marginRight: 8,
-  },
-  defaultGap: {
-    marginBottom: 8,
-    marginRight: 16,
-  },
-  comfortableGap: {
-    marginBottom: 12,
-    marginRight: 24,
   },
   disabled: {
     opacity: 0.5,
-  },
-  childoption: {
-    marginLeft: 24,
   },
 });
 
 export const buttonSizeCls = {
   xs: {
     width: 14,
-    height: 16,
+    height: 14,
   },
   sm: {
     width: 16,
