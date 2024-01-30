@@ -110,10 +110,10 @@ const MenuComponent: <T>(
     }, [W, orientation]);
 
     const themeColor = useColor();
-    const defaultColor = themeColor[color]["default"];
-    const defaultBgColor = themeColor[color]["100"]
-    const activeColor = themeColor[color]["100"]
-    const activeTextColor = themeColor[color]["default"];
+    const defaultTextColor = themeColor[color]["default"];
+    const defaultBgColor = themeColor[color]["50"]
+    const activeColor = themeColor[color]["default"]
+    const activeTextColor = themeColor[color]["50"];
 
     useImperativeHandle(currentRef, () => {
       return { open: eventOpen, close: eventClose };
@@ -137,7 +137,7 @@ const MenuComponent: <T>(
       return typeof icon === "function"
         ? createElement(icon, {
             size: (textSizeCls[size].fontSize || -1) + 7,
-            color: defaultColor
+            color: defaultTextColor
           })
         : icon
 
@@ -453,7 +453,7 @@ const MenuComponent: <T>(
                       styles.textItem,
                       itemTextStyle,
                       {
-                        color: selected ? activeTextColor : defaultColor
+                        color: selected ? activeTextColor : defaultTextColor
                       }
                     ])}
                   >
