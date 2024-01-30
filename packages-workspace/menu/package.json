@@ -23,15 +23,17 @@
     "@types/lodash": "^4.14.191"
   },
   "dependencies": {
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "@rndna/theme-provider": "*"
   },
   "peerDependencies": {
     "expo": "*",
     "react": "*",
     "react-native": "*",
     "@dnamobile/typescript-config": "*",
-    "@rndna/base_style": "*",
     "@rndna/icon": "*",
-    "@rndna/text": "*"
+    "@rndna/text": "*",
+    "react-native-svg":"*",
+    "@rndna/base_style":"*"
   }
 }

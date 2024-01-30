@@ -7,8 +7,8 @@ import {
   Text,
 } from 'react-native';
 import React, {useState} from 'react';
-import {Dropdown} from '@rndna/dropdown';
 import {Menu} from '@rndna/menu';
+import { MenuHamburgerIcon } from '@rndna/icon';
 
 const data = [
   {label: 'Item 1', value: '1'},
@@ -44,21 +44,28 @@ const DropdownScreen: React.FC<any> = () => {
 
   return (
     <View style={[styles.flex, bg]}>
+          <View
+          style={{
+            backgroundColor: 'red',
+            position: 'fixed',
+            top: 120,
+            left: 353 - 50,
+          }}></View>
       <ScrollView>
-        <View style={styles.container}>
-          {renderLabel()}
-          <Dropdown
-            style={[styles.dropdown, isFocus && { borderColor: 'blue' }]}
-            placeholderStyle={styles.placeholderStyle}
-            selectedTextStyle={styles.selectedTextStyle}
-            inputSearchStyle={styles.inputSearchStyle}
-            iconStyle={styles.iconStyle}
+        <View
+          style={[
+            styles.container,
+            {
+              justifyContent: 'flex-end',
+              flexDirection: 'row',
+            },
+          ]}>
+          <Menu
+            dropDownMaxWidth={120}
             data={data}
-            search
             maxHeight={300}
             labelField="label"
             valueField="value"
-            searchPlaceholder="Search..."
             value={value}
             onFocus={() => setIsFocus(true)}
             onBlur={() => setIsFocus(false)}
@@ -69,7 +76,6 @@ const DropdownScreen: React.FC<any> = () => {
           />
         </View>
 
-  
       </ScrollView>
     </View>
   );
@@ -79,10 +85,10 @@ const styles = StyleSheet.create({
   flex: {
     flex: 1,
     padding: 50,
+    paddingRight: 10,
   },
   container: {
-    backgroundColor: 'white',
-    padding: 16,
+    // padding: 16,
   },
   dropdown: {
     height: 50,

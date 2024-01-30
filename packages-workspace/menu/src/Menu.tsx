@@ -2,6 +2,7 @@ import _ from "lodash";
 import React, {
   JSXElementConstructor,
   ReactElement,
+  createElement,
   useCallback,
   useEffect,
   useImperativeHandle,
@@ -12,8 +13,6 @@ import React, {
 import {
   Dimensions,
   FlatList,
-  I18nManager,
-  Image,
   Keyboard,
   KeyboardEvent,
   Modal,
@@ -32,6 +31,9 @@ import { DropdownProps } from "./types";
 import { styles } from "./styles";
 import { MenuKebabIcon } from "@rndna/icon";
 import { DNAText } from "@rndna/text";
+import { buttonSizeCls, textSizeCls, drop_styles } from './styles';
+import { darkmodeColor, useColor } from "@rndna/theme-provider";
+import { useColorScheme } from "react-native";
 
 const { isTablet } = useDetectDevice;
 const ic_down = require("./assets/down.png");
@@ -50,31 +52,23 @@ const MenuComponent: <T>(
       onChange,
       style = {},
       containerStyle,
-      placeholderStyle,
-      selectedTextStyle,
       itemContainerStyle,
       itemTextStyle,
-      inputSearchStyle,
-      iconStyle,
-      selectedTextProps = {},
       data = [],
       labelField,
       valueField,
       searchField,
+      dropDownMaxWidth = 280,
       value,
-      activeColor = "#F6F7F8",
       fontFamily,
-      iconColor = "gray",
-      searchPlaceholder,
-      placeholder = "Select item",
-      search = false,
+      color='default',
+      size='md',
+      icon = MenuKebabIcon,
       maxHeight = 340,
       minHeight = 0,
       disable = false,
       keyboardAvoiding = true,
       inverted = true,
-      renderLeftIcon,
-      renderRightIcon,
       renderItem,
       renderInputSearch,
       onFocus,
@@ -84,7 +78,6 @@ const MenuComponent: <T>(
       dropdownPosition = "auto",
       flatListProps,
       searchQuery,
-      backgroundColor,
       onChangeText,
       confirmSelectItem,
       onConfirmSelectItem,
@@ -116,6 +109,12 @@ const MenuComponent: <T>(
       };
     }, [W, orientation]);
 
+    const themeColor = useColor();
+    const defaultColor = themeColor[color]["default"];
+    const defaultBgColor = useColorScheme() === 'light' ?  'white' : themeColor[color]["default"]
+    const activeColor = useColorScheme() === 'light' ? themeColor[color]["default"] :themeColor[color][300];
+    const activeTextColor = useColorScheme() === 'light' ? 'white' :themeColor[color]["default"] ;
+
     useImperativeHandle(currentRef, () => {
       return { open: eventOpen, close: eventClose };
     });
@@ -132,6 +131,17 @@ const MenuComponent: <T>(
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, searchText]);
+
+    const renderIcon = useCallback(() => {
+      
+      return typeof icon === "function"
+        ? createElement(icon, {
+            size: (textSizeCls[size].fontSize || -1) + 7,
+            color: defaultColor
+          })
+        : icon
+
+    }, [icon])
 
     const eventOpen = () => {
       if (!disable) {
@@ -179,8 +189,7 @@ const MenuComponent: <T>(
 
           const top = isFull ? 20 : height + pageY + 2;
           const bottom = H - top + height;
-          // const left = I18nManager.isRTL ? W - width - pageX : pageX;
-          const left = pageX;
+          const left = pageX + width + 20 >= W ? (pageX + width) - dropDownMaxWidth : pageX;
 
           setPosition({
             isFull,
@@ -192,7 +201,7 @@ const MenuComponent: <T>(
           });
         });
       }
-    }, [H, W, orientation, mode]);
+    }, [H, W, orientation, mode, dropDownMaxWidth]);
 
     const onKeyboardDidShow = useCallback(
       (e: KeyboardEvent) => {
@@ -389,7 +398,7 @@ const MenuComponent: <T>(
                 : placeholder}
             </Text> */}
             <DNAText style={{ width: 0, height: 0 }}></DNAText>
-            <MenuKebabIcon size={30} />
+            {renderIcon()}
             {/* {renderRightIcon ? (
               renderRightIcon(visible)
             ) : (
@@ -427,24 +436,29 @@ const MenuComponent: <T>(
             <View
               style={StyleSheet.flatten([
                 itemContainerStyle,
-                selected && {
+                selected ? {
                   backgroundColor: activeColor,
+                } : {
+                  backgroundColor : defaultBgColor
                 },
+                
               ])}
             >
               {renderItem ? (
                 renderItem(item, selected)
               ) : (
                 <View style={styles.item}>
-                  <Text
+                  <DNAText
                     style={StyleSheet.flatten([
                       styles.textItem,
                       itemTextStyle,
-                      font(),
+                      {
+                        color: selected ? activeTextColor : defaultColor
+                      }
                     ])}
                   >
                     {_.get(item, labelField)}
-                  </Text>
+                  </DNAText>
                 </View>
               )}
             </View>
@@ -453,7 +467,6 @@ const MenuComponent: <T>(
       },
       [
         accessibilityLabel,
-        activeColor,
         currentValue,
         font,
         itemAccessibilityLabelField,
@@ -468,50 +481,47 @@ const MenuComponent: <T>(
     );
 
     const renderSearch = useCallback(() => {
-      if (search) {
-        if (renderInputSearch) {
-          return renderInputSearch((text) => {
-            if (onChangeText) {
-              setSearchText(text);
-              onChangeText(text);
-            }
-            onSearch(text);
-          });
-        } else {
-          return (
-            <CInput
-              testID={testID + " input"}
-              accessibilityLabel={accessibilityLabel + " input"}
-              style={[styles.input, inputSearchStyle]}
-              inputStyle={[inputSearchStyle, font()]}
-              value={searchText}
-              autoCorrect={false}
-              placeholder={searchPlaceholder}
-              onChangeText={(e) => {
-                if (onChangeText) {
-                  setSearchText(e);
-                  onChangeText(e);
-                }
-                onSearch(e);
-              }}
-              placeholderTextColor="gray"
-              iconStyle={[{ tintColor: iconColor }, iconStyle]}
-            />
-          );
-        }
-      }
-      return null;
+      return null
+      // if (search) {
+      //   return null
+      //   // if (renderInputSearch) {
+      //   //   return renderInputSearch((text) => {
+      //   //     if (onChangeText) {
+      //   //       setSearchText(text);
+      //   //       onChangeText(text);
+      //   //     }
+      //   //     onSearch(text);
+      //   //   });
+      //   // } else {
+      //   //   return (
+      //   //     <CInput
+      //   //       testID={testID + " input"}
+      //   //       accessibilityLabel={accessibilityLabel + " input"}
+      //   //       style={[styles.input, inputSearchStyle]}
+      //   //       inputStyle={[inputSearchStyle, font()]}
+      //   //       value={searchText}
+      //   //       autoCorrect={false}
+      //   //       placeholder={searchPlaceholder}
+      //   //       onChangeText={(e) => {
+      //   //         if (onChangeText) {
+      //   //           setSearchText(e);
+      //   //           onChangeText(e);
+      //   //         }
+      //   //         onSearch(e);
+      //   //       }}
+      //   //       placeholderTextColor="gray"
+      //   //       iconStyle={[{ tintColor: iconColor }, iconStyle]}
+      //   //     />
+      //   //   );
+      //   // }
+      // }
+      // return null;
     }, [
       accessibilityLabel,
       font,
-      iconColor,
-      iconStyle,
-      inputSearchStyle,
       onChangeText,
       onSearch,
       renderInputSearch,
-      search,
-      searchPlaceholder,
       testID,
       searchText,
     ]);
@@ -570,7 +580,8 @@ const MenuComponent: <T>(
             return bottom < keyboardHeight + height;
           }
 
-          return bottom < (search ? 150 : 100);
+          // return bottom < (search ? 150 : 100);
+          return bottom < 100;
         };
 
         if (width && top && bottom) {
@@ -609,7 +620,7 @@ const MenuComponent: <T>(
                   style={StyleSheet.flatten([
                     styles.flex1,
                     isFull && styleContainerVertical,
-                    backgroundColor && { backgroundColor: backgroundColor },
+                    // backgroundColor && { backgroundColor: backgroundColor },
                     keyboardStyle,
                   ])}
                 >
@@ -629,14 +640,12 @@ const MenuComponent: <T>(
                       style={StyleSheet.flatten([
                         styles.container,
                         isFull ? styleHorizontal : styleVertical,
-                        {
-                          width: 100,
-                        },
                         containerStyle,
                         {
-                          backgroundColor: "red",
+                          backgroundColor: defaultBgColor,
+                          overflow: 'hidden',
                           borderRadius: 15,
-                          overflow: "hidden",
+                          maxWidth: dropDownMaxWidth
                         },
                       ])}
                     >
@@ -653,7 +662,6 @@ const MenuComponent: <T>(
       return null;
     }, [
       visible,
-      search,
       position,
       keyboardHeight,
       maxHeight,
@@ -662,7 +670,7 @@ const MenuComponent: <T>(
       keyboardAvoiding,
       showOrClose,
       styleContainerVertical,
-      backgroundColor,
+      // backgroundColor,
       containerStyle,
       styleHorizontal,
       _renderList,
@@ -670,7 +678,10 @@ const MenuComponent: <T>(
 
     return (
       <View
-        style={StyleSheet.flatten([styles.mainWrap, style])}
+        style={StyleSheet.flatten([
+          styles.mainWrap,
+          style,
+        ])}
         ref={ref}
         onLayout={_measure}
       >
