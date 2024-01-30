@@ -79,11 +79,6 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
   const themeColor = useColor();
   const defaultColors = themeColor["primary"]["default"];
 
-  const calculatedButtonSize = {
-    width: buttonSizeCls[size]?.width - 6,
-    height: buttonSizeCls[size]?.height - 6,
-  };
-
   const handlePress = (event: GestureResponderEvent) => {
     if (onPress) {
       onPress(event);
@@ -119,7 +114,7 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       disabled={disabled || disabled}
       onPress={handlePress}
     >
-      <View style={[styles.radioInner, buttonSizeCls[size]]}>
+      <View style={[styles.radioInner, buttonSizeCls[size], { borderColor: defaultColors }]}>
         { checked ? <CircleIcon size={buttonSizeCls[size]?.width - 4} color={defaultColors}/> : null }
       </View>
       <DNAText type={getTextSize()}>{label}</DNAText>

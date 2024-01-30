@@ -93,7 +93,7 @@ const Testscreen: React.FC<any> = () => {
         <DNAText type="h4" style={styles.header}>
           Native: {useColorScheme()} Mode
         </DNAText>
-        <DNACollapsible title={'DNA Image'} height={600}>
+        <DNACollapsible title={'DNA Image'}>
           <ScrollView>
             <View style={styles.gap}>
               <DNAImage
@@ -144,7 +144,7 @@ const Testscreen: React.FC<any> = () => {
                   key={option.id}
                   id={option.id}
                   checked={option.checked}
-                  label={option.label}
+                  label={`RadioBtn ${option.label}`}
                   onPress={() => handleRadioButtonPress(option.id)}
                 />
               ))}
@@ -159,7 +159,7 @@ const Testscreen: React.FC<any> = () => {
                   key={option.id}
                   id={option.id}
                   checked={option.checked}
-                  label={option.label}
+                  label={`Checkbox ${option.label}`}
                   onPress={() => handleCheckboxPress(option.id)}
                 />
               ))}

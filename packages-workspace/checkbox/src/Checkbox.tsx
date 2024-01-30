@@ -77,6 +77,7 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
   ) => {
     
   const themeColor = useColor();
+  const defaultColors = themeColor["primary"]["default"];
   const secondaryColor = themeColor["primary"][100];
 
   const checkColor = useColorScheme() === "light" ? "white" : secondaryColor;
@@ -104,6 +105,12 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
     }
   }
 
+  const checkBtnCls = 
+    checked 
+      ? { backgroundColor: defaultColors }
+      : { borderWidth: 1, backgroundColor: "transparent", borderColor: defaultColors}
+      
+
   return (
     <Pressable
       {...restProps}
@@ -120,7 +127,7 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
         style={[
           styles.innerWrapper, 
           buttonSizeCls[size], 
-          checked ? styles.checkedInner : styles.unCheckedInner
+          checkBtnCls,
         ]}>
         { checked ? <CheckSmallIcon size={buttonSizeCls[size]?.width} color={checkColor} /> : null }
       </View>

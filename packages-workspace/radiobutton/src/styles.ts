@@ -1,8 +1,4 @@
 import { StyleSheet } from 'react-native';
-import { useColor } from '@rndna/theme-provider';
-
-const themeColor = useColor();
-const defaultColors = themeColor["primary"]["default"];
 
 export const styles = StyleSheet.create({
   label: {
@@ -19,17 +15,12 @@ export const styles = StyleSheet.create({
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    borderColor: defaultColors,
     marginRight: 6,
   },
   radioWrapper: {
     flexDirection: 'column',
     borderWidth: 1,
     width: '100%',
-  },
-  checked: {
-    backgroundColor: defaultColors,
-    borderRadius: 99,
   },
   disabled: {
     opacity: 0.5,
