@@ -4,7 +4,6 @@ import {
   useColorScheme,
   ViewStyle,
   ScrollView,
-  Text,
 } from 'react-native';
 import React, {useState} from 'react';
 import {DNACollapsible} from '@rndna/collapsible';
@@ -12,6 +11,15 @@ import {DNAText} from '@rndna/text';
 import {DNAImage} from '@rndna/image';
 import {DNARadioButton} from '@rndna/radiobutton';
 import {DNACheckbox} from '@rndna/checkbox';
+import {
+  DNAAvatar,
+  DNAAvatarWithBadge,
+  DNAAvatarWithStatus,
+} from '@rndna/avatar';
+import {DNAAvatarGroup} from '@rndna/avatar_group';
+import {DNAButton} from '@rndna/button';
+import {DNAChip} from '@rndna/chip';
+import {InfoCircleIcon, UserIcon} from '@rndna/icon';
 
 const Testscreen: React.FC<any> = () => {
   const optionItems = [
@@ -136,7 +144,7 @@ const Testscreen: React.FC<any> = () => {
             </View>
           </ScrollView>
         </DNACollapsible>
-        <DNACollapsible title={'RadioButton'} isOpen>
+        <DNACollapsible title={'RadioButton'}>
           <View style={styles.gap}>
             {options.map(option => (
               <DNARadioButton
@@ -150,7 +158,7 @@ const Testscreen: React.FC<any> = () => {
             ))}
           </View>
         </DNACollapsible>
-        <DNACollapsible title={'Checkbox'} isOpen>
+        <DNACollapsible title={'Checkbox'}>
           <View style={styles.gap}>
             {cOptions.map(option => (
               <DNACheckbox
@@ -164,7 +172,7 @@ const Testscreen: React.FC<any> = () => {
             ))}
           </View>
         </DNACollapsible>
-        {/* <DNACollapsible title={'Avatar Group'}>
+        <DNACollapsible title={'Avatar Group'}>
           <View style={styles.gap}>
             <DNAAvatarGroup options={group_data} color="info" size="xs" />
             <DNAAvatarGroup options={group_data} color="danger" size="sm" />
@@ -174,7 +182,7 @@ const Testscreen: React.FC<any> = () => {
           </View>
         </DNACollapsible>
         <DNACollapsible title={'Buttons'}>
-         <ScrollView>
+          <ScrollView>
             <View style={styles.gap}>
               <DNAButton label="Button" size="xs" variant="soft" />
               <DNAButton label="Button" size="sm" variant="outlined" />
@@ -361,7 +369,7 @@ const Testscreen: React.FC<any> = () => {
               />
             </View>
           </ScrollView>
-        </DNACollapsible> */}
+        </DNACollapsible>
       </View>
     </View>
   );
