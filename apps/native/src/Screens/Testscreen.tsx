@@ -138,32 +138,28 @@ const Testscreen: React.FC<any> = () => {
         </DNACollapsible>
         <DNACollapsible title={'RadioButton'} isOpen>
           <View style={styles.gap}>
-            <View>
-              {options.map(option => (
-                <DNARadioButton
-                  key={option.id}
-                  id={option.id}
-                  checked={option.checked}
-                  label={`RadioBtn ${option.label}`}
-                  onPress={() => handleRadioButtonPress(option.id)}
-                />
-              ))}
-            </View>
+            {options.map(option => (
+              <DNARadioButton
+                key={option.id}
+                id={option.id}
+                checked={option.checked}
+                label={`RadioBtn ${option.label}`}
+                onPress={() => handleRadioButtonPress(option.id)}
+              />
+            ))}
           </View>
         </DNACollapsible>
         <DNACollapsible title={'Checkbox'} isOpen>
           <View style={styles.gap}>
-            <View>
-              {cOptions.map(option => (
-                <DNACheckbox
-                  key={option.id}
-                  id={option.id}
-                  checked={option.checked}
-                  label={`Checkbox ${option.label}`}
-                  onPress={() => handleCheckboxPress(option.id)}
-                />
-              ))}
-            </View>
+            {cOptions.map(option => (
+              <DNACheckbox
+                key={option.id}
+                id={option.id}
+                checked={option.checked}
+                label={`Checkbox ${option.label}`}
+                onPress={() => handleCheckboxPress(option.id)}
+              />
+            ))}
           </View>
         </DNACollapsible>
         {/* <DNACollapsible title={'Avatar Group'}>
