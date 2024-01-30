@@ -15,10 +15,10 @@ import {DNACheckbox} from '@rndna/checkbox';
 
 const Testscreen: React.FC<any> = () => {
   const optionItems = [
-    {id: '1', label: 'Option 1', checked: true},
+    {id: '1', label: 'Option 1', checked: false},
     {id: '2', label: 'Option 2', checked: false},
-    {id: '3', label: 'Option 3', checked: false},
-    {id: '4', label: 'Option 4', checked: false},
+    {id: '3', label: 'Option 3', checked: false, disabled: true},
+    {id: '4', label: 'Option 4', checked: true, disabled: true},
   ];
 
   const [options, setOptions] = useState(optionItems);
@@ -142,6 +142,7 @@ const Testscreen: React.FC<any> = () => {
               <DNARadioButton
                 key={option.id}
                 id={option.id}
+                disabled={option.disabled}
                 checked={option.checked}
                 label={`RadioBtn ${option.label}`}
                 onPress={() => handleRadioButtonPress(option.id)}
@@ -155,6 +156,7 @@ const Testscreen: React.FC<any> = () => {
               <DNACheckbox
                 key={option.id}
                 id={option.id}
+                disabled={option.disabled}
                 checked={option.checked}
                 label={`Checkbox ${option.label}`}
                 onPress={() => handleCheckboxPress(option.id)}

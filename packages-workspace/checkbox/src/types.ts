@@ -3,7 +3,7 @@ import { GestureResponderEvent, PressableProps } from "react-native";
 
 export interface DNACheckboxProps extends PressableProps {
   /**
-   * ID that is used to pass in the id parameter of code.
+   * Property that is used to pass in the id parameter of code.
   */
   id?: string;
   /**

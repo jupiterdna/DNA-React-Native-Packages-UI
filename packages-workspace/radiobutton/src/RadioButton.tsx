@@ -77,7 +77,9 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
   ) => {
 
   const themeColor = useColor();
-  const defaultColors = themeColor["primary"]["default"];
+  const primaryColor = themeColor["primary"]["default"];
+  const defaultColor = themeColor["default"][900];
+  const disabledColor = themeColor["default"][400];
 
   const handlePress = (event: GestureResponderEvent) => {
     if (onPress) {
@@ -102,22 +104,30 @@ export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
     }
   }
 
+  const getDisabledColor = disabled ? disabledColor : primaryColor;
+
+  const radioBorderStyle = 
+    checked 
+      ? { borderColor: disabled ? disabledColor : primaryColor}
+      : { borderColor: disabled ? disabledColor : defaultColor }
+
   return (
     <Pressable
       {...restProps}
       ref={ref}
       key={id}
-      style={[
-        styles.radio,
-        disabled || disabled ? styles.disabled : null,
-      ]}
-      disabled={disabled || disabled}
+      style={styles.radio}
+      disabled={disabled}
       onPress={handlePress}
     >
-      <View style={[styles.radioInner, buttonSizeCls[size], { borderColor: defaultColors }]}>
-        { checked ? <CircleIcon size={buttonSizeCls[size]?.width - 4} color={defaultColors}/> : null }
+      <View style={[
+          styles.radioInner, 
+          buttonSizeCls[size], 
+          radioBorderStyle 
+        ]}>
+        { checked ? <CircleIcon size={buttonSizeCls[size]?.width - 4} color={getDisabledColor}/> : null }
       </View>
-      <DNAText type={getTextSize()}>{label}</DNAText>
+      <DNAText type={getTextSize()} style={disabled && {color: disabledColor }}>{label}</DNAText>
     </Pressable>
   );
 });

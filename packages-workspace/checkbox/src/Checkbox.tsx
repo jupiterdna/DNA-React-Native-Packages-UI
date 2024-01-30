@@ -77,7 +77,9 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
   ) => {
     
   const themeColor = useColor();
-  const defaultColors = themeColor["primary"]["default"];
+  const primaryColor = themeColor["primary"]["default"];
+  const defaultColor = themeColor["default"][900];
+  const disabledColor = themeColor["default"][400];
   const secondaryColor = themeColor["primary"][100];
 
   const checkColor = useColorScheme() === "light" ? "white" : secondaryColor;
@@ -107,8 +109,8 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
 
   const checkBtnCls = 
     checked 
-      ? { backgroundColor: defaultColors }
-      : { borderWidth: 1, backgroundColor: "transparent", borderColor: defaultColors}
+      ? { backgroundColor: disabled ? disabledColor : primaryColor }
+      : { borderWidth: 1, backgroundColor: "transparent", borderColor: disabled ? disabledColor : defaultColor}
       
 
   return (
@@ -116,11 +118,8 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
       {...restProps}
       ref={ref}
       key={id}
-      style={[
-        styles.check,
-        disabled || disabled ? styles.disabled : null,
-      ]}
-      disabled={disabled || disabled}
+      style={styles.check}
+      disabled={disabled}
       onPress={handlePress}
     >
       <View  
@@ -131,7 +130,7 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
         ]}>
         { checked ? <CheckSmallIcon size={buttonSizeCls[size]?.width} color={checkColor} /> : null }
       </View>
-      <DNAText type={getTextSize()}>{label}</DNAText>
+      <DNAText type={getTextSize()} style={disabled && {color: disabledColor }}>{label}</DNAText>
     </Pressable>
   );
 });
