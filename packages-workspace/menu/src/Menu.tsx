@@ -111,9 +111,9 @@ const MenuComponent: <T>(
 
     const themeColor = useColor();
     const defaultColor = themeColor[color]["default"];
-    const defaultBgColor = useColorScheme() === 'light' ?  'white' : themeColor[color]["default"]
-    const activeColor = useColorScheme() === 'light' ? themeColor[color]["default"] :themeColor[color][300];
-    const activeTextColor = useColorScheme() === 'light' ? 'white' :themeColor[color]["default"] ;
+    const defaultBgColor = themeColor[color]["100"]
+    const activeColor = themeColor[color]["100"]
+    const activeTextColor = themeColor[color]["default"];
 
     useImperativeHandle(currentRef, () => {
       return { open: eventOpen, close: eventClose };
