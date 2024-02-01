@@ -6,9 +6,10 @@ import {
   useColorScheme,
   Text,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useRef, useState} from 'react';
 import {Menu} from '@rndna/menu';
-import { MenuHamburgerIcon } from '@rndna/icon';
+import {MenuHamburgerIcon} from '@rndna/icon';
+import {DNAButton} from '@rndna/button';
 
 const data = [
   {label: 'Item 1', value: '1'},
@@ -30,7 +31,7 @@ const DropdownScreen: React.FC<any> = () => {
   const [isFocus, setIsFocus] = useState<any>(null);
   const [value2, setValue2] = useState<any>(null);
   const [isFocus2, setIsFocus2] = useState(false);
-
+  const ref = useRef(null);
   const renderLabel = () => {
     if (value || isFocus) {
       return (
@@ -44,13 +45,13 @@ const DropdownScreen: React.FC<any> = () => {
 
   return (
     <View style={[styles.flex, bg]}>
-          <View
-          style={{
-            backgroundColor: 'red',
-            position: 'fixed',
-            top: 120,
-            left: 353 - 50,
-          }}></View>
+      <View
+        style={{
+          backgroundColor: 'red',
+          position: 'fixed',
+          top: 120,
+          left: 353 - 50,
+        }}></View>
       <ScrollView>
         <View
           style={[
@@ -67,15 +68,12 @@ const DropdownScreen: React.FC<any> = () => {
             labelField="label"
             valueField="value"
             value={value}
-            onFocus={() => setIsFocus(true)}
-            onBlur={() => setIsFocus(false)}
-            onChange={item => {
+            onChange={(item: (typeof data)[0]) => {
               setValue(item.value);
               setIsFocus(false);
             }}
-          />
+            ref={ref} />
         </View>
-
       </ScrollView>
     </View>
   );

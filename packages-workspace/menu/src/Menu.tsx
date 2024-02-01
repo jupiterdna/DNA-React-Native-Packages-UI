@@ -26,18 +26,14 @@ import {
 } from "react-native";
 import { useDetectDevice } from "./utils/utils";
 import { useDeviceOrientation } from "./utils/useOrientation";
-import CInput from "./component/TextInput";
 import { DropdownProps } from "./types";
 import { styles } from "./styles";
 import { MenuKebabIcon } from "@rndna/icon";
 import { DNAText } from "@rndna/text";
-import { buttonSizeCls, textSizeCls, drop_styles } from './styles';
-import { darkmodeColor, useColor } from "@rndna/theme-provider";
-import { useColorScheme } from "react-native";
+import { textSizeCls } from './styles';
+import { useColor } from "@rndna/theme-provider";
 
 const { isTablet } = useDetectDevice;
-const ic_down = require("./assets/down.png");
-
 const statusBarHeight: number = StatusBar.currentHeight || 0;
 
 //@ts-ignore
@@ -60,7 +56,6 @@ const MenuComponent: <T>(
       searchField,
       dropDownMaxWidth = 280,
       value,
-      fontFamily,
       color='default',
       size='md',
       icon = MenuKebabIcon,
@@ -70,17 +65,9 @@ const MenuComponent: <T>(
       keyboardAvoiding = true,
       inverted = true,
       renderItem,
-      renderInputSearch,
-      onFocus,
-      onBlur,
       autoScroll = true,
-      showsVerticalScrollIndicator = true,
       dropdownPosition = "auto",
       flatListProps,
-      searchQuery,
-      onChangeText,
-      confirmSelectItem,
-      onConfirmSelectItem,
       accessibilityLabel,
       itemAccessibilityLabelField,
       mode = "default",
@@ -118,6 +105,7 @@ const MenuComponent: <T>(
     useImperativeHandle(currentRef, () => {
       return { open: eventOpen, close: eventClose };
     });
+    
 
     useEffect(() => {
       return eventClose;
@@ -127,7 +115,7 @@ const MenuComponent: <T>(
     useEffect(() => {
       setListData([...data]);
       if (searchText) {
-        onSearch(searchText);
+        // onSearch(searchText);
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data, searchText]);
@@ -146,12 +134,12 @@ const MenuComponent: <T>(
     const eventOpen = () => {
       if (!disable) {
         setVisible(true);
-        if (onFocus) {
-          onFocus();
-        }
+        // if (onFocus) {
+        //   onFocus();
+        // }
 
         if (searchText.length > 0) {
-          onSearch(searchText);
+          // onSearch(searchText);
         }
         scrollIndex();
       }
@@ -160,21 +148,21 @@ const MenuComponent: <T>(
     const eventClose = useCallback(() => {
       if (!disable) {
         setVisible(false);
-        if (onBlur) {
-          onBlur();
-        }
+        // if (onBlur) {
+        //   onBlur();
+        // }
       }
-    }, [disable, onBlur]);
+    }, [disable,]);
 
-    const font = useCallback(() => {
-      if (fontFamily) {
-        return {
-          fontFamily: fontFamily,
-        };
-      } else {
-        return {};
-      }
-    }, [fontFamily]);
+    // const font = useCallback(() => {
+    //   if (fontFamily) {
+    //     return {
+    //       fontFamily: fontFamily,
+    //     };
+    //   } else {
+    //     return {};
+    //   }
+    // }, [fontFamily]);
 
     const _measure = useCallback(() => {
       if (ref && ref?.current) {
@@ -288,16 +276,16 @@ const MenuComponent: <T>(
         setListData(data);
 
         if (!visible) {
-          if (onFocus) {
-            onFocus();
-          }
+          // if (onFocus) {
+          //   onFocus();
+          // }
         } else {
-          if (onBlur) {
-            onBlur();
-          }
+          // if (onBlur) {
+          //   onBlur();
+          // }
         }
         if (searchText.length > 0) {
-          onSearch(searchText);
+          // onSearch(searchText);
         }
         scrollIndex();
       }
@@ -310,67 +298,61 @@ const MenuComponent: <T>(
       data,
       searchText,
       scrollIndex,
-      onFocus,
-      onBlur,
     ]);
 
-    const onSearch = useCallback(
-      (text: string) => {
-        if (text.length > 0) {
-          const defaultFilterFunction = (e: any) => {
-            const item = _.get(e, searchField || labelField)
-              ?.toLowerCase()
-              .replace(" ", "")
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "");
-            const key = text
-              .toLowerCase()
-              .replace(" ", "")
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "");
+    // const onSearch = useCallback(
+    //   (text: string) => {
+    //     if (text.length > 0) {
+    //       const defaultFilterFunction = (e: any) => {
+    //         const item = _.get(e, searchField || labelField)
+    //           ?.toLowerCase()
+    //           .replace(" ", "")
+    //           .normalize("NFD")
+    //           .replace(/[\u0300-\u036f]/g, "");
+    //         const key = text
+    //           .toLowerCase()
+    //           .replace(" ", "")
+    //           .normalize("NFD")
+    //           .replace(/[\u0300-\u036f]/g, "");
 
-            return item.indexOf(key) >= 0;
-          };
+    //         return item.indexOf(key) >= 0;
+    //       };
 
-          const propSearchFunction = (e: any) => {
-            const labelText = _.get(e, searchField || labelField);
+    //       const propSearchFunction = (e: any) => {
+    //         const labelText = _.get(e, searchField || labelField);
 
-            return searchQuery?.(text, labelText);
-          };
+    //         return searchQuery?.(text, labelText);
+    //       };
 
-          const dataSearch = data.filter(
-            searchQuery ? propSearchFunction : defaultFilterFunction
-          );
-          setListData(dataSearch);
-        } else {
-          setListData(data);
-        }
-      },
-      [data, searchField, labelField, searchQuery]
-    );
+    //       const dataSearch = data.filter(
+    //         searchQuery ? propSearchFunction : defaultFilterFunction
+    //       );
+    //       setListData(dataSearch);
+    //     } else {
+    //       setListData(data);
+    //     }
+    //   },
+    //   [data, searchField, labelField, searchQuery]
+    // );
 
     const onSelect = useCallback(
       (item: any) => {
-        if (confirmSelectItem && onConfirmSelectItem) {
-          return onConfirmSelectItem(item);
-        }
+        // if (confirmSelectItem && onConfirmSelectItem) {
+        //   return onConfirmSelectItem(item);
+        // }
 
-        if (onChangeText) {
-          setSearchText("");
-          onChangeText("");
-        }
-        onSearch("");
+        // if (onChangeText) {
+        //   setSearchText("");
+        //   onChangeText("");
+        // }
+        // onSearch("");
         setCurrentValue(item);
         onChange(item);
         eventClose();
       },
       [
-        confirmSelectItem,
         eventClose,
         onChange,
-        onChangeText,
-        onConfirmSelectItem,
-        onSearch,
       ]
     );
 
@@ -468,7 +450,6 @@ const MenuComponent: <T>(
       [
         accessibilityLabel,
         currentValue,
-        font,
         itemAccessibilityLabelField,
         itemContainerStyle,
         itemTestIDField,
@@ -518,10 +499,6 @@ const MenuComponent: <T>(
       // return null;
     }, [
       accessibilityLabel,
-      font,
-      onChangeText,
-      onSearch,
-      renderInputSearch,
       testID,
       searchText,
     ]);
@@ -543,7 +520,7 @@ const MenuComponent: <T>(
               inverted={isTopPosition ? inverted : false}
               renderItem={_renderItem}
               keyExtractor={(_item, index) => index.toString()}
-              showsVerticalScrollIndicator={showsVerticalScrollIndicator}
+              // showsVerticalScrollIndicator={showsVerticalScrollIndicator}
             />
           );
         };
@@ -566,7 +543,7 @@ const MenuComponent: <T>(
         inverted,
         renderSearch,
         scrollIndex,
-        showsVerticalScrollIndicator,
+        // showsVerticalScrollIndicator,
         testID,
       ]
     );
