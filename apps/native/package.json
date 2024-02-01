@@ -25,6 +25,7 @@
     "@rndna/radiobutton": "*",
     "@rndna/checkbox": "*",
     "@rndna/avatar_group": "*",
+    "@rndna/fab": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",
     "react-native-svg": "13.14.0",

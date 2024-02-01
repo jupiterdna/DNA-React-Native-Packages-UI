@@ -19,7 +19,14 @@ import {
 import {DNAAvatarGroup} from '@rndna/avatar_group';
 import {DNAButton} from '@rndna/button';
 import {DNAChip} from '@rndna/chip';
-import {InfoCircleIcon, UserIcon} from '@rndna/icon';
+import {
+  CameraIconOutline,
+  InfoCircleIcon,
+  PencilRenameIconOutline,
+  ShareIconOutline,
+  UserIcon,
+} from '@rndna/icon';
+import {DNAFab, DNAFabItemTypes} from '@rndna/fab';
 
 const Testscreen: React.FC<any> = () => {
   const optionItems = [
@@ -27,6 +34,30 @@ const Testscreen: React.FC<any> = () => {
     {id: '2', label: 'Option 2', checked: false},
     {id: '3', label: 'Option 3', checked: false, disabled: true},
     {id: '4', label: 'Option 4', checked: true, disabled: true},
+  ];
+
+  const FabItems: DNAFabItemTypes[] = [
+    {
+      icon: ShareIconOutline,
+      title: 'Write',
+      onPress: () => {
+        console.log('Clicked Write');
+      },
+    },
+    {
+      icon: CameraIconOutline,
+      title: 'Camera',
+      onPress: () => {
+        console.log('Clicked Camera');
+      },
+    },
+    {
+      icon: PencilRenameIconOutline,
+      title: 'Share',
+      onPress: () => {
+        console.log('Clicked Share');
+      },
+    },
   ];
 
   const [options, setOptions] = useState(optionItems);
@@ -370,6 +401,14 @@ const Testscreen: React.FC<any> = () => {
             </View>
           </ScrollView>
         </DNACollapsible>
+        <View style={styles.fab}>
+          <DNAFab
+            items={FabItems}
+            onPress={() => {
+              console.log('Pressed Fab');
+            }}
+          />
+        </View>
       </View>
     </View>
   );
@@ -399,6 +438,12 @@ const styles = StyleSheet.create({
     gap: 4,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  fab: {
+    maxWidth: '100%',
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
 });
 
