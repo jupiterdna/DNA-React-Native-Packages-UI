@@ -1,2 +1,2 @@
-export { RadioButton } from './RadioButton'
-export type { RadioButtonProps } from './types'
+export { DNARadioButton } from './RadioButton'
+export type { DNARadioButtonProps } from './types'

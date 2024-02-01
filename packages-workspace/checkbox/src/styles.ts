@@ -4,20 +4,19 @@ export const styles = StyleSheet.create({
   label: {
     marginBottom: 8,
   },
-  radio: {
+  check: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  radioInner: {
+  innerWrapper: {
     width: 16,
     height: 16,
-    borderRadius: 99,
-    borderWidth: 1,
+    borderRadius: 4,
     alignItems: 'center',
     justifyContent: 'center',
     marginRight: 6,
   },
-  radioWrapper: {
+  checkWrapper: {
     flexDirection: 'column',
     borderWidth: 1,
     width: '100%',

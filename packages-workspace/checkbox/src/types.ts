@@ -1,7 +1,7 @@
 import { sizeProps } from "@rndna/base_style";
 import { GestureResponderEvent, PressableProps } from "react-native";
 
-export interface DNARadioButtonProps extends PressableProps {
+export interface DNACheckboxProps extends PressableProps {
   /**
    * Property that is used to pass in the id parameter of code.
   */

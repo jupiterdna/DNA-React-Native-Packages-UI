@@ -5,20 +5,34 @@ import {
   ViewStyle,
   ScrollView,
 } from 'react-native';
-import React from 'react';
-import {DNAChip} from '@rndna/chip';
+import React, {useState} from 'react';
 import {DNACollapsible} from '@rndna/collapsible';
-import {DNAButton} from '@rndna/button';
-import {InfoCircleIcon, UserIcon} from '@rndna/icon';
 import {DNAText} from '@rndna/text';
+import {DNAImage} from '@rndna/image';
+import {DNARadioButton} from '@rndna/radiobutton';
+import {DNACheckbox} from '@rndna/checkbox';
 import {
   DNAAvatar,
-  DNAAvatarWithStatus,
   DNAAvatarWithBadge,
+  DNAAvatarWithStatus,
 } from '@rndna/avatar';
 import {DNAAvatarGroup} from '@rndna/avatar_group';
+import {DNAButton} from '@rndna/button';
+import {DNAChip} from '@rndna/chip';
+import {InfoCircleIcon, UserIcon} from '@rndna/icon';
 
 const Testscreen: React.FC<any> = () => {
+  const optionItems = [
+    {id: '1', label: 'Option 1', checked: false},
+    {id: '2', label: 'Option 2', checked: false},
+    {id: '3', label: 'Option 3', checked: false, disabled: true},
+    {id: '4', label: 'Option 4', checked: true, disabled: true},
+  ];
+
+  const [options, setOptions] = useState(optionItems);
+
+  const [cOptions, setCoptions] = useState(optionItems);
+
   const bg: ViewStyle =
     useColorScheme() === 'dark'
       ? {
@@ -61,12 +75,103 @@ const Testscreen: React.FC<any> = () => {
     },
   ];
 
+  //Handle for radiobutton
+  const handleRadioButtonPress = (id: string) => {
+    setOptions(prevOptions =>
+      prevOptions.map(option => ({
+        ...option,
+        checked: option.id === id,
+      })),
+    );
+  };
+
+  //Handle for checkbox
+  const handleCheckboxPress = (id: string) => {
+    setCoptions(prevOptions =>
+      prevOptions.map(option => ({
+        ...option,
+        checked: option.id === id ? !option.checked : option.checked,
+      })),
+    );
+  };
+
   return (
     <View style={styles.flex}>
       <View style={[styles.container, bg]}>
         <DNAText type="h4" style={styles.header}>
           Native: {useColorScheme()} Mode
         </DNAText>
+        <DNACollapsible title={'DNA Image'}>
+          <ScrollView>
+            <View style={styles.gap}>
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="xs"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="sm"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="md"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="lg"
+              />
+              <DNAImage
+                src={group_data[0].src}
+                fit="contain"
+                ratio="4:3"
+                size="xl"
+              />
+            </View>
+            <View style={styles.gap}>
+              <DNAImage src={group_data[0].src} ratio="4:3" size="xs" />
+              <DNAImage src={group_data[0].src} ratio="4:3" size="sm" />
+              <DNAImage src={group_data[0].src} ratio="4:3" size="md" />
+              <DNAImage src={group_data[0].src} ratio="4:3" size="lg" />
+              <DNAImage src={group_data[0].src} ratio="4:3" size="xl" />
+            </View>
+          </ScrollView>
+        </DNACollapsible>
+        <DNACollapsible title={'RadioButton'}>
+          <View style={styles.gap}>
+            {options.map(option => (
+              <DNARadioButton
+                key={option.id}
+                id={option.id}
+                disabled={option.disabled}
+                checked={option.checked}
+                label={`RadioBtn ${option.label}`}
+                onPress={() => handleRadioButtonPress(option.id)}
+              />
+            ))}
+          </View>
+        </DNACollapsible>
+        <DNACollapsible title={'Checkbox'}>
+          <View style={styles.gap}>
+            {cOptions.map(option => (
+              <DNACheckbox
+                key={option.id}
+                id={option.id}
+                disabled={option.disabled}
+                checked={option.checked}
+                label={`Checkbox ${option.label}`}
+                onPress={() => handleCheckboxPress(option.id)}
+              />
+            ))}
+          </View>
+        </DNACollapsible>
         <DNACollapsible title={'Avatar Group'}>
           <View style={styles.gap}>
             <DNAAvatarGroup options={group_data} color="info" size="xs" />

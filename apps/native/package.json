@@ -23,10 +23,14 @@
     "@rndna/icon": "*",
     "@rndna/text": "*",
     "@rndna/avatar": "*",
+    "@rndna/image": "*",
+    "@rndna/radiobutton": "*",
+    "@rndna/checkbox": "*",
     "@rndna/avatar_group": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",
-    "react-native-svg": "13.14.0"
+    "react-native-svg": "13.14.0",
+    "react-native-fast-image": "^8.6.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
