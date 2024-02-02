@@ -154,8 +154,10 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
     ),[size])
 
     const handlePress = (event: GestureResponderEvent) => {
-      if (onPress) {
-        onPress(event);
+      if (items) {
+        setOpen((prev) => !prev);
+      } else {
+        onPress && onPress(event);
       }
     };
     
@@ -169,8 +171,15 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
           animationType="fade"
           transparent
           visible={open}
-          >
-          <TouchableOpacity activeOpacity={1} style={styles.modalContainer} onPress={() => setOpen(false)}>
+          onRequestClose={() => 
+            setOpen(false)
+          }>
+          <TouchableOpacity 
+            activeOpacity={1} 
+            style={styles.modalContainer} 
+            onPress={() => 
+              setOpen(false)
+            }>
             <View style={[styles.fabWrapper]}>
               <TouchableOpacity
                   style={[
@@ -183,10 +192,9 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
                       backgroundColor: primaryColor,
                     }
                   ]}
-                  onPress={() => {
-                    setOpen((prev) => !prev);
-                  }}
-                >
+                  onPress={(event) => { 
+                    handlePress(event); 
+                  }}>
                   {renderAddIcon()}
               </TouchableOpacity>
             </View>
@@ -208,29 +216,29 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       <>
         <View style={{ width: childPosition?.width, alignItems: 'flex-end' }}>
           <TouchableOpacity
-            onLayout={measure}
-            style={[
-              fabSizeCls[size],
-              { backgroundColor: primaryColor },
-              styles.fab,
-            ]}
-            onPress={(event) => {
-              items ? setOpen((prev) => !prev) : handlePress(event)
-            }}
-            {...restProps}
-            ref={fabRef}
-          >
+              onLayout={measure}
+              style={[
+                fabSizeCls[size],
+                { backgroundColor: primaryColor },
+                styles.fab,
+              ]}
+              onPress={(event) => {
+                handlePress(event);
+              }}
+              {...restProps}
+              ref={fabRef}
+            >
             {renderAddIcon()}
           </TouchableOpacity>
         </View>
         <View style={ {position: 'absolute', top: -99999 }} >
-        <View 
-          style={[styles.childrenStyle]}
-          ref={childRef}
-          onLayout={measureChild}
-          >
-          {renderChildItems()}
-        </View>
+          <View 
+            style={[styles.childrenStyle]}
+            ref={childRef}
+            onLayout={measureChild}
+            >
+            {renderChildItems()}
+          </View>
         </View>
         {renderModal()}
       </>
