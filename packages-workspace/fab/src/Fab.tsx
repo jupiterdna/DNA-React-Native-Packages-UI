@@ -9,7 +9,6 @@ import {
   View, 
   Modal,
   GestureResponderEvent,
-  MeasureOnSuccessCallback, 
 } from "react-native";
 import { fabSizeCls, styles } from "./styles";
 import { DNAText } from "@rndna/text";
@@ -105,7 +104,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
         size: fabSizeCls[size].width - 20,
         color: whiteColor,
       });
-    }, [open, position, measure, items])
+    }, [open, position, measure, items, themeColor])
 
     const measureChild = useCallback(() => {
       if (childRef && childRef?.current) {
@@ -151,7 +150,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
             </View>
           );
         })
-    ),[size])
+    ),[size, themeColor])
 
     const handlePress = (event: GestureResponderEvent) => {
       if (items) {
