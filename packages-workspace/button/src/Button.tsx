@@ -48,7 +48,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       borderRadius = "soft_edged",
       ...restProps
     }: DNAButtonProps,
-    ref: React.Ref<any>,
+    ref: React.Ref<View>,
   ) => {
 
   const themeColor = useColor();

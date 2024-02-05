@@ -37,7 +37,7 @@ export const DNAImage: React.FC<DNAImageProps> = React.forwardRef(
       fit = "cover",
       ...restProps
     }: DNAImageProps,
-    ref: React.Ref<any>,
+    ref: React.Ref<View>,
   ) => {
     const [isLoading, setIsLoading] = useState(true);
     const [imgUri, setUri] = useState("");

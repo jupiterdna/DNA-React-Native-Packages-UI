@@ -42,7 +42,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       icon = UserIcon,
       ...restProps
     }: DNAAvatarProps,
-    ref: React.Ref<any>,
+    ref: React.Ref<View>,
   ) => {
 
   const themeColor = useColor();
