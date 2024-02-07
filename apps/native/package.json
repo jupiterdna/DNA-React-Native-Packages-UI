@@ -26,6 +26,7 @@
     "@rndna/menu": "*",
     "@rndna/radiobutton": "*",
     "@rndna/text": "*",
+    "@rndna/hooks": "*",
     "@rndna/theme-provider": "*",
     "bluebird": "^3.7.2",
     "react": "18.2.0",

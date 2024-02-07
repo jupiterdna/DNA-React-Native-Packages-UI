@@ -33,10 +33,14 @@ import Animated, {
 import {useColor, useFonts} from '@rndna/theme-provider';
 import _ from 'lodash';
 import {CloseIcon} from '@rndna/icon';
-import {hasSpecialCharacter, isRequired, maxChar} from './validator';
-import {useValidator} from './hooks';
 import {TextFieldtypes, colorTypes} from './types';
 import {DNAText} from '@rndna/text';
+import {
+  hasSpecialCharacter,
+  isRequired,
+  maxChar,
+  useValidator,
+} from '@rndna/hooks';
 /**
  * default animation config for label / placeholder
  */
