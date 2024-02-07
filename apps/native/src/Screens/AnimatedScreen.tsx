@@ -4,10 +4,27 @@ import TextField from './Component/TextField';
 import {UserAddIcon} from '@rndna/icon';
 import RadioGroup from './controls/RadioGroup/RadioGroup';
 import {DNAText} from '@rndna/text';
-import {DNARadioButton} from '@rndna/radiobutton';
+import {DNARadioButton, DNARadioButtonProps} from '@rndna/radiobutton';
+
+const option: DNARadioButtonProps[] = [
+  {
+    id: 'test',
+    label: 'tests',
+  },
+  {
+    id: 'test2',
+    label: 'tests2',
+    checked: true,
+  },
+];
 
 const AnimatedScreen = () => {
-  const [value, setValue] = useState('123');
+  const [value, setValue] = useState(undefined);
+
+  const [selected, setSelected] = useState<(typeof option)[0] | undefined>(
+    undefined,
+  );
+
   return (
     <View
       style={{
@@ -62,10 +79,23 @@ const AnimatedScreen = () => {
         clearable
       />
 
-      <RadioGroup orientation="horizontal">
-        <DNARadioButton checked label="eee" />
-        <DNARadioButton disabled label="option 2" />
-        <DNARadioButton label="option 3" />
+      <RadioGroup
+        orientation="horizontal"
+        label="Radio Group"
+        disabled
+        required>
+        {option.map(op => {
+          const active = selected?.id === op.id;
+          return (
+            <DNARadioButton
+              checked={active}
+              onPress={() => {
+                setSelected(op);
+              }}
+              {...op}
+            />
+          );
+        })}
       </RadioGroup>
       {/* <TextField
         icon={UserAddIcon}

@@ -1,10 +1,16 @@
 import {colorProps} from '@rndna/base_style';
+import {NumberProp, SvgProps} from 'react-native-svg';
 
 export type helperFieldType = 'error' | 'success' | 'info' | 'warning';
+
+export interface IProps extends SvgProps {
+  size?: NumberProp;
+}
 
 export type assistiveTextType = {
   type: helperFieldType;
   message?: string;
+  icon?: React.JSX.Element | ((e?: IProps | any) => React.JSX.Element);
 };
 
 export type colorTypes =
