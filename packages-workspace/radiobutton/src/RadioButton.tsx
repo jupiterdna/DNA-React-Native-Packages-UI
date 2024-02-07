@@ -1,15 +1,15 @@
-import React from 'react';
-import { View, Pressable, GestureResponderEvent } from 'react-native';
-import { DNARadioButtonProps } from './types';
-import { buttonSizeCls, styles } from './styles';
-import { DNAText } from '@rndna/text';
-import { CircleIcon } from '@rndna/icon';
-import { useColor } from '@rndna/theme-provider';
+import React from "react";
+import { View, Pressable, GestureResponderEvent } from "react-native";
+import { DNARadioButtonProps } from "./types";
+import { buttonSizeCls, styles } from "./styles";
+import { DNAText } from "@rndna/text";
+import { CircleIcon } from "@rndna/icon";
+import { useColor } from "@rndna/theme-provider";
 
 /**
- * This component meant for easy selection and decision-making. 
+ * This component meant for easy selection and decision-making.
  * By convention, only one button at a time can be selected
- * 
+ *
  * ## Usage
  * ```js
  * import * as React, { useState } from 'react';
@@ -23,7 +23,7 @@ import { useColor } from '@rndna/theme-provider';
  *    {id: '2', label: 'Option 2', checked: false},
  *    {id: '3', label: 'Option 3', checked: false},
  *  ]);
- *  
+ *
  * const handleRadioButtonPress = (id: string) => {
  *   setOptions(prevOptions =>
  *     prevOptions.map(option => ({
@@ -32,7 +32,7 @@ import { useColor } from '@rndna/theme-provider';
  *     })),
  *   );
  * };
- *    
+ *
  *  return (
  *    <View style={styles.gap}>
  *       {options.map(option => (
@@ -47,7 +47,7 @@ import { useColor } from '@rndna/theme-provider';
  *    </View>
  *   );
  * };
- * 
+ *
  * const styles = StyleSheet.create({
  *    gap: {
  *      marginBottom: 8,
@@ -61,73 +61,83 @@ import { useColor } from '@rndna/theme-provider';
  * ```
  */
 
-
-export const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
+const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
   (
     {
       label,
       disabled = false,
-      size = 'md',
+      size = "md",
       checked = false,
       id,
       onPress,
       ...restProps
     }: DNARadioButtonProps,
-    ref: React.Ref<any>,
+    ref: React.Ref<any>
   ) => {
+    const themeColor = useColor();
+    const primaryColor = themeColor["primary"]["default"];
+    const defaultColor = themeColor["default"][900];
+    const disabledColor = themeColor["default"][400];
 
-  const themeColor = useColor();
-  const primaryColor = themeColor["primary"]["default"];
-  const defaultColor = themeColor["default"][900];
-  const disabledColor = themeColor["default"][400];
+    const handlePress = (event: GestureResponderEvent) => {
+      if (onPress) {
+        onPress(event);
+      }
+    };
 
-  const handlePress = (event: GestureResponderEvent) => {
-    if (onPress) {
-      onPress(event);
-    }
-  };
+    const getTextSize = () => {
+      switch (size) {
+        case "xs":
+          return "overline";
+        case "sm":
+          return "caption";
+        case "md":
+          return "body2";
+        case "lg":
+          return "body1";
+        case "xl":
+          return "label";
+        default:
+          return "body2";
+      }
+    };
 
-  const getTextSize = () => {
-    switch(size) {
-      case 'xs': 
-        return 'overline'
-      case 'sm':
-        return 'caption'
-      case 'md':
-        return 'body2'
-      case 'lg':
-        return 'body1'
-      case 'xl':
-        return 'label'
-      default: 
-        return 'body2'
-    }
+    const getDisabledColor = disabled ? disabledColor : primaryColor;
+
+    const radioBorderStyle = checked
+      ? { borderColor: disabled ? disabledColor : primaryColor }
+      : { borderColor: disabled ? disabledColor : defaultColor };
+
+    return (
+      <Pressable
+        {...restProps}
+        ref={ref}
+        key={id}
+        style={styles.radio}
+        disabled={disabled}
+        onPress={handlePress}
+      >
+        <View
+          style={[styles.radioInner, buttonSizeCls[size], radioBorderStyle]}
+        >
+          {checked ? (
+            <CircleIcon
+              size={buttonSizeCls[size]?.width - 4}
+              color={getDisabledColor}
+            />
+          ) : null}
+        </View>
+        <DNAText
+          type={getTextSize()}
+          style={disabled && { color: disabledColor }}
+        >
+          {label}
+        </DNAText>
+      </Pressable>
+    );
   }
+);
 
-  const getDisabledColor = disabled ? disabledColor : primaryColor;
+DNARadioButton.displayName = "DNARadioButton";
 
-  const radioBorderStyle = 
-    checked 
-      ? { borderColor: disabled ? disabledColor : primaryColor}
-      : { borderColor: disabled ? disabledColor : defaultColor }
-
-  return (
-    <Pressable
-      {...restProps}
-      ref={ref}
-      key={id}
-      style={styles.radio}
-      disabled={disabled}
-      onPress={handlePress}
-    >
-      <View style={[
-          styles.radioInner, 
-          buttonSizeCls[size], 
-          radioBorderStyle 
-        ]}>
-        { checked ? <CircleIcon size={buttonSizeCls[size]?.width - 4} color={getDisabledColor}/> : null }
-      </View>
-      <DNAText type={getTextSize()} style={disabled && {color: disabledColor }}>{label}</DNAText>
-    </Pressable>
-  );
-});
+export { DNARadioButton };

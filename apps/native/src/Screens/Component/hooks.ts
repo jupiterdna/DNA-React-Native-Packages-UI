@@ -37,7 +37,7 @@ export function useValidator<TParam = any | undefined>({
       })
       .then(() => setError(null))
       .catch((err: errorType) => {
-        setError(prev => err);
+        setError(err);
       });
   }, [param]);
 

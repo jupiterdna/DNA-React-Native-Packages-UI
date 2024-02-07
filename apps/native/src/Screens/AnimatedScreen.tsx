@@ -1,7 +1,10 @@
-import {View, useColorScheme} from 'react-native';
+import {View, useColorScheme, Text} from 'react-native';
 import React, {useState} from 'react';
 import TextField from './Component/TextField';
 import {UserAddIcon} from '@rndna/icon';
+import RadioGroup from './controls/RadioGroup/RadioGroup';
+import {DNAText} from '@rndna/text';
+import {DNARadioButton} from '@rndna/radiobutton';
 
 const AnimatedScreen = () => {
   const [value, setValue] = useState('123');
@@ -58,6 +61,12 @@ const AnimatedScreen = () => {
         // }}
         clearable
       />
+
+      <RadioGroup orientation="horizontal">
+        <DNARadioButton checked label="eee" />
+        <DNARadioButton disabled label="option 2" />
+        <DNARadioButton label="option 3" />
+      </RadioGroup>
       {/* <TextField
         icon={UserAddIcon}
         placeholder="Label"
