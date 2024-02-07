@@ -30,26 +30,16 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
-import {useColor} from '@rndna/theme-provider';
+import {useColor, useFonts} from '@rndna/theme-provider';
 import _ from 'lodash';
 import {CloseIcon} from '@rndna/icon';
 import {hasSpecialCharacter, isRequired, maxChar} from './validator';
 import {useValidator} from './hooks';
 import {TextFieldtypes, colorTypes} from './types';
 import {DNAText} from '@rndna/text';
-
 /**
  * default animation config for label / placeholder
  */
-const INITIAL_POSITION = 10;
-const INITIAL_FONTSIZE = 14;
-const ANIM_DURATION = 300;
-
-const animateConfig = {
-  duration: ANIM_DURATION,
-  easing: Easing.inOut(Easing.quad),
-  reduceMotion: ReduceMotion.System,
-};
 
 /**
  * A TextField is a component of the most generic and common data entry fields used to capture text type data—letters, numbers, and symbols..
@@ -94,6 +84,20 @@ export const TextField = forwardRef(
     }: TextFieldtypes,
     ref: React.Ref<TextInput>,
   ) => {
+    const font = useFonts();
+    const theme = useColor();
+    const scheme = useColorScheme();
+
+    const INITIAL_POSITION = 10;
+    const INITIAL_FONTSIZE = font.fontSize?.body2 || 14;
+    const ANIM_DURATION = 300;
+
+    const animateConfig = {
+      duration: ANIM_DURATION,
+      easing: Easing.inOut(Easing.quad),
+      reduceMotion: ReduceMotion.System,
+    };
+
     const pos = useSharedValue(INITIAL_POSITION);
     const fontSize = useSharedValue(INITIAL_FONTSIZE);
     const innerRef = useRef<TextInput>(null);
@@ -105,9 +109,6 @@ export const TextField = forwardRef(
       top: withTiming(pos.value, animateConfig),
       fontSize: withTiming(fontSize.value, animateConfig),
     }));
-
-    const theme = useColor();
-    const scheme = useColorScheme();
 
     useImperativeHandle(ref, () => innerRef.current!, []);
 
