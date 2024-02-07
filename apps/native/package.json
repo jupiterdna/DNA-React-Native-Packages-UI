@@ -29,6 +29,7 @@
     "@rndna/hooks": "*",
     "@rndna/theme-provider": "*",
     "bluebird": "^3.7.2",
+    "@rndna/fab": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",
     "react-native-fast-image": "^8.6.3",

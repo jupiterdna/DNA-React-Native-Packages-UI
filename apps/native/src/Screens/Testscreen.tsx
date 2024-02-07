@@ -20,17 +20,11 @@ import {DNAAvatarGroup} from '@rndna/avatar_group';
 import {DNAButton} from '@rndna/button';
 import {DNAChip} from '@rndna/chip';
 import {InfoCircleIcon, UserIcon} from '@rndna/icon';
+import {DNAFab} from '@rndna/fab';
+import {optionItems, FabItems, avatarGroup} from './constants';
 
 const Testscreen: React.FC<any> = () => {
-  const optionItems = [
-    {id: '1', label: 'Option 1', checked: false},
-    {id: '2', label: 'Option 2', checked: false},
-    {id: '3', label: 'Option 3', checked: false, disabled: true},
-    {id: '4', label: 'Option 4', checked: true, disabled: true},
-  ];
-
   const [options, setOptions] = useState(optionItems);
-
   const [cOptions, setCoptions] = useState(optionItems);
 
   const bg: ViewStyle =
@@ -41,39 +35,6 @@ const Testscreen: React.FC<any> = () => {
       : {
           backgroundColor: '#fff',
         };
-
-  const group_data = [
-    {
-      alt: 'John Doe Picture',
-      id: 'john-doe',
-      name: 'John Doe',
-      src: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      alt: 'Jane Smith Picture',
-      id: 'jane-smith',
-      name: 'Jane Smith',
-      src: 'https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      alt: 'Andrei Colin Picture',
-      id: 'andrei-colin',
-      name: 'Andrei Colin',
-      src: '',
-    },
-    {
-      alt: 'Cendy Carter Picture',
-      id: 'cendy-carter',
-      name: 'Cendy Carter',
-      src: 'https://images.pexels.com/photos/3771639/pexels-photo-3771639.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    },
-    {
-      alt: 'James Brown Picture',
-      id: 'james-brown',
-      name: 'James Brown',
-      src: '',
-    },
-  ];
 
   //Handle for radiobutton
   const handleRadioButtonPress = (id: string) => {
@@ -105,42 +66,42 @@ const Testscreen: React.FC<any> = () => {
           <ScrollView>
             <View style={styles.gap}>
               <DNAImage
-                src={group_data[0].src}
+                src={avatarGroup[0].src}
                 fit="contain"
                 ratio="4:3"
                 size="xs"
               />
               <DNAImage
-                src={group_data[0].src}
+                src={avatarGroup[0].src}
                 fit="contain"
                 ratio="4:3"
                 size="sm"
               />
               <DNAImage
-                src={group_data[0].src}
+                src={avatarGroup[0].src}
                 fit="contain"
                 ratio="4:3"
                 size="md"
               />
               <DNAImage
-                src={group_data[0].src}
+                src={avatarGroup[0].src}
                 fit="contain"
                 ratio="4:3"
                 size="lg"
               />
               <DNAImage
-                src={group_data[0].src}
+                src={avatarGroup[0].src}
                 fit="contain"
                 ratio="4:3"
                 size="xl"
               />
             </View>
             <View style={styles.gap}>
-              <DNAImage src={group_data[0].src} ratio="4:3" size="xs" />
-              <DNAImage src={group_data[0].src} ratio="4:3" size="sm" />
-              <DNAImage src={group_data[0].src} ratio="4:3" size="md" />
-              <DNAImage src={group_data[0].src} ratio="4:3" size="lg" />
-              <DNAImage src={group_data[0].src} ratio="4:3" size="xl" />
+              <DNAImage src={avatarGroup[0].src} ratio="4:3" size="xs" />
+              <DNAImage src={avatarGroup[0].src} ratio="4:3" size="sm" />
+              <DNAImage src={avatarGroup[0].src} ratio="4:3" size="md" />
+              <DNAImage src={avatarGroup[0].src} ratio="4:3" size="lg" />
+              <DNAImage src={avatarGroup[0].src} ratio="4:3" size="xl" />
             </View>
           </ScrollView>
         </DNACollapsible>
@@ -174,11 +135,11 @@ const Testscreen: React.FC<any> = () => {
         </DNACollapsible>
         <DNACollapsible title={'Avatar Group'}>
           <View style={styles.gap}>
-            <DNAAvatarGroup options={group_data} color="info" size="xs" />
-            <DNAAvatarGroup options={group_data} color="danger" size="sm" />
-            <DNAAvatarGroup options={group_data} color="warning" size="md" />
-            <DNAAvatarGroup options={group_data} color="success" size="lg" />
-            <DNAAvatarGroup options={group_data} color="default" size="xl" />
+            <DNAAvatarGroup options={avatarGroup} color="info" size="xs" />
+            <DNAAvatarGroup options={avatarGroup} color="danger" size="sm" />
+            <DNAAvatarGroup options={avatarGroup} color="warning" size="md" />
+            <DNAAvatarGroup options={avatarGroup} color="success" size="lg" />
+            <DNAAvatarGroup options={avatarGroup} color="default" size="xl" />
           </View>
         </DNACollapsible>
         <DNACollapsible title={'Buttons'}>
@@ -370,6 +331,14 @@ const Testscreen: React.FC<any> = () => {
             </View>
           </ScrollView>
         </DNACollapsible>
+        <View style={styles.fab}>
+          <DNAFab
+            items={FabItems}
+            onPress={() => {
+              console.log('Pressed Fab');
+            }}
+          />
+        </View>
       </View>
     </View>
   );
@@ -399,6 +368,12 @@ const styles = StyleSheet.create({
     gap: 4,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  fab: {
+    maxWidth: '100%',
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
 });
 

@@ -73,7 +73,7 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
       onPress,
       ...restProps
     }: DNACheckboxProps,
-    ref: React.Ref<any>,
+    ref: React.Ref<View>,
   ) => {
     
   const themeColor = useColor();
