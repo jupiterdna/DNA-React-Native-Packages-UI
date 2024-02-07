@@ -27,6 +27,7 @@ export const ThemeProvider:React.FC<ThemeProviderProps & {children?: React.JSX.E
 
   const {config, theme , children} = props
 
+
   const newConfig = useColorScheme() === 'light' ? defaultConfig : {
     ...defaultConfig, colors: darkmodeColor
   }

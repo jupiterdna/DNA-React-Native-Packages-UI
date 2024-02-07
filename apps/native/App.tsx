@@ -6,7 +6,7 @@ import {
   darkmodeColor,
   themeConfig,
 } from '@rndna/theme-provider';
-import Testscreen from './src/Screens/Testscreen';
+import AnimatedScreen from './src/Screens/AnimatedScreen';
 
 const Native = () => {
   const rnConfig: configType =
@@ -24,7 +24,7 @@ const Native = () => {
   return (
     <ThemeProvider config={rnConfig}>
       <>
-        <Testscreen />
+        <AnimatedScreen />
       </>
     </ThemeProvider>
   );
