@@ -30,7 +30,7 @@ import { DropdownProps } from "./types";
 import { styles } from "./styles";
 import { MenuKebabIcon } from "@rndna/icon";
 import { DNAText } from "@rndna/text";
-import { textSizeCls } from './styles';
+import { textSizeCls } from "./styles";
 import { useColor } from "@rndna/theme-provider";
 
 const { isTablet } = useDetectDevice;
@@ -56,8 +56,8 @@ const MenuComponent: <T>(
       searchField,
       dropDownMaxWidth = 280,
       value,
-      color='default',
-      size='md',
+      color = "default",
+      size = "md",
       icon = MenuKebabIcon,
       maxHeight = 340,
       minHeight = 0,
@@ -98,14 +98,13 @@ const MenuComponent: <T>(
 
     const themeColor = useColor();
     const defaultTextColor = themeColor[color]["default"];
-    const defaultBgColor = themeColor[color]["50"]
-    const activeColor = themeColor[color]["default"]
+    const defaultBgColor = themeColor[color]["50"];
+    const activeColor = themeColor[color]["default"];
     const activeTextColor = themeColor[color]["50"];
 
     useImperativeHandle(currentRef, () => {
       return { open: eventOpen, close: eventClose };
     });
-    
 
     useEffect(() => {
       return eventClose;
@@ -121,15 +120,13 @@ const MenuComponent: <T>(
     }, [data, searchText]);
 
     const renderIcon = useCallback(() => {
-      
       return typeof icon === "function"
         ? createElement(icon, {
             size: (textSizeCls[size].fontSize || -1) + 7,
-            color: defaultTextColor
+            color: defaultTextColor,
           })
-        : icon
-
-    }, [icon])
+        : icon;
+    }, [icon]);
 
     const eventOpen = () => {
       if (!disable) {
@@ -152,7 +149,7 @@ const MenuComponent: <T>(
         //   onBlur();
         // }
       }
-    }, [disable,]);
+    }, [disable]);
 
     // const font = useCallback(() => {
     //   if (fontFamily) {
@@ -177,7 +174,8 @@ const MenuComponent: <T>(
 
           const top = isFull ? 20 : height + pageY + 2;
           const bottom = H - top + height;
-          const left = pageX + width + 20 >= W ? (pageX + width) - dropDownMaxWidth : pageX;
+          const left =
+            pageX + width + 20 >= W ? pageX + width - dropDownMaxWidth : pageX;
 
           setPosition({
             isFull,
@@ -350,10 +348,7 @@ const MenuComponent: <T>(
         onChange(item);
         eventClose();
       },
-      [
-        eventClose,
-        onChange,
-      ]
+      [eventClose, onChange]
     );
 
     const _renderDropdown = () => {
@@ -418,12 +413,13 @@ const MenuComponent: <T>(
             <View
               style={StyleSheet.flatten([
                 itemContainerStyle,
-                selected ? {
-                  backgroundColor: activeColor,
-                } : {
-                  backgroundColor : defaultBgColor
-                },
-                
+                selected
+                  ? {
+                      backgroundColor: activeColor,
+                    }
+                  : {
+                      backgroundColor: defaultBgColor,
+                    },
               ])}
             >
               {renderItem ? (
@@ -435,8 +431,8 @@ const MenuComponent: <T>(
                       styles.textItem,
                       itemTextStyle,
                       {
-                        color: selected ? activeTextColor : defaultTextColor
-                      }
+                        color: selected ? activeTextColor : defaultTextColor,
+                      },
                     ])}
                   >
                     {_.get(item, labelField)}
@@ -462,7 +458,7 @@ const MenuComponent: <T>(
     );
 
     const renderSearch = useCallback(() => {
-      return null
+      return null;
       // if (search) {
       //   return null
       //   // if (renderInputSearch) {
@@ -497,11 +493,7 @@ const MenuComponent: <T>(
       //   // }
       // }
       // return null;
-    }, [
-      accessibilityLabel,
-      testID,
-      searchText,
-    ]);
+    }, [accessibilityLabel, testID, searchText]);
 
     const _renderList = useCallback(
       (isTopPosition: boolean) => {
@@ -620,9 +612,9 @@ const MenuComponent: <T>(
                         containerStyle,
                         {
                           backgroundColor: defaultBgColor,
-                          overflow: 'hidden',
+                          overflow: "hidden",
                           borderRadius: 15,
-                          maxWidth: dropDownMaxWidth
+                          maxWidth: dropDownMaxWidth,
                         },
                       ])}
                     >
@@ -655,10 +647,7 @@ const MenuComponent: <T>(
 
     return (
       <View
-        style={StyleSheet.flatten([
-          styles.mainWrap,
-          style,
-        ])}
+        style={StyleSheet.flatten([styles.mainWrap, style])}
         ref={ref}
         onLayout={_measure}
       >

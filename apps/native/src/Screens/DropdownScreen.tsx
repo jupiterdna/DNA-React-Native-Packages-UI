@@ -12,7 +12,7 @@ import {MenuHamburgerIcon} from '@rndna/icon';
 import {DNAButton} from '@rndna/button';
 
 const data = [
-  {label: 'Item 1', value: '1'},
+  {asd: 'Item 1', value: '1', text: '123'},
   {label: 'Item 2', value: '2'},
   {label: 'Item 3', value: '3'},
 ];
@@ -51,7 +51,8 @@ const DropdownScreen: React.FC<any> = () => {
           position: 'fixed',
           top: 120,
           left: 353 - 50,
-        }}></View>
+        }}
+      />
       <ScrollView>
         <View
           style={[
@@ -65,14 +66,15 @@ const DropdownScreen: React.FC<any> = () => {
             dropDownMaxWidth={120}
             data={data}
             maxHeight={300}
-            labelField="label"
+            labelField="asd"
             valueField="value"
             value={value}
             onChange={(item: (typeof data)[0]) => {
               setValue(item.value);
               setIsFocus(false);
             }}
-            ref={ref} />
+            ref={ref}
+          />
         </View>
       </ScrollView>
     </View>

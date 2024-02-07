@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import _ from "lodash";
 import React, {
   JSXElementConstructor,
   ReactElement,
@@ -8,7 +8,7 @@ import React, {
   useMemo,
   useRef,
   useState,
-} from 'react';
+} from "react";
 import {
   Dimensions,
   FlatList,
@@ -23,17 +23,16 @@ import {
   View,
   ViewStyle,
   StatusBar,
-} from 'react-native';
-import {DNAText} from '@rndna/text'
-import { useDetectDevice } from './utils/utils';
-import { useDeviceOrientation } from './utils/useOrientation';
-import CInput from './component/TextInput';
-import { DropdownProps } from './types';
-import { styles } from './styles';
-
+} from "react-native";
+import { DNAText } from "@rndna/text";
+import { useDetectDevice } from "./utils/utils";
+import { useDeviceOrientation } from "./utils/useOrientation";
+import CInput from "./component/TextInput";
+import { DropdownProps } from "./types";
+import { styles } from "./styles";
 
 const { isTablet } = useDetectDevice;
-const ic_down = require('./assets/down.png');
+const ic_down = require("./assets/down.png");
 
 const statusBarHeight: number = StatusBar.currentHeight || 0;
 
@@ -61,11 +60,11 @@ const DropdownComponent: <T>(
       valueField,
       searchField,
       value,
-      activeColor = '#F6F7F8',
+      activeColor = "#F6F7F8",
       fontFamily,
-      iconColor = 'gray',
+      iconColor = "gray",
       searchPlaceholder,
-      placeholder = 'Select item',
+      placeholder = "Select item",
       search = false,
       maxHeight = 340,
       minHeight = 0,
@@ -80,7 +79,7 @@ const DropdownComponent: <T>(
       onBlur,
       autoScroll = true,
       showsVerticalScrollIndicator = true,
-      dropdownPosition = 'auto',
+      dropdownPosition = "auto",
       flatListProps,
       searchQuery,
       backgroundColor,
@@ -89,7 +88,7 @@ const DropdownComponent: <T>(
       onConfirmSelectItem,
       accessibilityLabel,
       itemAccessibilityLabelField,
-      mode = 'default',
+      mode = "default",
     } = props;
 
     const ref = useRef<View>(null);
@@ -99,19 +98,19 @@ const DropdownComponent: <T>(
     const [listData, setListData] = useState<any[]>(data);
     const [position, setPosition] = useState<any>();
     const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState("");
 
-    const { width: W, height: H } = Dimensions.get('window');
+    const { width: W, height: H } = Dimensions.get("window");
     const styleContainerVertical: ViewStyle = useMemo(() => {
       return {
-        backgroundColor: 'rgba(0,0,0,0.1)',
-        alignItems: 'center',
+        backgroundColor: "rgba(0,0,0,0.1)",
+        alignItems: "center",
       };
     }, []);
     const styleHorizontal: ViewStyle = useMemo(() => {
       return {
-        width: orientation === 'LANDSCAPE' ? W / 2 : '100%',
-        alignSelf: 'center',
+        width: orientation === "LANDSCAPE" ? W / 2 : "100%",
+        alignSelf: "center",
       };
     }, [W, orientation]);
 
@@ -138,7 +137,6 @@ const DropdownComponent: <T>(
         if (onFocus) {
           onFocus();
         }
-
         if (searchText.length > 0) {
           onSearch(searchText);
         }
@@ -170,9 +168,9 @@ const DropdownComponent: <T>(
         ref.current.measureInWindow((pageX, pageY, width, height) => {
           let isFull = isTablet
             ? false
-            : mode === 'modal' || orientation === 'LANDSCAPE';
+            : mode === "modal" || orientation === "LANDSCAPE";
 
-          if (mode === 'auto') {
+          if (mode === "auto") {
             isFull = false;
           }
 
@@ -207,20 +205,20 @@ const DropdownComponent: <T>(
 
     useEffect(() => {
       const susbcriptionKeyboardDidShow = Keyboard.addListener(
-        'keyboardDidShow',
+        "keyboardDidShow",
         onKeyboardDidShow
       );
       const susbcriptionKeyboardDidHide = Keyboard.addListener(
-        'keyboardDidHide',
+        "keyboardDidHide",
         onKeyboardDidHide
       );
 
       return () => {
-        if (typeof susbcriptionKeyboardDidShow?.remove === 'function') {
+        if (typeof susbcriptionKeyboardDidShow?.remove === "function") {
           susbcriptionKeyboardDidShow.remove();
         }
 
-        if (typeof susbcriptionKeyboardDidHide?.remove === 'function') {
+        if (typeof susbcriptionKeyboardDidHide?.remove === "function") {
           susbcriptionKeyboardDidHide.remove();
         }
       };
@@ -228,7 +226,7 @@ const DropdownComponent: <T>(
 
     const getValue = useCallback(() => {
       const defaultValue =
-        typeof value === 'object' ? _.get(value, valueField) : value;
+        typeof value === "object" ? _.get(value, valueField) : value;
 
       const getItem = data.filter((e) =>
         _.isEqual(defaultValue, _.get(e, valueField))
@@ -250,7 +248,7 @@ const DropdownComponent: <T>(
         setTimeout(() => {
           if (refList && refList?.current) {
             const defaultValue =
-              typeof value === 'object' ? _.get(value, valueField) : value;
+              typeof value === "object" ? _.get(value, valueField) : value;
 
             const index = _.findIndex(listData, (e: any) =>
               _.isEqual(defaultValue, _.get(e, valueField))
@@ -309,14 +307,14 @@ const DropdownComponent: <T>(
           const defaultFilterFunction = (e: any) => {
             const item = _.get(e, searchField || labelField)
               ?.toLowerCase()
-              .replace(' ', '')
-              .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '');
+              .replace(" ", "")
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "");
             const key = text
               .toLowerCase()
-              .replace(' ', '')
-              .normalize('NFD')
-              .replace(/[\u0300-\u036f]/g, '');
+              .replace(" ", "")
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "");
 
             return item.indexOf(key) >= 0;
           };
@@ -345,10 +343,10 @@ const DropdownComponent: <T>(
         }
 
         if (onChangeText) {
-          setSearchText('');
-          onChangeText('');
+          setSearchText("");
+          onChangeText("");
         }
-        onSearch('');
+        onSearch("");
         setCurrentValue(item);
         onChange(item);
         eventClose();
@@ -469,8 +467,8 @@ const DropdownComponent: <T>(
         } else {
           return (
             <CInput
-              testID={testID + ' input'}
-              accessibilityLabel={accessibilityLabel + ' input'}
+              testID={testID + " input"}
+              accessibilityLabel={accessibilityLabel + " input"}
               style={[styles.input, inputSearchStyle]}
               inputStyle={[inputSearchStyle, font()]}
               value={searchText}
@@ -512,8 +510,8 @@ const DropdownComponent: <T>(
         const _renderListHelper = () => {
           return (
             <FlatList
-              testID={testID + ' flatlist'}
-              accessibilityLabel={accessibilityLabel + ' flatlist'}
+              testID={testID + " flatlist"}
+              accessibilityLabel={accessibilityLabel + " flatlist"}
               {...flatListProps}
               keyboardShouldPersistTaps="handled"
               ref={refList}
@@ -569,9 +567,9 @@ const DropdownComponent: <T>(
             minHeight: minHeight,
           };
           const isTopPosition =
-            dropdownPosition === 'auto'
+            dropdownPosition === "auto"
               ? onAutoPosition()
-              : dropdownPosition === 'top';
+              : dropdownPosition === "top";
 
           let keyboardStyle: ViewStyle = {};
 
@@ -580,7 +578,7 @@ const DropdownComponent: <T>(
             keyboardAvoiding &&
             keyboardHeight > 0 &&
             isTopPosition &&
-            dropdownPosition === 'auto'
+            dropdownPosition === "auto"
           ) {
             extendHeight = keyboardHeight;
           }
@@ -590,7 +588,7 @@ const DropdownComponent: <T>(
               transparent
               statusBarTranslucent
               visible={visible}
-              supportedOrientations={['landscape', 'portrait']}
+              supportedOrientations={["landscape", "portrait"]}
               onRequestClose={showOrClose}
             >
               <TouchableWithoutFeedback onPress={showOrClose}>
@@ -608,7 +606,7 @@ const DropdownComponent: <T>(
                       !isTopPosition
                         ? { paddingTop: extendHeight }
                         : {
-                            justifyContent: 'flex-end',
+                            justifyContent: "flex-end",
                             paddingBottom: extendHeight,
                           },
                       isFull && styles.fullScreen,
