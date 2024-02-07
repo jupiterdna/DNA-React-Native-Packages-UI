@@ -88,6 +88,7 @@ const AnimatedScreen = () => {
           const active = selected?.id === op.id;
           return (
             <DNARadioButton
+              key={op.id}
               checked={active}
               onPress={() => {
                 setSelected(op);
