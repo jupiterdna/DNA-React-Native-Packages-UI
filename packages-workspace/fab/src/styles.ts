@@ -5,9 +5,11 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 99,
-  },
-  fabWrapper: {
     zIndex: 99,
+  },
+  childWrapper: {
+    position: 'absolute',
+    top: -99999,
   },
   childrenStyle: {
     gap: 8,
@@ -23,6 +25,7 @@ export const styles = StyleSheet.create({
   modalContainer: {
     flex: 1,
     backgroundColor: 'rgba(0,0,0,0.5)',
+    zIndex: -1,
   },
 });
 

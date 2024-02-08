@@ -31,7 +31,7 @@ export type DNAFabItemTypes = {
     /**
      * Handler when the component is clicked
     */
-    onPress?: ((event: GestureResponderEvent) => void) | undefined;
+    onPress?: (event: GestureResponderEvent) => void | undefined;
     /**
      *  Property that enables user to select icon from icon library.
     */

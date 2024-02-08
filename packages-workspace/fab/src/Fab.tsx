@@ -1,6 +1,7 @@
 import React, { 
   createElement,
   useCallback, 
+  useEffect, 
   useRef, 
   useState 
 } from "react";
@@ -15,56 +16,8 @@ import { DNAText } from "@rndna/text";
 import { useColor } from "@rndna/theme-provider";
 import { DNAFabProps, DNAFabItemTypes } from "./types";
 import { PlusIcon, CloseSmallIcon } from "@rndna/icon";
+import Animated, { useSharedValue, withDelay, withTiming } from "react-native-reanimated";
 
-
-/**
- * An avatar group displays a number of avatars grouped together in a stack
- *
- * 
- * ## Usage
- * ```js
- * import * as React from 'react';
- * import { DNAFab, DNAFabItemTypes } from '@rndna/fab';
- * import { ShareIconOutline, CameraIconOutline, PencilRenameIconOutline } from '@rndna/icon';
- * 
- * // Sample Data
- * const FabItems: DNAFabItemTypes[] = [
- *   {
- *     icon: ShareIconOutline,
- *     title: 'Write',
- *     onPress: () => {
- *       console.log('Clicked Write');
- *     },
- *   },
- *   {
- *     icon: CameraIconOutline,
- *     title: 'Camera',
- *     onPress: () => {
- *       console.log('Clicked Camera');
- *     },
- *   },
- *   {
- *     icon: PencilRenameIconOutline,
- *     title: 'Share',
- *     onPress: () => {
- *       console.log('Clicked Share');
- *     },
- *   },
- * ];
- * 
- * const MyComponent = () => (
- *  <DNAFab
- *    items={FabItems}
- *    onPress={() => {
- *      //Will only execute if there are no items
- *      console.log('Pressed Fab');
- *    }}
- *  />
- * );
- *
- * export default MyComponent;
- * ```
- */
 
 export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
   (
@@ -89,7 +42,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
     const whiteColor = themeColor["default"][100];
 
     const measure = useCallback(() => {
-      if (fabRef && fabRef?.current) {
+      if (fabRef && fabRef.current) {
         fabRef.current.measureInWindow((pageX, pageY, width, height) => {
           setPosition({
             pageX, pageY, width, height
@@ -107,7 +60,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
     }, [open, position, measure, items, themeColor])
 
     const measureChild = useCallback(() => {
-      if (childRef && childRef?.current) {
+      if (childRef && childRef.current) {
         childRef.current.measureInWindow((pageX, pageY, width, height) => {
           setChildPosition({
             pageX, pageY, width, height
@@ -116,50 +69,66 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       }
     }, [childRef, isOpen])
 
-    const renderChildItems = useCallback(() => (
-      items &&
-        items.map((e: DNAFabItemTypes) => {
-          const { onPress, icon = PlusIcon, title } = e;
-          const renderItemIcon =
-            typeof icon === "function"
-              ? createElement(icon, {
-                  size: fabSizeCls[size].width - 25,
-                  color: defaultColor,
-                })
-              : icon;
-              
-          return (
-            <View key={`${icon}_${title}`}>
-              <View style={styles.row}>
-                {title && (
-                  <DNAText type="overline" style={{ color: whiteColor }}>
-                    {title}
-                  </DNAText>
-                )}
-                <TouchableOpacity
-                  onPress={onPress}
-                  style={[
-                    fabSizeCls[size],
-                    { backgroundColor: whiteColor },
-                    styles.fab,
-                  ]}
-                >
-                  {renderItemIcon}
-                </TouchableOpacity>
-              </View>
-            </View>
-          );
-        })
-    ),[size, themeColor])
+    const animatedValues = items?.map(() => useSharedValue(0));
+
+    const animateItems = useCallback(() => {
+      items?.forEach((_, index) => {
+        const reverseIndex = items.length - index - 1;
+        const indexVal = open ? reverseIndex : index;
+
+        animatedValues && (animatedValues[indexVal].value = withDelay(
+          index * 200,
+          withTiming(open ? 0 : 1, { duration: 200 }) 
+        ));
+      });
+      setOpen(!open);
+    }, [open]);
+    
 
     const handlePress = (event: GestureResponderEvent) => {
       if (items) {
         setOpen((prev) => !prev);
+        animateItems()
       } else {
         onPress && onPress(event);
       }
     };
-    
+
+    const renderChildItems = useCallback(() => (
+      items &&
+      items.map((e: DNAFabItemTypes, index: number) => {
+        const { onPress, icon = PlusIcon, title } = e;
+        const renderItemIcon =
+          typeof icon === "function"
+          ? createElement(icon, {
+              size: fabSizeCls[size].width - 25,
+              color: defaultColor,
+            })
+          : icon;
+
+        return (
+          <Animated.View key={`${icon}_${title}`} style={{ opacity: animatedValues?.[index] }}>
+            <View style={styles.row}>
+              {title && (
+                <DNAText type="overline" style={{ color: whiteColor }}>
+                  {title}
+                </DNAText>
+              )}
+              <TouchableOpacity
+                onPress={onPress}
+                style={[
+                  fabSizeCls[size],
+                  { backgroundColor: whiteColor },
+                  styles.fab,
+                ]}>
+                {renderItemIcon}
+              </TouchableOpacity>
+            </View>
+          </Animated.View>
+        );
+      })
+    ), [size, items, defaultColor, whiteColor, animatedValues]);
+
     const renderModal = useCallback(() => {
       if (!items) {
         return null;
@@ -174,29 +143,27 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
             setOpen(false)
           }>
           <TouchableOpacity 
-            activeOpacity={1} 
             style={styles.modalContainer} 
             onPress={() => 
               setOpen(false)
             }>
-            <View style={[styles.fabWrapper]}>
-              <TouchableOpacity
-                  style={[
-                    fabSizeCls[size],
-                    styles.fab,
-                    {
-                      left: position?.pageX,
-                      top: position?.pageY,
-                      position: 'absolute',
-                      backgroundColor: primaryColor,
-                    }
-                  ]}
-                  onPress={(event) => { 
-                    handlePress(event); 
-                  }}>
-                  {renderAddIcon()}
-              </TouchableOpacity>
-            </View>
+            <TouchableOpacity
+                style={[
+                  fabSizeCls[size],
+                  styles.fab,
+                  {
+                    left: position?.pageX,
+                    top: position?.pageY,
+                    position: 'absolute',
+                    backgroundColor: primaryColor,
+                    zIndex: 99,
+                  }
+                ]}
+                onPress={(event) => { 
+                  handlePress(event); 
+                }}>
+                {renderAddIcon()}
+            </TouchableOpacity>
             <View style={[
                 styles.childrenStyle,
                 {
@@ -209,39 +176,40 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
           </TouchableOpacity>
         </Modal>
       )
-    }, [position, measure, renderAddIcon, renderChildItems, size, childPosition])
+    }, [open, position, measure, renderAddIcon, renderChildItems, size, childPosition])
 
     return (
       <>
         <View style={{ width: childPosition?.width, alignItems: 'flex-end' }}>
           <TouchableOpacity
-              onLayout={measure}
-              style={[
-                fabSizeCls[size],
-                { backgroundColor: primaryColor },
-                styles.fab,
-              ]}
-              onPress={(event) => {
-                handlePress(event);
-              }}
-              {...restProps}
-              ref={fabRef}
-            >
+            onLayout={measure}
+            style={[
+              fabSizeCls[size],
+              { backgroundColor: primaryColor },
+              styles.fab,
+            ]}
+            onPress={(event) => {
+              handlePress(event);
+            }}
+            {...restProps}
+            ref={fabRef}
+          >
             {renderAddIcon()}
           </TouchableOpacity>
         </View>
-        <View style={ {position: 'absolute', top: -99999 }} >
-          <View 
+        <View style={styles.childWrapper}>
+          <View
             style={[styles.childrenStyle]}
             ref={childRef}
             onLayout={measureChild}
-            >
+          >
             {renderChildItems()}
           </View>
         </View>
         {renderModal()}
       </>
     );
+    
   }
 );
 
