@@ -15,6 +15,51 @@ import {useColor, useFonts} from '@rndna/theme-provider';
 import _ from 'lodash';
 import {DNAText} from '@rndna/text';
 
+/**
+ * A RadioGroup is a wrapper component of radio button controls.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import {RadioGroup, DNARadioButton} from '@rndna/radiobutton'
+ * const option: DNARadioButtonProps[] = [
+ *  {
+ *    id: 'label',
+ *    label: 'label',
+ *  },
+ *  {
+ *    id: 'label2',
+ *    label: 'label2',
+ *    checked: true,
+ *  },
+ *];
+ * const ComponentName = () => {
+ * return (
+ *  <RadioGroup
+ *    orientation="horizontal"
+ *    label="Radio Group"
+ *    disabled
+ *    required
+ * >
+ *     {option.map(op => {
+ *      const active = selected?.id === op.id;
+ *      return (
+ *        <DNARadioButton
+ *           key={op.id}
+ *           checked={active}
+ *           onPress={() => {
+ *             setSelected(op);
+ *           }}
+ *          {...op}
+ *        />
+ *       );
+ *    })}
+ * </RadioGroup>)
+ * }
+ *
+ * export default ComponentName;
+ * ```
+ */
 const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
   (
     {children, assistiveText, disabled, label, orientation, required, ...rest},
@@ -65,6 +110,7 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
             return theme[color].default;
         }
       },
+      // eslint-disable-next-line react-hooks/exhaustive-deps
       [assistiveText, errors],
     );
     const labelStyle = useMemo((): StyleProp<TextStyle> => {
@@ -81,6 +127,7 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
       return {
         color: theme.default[500],
       };
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [localSelected, assistiveText, errors]);
 
     const renderIcon = (
@@ -141,6 +188,7 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
           </DNAText>
         </View>
       );
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [assistiveText, errors]);
 
     const getContainerStyle = useMemo((): StyleProp<ViewStyle> => {

@@ -1,9 +1,8 @@
-import {View, useColorScheme, Text} from 'react-native';
+import {View, useColorScheme} from 'react-native';
 import React, {useState} from 'react';
 import TextField from './Component/TextField';
 import {UserAddIcon} from '@rndna/icon';
 import RadioGroup from './controls/RadioGroup/RadioGroup';
-import {DNAText} from '@rndna/text';
 import {DNARadioButton, DNARadioButtonProps} from '@rndna/radiobutton';
 
 const option: DNARadioButtonProps[] = [
