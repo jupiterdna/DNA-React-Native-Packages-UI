@@ -1,4 +1,5 @@
 import {colorProps} from '@rndna/base_style';
+import React from 'react';
 import {NumberProp, SvgProps} from 'react-native-svg';
 
 export type helperFieldType = 'error' | 'success' | 'info' | 'warning';
@@ -16,6 +17,8 @@ export type assistiveTextType = {
 export type colorTypes =
   | Exclude<colorProps, 'primary' | 'secondary' | 'danger' | 'default'>
   | 'error';
+
+export type RadioCustomTypes<T = any> = React.ReactNode & {props?: T; type?: T};
 
 export type RadioGroupTypes = {
   /**
@@ -38,6 +41,8 @@ export type RadioGroupTypes = {
    * The property that aligns the elements of the components
    */
   orientation?: 'horizontal' | 'vertical';
-} & {
-  children?: React.ReactNode;
+  /**
+   * Property that accept react node as children of radio group
+   */
+  children?: React.ReactNode & {type: any; props: any};
 };

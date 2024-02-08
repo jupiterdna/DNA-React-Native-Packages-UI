@@ -1,4 +1,4 @@
-import {StyleProp, StyleSheet, View, ViewStyle} from 'react-native';
+import {StyleProp, StyleSheet, TextStyle, View, ViewStyle} from 'react-native';
 import React, {
   Children,
   createElement,
@@ -8,10 +8,10 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import {RadioGroupTypes, colorTypes} from './types';
+import {RadioCustomTypes, RadioGroupTypes, colorTypes} from './types';
 import {DNARadioButton} from '@rndna/radiobutton';
 import {isRequired, useValidator} from '@rndna/hooks';
-import {useColor, useFonts} from '@rndna/theme-provider';
+import {useColor} from '@rndna/theme-provider';
 import _ from 'lodash';
 import {DNAText} from '@rndna/text';
 
@@ -66,7 +66,6 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
     ref: React.Ref<View>,
   ) => {
     const theme = useColor();
-    const font = useFonts();
     const [localSelected, setLocalSelected] = useState<any>(undefined);
 
     useEffect(() => {
@@ -80,16 +79,18 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
 
       if (childs) {
         throw new Error(
-          'RadioGroup component only accepts radio button components!',
+          'RadioGroup component only accepts radio button controls!',
         );
       }
 
-      const hasChecked = Children.toArray(children).find(radio => {
+      const hasChecked: RadioCustomTypes | undefined = Children.toArray(
+        children,
+      ).find((radio: RadioCustomTypes) => {
         return radio.props.checked === true;
       });
 
       if (!_.isEmpty(hasChecked?.props)) {
-        setLocalSelected({...hasChecked.props});
+        setLocalSelected({...hasChecked?.props});
       }
     }, [children]);
 
