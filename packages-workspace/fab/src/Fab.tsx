@@ -83,11 +83,9 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       });
       setOpen(!open);
     }, [open]);
-    
 
     const handlePress = (event: GestureResponderEvent) => {
       if (items) {
-        setOpen((prev) => !prev);
         animateItems()
       } else {
         onPress && onPress(event);
@@ -139,29 +137,26 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
           animationType="fade"
           transparent
           visible={open}
-          onRequestClose={() => 
-            setOpen(false)
-          }>
+          onDismiss={() => setOpen(false)}
+          >
           <TouchableOpacity 
             style={styles.modalContainer} 
-            onPress={() => 
-              setOpen(false)
-            }>
+            onPress={(event) => handlePress(event)}
+            >
             <TouchableOpacity
-                style={[
-                  fabSizeCls[size],
-                  styles.fab,
-                  {
-                    left: position?.pageX,
-                    top: position?.pageY,
-                    position: 'absolute',
-                    backgroundColor: primaryColor,
-                    zIndex: 99,
-                  }
-                ]}
-                onPress={(event) => { 
-                  handlePress(event); 
-                }}>
+              style={[
+                fabSizeCls[size],
+                styles.fab,
+                {
+                  left: position?.pageX,
+                  top: position?.pageY,
+                  position: 'absolute',
+                  backgroundColor: primaryColor,
+                  zIndex: 99,
+                }
+              ]}
+              onPress={(event) => handlePress(event)}
+            >
                 {renderAddIcon()}
             </TouchableOpacity>
             <View style={[
@@ -188,9 +183,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
               { backgroundColor: primaryColor },
               styles.fab,
             ]}
-            onPress={(event) => {
-              handlePress(event);
-            }}
+            onPress={(event) => handlePress(event)}
             {...restProps}
             ref={fabRef}
           >
