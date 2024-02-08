@@ -266,6 +266,7 @@ export const TextField = forwardRef(
           <CloseIcon color={theme.default.default} size={18} />
         </TouchableOpacity>
       ) : null;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [clearable, localValue]);
 
     const _renderAssistiveText = useCallback((): React.JSX.Element | null => {
