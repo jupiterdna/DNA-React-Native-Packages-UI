@@ -72,7 +72,7 @@ const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       onPress,
       ...restProps
     }: DNARadioButtonProps,
-    ref: React.Ref<View>,
+    ref: React.Ref<View>
   ) => {
     const themeColor = useColor();
     const primaryColor = themeColor["primary"]["default"];
