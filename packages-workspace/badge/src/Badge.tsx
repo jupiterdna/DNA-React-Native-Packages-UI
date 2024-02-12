@@ -44,19 +44,30 @@ export const DNABadge = (props: DNABadgeProps) => {
     color: colorVariant
   };
 
-  const backgroundColor = () => {
+  const getDefaultBgColor = () => {
     return { backgroundColor: defaultColor }
   }
+
+  const getSpace = () => {
+    return !!value ? [{ left: badgeWidth - 8 }, styles.badgeSpace] : styles.badgeSize
+  }
+
+    const _renderBadgeText = (): React.JSX.Element | null => {
+    return value ? (
+      <DNAText type="overline" style={getTextColor}>{value}</DNAText>
+    ) : null;
+  };
+
   return (
     <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>
       <View style={[
           styles.badge, 
-          backgroundColor(), 
-          !!value ? [{ left: badgeWidth - 8 }, styles.badgeSpace] : styles.badgeSize,
+          getDefaultBgColor(), 
+          getSpace(),
           styles.shadowProp,
           style, 
         ]}>
-        {value && <DNAText type="overline" style={getTextColor}>{value}</DNAText>}
+        {_renderBadgeText()}
       </View>
       {children}
     </View>
