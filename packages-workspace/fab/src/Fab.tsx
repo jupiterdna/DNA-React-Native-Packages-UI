@@ -1,7 +1,6 @@
 import React, { 
   createElement,
   useCallback, 
-  useEffect, 
   useRef, 
   useState 
 } from "react";
@@ -41,7 +40,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
     const defaultColor = themeColor["default"][900];
     const whiteColor = themeColor["default"][100];
 
-    const measure = useCallback(() => {
+    const measure = useCallback((): void => {
       if (fabRef && fabRef.current) {
         fabRef.current.measureInWindow((pageX, pageY, width, height) => {
           setPosition({
@@ -51,7 +50,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       }
     }, [fabRef, isOpen])
 
-    const renderAddIcon = useCallback(() => {
+    const _renderAddIcon = useCallback(() => {
       const parentIcon = items ? (!open ? PlusIcon : CloseSmallIcon) : PlusIcon
       return createElement(parentIcon, {
         size: fabSizeCls[size].width - 20,
@@ -59,7 +58,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       });
     }, [open, position, measure, items, themeColor])
 
-    const measureChild = useCallback(() => {
+    const measureChild = useCallback((): void => {
       if (childRef && childRef.current) {
         childRef.current.measureInWindow((pageX, pageY, width, height) => {
           setChildPosition({
@@ -71,7 +70,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
 
     const animatedValues = items?.map(() => useSharedValue(0));
 
-    const animateItems = useCallback(() => {
+    const animateItems = useCallback((): void => {
       items?.forEach((_, index) => {
         const reverseIndex = items.length - index - 1;
         const indexVal = open ? reverseIndex : index;
@@ -92,7 +91,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       }
     };
 
-    const renderChildItems = useCallback(() => (
+    const _renderChildItems = useCallback((): React.JSX.Element[] | undefined => (
       items &&
       items.map((e: DNAFabItemTypes, index: number) => {
         const { onPress, icon = PlusIcon, title } = e;
@@ -127,7 +126,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       })
     ), [size, items, defaultColor, whiteColor, animatedValues]);
 
-    const renderModal = useCallback(() => {
+    const _renderModal = useCallback((): React.JSX.Element | null => {
       if (!items) {
         return null;
       }
@@ -157,7 +156,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
               ]}
               onPress={(event) => handlePress(event)}
             >
-                {renderAddIcon()}
+                {_renderAddIcon()}
             </TouchableOpacity>
             <View style={[
                 styles.childrenStyle,
@@ -166,40 +165,48 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
                   left: (position?.pageX + position?.width) - childPosition?.width, 
                   top: position?.pageY - childPosition?.height - styles.childrenStyle.gap,
                 }]}>
-              {renderChildItems()}
+              {_renderChildItems()}
             </View>
           </TouchableOpacity>
         </Modal>
       )
-    }, [open, position, measure, renderAddIcon, renderChildItems, size, childPosition])
+    }, [open, position, measure, _renderAddIcon, _renderChildItems, size, childPosition])
 
-    return (
-      <>
-        <View style={{ width: childPosition?.width, alignItems: 'flex-end' }}>
-          <TouchableOpacity
-            onLayout={measure}
-            style={[
-              fabSizeCls[size],
-              { backgroundColor: primaryColor },
-              styles.fab,
-            ]}
-            onPress={(event) => handlePress(event)}
-            {...restProps}
-            ref={fabRef}
-          >
-            {renderAddIcon()}
-          </TouchableOpacity>
-        </View>
-        <View style={styles.childWrapper}>
-          <View
+    const _renderMainFab =  useCallback((): JSX.Element => (
+      <View style={{ width: childPosition?.width, alignItems: 'flex-end' }}>
+        <TouchableOpacity
+          onLayout={measure}
+          style={[
+            fabSizeCls[size],
+            { backgroundColor: primaryColor },
+            styles.fab,
+          ]}
+          onPress={(event) => handlePress(event)}
+          {...restProps}
+          ref={fabRef}
+        >
+          {_renderAddIcon()}
+        </TouchableOpacity>
+      </View>
+    ), [size, childPosition, measure, primaryColor, _renderAddIcon]);
+
+    const _renderRefItems = useCallback((): JSX.Element => (
+      <View style={styles.childWrapper}>
+        <View
             style={[styles.childrenStyle]}
             ref={childRef}
             onLayout={measureChild}
           >
-            {renderChildItems()}
+            {_renderChildItems()}
           </View>
-        </View>
-        {renderModal()}
+      </View>
+    ), [measureChild, _renderChildItems]);
+
+    return (
+      <>
+        {_renderMainFab()}
+        {_renderRefItems()}
+        {_renderModal()}
       </>
     );
     
