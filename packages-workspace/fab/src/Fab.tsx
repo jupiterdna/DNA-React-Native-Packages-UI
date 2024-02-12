@@ -50,7 +50,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       }
     }, [fabRef, isOpen])
 
-    const _renderAddIcon = useCallback(() => {
+    const _renderAddIcon = useCallback((): React.JSX.Element | null => {
       const parentIcon = items ? (!open ? PlusIcon : CloseSmallIcon) : PlusIcon
       return createElement(parentIcon, {
         size: fabSizeCls[size].width - 20,
@@ -172,7 +172,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       )
     }, [open, position, measure, _renderAddIcon, _renderChildItems, size, childPosition])
 
-    const _renderMainFab =  useCallback((): JSX.Element => (
+    const _renderMainFab =  useCallback((): React.JSX.Element | null => (
       <View style={{ width: childPosition?.width, alignItems: 'flex-end' }}>
         <TouchableOpacity
           onLayout={measure}
@@ -190,7 +190,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       </View>
     ), [size, childPosition, measure, primaryColor, _renderAddIcon]);
 
-    const _renderRefItems = useCallback((): JSX.Element => (
+    const _renderRefItems = useCallback((): React.JSX.Element | null => (
       <View style={styles.childWrapper}>
         <View
             style={[styles.childrenStyle]}
