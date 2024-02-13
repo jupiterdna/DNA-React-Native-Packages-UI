@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React, { createElement, useCallback } from "react";
 import { useColorScheme, Pressable } from "react-native";
 import { chipSizeCls, textSizeCls, styles, borderRadiusCls } from './styles';
 import { DNAChipProps } from './types';
@@ -68,13 +68,14 @@ export const DNAChip = (props: DNAChipProps) => {
     }[variant];
   };
 
-  const renderIcon =
-      typeof icon === "function"
-        ? createElement(icon, {
-            size: textSizeCls[size].fontSize,
-            color: colorVariant
-          })
-        : icon
+  const _renderIcon = useCallback((): React.JSX.Element | undefined => {
+    return !!icon && typeof icon === "function"
+      ? createElement(icon, {
+          size:  textSizeCls[size].fontSize,
+          color: colorVariant,
+        })
+      : icon;
+  }, [icon, size, colorVariant]);
 
   const getTextSize = () => {
     switch(size) {
@@ -95,6 +96,18 @@ export const DNAChip = (props: DNAChipProps) => {
 
   const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 }
 
+  const _renderCloseButton = useCallback((): React.JSX.Element | null => {
+    return isClosable ? (
+      <Pressable onPress={onPressClose} disabled={isDisabled}>
+        <CloseSmallIcon size={textSizeCls[size].fontSize} color={colorVariant} />
+      </Pressable>
+    ) : null
+  },[ isClosable, isDisabled, size, colorVariant, onPressClose ])
+
+  const _renderLabel = useCallback((): React.JSX.Element => {
+    return <DNAText style={getTextColor} type={getTextSize()}>{label}</DNAText>
+  }, [getTextColor, label])
+
   return (
     <Pressable
       style={[
@@ -108,13 +121,9 @@ export const DNAChip = (props: DNAChipProps) => {
       onPress={onPress}
       disabled={isDisabled}
     >
-      {!!icon && renderIcon}
-      <DNAText style={getTextColor} type={getTextSize()}>{label}</DNAText>
-      {isClosable && 
-        <Pressable onPress={onPressClose} disabled={isDisabled}>
-          <CloseSmallIcon size={textSizeCls[size].fontSize} color={colorVariant} />
-        </Pressable>
-      }
+      {_renderIcon()}
+      {_renderLabel()}
+      {_renderCloseButton()}
     </Pressable>
   );
 };
