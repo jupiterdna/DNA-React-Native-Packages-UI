@@ -1,9 +1,12 @@
 import {View, useColorScheme} from 'react-native';
 import React, {useState} from 'react';
 import TextField from './Component/TextField';
-import {UserAddIcon} from '@rndna/icon';
-// import RadioGroup from './controls/RadioGroup/RadioGroup';
-// import {DNARadioButton, DNARadioButtonProps} from '@rndna/radiobutton';
+import {UserAddIcon, WarningIcon} from '@rndna/icon';
+import {
+  DNARadioButton,
+  DNARadioButtonProps,
+  DNARadioGroup,
+} from '@rndna/radiobutton';
 
 const option: DNARadioButtonProps[] = [
   {
@@ -18,7 +21,7 @@ const option: DNARadioButtonProps[] = [
 ];
 
 const AnimatedScreen = () => {
-  const [value, setValue] = useState(undefined);
+  const [value, setValue] = useState('');
 
   const [selected, setSelected] = useState<(typeof option)[0] | undefined>(
     undefined,
@@ -32,8 +35,8 @@ const AnimatedScreen = () => {
         paddingVertical: 60,
         paddingHorizontal: 20,
       }}>
-      {/* <UserAddIcon /> */}
-      {/* <TextField
+      <UserAddIcon />
+      <TextField
         icon={UserAddIcon}
         variant="filled"
         prefix="Dr"
@@ -47,10 +50,10 @@ const AnimatedScreen = () => {
         //   message: 'This error!',
         // }}
         clearable
-      /> */}
-      {/*
+      />
+
       <TextField
-        // icon={UserAddIcon}
+        icon={UserAddIcon}
         variant="outlined"
         placeholder="Label"
         value={'123!'}
@@ -62,8 +65,8 @@ const AnimatedScreen = () => {
         //   message: 'This error!',
         // }}
         clearable
-      /> */}
-      {/*
+      />
+
       <TextField
         // icon={UserAddIcon}
         variant="flat"
@@ -77,9 +80,28 @@ const AnimatedScreen = () => {
         //   message: 'This error!',
         // }}
         clearable
-      /> */}
+      />
 
-      {/* <RadioGroup
+      <TextField
+        icon={UserAddIcon}
+        placeholder="Label"
+        required
+        value={value}
+        onChange={e => {
+          setValue(e);
+        }}
+        assistiveText={{
+          type: 'error',
+          message: 'This error!',
+          icon: WarningIcon,
+        }}
+        onBlur={() => {
+          console.log('blurred');
+        }}
+        clearable
+      />
+
+      <DNARadioGroup
         orientation="horizontal"
         label="Radio Group"
         disabled
@@ -97,25 +119,7 @@ const AnimatedScreen = () => {
             />
           );
         })}
-      </RadioGroup> */}
-      {/* <TextField
-        icon={UserAddIcon}
-        placeholder="Label"
-        required
-        value={value}
-        onChange={e => {
-          setValue(e);
-        }}
-        assistiveText={{
-          type: 'error',
-          message: 'This error!',
-          icon: WarningIcon,
-        }}
-        onBlur={() => {
-          console.log('blurred');
-        }}
-        clearable
-      /> */}
+      </DNARadioGroup>
     </View>
   );
 };

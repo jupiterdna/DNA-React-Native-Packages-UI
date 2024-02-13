@@ -3,6 +3,7 @@ import React, {
   Children,
   createElement,
   forwardRef,
+  memo,
   useCallback,
   useEffect,
   useMemo,
@@ -270,4 +271,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default RadioGroup;
+export default memo(RadioGroup);
