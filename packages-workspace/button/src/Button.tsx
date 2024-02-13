@@ -121,7 +121,8 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   }, [isLoading, icon, colorVariant])
 
   const _renderLabel = useCallback((): React.JSX.Element => {
-    return <DNAText style={getTextColor} type={getTextSize()}>{loadingLabel && isLoading ? loadingLabel : label}</DNAText>
+    const labelValue = loadingLabel && isLoading ? loadingLabel : label
+    return <DNAText style={getTextColor} type={getTextSize()}>{labelValue}</DNAText>
   }, [getTextColor, loadingLabel, isLoading, label])
 
   return (
