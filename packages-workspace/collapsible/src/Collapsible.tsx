@@ -1,5 +1,5 @@
-import {View, TouchableOpacity, ScrollView } from 'react-native'
-import React, {ReactNode, createElement, useCallback, useEffect, useState} from 'react'
+import {View, TouchableOpacity, ScrollView, ViewStyle } from 'react-native'
+import React, {createElement, useCallback, useEffect, useState} from 'react'
 import {DNACollapsibleProps} from './types';
 import {styles} from './styles'
 import { useColor } from "@rndna/theme-provider"
@@ -44,7 +44,7 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
     setOpen(isOpen);
   }, [isOpen]);
 
-  const panelBorderRadius = {
+  const panelBorderRadius: ViewStyle = {
       borderTopRightRadius: 4,
       borderTopLeftRadius: 4,
       borderBottomRightRadius: !open ? 4 : 0,
