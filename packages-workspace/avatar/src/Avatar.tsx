@@ -59,7 +59,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
    backgroundColor: defaultColor,
   }
 
-  const getTextSize = () => {
+  const getTextSize = useCallback((): "overline" | "caption" | "body2" | "body1" | "h6" => {
     switch(size) {
       case 'xs': 
         return 'overline'
@@ -74,7 +74,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       default: 
         return 'body2'
     }
-  }
+  },[size]);
 
   const _renderIcon = useCallback((): React.JSX.Element  => {
     return typeof icon === "function"
@@ -85,15 +85,17 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       : icon;
   }, [icon, size, colorVariant])
    
-
-  const filteredName =
+  const filteredName = useCallback((): string | undefined => {
+    return (
       name &&
         name
           .split(/\s+/)
           .slice(0, 2)
           .map(word => word.charAt(0).toUpperCase())
           .join("")
-
+    )
+  },[name]);
+    
   const _renderOverlay = useCallback((): false | React.JSX.Element => {
     return !!name && <View style={[styles.overlay, avatarSizeCls[size], borderRadiusCls[borderRadius]]} /> 
   }, [size, borderRadius])
@@ -108,7 +110,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
             alt={alt}
           />
       ) : !!name ?  (
-        <DNAText style={getTextColor} type={getTextSize()}>{filteredName}</DNAText>
+        <DNAText style={getTextColor} type={getTextSize()}>{filteredName()}</DNAText>
       ) : (
         _renderIcon()
       )
