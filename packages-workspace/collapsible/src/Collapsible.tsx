@@ -1,5 +1,5 @@
 import {View, TouchableOpacity, ScrollView } from 'react-native'
-import React, {createElement, useEffect, useState} from 'react'
+import React, {ReactNode, createElement, useCallback, useEffect, useState} from 'react'
 import {DNACollapsibleProps} from './types';
 import {styles} from './styles'
 import { useColor } from "@rndna/theme-provider"
@@ -24,7 +24,6 @@ import {DNAText} from '@rndna/text'
  * ```
  */
 
-
 export const DNACollapsible = (props: DNACollapsibleProps) => {
 
   const { 
@@ -36,17 +35,14 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
   } = props
 
   const [open, setOpen] = useState(false)
-
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
   const panelBgColor = themeColor[color][50];
   const chevronIcon = !open ? ChevronDownSmallIcon : ChevronUpSmallIcon
 
-  const renderIcon =
-      createElement(chevronIcon, {
-        size: 24,
-        color: defaultColor
-      })
+  useEffect(() => {
+    setOpen(isOpen);
+  }, [isOpen]);
 
   const panelBorderRadius = {
       borderTopRightRadius: 4,
@@ -55,26 +51,39 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
       borderBottomLeftRadius: !open ? 4 : 0,
   };
 
-  useEffect(() => {
-    setOpen(isOpen);
-  }, [isOpen]);
+  const _renderIcon = useCallback((): React.JSX.Element => {
+    return createElement(chevronIcon, {
+      size: 24,
+      color: defaultColor
+    });
+  },[defaultColor])
     
+  const _renderChild = useCallback((): React.JSX.Element | null => {
+    return open ? <View style={[styles.panelBody,{ height: height }]}>
+      {children}
+    </View> : null
+  },[open, children, height])
+
+  const _renderTitlePanel = useCallback((): React.JSX.Element => {
+     return (
+        <TouchableOpacity 
+            onPress={() => {
+              setOpen(prev => !prev)
+            }}
+            style={[styles.panelHeader, { backgroundColor: panelBgColor }, panelBorderRadius]}
+            >
+            <DNAText style={{ color: defaultColor }}>{title}</DNAText>
+            <View>
+              {_renderIcon()}
+            </View>
+        </TouchableOpacity>
+      )
+  },[panelBgColor, open, _renderIcon, title, defaultColor, panelBorderRadius])
+  
   return (
-    <View style={[styles.collapsible, { borderColor: defaultColor  }]}>
-      <TouchableOpacity 
-        onPress={() => {
-          setOpen(prev => !prev)
-        }}
-        style={[styles.panelHeader, { backgroundColor: panelBgColor }, panelBorderRadius]}
-        >
-        <DNAText style={{ color: defaultColor }}>{title}</DNAText>
-        <View>
-        {renderIcon}
-        </View>
-      </TouchableOpacity>
-      {open ? <View style={[styles.panelBody,{ height: height }]}>
-       {children}
-      </View> : null}
+    <View style={[styles.collapsible, { borderColor: defaultColor }]}>
+      {_renderTitlePanel()}
+      {_renderChild()}
     </View>
   )
 }
