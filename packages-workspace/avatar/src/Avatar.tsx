@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React, { createElement, useCallback } from "react";
 import { Pressable, useColorScheme, Image, View } from "react-native";
 import { avatarSizeCls, styles, textSizeCls} from "./styles"; 
 import { DNAText } from "@rndna/text";
@@ -76,13 +76,15 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
     }
   }
 
-  const renderIcon = 
-  typeof icon === "function"
-    ? createElement(icon, {
-        size: size !== 'xs' ? (textSizeCls[size].fontSize || -1) + 4 : textSizeCls[size].fontSize, 
+  const _renderIcon = useCallback((): React.JSX.Element  => {
+    return typeof icon === "function"
+      ? createElement(icon, {
+        size: size !== 'xs' ? (textSizeCls[size].fontSize || -1) + 4 : textSizeCls[size].fontSize,
         color: colorVariant
       })
-    : icon
+      : icon;
+  }, [icon, size, colorVariant])
+   
 
   const filteredName =
       name &&
@@ -91,6 +93,27 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
           .slice(0, 2)
           .map(word => word.charAt(0).toUpperCase())
           .join("")
+
+  const _renderOverlay = useCallback((): false | React.JSX.Element => {
+    return !!name && <View style={[styles.overlay, avatarSizeCls[size], borderRadiusCls[borderRadius]]} /> 
+  }, [size, borderRadius])
+
+  const _renderAvatar = useCallback((): React.JSX.Element => {
+    return (
+      !!imageSource ? (
+          <Image
+            style={[{ width: '100%', height: '100%'}, borderRadiusCls[borderRadius]]}
+            source={{ uri: imageSource }}
+            resizeMethod="auto"
+            alt={alt}
+          />
+      ) : !!name ?  (
+        <DNAText style={getTextColor} type={getTextSize()}>{filteredName}</DNAText>
+      ) : (
+        _renderIcon()
+      )
+    )
+  }, [imageSource, borderRadius, alt, name, filteredName, getTextColor])
 
   return (
     <Pressable
@@ -103,19 +126,8 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       ref={ref}
       {...restProps}
     >
-      {!!name && <View style={[styles.overlay, avatarSizeCls[size], borderRadiusCls[borderRadius]]} /> }
-      {!!imageSource ? (
-          <Image
-            style={[{ width: '100%', height: '100%'}, borderRadiusCls[borderRadius]]}
-            source={{ uri: imageSource }}
-            resizeMethod="auto"
-            alt={alt}
-          />
-      ) : !!name ?  (
-        <DNAText style={getTextColor} type={getTextSize()}>{filteredName}</DNAText>
-      ) : (
-        renderIcon
-      )}
+      {_renderOverlay()}
+      {_renderAvatar()}
     </Pressable>
   );
 });

@@ -1,4 +1,4 @@
-import {View, TouchableOpacity, ScrollView, ViewStyle } from 'react-native'
+import {View, TouchableOpacity, ViewStyle} from 'react-native'
 import React, {createElement, useCallback, useEffect, useState} from 'react'
 import {DNACollapsibleProps} from './types';
 import {styles} from './styles'
