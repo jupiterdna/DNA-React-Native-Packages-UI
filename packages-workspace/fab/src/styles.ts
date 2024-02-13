@@ -1,4 +1,4 @@
-import { StyleSheet} from 'react-native';
+import { StyleSheet, useColorScheme} from 'react-native';
 
 export const styles = StyleSheet.create({
   fab: {
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: 'rgba(0,0,0,0.5)',
+    backgroundColor: useColorScheme() === 'light' ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)',
     zIndex: -1,
   },
 });
