@@ -16,10 +16,11 @@ const {getDefaultConfig, mergeConfig} = require('@react-native/metro-config');
 const path = require('path');
 
 // Find the workspace root, this can be replaced with `find-yarn-workspace-root`
-
-console.log('__dirname', __dirname);
 const config = {
-  watchFolders: [path.resolve(__dirname, '../../node_modules')],
+  watchFolders: [
+    path.resolve(__dirname, '../../node_modules'),
+    path.resolve(__dirname, '../..'),
+  ],
 };
 
 // // 1. Watch all files within the monorepo
