@@ -1,12 +1,12 @@
 import {View, useColorScheme} from 'react-native';
 import React, {useState} from 'react';
-import TextField from './Component/TextField';
 import {UserAddIcon, WarningIcon} from '@rndna/icon';
 import {
   DNARadioButton,
   DNARadioButtonProps,
   DNARadioGroup,
 } from '@rndna/radiobutton';
+// import {DNATextField} from '@rndna/textfield';
 
 const option: DNARadioButtonProps[] = [
   {
@@ -35,8 +35,8 @@ const AnimatedScreen = () => {
         paddingVertical: 60,
         paddingHorizontal: 20,
       }}>
-      <UserAddIcon />
-      <TextField
+      {/* <UserAddIcon /> */}
+      {/* <DNATextField
         icon={UserAddIcon}
         variant="filled"
         prefix="Dr"
@@ -50,9 +50,9 @@ const AnimatedScreen = () => {
         //   message: 'This error!',
         // }}
         clearable
-      />
+      /> */}
 
-      <TextField
+      {/* <DNATextField
         icon={UserAddIcon}
         variant="outlined"
         placeholder="Label"
@@ -65,9 +65,9 @@ const AnimatedScreen = () => {
         //   message: 'This error!',
         // }}
         clearable
-      />
+      /> */}
 
-      <TextField
+      {/* <DNATextField
         // icon={UserAddIcon}
         variant="flat"
         placeholder="Flat TextField"
@@ -82,7 +82,7 @@ const AnimatedScreen = () => {
         clearable
       />
 
-      <TextField
+      <DNATextField
         icon={UserAddIcon}
         placeholder="Label"
         required
@@ -99,7 +99,7 @@ const AnimatedScreen = () => {
           console.log('blurred');
         }}
         clearable
-      />
+      /> */}
 
       <DNARadioGroup
         orientation="horizontal"

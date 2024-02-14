@@ -26,7 +26,7 @@ const Native = () => {
     <ThemeProvider config={rnConfig}>
       <>
         {/* <AnimatedScreen /> */}
-        <Testscreen />
+        {/* <Testscreen /> */}
       </>
     </ThemeProvider>
   );
