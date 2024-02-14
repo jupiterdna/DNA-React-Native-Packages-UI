@@ -9,13 +9,14 @@ import React, {
   Children,
   createElement,
   forwardRef,
+  memo,
   useCallback,
   useEffect,
   useMemo,
   useState,
 } from "react";
 import { RadioCustomTypes, RadioGroupTypes, colorTypes } from "./types";
-import { DNARadioButton } from "../index";
+import { DNARadioButton } from "../RadioButton";
 import { isRequired, useValidator } from "@rndna/hooks";
 import { useColor } from "@rndna/theme-provider";
 import _ from "lodash";
@@ -27,7 +28,7 @@ import { DNAText } from "@rndna/text";
  * ## Usage
  * ```js
  * import * as React from 'react';
- * import {DNARadioGroup, DNARadioButton} from '@rndna/radiobutton'
+ * import {RadioGroup, DNARadioButton} from '@rndna/radiobutton'
  * const option: DNARadioButtonProps[] = [
  *  {
  *    id: 'label',
@@ -41,7 +42,7 @@ import { DNAText } from "@rndna/text";
  *];
  * const ComponentName = () => {
  * return (
- *  <DNARadioGroup
+ *  <RadioGroup
  *    orientation="horizontal"
  *    label="Radio Group"
  *    disabled
@@ -60,7 +61,7 @@ import { DNAText } from "@rndna/text";
  *        />
  *       );
  *    })}
- * </DNARadioGroup>)
+ * </RadioGroup>)
  * }
  *
  * export default ComponentName;
@@ -217,9 +218,8 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
     }, [orientation, label]);
 
     const _renderRadioButtons = () => {
-      return Children.toArray(children).map((c: RadioCustomTypes) => {
-        const { props: childProps } = c;
-        return <DNARadioButton {...childProps} disabled={disabled} />;
+      return Children.map(children, (c) => {
+        return <DNARadioButton {...c?.props} disabled={disabled} />;
       });
     };
 

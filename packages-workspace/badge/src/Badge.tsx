@@ -1,5 +1,5 @@
 import { View, useColorScheme } from 'react-native'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { DNABadgeProps } from './types'
 import { styles } from './styles'
 import { useColor } from "@rndna/theme-provider"
@@ -44,20 +44,31 @@ export const DNABadge = (props: DNABadgeProps) => {
     color: colorVariant
   };
 
-  const backgroundColor = () => {
+  const getDefaultBgColor = () => {
     return { backgroundColor: defaultColor }
   }
-  return (
-    <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>
+
+  const getSpace = () => {
+    return !!value ? [{ left: badgeWidth - 8 }, styles.badgeSpace] : styles.badgeSize
+  }
+
+  const _renderBadgeText = useCallback((): React.JSX.Element | null => {
+    return (
       <View style={[
-          styles.badge, 
-          backgroundColor(), 
-          !!value ? [{ left: badgeWidth - 8 }, styles.badgeSpace] : styles.badgeSize,
+        styles.badge, 
+          getDefaultBgColor(), 
+          getSpace(),
           styles.shadowProp,
           style, 
         ]}>
-        {value && <DNAText type="overline" style={getTextColor}>{value}</DNAText>}
+        <DNAText type="overline" style={getTextColor}>{value}</DNAText>
       </View>
+    )
+  },[getDefaultBgColor(), getSpace(), style, getTextColor, value]);
+
+  return (
+    <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>
+      {_renderBadgeText()}
       {children}
     </View>
   )

@@ -1,4 +1,4 @@
-import React, { createElement } from "react";
+import React, { createElement, useCallback } from "react";
 import {
   Pressable,
   ActivityIndicator,
@@ -78,15 +78,17 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const getIconPositionStyle = () => {
     return iconPosition === 'right' ? styles.buttonIconRight : styles.buttonIconLeft
   }
-  const renderIcon = 
-      typeof icon === "function"
-        ? createElement(icon, {
-            size: (textSizeCls[size].fontSize || -1) + 7,
-            color: colorVariant
-          })
-        : icon
-  
-  const getTextSize = () => {
+
+  const _renderIcon = useCallback((): React.JSX.Element | undefined => {
+    return typeof icon === "function"
+      ? createElement(icon, {
+        size: (textSizeCls[size].fontSize || -1) + 7,
+        color: colorVariant
+      })
+      : icon;
+  }, [icon, size, colorVariant])
+
+  const getTextSize = useCallback((): "caption" | "body2" | "body1" | "label" | "h6" => {
     switch(size) {
       case 'xs': 
         return 'caption'
@@ -101,13 +103,27 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       default: 
         return 'body1'
     }
-  }
+  },[size])
   
   const iconBtnSizes = {
       width: buttonSizeCls[size].height,
       height: buttonSizeCls[size].height,
       paddingHorizontal: 0,
   };
+
+  const _renderIconState = useCallback((): false | React.JSX.Element | undefined => {
+    return (
+      isLoading ? (
+        <View style={styles.loadingSize}>
+          <ActivityIndicator color={colorVariant} /> 
+        </View>
+      ) : !!icon && _renderIcon() )
+  }, [isLoading, icon, colorVariant])
+
+  const _renderLabel = useCallback((): React.JSX.Element => {
+    const labelValue = loadingLabel && isLoading ? loadingLabel : label
+    return <DNAText style={getTextColor} type={getTextSize()}>{labelValue}</DNAText>
+  }, [getTextColor, loadingLabel, isLoading, label])
 
   return (
     <Pressable
@@ -125,14 +141,8 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       ref={ref}
       {...restProps}
     > 
-      {isLoading ? (
-        <View style={styles.loadingSize}>
-          <ActivityIndicator color={colorVariant} /> 
-        </View>
-      ) : (
-        !!icon && renderIcon
-      )}
-      <DNAText style={getTextColor} type={getTextSize()}>{loadingLabel && isLoading ? loadingLabel : label}</DNAText>
+      {_renderIconState()}
+      {_renderLabel()}
     </Pressable>
   );
 });
