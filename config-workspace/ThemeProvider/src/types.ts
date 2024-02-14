@@ -1,5 +1,5 @@
 import { ColorSchemeName } from "react-native";
-import {fontNameType} from '@rndna/fonts'
+import { fontNameType } from "@rndna/fonts";
 
 export type colorType = {
   ["default"]: string;
@@ -16,18 +16,18 @@ export type colorType = {
 };
 
 export type fontSizeType = {
-  h1: number,
-  h2: number,
-  h3: number,
-  h4: number,
-  h5: number,
-  h6: number,
-  label: number,
-  body1: number,
-  body2: number,
-  caption: number,
-  overline: number
-}
+  h1: number;
+  h2: number;
+  h3: number;
+  h4: number;
+  h5: number;
+  h6: number;
+  label: number;
+  body1: number;
+  body2: number;
+  caption: number;
+  overline: number;
+};
 
 export type configType = {
   spacing: {
@@ -72,8 +72,8 @@ export type configType = {
       | 400
       | 500
       | 700;
-      fontSize?: fontSizeType
-  },
+    fontSize?: fontSizeType;
+  };
 };
 
 export interface ThemeProviderProps {
@@ -84,5 +84,5 @@ export interface ThemeProviderProps {
   /**
    * set theme either dark or light default is light
    */
-  theme?: ColorSchemeName
+  theme?: ColorSchemeName;
 }

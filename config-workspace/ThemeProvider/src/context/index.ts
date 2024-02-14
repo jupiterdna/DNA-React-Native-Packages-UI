@@ -1,6 +1,9 @@
-import { createContext } from 'react';
-import {ThemeProviderProps} from '../types'
+import { createContext } from "react";
+import { ThemeProviderProps } from "../types";
 
-import {defaultConfig} from '../config'
+import { defaultConfig } from "../config";
 
-export const ThemeContext = createContext<ThemeProviderProps>({config: defaultConfig, theme: 'light'});
+export const ThemeContext = createContext<ThemeProviderProps>({
+  config: defaultConfig,
+  theme: "light",
+});

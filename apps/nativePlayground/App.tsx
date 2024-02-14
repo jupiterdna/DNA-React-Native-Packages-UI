@@ -6,8 +6,8 @@ import {
   darkmodeColor,
   themeConfig,
 } from '@rndna/theme-provider';
-import AnimatedScreen from './src/Screens/AnimatedScreen';
-import Testscreen from './src/Screens/Testscreen';
+// import AnimatedScreen from './src/Screens/AnimatedScreen';
+// import Testscreen from './src/Screens/Testscreen';
 
 const Native = () => {
   const rnConfig: configType =
