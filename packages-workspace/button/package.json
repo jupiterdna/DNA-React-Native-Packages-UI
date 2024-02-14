@@ -1,6 +1,6 @@
 {
   "name": "@rndna/button",
-  "version": "0.0.9",
+  "version": "0.0.11",
   "author": "Juphet Vitualla",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -10,6 +10,11 @@
     "src/",
     "README.md",
     "CHANGELOG.md"
+  ],
+  "keywords": [
+    "button",
+    "react-native",
+    "mobile"
   ],
   "scripts": {
     "build": "tsup",

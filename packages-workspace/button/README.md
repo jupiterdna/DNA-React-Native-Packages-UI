@@ -1,3 +1,4 @@
-## React Native DNA Button
+# DNA React Native Button
 
-Component details will be published soon!
+A button is component that the user can press to trigger an action.
+
