@@ -111,15 +111,15 @@ const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
     const _renderRadioButton = useCallback((): React.JSX.Element => {
       return (
         <View style={[styles.radioInner, buttonSizeCls[size], radioBorderStyle]}>
-          {checked ? (
+          { checked ? 
             <CircleIcon
               size={buttonSizeCls[size]?.width - 4}
               color={getDisabledColor}
             />
-          ) : null}
+           : null }
         </View>
       )
-    }, [size, checked, getDisabledColor])
+    }, [size, checked, getDisabledColor, radioBorderStyle])
 
     const _renderRadioLabel = useCallback((): React.JSX.Element => {
       return (

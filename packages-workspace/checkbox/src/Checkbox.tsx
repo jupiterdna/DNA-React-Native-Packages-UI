@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { View, Pressable, GestureResponderEvent, useColorScheme } from 'react-native';
 import { DNACheckboxProps } from './types';
 import { buttonSizeCls, styles } from './styles';
@@ -84,13 +84,7 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
 
   const checkColor = useColorScheme() === "light" ? "white" : secondaryColor;
 
-  const handlePress = (event: GestureResponderEvent) => {
-    if (onPress) {
-      onPress(event);
-    }
-  };
-
-  const getTextSize = () => {
+  const getTextSize = useCallback((): "overline" | "caption" | "body2" | "body1" | "label" => {
     switch(size) {
       case 'xs': 
         return 'overline'
@@ -105,13 +99,39 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
       default: 
         return 'body2'
     }
-  }
+  },[size])
 
   const checkBtnCls = 
     checked 
       ? { backgroundColor: disabled ? disabledColor : primaryColor }
       : { borderWidth: 1, backgroundColor: "transparent", borderColor: disabled ? disabledColor : defaultColor}
       
+  const handlePress = (event: GestureResponderEvent) => {
+    if (onPress) {
+      onPress(event);
+    }
+  };
+
+  const _renderCheckBox = useCallback((): React.JSX.Element => {
+    return (
+      <View style={[ styles.innerWrapper, buttonSizeCls[size], checkBtnCls]}>
+        { checked ? 
+          <CheckSmallIcon 
+            size={buttonSizeCls[size]?.width} 
+            color={checkColor} 
+          /> 
+          : null }
+      </View>
+    )
+  },[size, checked, checkColor, checkBtnCls])
+
+  const _renderCheckBoxLabel = useCallback((): React.JSX.Element => {
+    return (
+      <DNAText type={getTextSize()} style={disabled && {color: disabledColor }}>
+        {label}
+      </DNAText>
+    )
+  },[disabled, disabledColor, label, getTextSize()])
 
   return (
     <Pressable
@@ -122,15 +142,8 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
       disabled={disabled}
       onPress={handlePress}
     >
-      <View  
-        style={[
-          styles.innerWrapper, 
-          buttonSizeCls[size], 
-          checkBtnCls,
-        ]}>
-        { checked ? <CheckSmallIcon size={buttonSizeCls[size]?.width} color={checkColor} /> : null }
-      </View>
-      <DNAText type={getTextSize()} style={disabled && {color: disabledColor }}>{label}</DNAText>
+      {_renderCheckBox()}
+      {_renderCheckBoxLabel()}
     </Pressable>
   );
 });
