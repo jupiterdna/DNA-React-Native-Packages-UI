@@ -1,18 +1,9 @@
-<<<<<<< HEAD
-import {colorProps} from '@rndna/base_style';
-import {TextInputProps} from 'react-native';
-import {NumberProp, SvgProps} from 'react-native-svg';
-
-export type helperFieldType = 'error' | 'success' | 'info' | 'warning';
-export type variantType = 'flat' | 'filled' | 'outlined';
-=======
 import { colorProps } from "@rndna/base_style";
 import { TextInputProps } from "react-native";
 import { NumberProp, SvgProps } from "react-native-svg";
 
 export type helperFieldType = "error" | "success" | "info" | "warning";
 export type variantType = "flat" | "filled" | "outlined";
->>>>>>> c1541c6e4c03d21d17ed544a7437dd39876782f3
 
 export interface IProps extends SvgProps {
   size?: NumberProp;
@@ -25,17 +16,10 @@ export type assistiveTextType = {
 };
 
 export type colorTypes =
-<<<<<<< HEAD
-  | Exclude<colorProps, 'primary' | 'secondary' | 'danger' | 'default'>
-  | 'error';
-
-export type TextFieldtypes = Omit<TextInputProps, 'onChange' | 'editable'> & {
-=======
   | Exclude<colorProps, "primary" | "secondary" | "danger" | "default">
   | "error";
 
 export type TextFieldtypes = Omit<TextInputProps, "onChange" | "editable"> & {
->>>>>>> c1541c6e4c03d21d17ed544a7437dd39876782f3
   /**
    * Sets the default value or state of the component (i.e activated or checked or prefilled).
    */

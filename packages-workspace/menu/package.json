@@ -34,14 +34,6 @@
     "expo": "*",
     "react": "*",
     "react-native": "*",
-<<<<<<< HEAD
     "react-native-svg": "*"
-=======
-    "@rndna/typescript-config": "*",
-    "@rndna/icon": "*",
-    "@rndna/text": "*",
-    "react-native-svg": "*",
-    "@rndna/base_style": "*"
->>>>>>> c1541c6e4c03d21d17ed544a7437dd39876782f3
   }
 }

@@ -12,11 +12,7 @@
   "devDependencies": {
     "@types/react": "^18.2.38",
     "@types/react-native": "^0.72.7",
-<<<<<<< HEAD
     "@rndna/theme-provider": "*",
-=======
-    "@rndna/typescript-config": "*",
->>>>>>> c1541c6e4c03d21d17ed544a7437dd39876782f3
     "@rndna/base_style": "*",
     "@rndna/text": "*",
     "react-native-svg": "13.14.0",
@@ -26,13 +22,7 @@
   "dependencies": {},
   "peerDependencies": {
     "@rndna/icon": "*",
-<<<<<<< HEAD
     "react": "*",
     "react-native": "*"
-=======
-    "react": "^18.2.0",
-    "react-native": "^0.72.7",
-    "@rndna/theme-provider": "*"
->>>>>>> c1541c6e4c03d21d17ed544a7437dd39876782f3
   }
 }
