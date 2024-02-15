@@ -47,7 +47,7 @@ const TextFieldScreen = () => {
         clearable
       />
 
-      {/* <DNATextField
+      <DNATextField
         icon={UserAddIcon}
         variant="outlined"
         placeholder="Label"
@@ -94,7 +94,7 @@ const TextFieldScreen = () => {
           console.log('blurred');
         }}
         clearable
-      /> */}
+      />
     </View>
   );
 };

@@ -6,7 +6,7 @@ import RippleScreen from './src/Screens/RippleScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {useColor} from '@rndna/theme-provider';
-import HookScreen from './src/Screens/HookScreen';
+import RadioButtonScreen from './src/Screens/RadioButtonScreen';
 
 const App = () => {
   const Drawer = createDrawerNavigator();
@@ -15,7 +15,7 @@ const App = () => {
       <Drawer.Navigator>
         <Drawer.Screen name="Ripple Button" component={RippleScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
-        <Drawer.Screen name="HookScreen" component={HookScreen} />
+        <Drawer.Screen name="Radio Button" component={RadioButtonScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
