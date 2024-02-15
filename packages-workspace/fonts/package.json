@@ -31,7 +31,7 @@
   },
   "dependencies": {},
   "peerDependencies": {
-    "@dnamobile/base_style": "*",
+    "@rndna/base_style": "*",
     "@rndna/typescript-config": "*",
     "expo": "*",
     "react": "*",

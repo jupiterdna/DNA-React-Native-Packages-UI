@@ -15,7 +15,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "@dnamobile/textfield": "*",
+    "@rndna/textfield": "*",
     "@rndna/avatar": "*",
     "@rndna/avatar_group": "*",
     "@rndna/badge": "*",
