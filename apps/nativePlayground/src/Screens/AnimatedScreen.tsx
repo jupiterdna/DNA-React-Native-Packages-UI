@@ -1,7 +1,7 @@
 import {View, useColorScheme} from 'react-native';
 import React, {useState} from 'react';
-import TextField from './Component/TextField';
 import {UserAddIcon, WarningIcon} from '@rndna/icon';
+import {DNATextField} from '@rndna/textfield';
 import {
   DNARadioButton,
   DNARadioButtonProps,
@@ -36,7 +36,7 @@ const AnimatedScreen = () => {
         paddingHorizontal: 20,
       }}>
       <UserAddIcon />
-      <TextField
+      <DNATextField
         icon={UserAddIcon}
         variant="filled"
         prefix="Dr"
@@ -52,7 +52,7 @@ const AnimatedScreen = () => {
         clearable
       />
 
-      <TextField
+      <DNATextField
         icon={UserAddIcon}
         variant="outlined"
         placeholder="Label"
@@ -67,7 +67,7 @@ const AnimatedScreen = () => {
         clearable
       />
 
-      <TextField
+      <DNATextField
         // icon={UserAddIcon}
         variant="flat"
         placeholder="Flat TextField"
@@ -82,7 +82,7 @@ const AnimatedScreen = () => {
         clearable
       />
 
-      <TextField
+      <DNATextField
         icon={UserAddIcon}
         placeholder="Label"
         required

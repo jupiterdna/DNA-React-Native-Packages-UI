@@ -15,15 +15,14 @@
     "tsup": "^8.0.1",
     "typescript": "^5.3.2",
     "@rndna/base_style": "*",
-    "@rndna/text": "*"
+    "@rndna/text": "*",
+    "@rndna/typescript-config": "*",
+    "@rndna/theme-provider": "*",
+    "@rndna/icon": "*"
   },
-  "dependencies": {
-    "@dnamobile/typescript-config": "*",
-    "@rndna/icon": "*",
-    "@rndna/theme-provider": "*"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "react-native": "*",
-    "react": "*"
+    "react": "*",
+    "react-native": "*"
   }
 }

@@ -12,19 +12,17 @@
   "devDependencies": {
     "@types/react": "^18.2.38",
     "@types/react-native": "^0.72.7",
-    "@dnamobile/typescript-config": "*",
+    "@rndna/theme-provider": "*",
     "@rndna/base_style": "*",
     "@rndna/text": "*",
     "react-native-svg": "13.14.0",
     "tsup": "^8.0.1",
     "typescript": "^5.3.2"
   },
-  "dependencies": {
-    "react": "^18.2.0",
-    "react-native": "^0.72.7",
-    "@rndna/theme-provider": "*"
-  },
+  "dependencies": {},
   "peerDependencies": {
-    "@rndna/icon": "*"
+    "@rndna/icon": "*",
+    "react": "*",
+    "react-native": "*"
   }
 }
