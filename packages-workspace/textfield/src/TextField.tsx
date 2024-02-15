@@ -15,6 +15,7 @@ import React, {
   forwardRef,
   memo,
   useCallback,
+  useContext,
   useEffect,
   useImperativeHandle,
   useMemo,
@@ -29,7 +30,7 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from "react-native-reanimated";
-import { useColor, useFonts } from "@rndna/theme-provider";
+import { ThemeContext, useColor, useFonts } from "@rndna/theme-provider";
 import _ from "lodash";
 import { CloseIcon } from "@rndna/icon";
 import { TextFieldtypes, colorTypes } from "./types";
@@ -88,8 +89,10 @@ export const TextField = forwardRef(
     }: TextFieldtypes,
     ref: React.Ref<TextInput>
   ) => {
-    const font = useFonts();
-    const theme = useColor();
+    const context = useContext(ThemeContext);
+
+    const font = context.config.fonts;
+    const theme = context.config.colors;
     const scheme = useColorScheme();
 
     const INITIAL_POSITION = 10;
@@ -107,19 +110,8 @@ export const TextField = forwardRef(
     const innerRef = useRef<TextInput>(null);
 
     const [focus, setFocus] = useState(false);
+    const [showPrefix, setShowPrefix] = useState(false);
     const [localValue, setLocalValue] = useState("");
-
-    const animatedStyle = useAnimatedStyle(() => ({
-      top: withTiming(pos.value, animateConfig),
-      fontSize: withTiming(fontSize.value, animateConfig),
-    }));
-
-    useImperativeHandle(ref, () => innerRef.current!, []);
-
-    const errors = useValidator<string>({
-      param: localValue,
-      validators: [isRequired(required), maxChar(6), hasSpecialCharacter()],
-    });
 
     useEffect(() => {
       if (value || focus) {
@@ -129,23 +121,33 @@ export const TextField = forwardRef(
         pos.value = INITIAL_POSITION;
         fontSize.value = INITIAL_FONTSIZE;
       }
+      if (prefix) {
+        setShowPrefix(focus || !!value);
+      }
       setLocalValue(value);
-    }, [focus, value, variant]);
+    }, [focus, value, variant, prefix]);
 
-    const getColor = useCallback(
-      (color: colorTypes) => {
-        if (!_.isEmpty(errors)) {
+    const animatedStyle = useAnimatedStyle(() => ({
+      top: withTiming(pos.value, animateConfig),
+      fontSize: withTiming(fontSize.value, animateConfig),
+    }));
+
+    const errors = useValidator<string>({
+      param: localValue,
+      validators: [isRequired(required), maxChar(6), hasSpecialCharacter()],
+    });
+
+    const getColor = (color: colorTypes) => {
+      if (!_.isEmpty(errors)) {
+        return theme.danger.default;
+      }
+      switch (color) {
+        case "error":
           return theme.danger.default;
-        }
-        switch (color) {
-          case "error":
-            return theme.danger.default;
-          default:
-            return theme[color].default;
-        }
-      },
-      [assistiveText, errors]
-    );
+        default:
+          return theme[color].default;
+      }
+    };
 
     const getBorderStyle = useMemo((): StyleProp<ViewStyle> => {
       const border =
@@ -250,15 +252,15 @@ export const TextField = forwardRef(
       [onBlur]
     );
 
-    const _renderLabel = useCallback((): React.JSX.Element | null => {
+    const _renderLabel = (): React.JSX.Element | null => {
       return (
         <Animated.Text style={[animatedStyle, labelStyle, styles.label]}>
           {placeholder}
         </Animated.Text>
       );
-    }, [placeholder, animatedStyle, labelStyle]);
+    };
 
-    const _renderLeftActions = useCallback((): React.JSX.Element | null => {
+    const _renderLeftActions = (): React.JSX.Element | null => {
       return clearable ? (
         <TouchableOpacity
           disabled={disabled}
@@ -269,10 +271,9 @@ export const TextField = forwardRef(
           <CloseIcon color={theme.default.default} size={18} />
         </TouchableOpacity>
       ) : null;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [clearable, localValue]);
+    };
 
-    const _renderAssistiveText = useCallback((): React.JSX.Element | null => {
+    const _renderAssistiveText = (): React.JSX.Element | null => {
       if (!_.isEmpty(errors)) {
         return (
           <View style={styles.assistiveTextContainer}>
@@ -309,13 +310,15 @@ export const TextField = forwardRef(
           </Text>
         </View>
       );
-    }, [assistiveText, errors]);
-
-    const _renderPrefix = (): React.JSX.Element | null => {
-      return prefix && (focus || value) ? (
-        <DNAText style={styles.prefixStyle}>{prefix}</DNAText>
-      ) : null;
     };
+
+    const _renderPrefix = (): React.JSX.Element | undefined => {
+      return showPrefix ? (
+        <DNAText style={styles.prefixStyle}>{prefix}</DNAText>
+      ) : undefined;
+    };
+
+    useImperativeHandle(ref, () => innerRef.current!, []);
 
     return (
       <View style={styles.container}>

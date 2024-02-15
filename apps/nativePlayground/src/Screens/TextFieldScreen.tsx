@@ -20,12 +20,8 @@ const option: DNARadioButtonProps[] = [
   },
 ];
 
-const AnimatedScreen = () => {
+const TextFieldScreen = () => {
   const [value, setValue] = useState('');
-
-  const [selected, setSelected] = useState<(typeof option)[0] | undefined>(
-    undefined,
-  );
 
   return (
     <View
@@ -35,7 +31,6 @@ const AnimatedScreen = () => {
         paddingVertical: 60,
         paddingHorizontal: 20,
       }}>
-      <UserAddIcon />
       <DNATextField
         icon={UserAddIcon}
         variant="filled"
@@ -100,28 +95,8 @@ const AnimatedScreen = () => {
         }}
         clearable
       />
-
-      <DNARadioGroup
-        orientation="horizontal"
-        label="Radio Group"
-        disabled
-        required>
-        {option.map(op => {
-          const active = selected?.id === op.id;
-          return (
-            <DNARadioButton
-              key={op.id}
-              checked={active}
-              onPress={() => {
-                setSelected(op);
-              }}
-              {...op}
-            />
-          );
-        })}
-      </DNARadioGroup>
     </View>
   );
 };
 
-export default AnimatedScreen;
+export default TextFieldScreen;
