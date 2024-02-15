@@ -1,7 +1,10 @@
 import {
   View,
   TextInput,
+<<<<<<< HEAD
   StyleSheet,
+=======
+>>>>>>> c1541c6e4c03d21d17ed544a7437dd39876782f3
   NativeSyntheticEvent,
   TextInputFocusEventData,
   StyleProp,

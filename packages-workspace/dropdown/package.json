@@ -33,6 +33,12 @@
   "peerDependencies": {
     "expo": "*",
     "react": "*",
+<<<<<<< HEAD
     "react-native": "*"
+=======
+    "react-native": "*",
+    "@rndna/typescript-config": "*",
+    "@rndna/base_style": "*"
+>>>>>>> c1541c6e4c03d21d17ed544a7437dd39876782f3
   }
 }
