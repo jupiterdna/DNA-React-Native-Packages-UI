@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { View, ActivityIndicator } from "react-native";
 import { borderRadiusCls } from "@rndna/base_style";
 import { DNAImageProps } from "./types";
@@ -52,6 +52,32 @@ export const DNAImage: React.FC<DNAImageProps> = React.forwardRef(
         setIsLoading(false);
     };
 
+    const _renderLoading = useCallback((): React.JSX.Element | null => {
+      return (
+        isLoading ? 
+          <View style={[imageSizeCls[size], styles.imageWrapper, styles.loadingIndicator]}>
+              <ActivityIndicator size="small" color={loadingColor} style={styles.image}/>
+          </View>
+        : null
+      )
+    }, [isLoading, size, loadingColor])
+
+    const _renderImage = useCallback((): React.JSX.Element => {
+       return ( 
+          <FastImage
+            style={[styles.image, borderRadiusCls[borderRadius]]}
+            source={{
+              uri: src,
+              priority: FastImage.priority.high,
+              cache: FastImage.cacheControl.immutable
+            }}
+            resizeMode={resizeFit}
+            onLoadEnd={onLoadEnd}
+            {...restProps}
+          />
+        )
+      }, [borderRadius, src, resizeFit, onLoadEnd])
+
     return (
       <View
         style={[
@@ -61,22 +87,8 @@ export const DNAImage: React.FC<DNAImageProps> = React.forwardRef(
           borderRadiusCls[borderRadius],
         ]}
       >
-        {isLoading && (
-          <View style={[imageSizeCls[size], styles.imageWrapper, styles.loadingIndicator]}>
-              <ActivityIndicator size="small" color={loadingColor} style={styles.image}/>
-          </View>
-        )}
-        <FastImage
-        style={[styles.image, borderRadiusCls[borderRadius]]}
-        source={{
-          uri: src,
-          priority: FastImage.priority.high,
-          cache: FastImage.cacheControl.immutable
-            }}
-            resizeMode={resizeFit}
-            onLoadEnd={onLoadEnd}
-            {...restProps}
-        />
+        {_renderLoading()}
+        {_renderImage()}
       </View>
     );
   }
