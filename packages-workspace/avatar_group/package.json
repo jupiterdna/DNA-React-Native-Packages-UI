@@ -32,7 +32,6 @@
     "@rndna/icon": "*"
   },
   "peerDependencies": {
-    "expo": "*",
     "react": "*",
     "react-native": "*"
   }

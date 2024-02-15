@@ -1,37 +1,24 @@
 import React from 'react';
-import {useColorScheme} from 'react-native';
-import {
-  ThemeProvider,
-  configType,
-  darkmodeColor,
-  themeConfig,
-} from '@rndna/theme-provider';
-import AnimatedScreen from './src/Screens/AnimatedScreen';
+import {Text, View, useColorScheme} from 'react-native';
+import TextFieldScreen from './src/Screens/TextFieldScreen';
 import Testscreen from './src/Screens/Testscreen';
 import RippleScreen from './src/Screens/RippleScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {useColor} from '@rndna/theme-provider';
 
-const Native = () => {
-  const rnConfig: configType =
-    useColorScheme() === 'light'
-      ? {
-          ...themeConfig,
-          fonts: {...themeConfig.fonts, fontFamily: 'Roboto'},
-        }
-      : {
-          ...themeConfig,
-          colors: darkmodeColor,
-          fonts: {...themeConfig.fonts, fontFamily: 'Roboto'},
-        };
+const App = () => {
+  console.log('useColor', useColor());
 
+  const Drawer = createDrawerNavigator();
   return (
-    <ThemeProvider config={rnConfig}>
-      <>
-        {/* <AnimatedScreen /> */}
-        {/* <Testscreen /> */}
-        <RippleScreen />
-      </>
-    </ThemeProvider>
+    <NavigationContainer>
+      <Drawer.Navigator>
+        <Drawer.Screen name="Ripple Button" component={RippleScreen} />
+        <Drawer.Screen name="Textfields" component={TextFieldScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
   );
 };
 
-export default Native;
+export default App;
