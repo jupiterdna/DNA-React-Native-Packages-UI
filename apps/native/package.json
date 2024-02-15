@@ -1,6 +1,6 @@
 {
   "name": "TestPod",
-  "version": "0.0.9",
+  "version": "0.0.0",
   "private": true,
   "scripts": {
     "android": "react-native run-android",

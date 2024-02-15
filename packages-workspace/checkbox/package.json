@@ -18,7 +18,8 @@
     "tsup": "^8.0.1",
     "typescript": "^5.3.2"
   },
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
     "@rndna/theme-provider": "*",
     "@rndna/icon": "*",
     "react": "^18.2.0",
