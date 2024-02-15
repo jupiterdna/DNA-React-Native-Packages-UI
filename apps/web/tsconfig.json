@@ -1,5 +1,5 @@
 {
-  "extends": "@dnamobile/typescript-config/nextjs.json",
+  "extends": "@rndna/typescript-config/nextjs.json",
   "compilerOptions": {
     "plugins": [
       {

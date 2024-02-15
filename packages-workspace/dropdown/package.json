@@ -32,7 +32,7 @@
     "expo": "*",
     "react": "*",
     "react-native": "*",
-    "@dnamobile/typescript-config": "*",
+    "@rndna/typescript-config": "*",
     "@rndna/base_style": "*"
   }
 }

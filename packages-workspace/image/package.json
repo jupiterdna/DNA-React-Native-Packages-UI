@@ -16,7 +16,7 @@
     "clean": "rm -rf dist"
   },
   "devDependencies": {
-    "@dnamobile/typescript-config": "*",
+    "@rndna/typescript-config": "*",
     "@rndna/badge": "*",
     "@rndna/base_style": "*",
     "@rndna/text": "*",
