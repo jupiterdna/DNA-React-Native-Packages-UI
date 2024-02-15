@@ -110,6 +110,7 @@ export const TextField = forwardRef(
     const innerRef = useRef<TextInput>(null);
 
     const [focus, setFocus] = useState(false);
+    const [showPrefix, setShowPrefix] = useState(false);
     const [localValue, setLocalValue] = useState("");
 
     useEffect(() => {
@@ -120,8 +121,11 @@ export const TextField = forwardRef(
         pos.value = INITIAL_POSITION;
         fontSize.value = INITIAL_FONTSIZE;
       }
+      if (prefix) {
+        setShowPrefix(focus || !!value);
+      }
       setLocalValue(value);
-    }, [focus, value, variant]);
+    }, [focus, value, variant, prefix]);
 
     const animatedStyle = useAnimatedStyle(() => ({
       top: withTiming(pos.value, animateConfig),
@@ -267,7 +271,6 @@ export const TextField = forwardRef(
           <CloseIcon color={theme.default.default} size={18} />
         </TouchableOpacity>
       ) : null;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     };
 
     const _renderAssistiveText = (): React.JSX.Element | null => {
@@ -310,7 +313,7 @@ export const TextField = forwardRef(
     };
 
     const _renderPrefix = (): React.JSX.Element | undefined => {
-      return prefix && (value || focus) ? (
+      return showPrefix ? (
         <DNAText style={styles.prefixStyle}>{prefix}</DNAText>
       ) : undefined;
     };
