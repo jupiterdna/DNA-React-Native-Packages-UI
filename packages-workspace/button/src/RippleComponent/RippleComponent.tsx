@@ -131,7 +131,6 @@ const RippleComponent: FC<RippleComponentProps> = ({
     return <Animated.View style={[styles.ripple, rippleStyle]} key={unique} />;
   };
 
-  console.log(renderRipple)
 
   const handlePress = () => {
     onPress && onPress();
