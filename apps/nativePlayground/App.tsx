@@ -8,6 +8,7 @@ import {
 } from '@rndna/theme-provider';
 import AnimatedScreen from './src/Screens/AnimatedScreen';
 import Testscreen from './src/Screens/Testscreen';
+import RippleScreen from './src/Screens/RippleScreen';
 
 const Native = () => {
   const rnConfig: configType =
@@ -26,7 +27,8 @@ const Native = () => {
     <ThemeProvider config={rnConfig}>
       <>
         {/* <AnimatedScreen /> */}
-        <AnimatedScreen />
+        {/* <Testscreen /> */}
+        <RippleScreen />
       </>
     </ThemeProvider>
   );

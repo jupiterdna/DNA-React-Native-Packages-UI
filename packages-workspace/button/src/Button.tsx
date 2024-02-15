@@ -10,6 +10,7 @@ import { DNAButtonProps } from './types';
 import { borderRadiusCls } from "@rndna/base_style";
 import { darkmodeColor, useColor } from "@rndna/theme-provider"
 import { DNAText } from "@rndna/text";
+import RippleComponent from "./RippleComponent/RippleComponent";
 
 /**
  * A button is component that the user can press to trigger an action.
@@ -46,6 +47,15 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       isDisabled = false,
       fullWidth = false,
       borderRadius = "soft_edged",
+      onPress,
+      rippleColor = 'rgb(250, 250, 250)',
+      rippleOpacity = 0.5,
+      rippleDuration = 400,
+      rippleSize = 400,
+      rippleCentered = false,
+      rippleSequential = false,
+      rippleFades = true,
+      enableRipple = true,
       ...restProps
     }: DNAButtonProps,
     ref: React.Ref<View>,
@@ -125,8 +135,8 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     return <DNAText style={getTextColor} type={getTextSize()}>{labelValue}</DNAText>
   }, [getTextColor, loadingLabel, isLoading, label])
 
-  return (
-    <Pressable
+  const _getButtonContent = useCallback((): React.JSX.Element => (
+    <View
       style={[
         styles.button,
         (!!loadingLabel || !!label) ? styles.gapSize : iconBtnSizes,
@@ -137,12 +147,27 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
         fullWidth && styles.buttonWidthFull,
         (isDisabled || isLoading) && styles.buttonDisabled,
       ]}
-      disabled={isLoading || isDisabled}
       ref={ref}
-      {...restProps}
     > 
       {_renderIconState()}
       {_renderLabel()}
-    </Pressable>
+    </View>
+  ), [loadingLabel, label, iconBtnSizes, getIconPositionStyle, getVariantStyle, borderRadius, size, fullWidth, isDisabled, isLoading, ref, _renderIconState, _renderLabel]);
+
+  return enableRipple ? (
+    <RippleComponent 
+      onPress={onPress} 
+      rippleColor={rippleColor}
+      rippleOpacity={rippleOpacity}
+      rippleDuration={rippleDuration}
+      rippleSize={rippleSize}
+      rippleCentered={rippleCentered}
+      rippleSequential={rippleSequential}
+      rippleFades={rippleFades}
+      >
+      {_getButtonContent()}
+    </RippleComponent>
+  ) : (
+    _getButtonContent()
   );
 });
