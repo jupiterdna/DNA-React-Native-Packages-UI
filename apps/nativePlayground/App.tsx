@@ -6,16 +6,16 @@ import RippleScreen from './src/Screens/RippleScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {useColor} from '@rndna/theme-provider';
+import HookScreen from './src/Screens/HookScreen';
 
 const App = () => {
-  console.log('useColor', useColor());
-
   const Drawer = createDrawerNavigator();
   return (
     <NavigationContainer>
       <Drawer.Navigator>
         <Drawer.Screen name="Ripple Button" component={RippleScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
+        <Drawer.Screen name="HookScreen" component={HookScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
   );

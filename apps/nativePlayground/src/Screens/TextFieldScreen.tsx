@@ -23,10 +23,6 @@ const option: DNARadioButtonProps[] = [
 const TextFieldScreen = () => {
   const [value, setValue] = useState('');
 
-  const [selected, setSelected] = useState<(typeof option)[0] | undefined>(
-    undefined,
-  );
-
   return (
     <View
       style={{
@@ -51,7 +47,7 @@ const TextFieldScreen = () => {
         clearable
       />
 
-      <DNATextField
+      {/* <DNATextField
         icon={UserAddIcon}
         variant="outlined"
         placeholder="Label"
@@ -98,7 +94,7 @@ const TextFieldScreen = () => {
           console.log('blurred');
         }}
         clearable
-      />
+      /> */}
     </View>
   );
 };
