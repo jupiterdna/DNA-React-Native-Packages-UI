@@ -1,0 +1,33 @@
+{
+  "name": "@rndna/theme-config",
+  "version": "0.0.0",
+  "author": "DNA Micro Mobile Team",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.js",
+  "files": [
+    "dist/",
+    "src/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rm -rf dist"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.38",
+    "@types/react-native": "^0.72.7",
+    "tsup": "^8.0.1",
+    "@rndna/typescript-config": "*",
+    "typescript": "^5.3.2"
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "expo": "*",
+    "react": "*",
+    "react-native": "*",
+    "@rndna/base_style": "*",
+    "@rndna/fonts": "*"
+  }
+}
