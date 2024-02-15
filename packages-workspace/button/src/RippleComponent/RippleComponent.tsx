@@ -45,29 +45,19 @@ interface RippleComponentProps {
   disabled?: boolean;
 }
 
-const DEFAULT_PROPS = {
-  rippleColor: 'rgb(250, 250, 250)',
-  rippleOpacity: 0.5,
-  rippleDuration: 400,
-  rippleSize: 400,
-  rippleCentered: false,
-  rippleSequential: false,
-  rippleFades: true,
-};
-
 const RippleComponent: FC<RippleComponentProps> = ({
   onPress,
   onPressIn,
   onPressOut,
   onLongPress,
   onLayout,
-  rippleColor = DEFAULT_PROPS.rippleColor,
-  rippleOpacity = DEFAULT_PROPS.rippleOpacity,
-  rippleDuration = DEFAULT_PROPS.rippleDuration,
-  rippleSize = DEFAULT_PROPS.rippleSize,
-  rippleCentered = DEFAULT_PROPS.rippleCentered,
-  rippleSequential = DEFAULT_PROPS.rippleSequential,
-  rippleFades = DEFAULT_PROPS.rippleFades,
+  rippleColor= 'rgb(250, 250, 250)',
+  rippleOpacity= 0.5,
+  rippleDuration= 400,
+  rippleSize= 400,
+  rippleCentered= false,
+  rippleSequential= false,
+  rippleFades= true,
   style,
   contentStyle,
   children,
@@ -140,6 +130,8 @@ const RippleComponent: FC<RippleComponentProps> = ({
 
     return <Animated.View style={[styles.ripple, rippleStyle]} key={unique} />;
   };
+
+  console.log(renderRipple)
 
   const handlePress = () => {
     onPress && onPress();
