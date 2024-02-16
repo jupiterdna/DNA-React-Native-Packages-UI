@@ -67,3 +67,6 @@ yarn-error.log
 
 # unknown
 /ios/nativePlayground.xcworkspace/xcuserdata/dna-user.xcuserdatad/UserInterfaceState.xcuserstate
+
+*.xcuserdata
+*.UserInterfaceState.xcuserstate
