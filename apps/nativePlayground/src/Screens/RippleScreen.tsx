@@ -1,7 +1,8 @@
 import {StyleSheet, Text, View, useColorScheme} from 'react-native';
 import React from 'react';
 import {DNAButton} from '@rndna/button';
-import {DollarCircleIcon} from '@rndna/icon';
+import {DNAIconButton} from '@rndna/icon_button';
+import {UploadCloudIconOutline} from '@rndna/icon';
 
 const RippleScreen = () => {
   return (
@@ -13,20 +14,37 @@ const RippleScreen = () => {
       <View style={styles.gap}>
         <Text>Basic Button with ripple effect</Text>
         <DNAButton
-          icon={DollarCircleIcon}
+          icon={UploadCloudIconOutline}
           label="Ripple Button"
           onPress={() => {
-            console.log('onPress');
+            console.log('onPress 1');
           }}
         />
         <View style={{marginTop: 10}} />
-        <Text>Disabled ripple effect</Text>
+        <Text>Basic Button without ripple effect</Text>
         <DNAButton
           enableRipple={false}
-          icon={DollarCircleIcon}
+          icon={UploadCloudIconOutline}
           label="Ripple Button"
           onPress={() => {
-            console.log('onPress');
+            console.log('onPress 2');
+          }}
+        />
+        <View style={{marginTop: 10}} />
+        <Text>Icon Button with ripple effect</Text>
+        <DNAIconButton
+          icon={UploadCloudIconOutline}
+          onPress={() => {
+            console.log('onPress 3');
+          }}
+        />
+        <View style={{marginTop: 10}} />
+        <Text>Icon Button without ripple effect</Text>
+        <DNAIconButton
+          enableRipple={false}
+          icon={UploadCloudIconOutline}
+          onPress={() => {
+            console.log('onPress 4');
           }}
         />
       </View>
