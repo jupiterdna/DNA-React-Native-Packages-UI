@@ -53,7 +53,6 @@ const MenuComponent: <T>(
       data = [],
       labelField,
       valueField,
-      searchField,
       dropDownMaxWidth = 280,
       value,
       color = "default",
@@ -80,7 +79,6 @@ const MenuComponent: <T>(
     const [listData, setListData] = useState<any[]>(data);
     const [position, setPosition] = useState<any>();
     const [keyboardHeight, setKeyboardHeight] = useState<number>(0);
-    const [searchText, setSearchText] = useState("");
 
     const { width: W, height: H } = Dimensions.get("window");
     const styleContainerVertical: ViewStyle = useMemo(() => {
@@ -113,11 +111,9 @@ const MenuComponent: <T>(
 
     useEffect(() => {
       setListData([...data]);
-      if (searchText) {
-        // onSearch(searchText);
-      }
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data, searchText]);
+    }, [data]);
 
     const renderIcon = useCallback(() => {
       return typeof icon === "function"
@@ -131,13 +127,7 @@ const MenuComponent: <T>(
     const eventOpen = () => {
       if (!disable) {
         setVisible(true);
-        // if (onFocus) {
-        //   onFocus();
-        // }
 
-        if (searchText.length > 0) {
-          // onSearch(searchText);
-        }
         scrollIndex();
       }
     };
@@ -272,78 +262,13 @@ const MenuComponent: <T>(
         _measure();
         setVisible(!visible);
         setListData(data);
-
-        if (!visible) {
-          // if (onFocus) {
-          //   onFocus();
-          // }
-        } else {
-          // if (onBlur) {
-          //   onBlur();
-          // }
-        }
-        if (searchText.length > 0) {
-          // onSearch(searchText);
-        }
         scrollIndex();
       }
       // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [
-      disable,
-      keyboardHeight,
-      visible,
-      _measure,
-      data,
-      searchText,
-      scrollIndex,
-    ]);
-
-    // const onSearch = useCallback(
-    //   (text: string) => {
-    //     if (text.length > 0) {
-    //       const defaultFilterFunction = (e: any) => {
-    //         const item = _.get(e, searchField || labelField)
-    //           ?.toLowerCase()
-    //           .replace(" ", "")
-    //           .normalize("NFD")
-    //           .replace(/[\u0300-\u036f]/g, "");
-    //         const key = text
-    //           .toLowerCase()
-    //           .replace(" ", "")
-    //           .normalize("NFD")
-    //           .replace(/[\u0300-\u036f]/g, "");
-
-    //         return item.indexOf(key) >= 0;
-    //       };
-
-    //       const propSearchFunction = (e: any) => {
-    //         const labelText = _.get(e, searchField || labelField);
-
-    //         return searchQuery?.(text, labelText);
-    //       };
-
-    //       const dataSearch = data.filter(
-    //         searchQuery ? propSearchFunction : defaultFilterFunction
-    //       );
-    //       setListData(dataSearch);
-    //     } else {
-    //       setListData(data);
-    //     }
-    //   },
-    //   [data, searchField, labelField, searchQuery]
-    // );
+    }, [disable, keyboardHeight, visible, _measure, data, scrollIndex]);
 
     const onSelect = useCallback(
       (item: any) => {
-        // if (confirmSelectItem && onConfirmSelectItem) {
-        //   return onConfirmSelectItem(item);
-        // }
-
-        // if (onChangeText) {
-        //   setSearchText("");
-        //   onChangeText("");
-        // }
-        // onSearch("");
         setCurrentValue(item);
         onChange(item);
         eventClose();
@@ -361,33 +286,8 @@ const MenuComponent: <T>(
           onPress={showOrClose}
         >
           <View style={styles.dropdown}>
-            {/* {renderLeftIcon?.(visible)}
-            <Text
-              style={[
-                styles.textItem,
-                isSelected !== null ? selectedTextStyle : placeholderStyle,
-                font(),
-              ]}
-              {...selectedTextProps}
-            >
-              {isSelected !== null
-                ? _.get(currentValue, labelField)
-                : placeholder}
-            </Text> */}
             <DNAText style={{ width: 0, height: 0 }}></DNAText>
             {renderIcon()}
-            {/* {renderRightIcon ? (
-              renderRightIcon(visible)
-            ) : (
-              <Image
-                source={ic_down}
-                style={StyleSheet.flatten([
-                  styles.icon,
-                  { tintColor: iconColor },
-                  iconStyle,
-                ])}
-              />
-            )} */}
           </View>
         </TouchableWithoutFeedback>
       );
@@ -459,41 +359,7 @@ const MenuComponent: <T>(
 
     const renderSearch = useCallback(() => {
       return null;
-      // if (search) {
-      //   return null
-      //   // if (renderInputSearch) {
-      //   //   return renderInputSearch((text) => {
-      //   //     if (onChangeText) {
-      //   //       setSearchText(text);
-      //   //       onChangeText(text);
-      //   //     }
-      //   //     onSearch(text);
-      //   //   });
-      //   // } else {
-      //   //   return (
-      //   //     <CInput
-      //   //       testID={testID + " input"}
-      //   //       accessibilityLabel={accessibilityLabel + " input"}
-      //   //       style={[styles.input, inputSearchStyle]}
-      //   //       inputStyle={[inputSearchStyle, font()]}
-      //   //       value={searchText}
-      //   //       autoCorrect={false}
-      //   //       placeholder={searchPlaceholder}
-      //   //       onChangeText={(e) => {
-      //   //         if (onChangeText) {
-      //   //           setSearchText(e);
-      //   //           onChangeText(e);
-      //   //         }
-      //   //         onSearch(e);
-      //   //       }}
-      //   //       placeholderTextColor="gray"
-      //   //       iconStyle={[{ tintColor: iconColor }, iconStyle]}
-      //   //     />
-      //   //   );
-      //   // }
-      // }
-      // return null;
-    }, [accessibilityLabel, testID, searchText]);
+    }, [accessibilityLabel, testID]);
 
     const _renderList = useCallback(
       (isTopPosition: boolean) => {

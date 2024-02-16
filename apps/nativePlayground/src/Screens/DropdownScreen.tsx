@@ -10,7 +10,7 @@ import React, {useRef, useState} from 'react';
 import {Menu} from '@rndna/menu';
 
 const data = [
-  {asd: 'Item 1', value: '1', text: '123'},
+  {label: '1232', text: '123'},
   {label: 'Item 2', value: '2'},
   {label: 'Item 3', value: '3'},
 ];
@@ -33,19 +33,25 @@ const DropdownScreen: React.FC<any> = () => {
   return (
     <View style={[styles.flex, bg]}>
       <ScrollView>
-        <View
-          style={[
-            styles.container,
-            {
-              justifyContent: 'flex-start',
-              flexDirection: 'row',
-            },
-          ]}>
+        <View style={[styles.container]}>
           <Menu
             dropDownMaxWidth={120}
             data={data}
             maxHeight={300}
-            labelField="asd"
+            labelField="label"
+            valueField="value"
+            value={value}
+            onChange={(item: (typeof data)[0]) => {
+              setValue(item.value);
+              setIsFocus(false);
+            }}
+            ref={ref}
+          />
+          <Menu
+            dropDownMaxWidth={120}
+            data={data}
+            maxHeight={300}
+            labelField="label"
             valueField="value"
             value={value}
             onChange={(item: (typeof data)[0]) => {
@@ -68,6 +74,8 @@ const styles = StyleSheet.create({
   },
   container: {
     // padding: 16,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   dropdown: {
     height: 50,
