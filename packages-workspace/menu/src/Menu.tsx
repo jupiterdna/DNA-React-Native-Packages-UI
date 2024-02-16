@@ -36,7 +36,7 @@ import { useColor } from "@rndna/theme-provider";
 const { isTablet } = useDetectDevice;
 const statusBarHeight: number = StatusBar.currentHeight || 0;
 
-//@ts-ignore
+// @ts-ignore
 const MenuComponent: <T>(
   props: DropdownProps<T>
 ) => ReactElement<any, string | JSXElementConstructor<any>> | null =
@@ -141,16 +141,12 @@ const MenuComponent: <T>(
       }
     }, [disable]);
 
-    // const font = useCallback(() => {
-    //   if (fontFamily) {
-    //     return {
-    //       fontFamily: fontFamily,
-    //     };
-    //   } else {
-    //     return {};
-    //   }
-    // }, [fontFamily]);
-
+    /**
+     * Measures the position and dimensions of the menu component.
+     * The function calculates the position of the menu based on the provided parameters.
+     * It takes into account the device orientation, mode, and screen dimensions.
+     * The resulting position is stored in the state variable 'position'.
+     */
     const _measure = useCallback(() => {
       if (ref && ref?.current) {
         ref.current.measureInWindow((pageX, pageY, width, height) => {
@@ -232,6 +228,14 @@ const MenuComponent: <T>(
       getValue();
     }, [value, data, getValue]);
 
+    /**
+     * This function is responsible for scrolling to the selected index in the dropdown list.
+     * It checks if autoScroll is enabled, the data is not empty, and the listData is fully loaded.
+     * If these conditions are met, it waits for a brief delay and then scrolls to the index of the selected value.
+     * The selected value is determined based on the value and valueField properties.
+     *
+     * @returns void
+     */
     const scrollIndex = useCallback(() => {
       if (autoScroll && data.length > 0 && listData.length === data.length) {
         setTimeout(() => {
@@ -511,6 +515,7 @@ const MenuComponent: <T>(
       _renderList,
     ]);
 
+    // Return the main view with dropdown and modal components
     return (
       <View
         style={StyleSheet.flatten([styles.mainWrap, style])}

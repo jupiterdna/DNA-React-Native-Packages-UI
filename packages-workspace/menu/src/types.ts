@@ -1,21 +1,21 @@
-import { colorProps, sizeProps } from '@rndna/base_style';
+import { colorProps, sizeProps } from "@rndna/base_style";
 import type {
   StyleProp,
   TextStyle,
   ViewStyle,
   TextProps,
   FlatListProps,
-} from 'react-native';
+} from "react-native";
 
 export type IDropdownRef = {
   open: () => void;
   close: () => void;
 };
 
-import { SvgProps, NumberProp } from 'react-native-svg';
+import { SvgProps, NumberProp } from "react-native-svg";
 
 interface IProps extends SvgProps {
-    size?: NumberProp;
+  size?: NumberProp;
 }
 
 export interface DropdownProps<T> {
@@ -33,11 +33,11 @@ export interface DropdownProps<T> {
   itemContainerStyle?: StyleProp<ViewStyle>;
   itemTextStyle?: StyleProp<TextStyle>;
   maxHeight?: number;
-  dropDownMaxWidth?: number
+  dropDownMaxWidth?: number;
   minHeight?: number;
-  size?: sizeProps
-  icon?: React.JSX.Element | ((e?: IProps | any) => React.JSX.Element)
-  color?: colorProps
+  size?: sizeProps;
+  icon?: React.JSX.Element | ((e?: IProps | any) => React.JSX.Element);
+  color?: colorProps;
   data: T[];
   value?: T | string | null | undefined;
   placeholder?: string;
@@ -46,13 +46,13 @@ export interface DropdownProps<T> {
   searchField?: keyof T;
   disable?: boolean;
   autoScroll?: boolean;
-  dropdownPosition?: 'auto' | 'top' | 'bottom';
-  flatListProps?: Omit<FlatListProps<any>, 'renderItem' | 'data'>;
+  dropdownPosition?: "auto" | "top" | "bottom";
+  flatListProps?: Omit<FlatListProps<any>, "renderItem" | "data">;
   keyboardAvoiding?: boolean;
   accessibilityLabel?: string;
   itemAccessibilityLabelField?: string;
   inverted?: boolean;
-  mode?: 'default' | 'modal' | 'auto';
+  mode?: "default" | "modal" | "auto";
   onChange: (item: T) => void;
-  renderItem?: (item: T, selected?: boolean) => JSX.Element | null | undefined; 
+  renderItem?: (item: T, selected?: boolean) => JSX.Element | null | undefined;
 }

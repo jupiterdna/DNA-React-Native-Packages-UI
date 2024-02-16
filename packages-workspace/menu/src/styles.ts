@@ -1,15 +1,15 @@
-import { I18nManager, StyleSheet } from 'react-native';
+import { I18nManager, StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   mainWrap: {
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   container: {
     flexShrink: 1,
     borderWidth: 0.5,
-    borderColor: '#EEEEEE',
-    backgroundColor: 'white',
-    shadowColor: '#000',
+    borderColor: "#EEEEEE",
+    backgroundColor: "white",
+    shadowColor: "#000",
     shadowOffset: {
       width: 0,
       height: 1,
@@ -25,32 +25,33 @@ export const styles = StyleSheet.create({
     flexShrink: 1,
   },
   wrapTop: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end",
   },
   dropdown: {
     // flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
     // justifyContent: 'space-between',
     // alignItems: 'center',
     // height: 35,
-    alignSelf: 'center',
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     marginVertical: 5,
     fontSize: 16,
-    writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
+    writingDirection: I18nManager.isRTL ? "rtl" : "ltr",
   },
   item: {
-    padding: 17,
-    flexDirection: I18nManager.isRTL ? 'row-reverse' : 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    paddingVertical: 12,
+    paddingHorizontal: 12,
+    flexDirection: I18nManager.isRTL ? "row-reverse" : "row",
+    justifyContent: "space-between",
+    alignItems: "center",
   },
   textItem: {
     flex: 1,
     fontSize: 16,
-    writingDirection: I18nManager.isRTL ? 'rtl' : 'ltr',
+    writingDirection: I18nManager.isRTL ? "rtl" : "ltr",
   },
   icon: {
     width: 20,
@@ -58,63 +59,61 @@ export const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 0.5,
-    borderColor: '#DDDDDD',
+    borderColor: "#DDDDDD",
     paddingHorizontal: 8,
     marginBottom: 8,
     margin: 6,
     height: 45,
   },
   fullScreen: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
 
-import { useFonts } from "@rndna/theme-provider"
+import { useFonts } from "@rndna/theme-provider";
 
 const size = useFonts();
 
 export const drop_styles = StyleSheet.create({
-    button: {
-      height: 40,
-      paddingHorizontal: 12,
-      alignItems: "center",
-      justifyContent: "center",
-      flexDirection: "row",
-      minWidth: "auto",
-    },
-    gapSize: {
-      gap: 8,
-    },
-    buttonIconLeft: {
-      flexDirection: "row",
-    },
-    buttonIconRight: { 
-      flexDirection: "row-reverse"
-    },
-    buttonWidthFull: {
-      width: "100%",
-    },
-    buttonDisabled: {
-      opacity: 0.5,
-    },
-    buttonPressed: {
-      
-    },
-    iconLeft: {
-      marginRight: 8,
-    },
-    iconRight: {
-      marginLeft: 8,
-    },
-    loadingContainer: {
-      marginRight: 8,
-    },
-    loadingSize: {
-        transform: [{scale: 0.72}],
-        width: 20,
-        height: 20,
-    }
+  button: {
+    height: 40,
+    paddingHorizontal: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    minWidth: "auto",
+  },
+  gapSize: {
+    gap: 8,
+  },
+  buttonIconLeft: {
+    flexDirection: "row",
+  },
+  buttonIconRight: {
+    flexDirection: "row-reverse",
+  },
+  buttonWidthFull: {
+    width: "100%",
+  },
+  buttonDisabled: {
+    opacity: 0.5,
+  },
+  buttonPressed: {},
+  iconLeft: {
+    marginRight: 8,
+  },
+  iconRight: {
+    marginLeft: 8,
+  },
+  loadingContainer: {
+    marginRight: 8,
+  },
+  loadingSize: {
+    transform: [{ scale: 0.72 }],
+    width: 20,
+    height: 20,
+  },
 });
 
 export const textSizeCls = {
@@ -156,4 +155,4 @@ export const buttonSizeCls = {
     height: 56,
     paddingHorizontal: 19,
   },
-}
+};
