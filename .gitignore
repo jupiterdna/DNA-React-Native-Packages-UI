@@ -35,3 +35,6 @@ yarn-error.log*
 
 # turbo
 .turbo
+
+
+apps/nativePlayground/ios/nativePlayground.xcworkspace/xcuserdata/dna-user.xcuserdatad/UserInterfaceState.xcuserstate
