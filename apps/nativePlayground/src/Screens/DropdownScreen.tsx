@@ -32,14 +32,6 @@ const DropdownScreen: React.FC<any> = () => {
 
   return (
     <View style={[styles.flex, bg]}>
-      <View
-        style={{
-          backgroundColor: 'red',
-          position: 'fixed',
-          top: 120,
-          left: 353,
-        }}
-      />
       <ScrollView>
         <View
           style={[
@@ -71,7 +63,7 @@ const DropdownScreen: React.FC<any> = () => {
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
-    padding: 50,
+    padding: 10,
     paddingRight: 10,
   },
   container: {
