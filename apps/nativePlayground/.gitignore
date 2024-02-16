@@ -64,3 +64,6 @@ yarn-error.log
 
 # testing
 /coverage
+
+# unknown
+/ios/nativePlayground.xcworkspace/xcuserdata/dna-user.xcuserdatad/UserInterfaceState.xcuserstate
