@@ -8,8 +8,6 @@ import {
 } from 'react-native';
 import React, {useRef, useState} from 'react';
 import {Menu} from '@rndna/menu';
-import {MenuHamburgerIcon} from '@rndna/icon';
-import {DNAButton} from '@rndna/button';
 
 const data = [
   {asd: 'Item 1', value: '1', text: '123'},
@@ -29,19 +27,8 @@ const DropdownScreen: React.FC<any> = () => {
 
   const [value, setValue] = useState<any>(null);
   const [isFocus, setIsFocus] = useState<any>(null);
-  const [value2, setValue2] = useState<any>(null);
-  const [isFocus2, setIsFocus2] = useState(false);
+
   const ref = useRef(null);
-  const renderLabel = () => {
-    if (value || isFocus) {
-      return (
-        <Text style={[styles.label, isFocus && {color: 'blue'}]}>
-          Dropdown label
-        </Text>
-      );
-    }
-    return null;
-  };
 
   return (
     <View style={[styles.flex, bg]}>
@@ -50,7 +37,7 @@ const DropdownScreen: React.FC<any> = () => {
           backgroundColor: 'red',
           position: 'fixed',
           top: 120,
-          left: 353 - 50,
+          left: 353,
         }}
       />
       <ScrollView>
@@ -58,7 +45,7 @@ const DropdownScreen: React.FC<any> = () => {
           style={[
             styles.container,
             {
-              justifyContent: 'flex-end',
+              justifyContent: 'flex-start',
               flexDirection: 'row',
             },
           ]}>
