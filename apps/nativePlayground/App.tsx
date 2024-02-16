@@ -1,11 +1,8 @@
 import React from 'react';
-import {Text, View, useColorScheme} from 'react-native';
 import TextFieldScreen from './src/Screens/TextFieldScreen';
-import Testscreen from './src/Screens/Testscreen';
 import RippleScreen from './src/Screens/RippleScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {useColor} from '@rndna/theme-provider';
 import RadioButtonScreen from './src/Screens/RadioButtonScreen';
 
 const App = () => {

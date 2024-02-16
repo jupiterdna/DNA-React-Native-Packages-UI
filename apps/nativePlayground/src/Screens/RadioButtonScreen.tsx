@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View} from 'react-native';
 import React, {useState} from 'react';
 import {
   DNARadioButton,
@@ -28,8 +28,7 @@ const RadioButtonScreen = () => {
       <DNARadioGroup
         orientation="horizontal"
         label="Radio Group Horizontal"
-        required>
-        {option.map(op => {
+        children={option.map(op => {
           const active = selected?.id === op.id;
           return (
             <DNARadioButton
@@ -42,7 +41,8 @@ const RadioButtonScreen = () => {
             />
           );
         })}
-      </DNARadioGroup>
+        required
+      />
       <View style={{marginTop: 20}} />
       <DNARadioGroup
         orientation="vertical"

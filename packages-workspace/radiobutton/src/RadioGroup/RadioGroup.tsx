@@ -9,18 +9,23 @@ import React, {
   Children,
   createElement,
   forwardRef,
-  memo,
   useCallback,
   useEffect,
   useMemo,
   useState,
 } from "react";
-import { RadioCustomTypes, RadioGroupTypes, colorTypes } from "./types";
+import {
+  RadioCustomTypes,
+  RadioGroupTypes,
+  childrenType,
+  colorTypes,
+} from "./types";
 import { DNARadioButton } from "../RadioButton";
 import { isRequired, useValidator } from "@rndna/hooks";
 import { useColor } from "@rndna/theme-provider";
 import _ from "lodash";
 import { DNAText } from "@rndna/text";
+import { styles } from "./styles";
 
 /**
  * A RadioGroup is a wrapper component of radio button controls.
@@ -86,7 +91,7 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
     useEffect(() => {
       const childs = Children.map(children, (c) => {
         return c?.type?.displayName;
-      })?.find((f) => f !== "DNARadioButton");
+      })?.find((f: childrenType) => f !== "DNARadioButton");
 
       if (!Children.count(children)) {
         throw new Error("RadioGroup must have at least 1 radion button!");
@@ -240,50 +245,5 @@ const RadioGroup: React.FC<RadioGroupTypes> = forwardRef(
 );
 
 RadioGroup.displayName = "RadioGroup";
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    flexDirection: "column",
-  },
-  inputContainer: {
-    flex: 1,
-    flexDirection: "row",
-    alignItems: "center",
-  },
-  textInputContainer: {
-    borderStyle: "solid",
-    flexDirection: "row",
-    alignItems: "center",
-    flex: 1,
-    borderRadius: 6,
-    paddingHorizontal: 10,
-  },
-  assistiveTextContainer: {
-    position: "absolute",
-    bottom: -24,
-    fontSize: 12,
-    left: 2,
-    flexDirection: "row",
-    alignItems: "center",
-    columnGap: 3,
-  },
-  assistiveText: { fontSize: 12 },
-  label: { fontSize: 13 },
-  input: {
-    flex: 1,
-    height: "100%",
-    paddingVertical: 10,
-  },
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
-    columnGap: 10,
-    marginBottom: 35,
-  },
-  prefixStyle: {
-    marginRight: 5,
-  },
-});
 
 export default RadioGroup;

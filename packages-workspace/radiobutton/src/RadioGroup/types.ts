@@ -29,10 +29,15 @@ export type colorTypes =
 /**
  * Types for custom radio component in radio group using Children module
  */
-export type RadioCustomTypes<T = any> = React.ReactNode & {
-  props?: T;
-  type?: T;
-};
+export type RadioCustomTypes<T = { id?: string; label?: string }> =
+  React.ReactNode & {
+    props?: T;
+    type?: T;
+  };
+/**
+ * types for children of radio group
+ */
+export type childrenType = React.ReactNode & { type: string; props: any };
 
 export type RadioGroupTypes = {
   /**
@@ -58,5 +63,5 @@ export type RadioGroupTypes = {
   /**
    * Property that accept react node as children of radio group
    */
-  children?: React.ReactNode & { type: any; props: any };
+  children?: childrenType | any;
 };
