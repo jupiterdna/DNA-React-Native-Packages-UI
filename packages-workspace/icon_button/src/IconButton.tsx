@@ -2,7 +2,7 @@ import React from 'react';
 import { DNAButton, DNAButtonProps } from '@rndna/button';
 
 /**
- * 
+ * Icon button is basically a DNAButton with no label with the same functionality.
  *
  * ## Usage
  * ```js
