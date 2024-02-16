@@ -1,10 +1,4 @@
-import {
-  StyleProp,
-  StyleSheet,
-  TextStyle,
-  View,
-  ViewStyle,
-} from "react-native";
+import { StyleProp, TextStyle, View, ViewStyle } from "react-native";
 import React, {
   Children,
   createElement,
@@ -73,7 +67,7 @@ import { styles } from "./styles";
  * ```
  */
 
-const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
+const CheckboxGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
   (
     {
       children,
@@ -81,7 +75,7 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
       disabled,
       label,
       orientation,
-      required,
+      required = false,
       ...rest
     },
     ref: React.Ref<View>
@@ -92,10 +86,10 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
     useEffect(() => {
       const childs = Children.map(children, (c) => {
         return c?.type?.displayName;
-      })?.find((f: childrenType) => f !== "DNARadioButton");
+      })?.find((f: childrenType) => f !== "DNACheckbox");
 
       if (!Children.count(children)) {
-        throw new Error("RadioGroup must have at least 1 radion button!");
+        throw new Error("Checkbox Group must have at least 1 checkbox");
       }
 
       if (childs) {
@@ -104,15 +98,13 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
         );
       }
 
-      const hasChecked: CheckBoxCustomTypes | undefined = Children.toArray(
+      const hasChecked: CheckBoxCustomTypes[] | undefined = Children.toArray(
         children
-      ).find((radio: CheckBoxCustomTypes) => {
-        return radio.props.checked === true;
+      ).filter((cbxbox: CheckBoxCustomTypes) => {
+        return cbxbox.props.checked === true;
       });
 
-      if (!_.isEmpty(hasChecked?.props)) {
-        setLocalSelected({ ...hasChecked?.props });
-      }
+      setLocalSelected(hasChecked);
     }, [children]);
 
     const errors = useValidator<string>({
@@ -120,6 +112,14 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
       validators: [isRequired(required)],
     });
 
+    /**
+     * Returns the color based on the provided color type.
+     * If there are errors present, it returns the default danger color from the theme.
+     * Otherwise, it returns the default color from the theme based on the provided color type.
+     *
+     * @param color - The color type to determine the color.
+     * @returns The color value based on the provided color type.
+     */
     const getColor = useCallback(
       (color: colorTypes) => {
         if (!_.isEmpty(errors)) {
@@ -135,6 +135,15 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [assistiveText, errors]
     );
+
+    /**
+     * Calculates the style for the label based on the current state.
+     * If there are errors, the label color will be set to "error".
+     * If there is assistive text and the checkbox is selected, the label color will be set to the type of the assistive text.
+     * Otherwise, the label color will be set to the default color from the theme.
+     *
+     * @returns The style object for the label.
+     */
     const labelStyle = useMemo((): StyleProp<TextStyle> => {
       if (!_.isEmpty(errors)) {
         return {
@@ -152,6 +161,11 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [localSelected, assistiveText, errors]);
 
+    /**
+     * Renders an icon based on the type provided.
+     * @param type - The type of the icon. Can be "assistive" or "icon".
+     * @returns The JSX.Element of the rendered icon, or null/undefined if no icon is selected.
+     */
     const renderIcon = (
       type: "assistive" | "icon"
     ): React.JSX.Element | null | undefined => {
@@ -175,6 +189,14 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
         : selectedIcon;
     };
 
+    /**
+     * Renders the assistive text based on the errors and assistiveText props.
+     * If there are errors, it renders an error message.
+     * If assistiveText is provided, it renders the assistiveText message.
+     * If neither errors nor assistiveText is present, it returns null.
+     *
+     * @returns JSX.Element | null - The rendered assistive text component or null if no assistive text is needed.
+     */
     const _renderAssistiveText = useCallback((): React.JSX.Element | null => {
       if (!_.isEmpty(errors)) {
         return (
@@ -215,6 +237,10 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [assistiveText, errors]);
 
+    /**
+     * Returns the container style for the CheckboxGroup component based on the orientation and label presence.
+     * @returns The container style for the CheckboxGroup component.
+     */
     const getContainerStyle = useMemo((): StyleProp<ViewStyle> => {
       const style: StyleProp<ViewStyle> =
         orientation === "horizontal"
@@ -223,21 +249,35 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
       return label ? { ...style, marginTop: 10 } : style;
     }, [orientation, label]);
 
-    const _renderRadioButtons = () => {
+    /**
+     * Renders the checkboxes based on the provided children.
+     * @returns {React.ReactNode} The rendered checkboxes.
+     */
+    const _renderCheckboxes = () => {
       return Children.map(children, (c) => {
         return <DNACheckbox {...c?.props} disabled={disabled} />;
       });
     };
 
     const _renderLabel = useCallback((): React.JSX.Element | null => {
-      return <DNAText style={[labelStyle, styles.label]}>{label}</DNAText>;
-    }, [label, labelStyle]);
+      return (
+        <DNAText style={[labelStyle, styles.label]}>
+          {label}
+          {required && (
+            <>
+              {" "}
+              <DNAText style={[labelStyle, styles.required]}>*</DNAText>
+            </>
+          )}
+        </DNAText>
+      );
+    }, [label, labelStyle, required]);
 
     return (
       <View style={styles.mainContainer}>
         {_renderLabel()}
         <View ref={ref} style={[getContainerStyle]} {...rest}>
-          {_renderRadioButtons()}
+          {_renderCheckboxes()}
           {_renderAssistiveText()}
         </View>
       </View>
@@ -245,6 +285,6 @@ const RadioGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
   }
 );
 
-RadioGroup.displayName = "RadioGroup";
+CheckboxGroup.displayName = "CheckboxGroup";
 
-export default RadioGroup;
+export default CheckboxGroup;

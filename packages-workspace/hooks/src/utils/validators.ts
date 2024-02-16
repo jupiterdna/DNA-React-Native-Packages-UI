@@ -1,7 +1,10 @@
 import { ValidationError } from "../hooks";
 
 /**
- * get error function for response in validation
+ * Returns an error object with the specified message and code.
+ * @param message - The error message.
+ * @param code - The error code.
+ * @returns The error object.
  **/
 export const getError = (message: string, code: string) => {
   const error: ValidationError = new ValidationError({
@@ -12,8 +15,12 @@ export const getError = (message: string, code: string) => {
 
   return error;
 };
+
 /**
- * validate the value if has a special character
+ * Validates if the value has a special character.
+ * @param chars - The value to be validated.
+ * @returns Promise that resolves to null if the value is valid.
+ * @throws ValidationError if the value is invalid.
  **/
 export const hasSpecialCharacter =
   () =>
@@ -32,8 +39,12 @@ export const hasSpecialCharacter =
 
     return null;
   };
+
 /**
- * validate the value for max length of characters
+ * Validates if the value exceeds the maximum length of characters.
+ * @param max - The maximum length of characters.
+ * @returns Promise that resolves to null if the value is valid.
+ * @throws ValidationError if the value exceeds the maximum length.
  **/
 export const maxChar =
   (max = 8) =>
@@ -50,8 +61,12 @@ export const maxChar =
 
     return null;
   };
+
 /**
- * validate the value if defined
+ * Validates if the value is required.
+ * @param required - Whether the value is required or not.
+ * @returns Promise that resolves to null if the value is valid.
+ * @throws ValidationError if the value is missing or empty.
  **/
 export const isRequired =
   (required?: boolean) =>

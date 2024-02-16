@@ -17,13 +17,14 @@
     "@rndna/text": "*",
     "tsup": "^8.0.1",
     "@rndna/theme-provider": "*",
+    "@rndna/hooks": "*",
     "typescript": "^5.3.2"
   },
-  "dependencies": {
-    "@rndna/icon": "*"
-  },
+  "dependencies": {},
   "peerDependencies": {
     "react": "*",
-    "react-native": "*"
+    "react-native": "*",
+    "@rndna/icon": "*",
+    "@rndna/hooks": "*"
   }
 }

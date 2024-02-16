@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import bluebird from "bluebird";
 
-export type errorType = {
+export type ErrorType = {
   type: "error";
   code: string;
   message: string;
 };
 
 /**
- * defined class for Validator extends with error class
+ * Class for ValidationError that extends Error class.
  **/
 export class ValidationError extends Error {
   type?: string;
   message: string;
   code: string;
-  constructor(error: errorType) {
+  constructor(error: ErrorType) {
     super();
     this.type = error.type ?? "error";
     this.code = error.code;
@@ -23,12 +23,12 @@ export class ValidationError extends Error {
 }
 
 /**
- * dynamic types for validator function
+ * Dynamic types for the validator function.
  **/
 export type ValidatorFunction<TParam = any> = (param: TParam) => Promise<null>;
 
 /**
- * hook for validator for fields
+ * Hook for field validation.
  **/
 export function useValidator<TParam = any | undefined>({
   param,
@@ -36,8 +36,8 @@ export function useValidator<TParam = any | undefined>({
 }: {
   param: TParam;
   validators: Array<ValidatorFunction<TParam>>;
-}): errorType | null {
-  const [error, setError] = useState<errorType | null>(null);
+}): ErrorType | null {
+  const [error, setError] = useState<ErrorType | null>(null);
 
   useEffect(() => {
     bluebird
@@ -45,7 +45,7 @@ export function useValidator<TParam = any | undefined>({
         return fn(param);
       })
       .then(() => setError(null))
-      .catch((err: errorType) => {
+      .catch((err: ErrorType) => {
         setError(err);
       });
   }, [param]);

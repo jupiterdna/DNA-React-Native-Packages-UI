@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
     columnGap: 3,
   },
   assistiveText: { fontSize: 12 },
+  required: { top: -10, fontSize: 11 },
   label: { fontSize: 13 },
   input: {
     flex: 1,
