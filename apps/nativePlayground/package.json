@@ -36,6 +36,7 @@
     "@rndna/radiobutton": "*",
     "@rndna/text": "*",
     "@rndna/textfield": "*",
+    "@rndna/icon_button": "*",
     "@rndna/theme-provider": "*",
     "bluebird": "^3.7.2",
     "react": "18.2.0",

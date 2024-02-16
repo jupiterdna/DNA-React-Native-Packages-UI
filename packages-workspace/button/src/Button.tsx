@@ -82,7 +82,6 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       flat: {},
       soft: { backgroundColor: useColorScheme() === 'light' ? useDarkColor : secondaryColor },
     }[variant];
-    
   };
 
   const getIconPositionStyle = () => {
@@ -92,11 +91,11 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const _renderIcon = useCallback((): React.JSX.Element | undefined => {
     return typeof icon === "function"
       ? createElement(icon, {
-        size: (textSizeCls[size].fontSize || -1) + 7,
+        size: variant === 'flat' ? (textSizeCls[size].fontSize || -1) + 15 :(textSizeCls[size].fontSize || -1) + 7,
         color: colorVariant
       })
       : icon;
-  }, [icon, size, colorVariant])
+  }, [icon, size, colorVariant, variant])
 
   const getTextSize = useCallback((): "caption" | "body2" | "body1" | "label" | "h6" => {
     switch(size) {
@@ -128,31 +127,37 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
           <ActivityIndicator color={colorVariant} /> 
         </View>
       ) : !!icon && _renderIcon() )
-  }, [isLoading, icon, colorVariant])
+  }, [isLoading, icon, colorVariant, size, variant])
 
   const _renderLabel = useCallback((): React.JSX.Element => {
     const labelValue = loadingLabel && isLoading ? loadingLabel : label
     return <DNAText style={getTextColor} type={getTextSize()}>{labelValue}</DNAText>
   }, [getTextColor, loadingLabel, isLoading, label])
 
-  const _getButtonContent = useCallback((): React.JSX.Element => (
-    <View
-      style={[
-        styles.button,
-        (!!loadingLabel || !!label) ? styles.gapSize : iconBtnSizes,
-        getIconPositionStyle(),
-        getVariantStyle(),
-        borderRadiusCls[borderRadius],
-        buttonSizeCls[size],
-        fullWidth && styles.buttonWidthFull,
-        (isDisabled || isLoading) && styles.buttonDisabled,
-      ]}
-      ref={ref}
-    > 
-      {_renderIconState()}
-      {_renderLabel()}
-    </View>
-  ), [loadingLabel, label, iconBtnSizes, getIconPositionStyle, getVariantStyle, borderRadius, size, fullWidth, isDisabled, isLoading, ref, _renderIconState, _renderLabel]);
+  const _getButtonContent = useCallback((): React.JSX.Element => {
+    const ButtonComponent = enableRipple ? View : Pressable;
+    return (
+      <ButtonComponent
+        style={[
+          styles.button,
+          (!!loadingLabel || !!label) ? styles.gapSize : iconBtnSizes,
+          getIconPositionStyle(),
+          getVariantStyle(),
+          borderRadiusCls[borderRadius],
+          buttonSizeCls[size],
+          fullWidth && styles.buttonWidthFull,
+          (isDisabled || isLoading) && styles.buttonDisabled,
+        ]}
+        disabled={enableRipple ? undefined : (isDisabled || isLoading)}
+        onPress={enableRipple ? undefined : onPress}
+        ref={ref}
+      >
+        {_renderIconState()}
+        {_renderLabel()}
+      </ButtonComponent>
+    );
+  }, [enableRipple, loadingLabel, label, iconBtnSizes, getIconPositionStyle, getVariantStyle, borderRadius, size, fullWidth, isDisabled, isLoading, onPress, ref, _renderIconState, _renderLabel]);
+  
 
   return enableRipple ? (
     <RippleComponent 
@@ -164,6 +169,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       rippleCentered={rippleCentered}
       rippleSequential={rippleSequential}
       rippleFades={rippleFades}
+      disabled={isDisabled || isLoading}
       >
       {_getButtonContent()}
     </RippleComponent>
