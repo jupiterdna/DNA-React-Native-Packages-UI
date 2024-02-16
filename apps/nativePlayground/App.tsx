@@ -18,7 +18,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator>
-        <Drawer.Screen name="Ripple Button" component={RippleScreen} />
+        <Drawer.Screen name="Buttons" component={RippleScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
         <Drawer.Screen name="Radio Button" component={RadioButtonScreen} />
         <Drawer.Screen name="Menu" component={DropdownScreen} />
