@@ -1,8 +1,8 @@
-import {StyleSheet, Text, View, useColorScheme} from 'react-native';
+import {StyleSheet, View, useColorScheme} from 'react-native';
 import React from 'react';
 import {DNAButton} from '@rndna/button';
-import {DNAIconButton} from '@rndna/icon_button';
 import {UploadCloudIconOutline} from '@rndna/icon';
+import {DNAText} from '@rndna/text';
 
 const RippleScreen = () => {
   return (
@@ -12,41 +12,224 @@ const RippleScreen = () => {
         {backgroundColor: useColorScheme() === 'light' ? 'white' : '#2c2c2c'},
       ]}>
       <View style={styles.gap}>
-        <Text>Basic Button with ripple effect</Text>
-        <DNAButton
-          icon={UploadCloudIconOutline}
-          label="Ripple Button"
-          onPress={() => {
-            console.log('onPress 1');
-          }}
-        />
+        <DNAText>Variant: flat</DNAText>
+        <View style={styles.horizontal}>
+          <DNAButton
+            label="Button"
+            variant="flat"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Custom"
+            variant="flat"
+            color="success"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Disabled"
+            isDisabled
+            variant="flat"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon"
+            variant="flat"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            isLoading
+            label="Loading"
+            variant="flat"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon right"
+            iconPosition="right"
+            variant="flat"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+        </View>
         <View style={{marginTop: 10}} />
-        <Text>Basic Button without ripple effect</Text>
-        <DNAButton
-          enableRipple={false}
-          icon={UploadCloudIconOutline}
-          label="Ripple Button"
-          onPress={() => {
-            console.log('onPress 2');
-          }}
-        />
+      </View>
+      <View style={styles.gap}>
+        <DNAText>Variant: outlined</DNAText>
+        <View style={styles.horizontal}>
+          <DNAButton
+            label="Button"
+            variant="outlined"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Custom"
+            variant="outlined"
+            color="success"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Disabled"
+            isDisabled
+            variant="outlined"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon"
+            variant="outlined"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            isLoading
+            label="Loading"
+            variant="outlined"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon right"
+            iconPosition="right"
+            variant="outlined"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+        </View>
         <View style={{marginTop: 10}} />
-        <Text>Icon Button with ripple effect</Text>
-        <DNAIconButton
-          icon={UploadCloudIconOutline}
-          onPress={() => {
-            console.log('onPress 3');
-          }}
-        />
+      </View>
+      <View style={styles.gap}>
+        <DNAText>Variant: soft</DNAText>
+        <View style={styles.horizontal}>
+          <DNAButton
+            label="Button"
+            variant="soft"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Custom"
+            variant="soft"
+            color="success"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Disabled"
+            isDisabled
+            variant="soft"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon"
+            variant="soft"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            isLoading
+            label="Loading"
+            variant="soft"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon right"
+            iconPosition="right"
+            variant="soft"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+        </View>
         <View style={{marginTop: 10}} />
-        <Text>Icon Button without ripple effect</Text>
-        <DNAIconButton
-          enableRipple={false}
-          icon={UploadCloudIconOutline}
-          onPress={() => {
-            console.log('onPress 4');
-          }}
-        />
+      </View>
+      <View style={styles.gap}>
+        <DNAText>Variant: solid</DNAText>
+        <View style={styles.horizontal}>
+          <DNAButton
+            label="Button"
+            variant="solid"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Custom"
+            variant="solid"
+            color="success"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Disabled"
+            isDisabled
+            variant="solid"
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon"
+            variant="solid"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            isLoading
+            label="Loading"
+            variant="solid"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+          <DNAButton
+            label="Icon right"
+            iconPosition="right"
+            variant="solid"
+            icon={UploadCloudIconOutline}
+            onPress={() => {
+              console.log('onPress 2');
+            }}
+          />
+        </View>
+        <View style={{marginTop: 10}} />
       </View>
     </View>
   );
@@ -58,6 +241,17 @@ const styles = StyleSheet.create({
   },
   gap: {
     gap: 8,
+    alignItems: 'flex-start',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    gap: 8,
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+  },
+  vertical: {
+    gap: 8,
+    flexDirection: 'column',
     alignItems: 'flex-start',
   },
 });
