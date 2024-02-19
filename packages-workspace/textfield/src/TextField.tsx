@@ -134,7 +134,7 @@ export const TextField = forwardRef(
 
     const errors = useValidator<string>({
       param: localValue,
-      validators: [isRequired(required), maxChar(6), hasSpecialCharacter()],
+      validators: [],
     });
 
     const getColor = (color: colorTypes) => {

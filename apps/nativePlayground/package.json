@@ -15,6 +15,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-clipboard/clipboard": "^1.13.2",
     "@react-navigation/drawer": "^6.6.7",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
@@ -31,12 +32,12 @@
     "@rndna/fonts": "*",
     "@rndna/hooks": "*",
     "@rndna/icon": "*",
+    "@rndna/icon_button": "*",
     "@rndna/image": "*",
     "@rndna/menu": "*",
     "@rndna/radiobutton": "*",
     "@rndna/text": "*",
     "@rndna/textfield": "*",
-    "@rndna/icon_button": "*",
     "@rndna/theme-provider": "*",
     "bluebird": "^3.7.2",
     "react": "18.2.0",

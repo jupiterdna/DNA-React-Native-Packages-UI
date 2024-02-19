@@ -1,4 +1,4 @@
-import {View} from 'react-native';
+import {View, Text} from 'react-native';
 import React from 'react';
 import {DNABadge} from '@rndna/badge';
 
@@ -18,7 +18,7 @@ const BadgeScreen = () => {
       </View>
       <View style={styles.divider} />
       <View style={styles.circle}>
-        <DNABadge color="primary" />
+        <DNABadge color="danger" />
       </View>
     </View>
   );
