@@ -7,6 +7,7 @@ import RadioButtonScreen from './src/Screens/RadioButtonScreen';
 import DropdownScreen from './src/Screens/DropdownScreen';
 import CheckboxGroupScreen from './src/Screens/CheckboxGroupScreen';
 import SplashScreen from 'react-native-splash-screen';
+import CustomDrawerContent from './src/components/Header';
 
 const App = () => {
   const Drawer = createDrawerNavigator();
@@ -17,7 +18,7 @@ const App = () => {
 
   return (
     <NavigationContainer>
-      <Drawer.Navigator>
+      <Drawer.Navigator drawerContent={CustomDrawerContent}>
         <Drawer.Screen name="Buttons" component={RippleScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
         <Drawer.Screen name="Radio Button" component={RadioButtonScreen} />
