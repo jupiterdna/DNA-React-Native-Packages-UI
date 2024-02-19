@@ -1,10 +1,11 @@
-import {StyleSheet, View, ScrollView} from 'react-native';
+import {StyleSheet, View, ScrollView, Linking} from 'react-native';
 import React, {useMemo} from 'react';
 import * as Icon from '@rndna/icon';
 import {DNAText} from '@rndna/text';
 import {DNATextField} from '@rndna/textfield';
 import {DNAButton} from '@rndna/button';
 import Clipboard from '@react-native-clipboard/clipboard';
+import {WebDocs_URL} from './Utils/hooks';
 const IconScreen = () => {
   const [value, setvalue] = React.useState('');
 
@@ -62,6 +63,17 @@ const IconScreen = () => {
         <View style={styles.divider} />
       </ScrollView>
       <View style={styles.viewDocs} />
+      <View>
+        <DNAButton
+          label="Read Docs"
+          color="primary"
+          size="lg"
+          onPress={() => {
+            Linking.openURL(WebDocs_URL + 'docs/components/icon');
+          }}
+          icon={<Icon.FileIcon size={20} color={'#fff'} />}
+        />
+      </View>
     </>
   );
 };

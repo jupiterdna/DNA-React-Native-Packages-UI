@@ -86,7 +86,6 @@ const config: Config = {
     // Replace with your project's social card
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
-      
       title: 'DNA React Native Packages',
       logo: {
         alt: 'DNA React Native Packages',
@@ -95,7 +94,9 @@ const config: Config = {
       items: [
         {
           type: 'search',
-          position: 'left',
+          position: 'right',
+          
+
         },
         {to: '/blog', label: 'Blog', position: 'left'},
         // {

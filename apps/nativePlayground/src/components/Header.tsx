@@ -21,6 +21,7 @@ const CustomDrawerContent = props => {
           }}
         />
         <DNAText>DNA React Native</DNAText>
+        <DNAText style={styles.subLabel}>Redefining Mobile Aesthetics</DNAText>
       </View>
       <DrawerItemList {...props} />
     </DrawerContentScrollView>
@@ -32,6 +33,11 @@ const styles = StyleSheet.create({
     padding: 10,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  subLabel: {
+    fontSize: 12,
+    marginTop: 8,
+    color: 'grey',
   },
 });
 

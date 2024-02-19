@@ -18,3 +18,5 @@ export const useDebounce = (value: string, delay: number) => {
 
   return {loading, debouncedValue};
 };
+
+export const WebDocs_URL = 'http://localhost:3000/';

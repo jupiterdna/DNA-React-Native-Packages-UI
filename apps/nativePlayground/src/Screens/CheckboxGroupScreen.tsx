@@ -1,6 +1,9 @@
-import {StyleSheet, View} from 'react-native';
+import {Linking, StyleSheet, View} from 'react-native';
 import React, {useState} from 'react';
 import {DNACheckBoxGroup, DNACheckbox, DNACheckboxProps} from '@rndna/checkbox';
+import {DNAButton} from '@rndna/button';
+import {WebDocs_URL} from './Utils/hooks';
+import {FileIcon} from '@rndna/icon';
 
 const CheckboxGroupScreen = () => {
   const [options, setOptions] = useState<DNACheckboxProps[]>([
@@ -36,82 +39,95 @@ const CheckboxGroupScreen = () => {
   };
 
   return (
-    <View style={styles.mainContainer}>
-      <DNACheckBoxGroup
-        orientation="vertical"
-        label="Checkbox Group Vertical"
-        children={options.map(op => {
-          return (
-            <DNACheckbox
-              {...op}
-              key={op.id}
-              checked={op.checked}
-              onPress={() => {
-                handleSelect(op);
-              }}
-            />
-          );
-        })}
-        required
-      />
-      <View style={styles.divider} />
-      <DNACheckBoxGroup
-        orientation="horizontal"
-        label="Checkbox Group Horizontal"
-        children={options.map(op => {
-          return (
-            <DNACheckbox
-              {...op}
-              key={op.id}
-              checked={op.checked}
-              onPress={() => {
-                handleSelect(op);
-              }}
-            />
-          );
-        })}
-        required
-      />
-      <View style={styles.divider} />
-      <DNACheckBoxGroup
-        orientation="horizontal"
-        disabled
-        label="Checkbox Group  Disabled"
-        children={options.map(op => {
-          return (
-            <DNACheckbox
-              {...op}
-              key={op.id}
-              checked={op.checked}
-              onPress={() => {
-                handleSelect(op);
-              }}
-            />
-          );
-        })}
-      />
-      <View style={styles.divider} />
-      <DNACheckBoxGroup
-        assistiveText={{
-          type: 'error',
-          message: 'This is an error message',
-        }}
-        orientation="horizontal"
-        label="Checkbox Group  Disabled"
-        children={options.map(op => {
-          return (
-            <DNACheckbox
-              {...op}
-              key={op.id}
-              checked={op.checked}
-              onPress={() => {
-                handleSelect(op);
-              }}
-            />
-          );
-        })}
-      />
-    </View>
+    <>
+      <View style={styles.mainContainer}>
+        <DNACheckBoxGroup
+          orientation="vertical"
+          label="Checkbox Group Vertical"
+          children={options.map(op => {
+            return (
+              <DNACheckbox
+                {...op}
+                key={op.id}
+                checked={op.checked}
+                onPress={() => {
+                  handleSelect(op);
+                }}
+              />
+            );
+          })}
+          required
+        />
+        <View style={styles.divider} />
+        <DNACheckBoxGroup
+          orientation="horizontal"
+          label="Checkbox Group Horizontal"
+          children={options.map(op => {
+            return (
+              <DNACheckbox
+                {...op}
+                key={op.id}
+                checked={op.checked}
+                onPress={() => {
+                  handleSelect(op);
+                }}
+              />
+            );
+          })}
+          required
+        />
+        <View style={styles.divider} />
+        <DNACheckBoxGroup
+          orientation="horizontal"
+          disabled
+          label="Checkbox Group  Disabled"
+          children={options.map(op => {
+            return (
+              <DNACheckbox
+                {...op}
+                key={op.id}
+                checked={op.checked}
+                onPress={() => {
+                  handleSelect(op);
+                }}
+              />
+            );
+          })}
+        />
+        <View style={styles.divider} />
+        <DNACheckBoxGroup
+          assistiveText={{
+            type: 'error',
+            message: 'This is an error message',
+          }}
+          orientation="horizontal"
+          label="Checkbox Group  Disabled"
+          children={options.map(op => {
+            return (
+              <DNACheckbox
+                {...op}
+                key={op.id}
+                checked={op.checked}
+                onPress={() => {
+                  handleSelect(op);
+                }}
+              />
+            );
+          })}
+        />
+      </View>
+      <View>
+        <DNAButton
+          label="Read Docs"
+          color="primary"
+          size="lg"
+          onPress={() => {
+            Linking.openURL(WebDocs_URL + 'docs/components/checkbox');
+          }}
+          icon={<FileIcon size={20} color={'#fff'} />}
+        />
+      </View>
+    </>
   );
 };
 
