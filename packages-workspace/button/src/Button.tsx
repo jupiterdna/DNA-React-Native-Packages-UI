@@ -91,12 +91,14 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const _renderIcon = useCallback((): React.JSX.Element | undefined => {
     return typeof icon === "function"
       ? createElement(icon, {
-        size: variant === 'flat' ? (textSizeCls[size].fontSize || -1) + 15 :(textSizeCls[size].fontSize || -1) + 7,
+        size: variant === 'flat' && !label
+          ? (textSizeCls[size].fontSize || -1) + 15 
+          : (textSizeCls[size].fontSize || -1) + 7,
         color: colorVariant
       })
       : icon;
-  }, [icon, size, colorVariant, variant])
-
+  }, [icon, size, colorVariant, variant, label])
+  
   const getTextSize = useCallback((): "caption" | "body2" | "body1" | "label" | "h6" => {
     switch(size) {
       case 'xs': 
