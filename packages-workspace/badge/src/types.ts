@@ -18,4 +18,8 @@ export interface DNABadgeProps {
    *  Property that changes theme/state of the selection i.e. background and text color
    */
   color?: colorProps;
+   /**
+   *  Property that changes the position of the badge either top or bottom
+   */
+  position?: "top" | "bottom";
 }

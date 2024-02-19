@@ -27,7 +27,7 @@ import { DNAText } from "@rndna/text";
  */
 
 export const DNABadge = (props: DNABadgeProps) => {
-  const { children, value, style, color = "primary" } = props;
+  const { children, value, style, color = "primary", position = "top" } = props;
   const [badgeWidth, setBadgeWidth] = useState(0);
 
   const onBadgeWrapperLayout = (event: any) => {
@@ -54,6 +54,10 @@ export const DNABadge = (props: DNABadgeProps) => {
       : styles.badgeSize;
   };
 
+  const getPosition = () => {
+    return position === "top" ? { top: 0 } : { bottom: 0}
+  };
+
   const _renderBadgeText = useCallback((): React.JSX.Element | null => {
     return (
       <View
@@ -61,6 +65,7 @@ export const DNABadge = (props: DNABadgeProps) => {
           styles.badge,
           getDefaultBgColor(),
           getSpace(),
+          getPosition(),
           styles.shadowProp,
           style,
         ]}
@@ -70,7 +75,7 @@ export const DNABadge = (props: DNABadgeProps) => {
         </DNAText>
       </View>
     );
-  }, [getDefaultBgColor(), getSpace(), style, getTextColor, value]);
+  }, [getPosition, getDefaultBgColor, getSpace, style, getTextColor, value]);
 
   return (
     <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>

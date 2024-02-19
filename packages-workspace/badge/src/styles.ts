@@ -5,7 +5,6 @@ export const styles = StyleSheet.create({
     position: 'relative',
   },
   badge: {
-    top: 0,
     position: 'absolute',
     zIndex: 99,
     borderRadius: 99,
@@ -28,6 +27,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 2,
     paddingHorizontal: 4,
     minHeight: 18,
+    justifyContent: 'center',
   },
   badgeSize: {
     width: 10,

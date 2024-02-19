@@ -1,35 +1,46 @@
-import {View} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 import React from 'react';
 import {DNABadge} from '@rndna/badge';
 
 const BadgeScreen = () => {
   return (
     <View style={[styles.container, styles.flex]}>
-      <View style={styles.circle}>
-        <DNABadge value="Badge" />
-      </View>
-      <View style={styles.divider} />
-      <View style={styles.circle}>
-        <DNABadge value="Badge" color="danger" />
-      </View>
-      <View style={styles.divider} />
-      <View style={styles.circle}>
-        <DNABadge color="danger" />
-      </View>
-      <View style={styles.divider} />
-      <View style={styles.circle}>
-        <DNABadge color="primary" />
-      </View>
+      <DNABadge value="Badge">
+        <View style={styles.circle} />
+      </DNABadge>
+      <DNABadge value="Badge" color="danger">
+        <View style={styles.circle} />
+      </DNABadge>
+      <DNABadge value="Badge" position="bottom">
+        <View style={styles.circle} />
+      </DNABadge>
+      <DNABadge value="Badge" color="danger" position="bottom">
+        <View style={styles.circle} />
+      </DNABadge>
+      <DNABadge>
+        <View style={styles.circle} />
+      </DNABadge>
+      <DNABadge color="danger">
+        <View style={styles.circle} />
+      </DNABadge>
+      <DNABadge position="bottom">
+        <View style={styles.circle} />
+      </DNABadge>
+      <DNABadge color="danger" position="bottom">
+        <View style={styles.circle} />
+      </DNABadge>
     </View>
   );
 };
 
-const styles = {
+const styles = StyleSheet.create({
   flex: {
     flex: 1,
   },
   container: {
     padding: 20,
+    alignItems: 'flex-start',
+    gap: 20,
   },
   circle: {
     width: 40,
@@ -37,9 +48,6 @@ const styles = {
     borderRadius: 20,
     backgroundColor: 'lightgrey',
   },
-  divider: {
-    height: 20,
-  },
-};
+});
 
 export default BadgeScreen;
