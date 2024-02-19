@@ -1,13 +1,17 @@
 import React, {useEffect} from 'react';
-import TextFieldScreen from './src/Screens/TextFieldScreen';
-import RippleScreen from './src/Screens/RippleScreen';
+
 import {NavigationContainer} from '@react-navigation/native';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import RadioButtonScreen from './src/Screens/RadioButtonScreen';
-import DropdownScreen from './src/Screens/DropdownScreen';
-import CheckboxGroupScreen from './src/Screens/CheckboxGroupScreen';
 import SplashScreen from 'react-native-splash-screen';
 import CustomDrawerContent from './src/components/Header';
+import {
+  BadgeScreen,
+  CheckboxGroupScreen,
+  DropdownScreen,
+  RadioButtonScreen,
+  RippleScreen,
+  TextFieldScreen,
+} from './src/Screens';
 
 const App = () => {
   const Drawer = createDrawerNavigator();
@@ -19,6 +23,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={CustomDrawerContent}>
+        <Drawer.Screen name="Badge" component={BadgeScreen} />
         <Drawer.Screen name="Buttons" component={RippleScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
         <Drawer.Screen name="Radio Button" component={RadioButtonScreen} />

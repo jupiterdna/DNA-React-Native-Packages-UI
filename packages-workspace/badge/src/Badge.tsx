@@ -1,9 +1,9 @@
-import { View, useColorScheme } from 'react-native'
-import React, { useCallback, useState } from 'react'
-import { DNABadgeProps } from './types'
-import { styles } from './styles'
-import { useColor } from "@rndna/theme-provider"
-import { DNAText } from "@rndna/text"
+import { View, useColorScheme } from "react-native";
+import React, { useCallback, useState } from "react";
+import { DNABadgeProps } from "./types";
+import { styles } from "./styles";
+import { useColor } from "@rndna/theme-provider";
+import { DNAText } from "@rndna/text";
 
 /**
  * A badge is component that the user display a text with custom background color on the upper right hand of the children.
@@ -27,9 +27,9 @@ import { DNAText } from "@rndna/text"
  */
 
 export const DNABadge = (props: DNABadgeProps) => {
-  const { children, value, style, color = 'primary' } = props
+  const { children, value, style, color = "primary" } = props;
   const [badgeWidth, setBadgeWidth] = useState(0);
-  
+
   const onBadgeWrapperLayout = (event: any) => {
     setBadgeWidth(event.nativeEvent.layout.width);
   };
@@ -38,38 +38,44 @@ export const DNABadge = (props: DNABadgeProps) => {
   const defaultColor = themeColor[color]["default"];
   const useDarkColor = themeColor[color][100];
 
-  const colorVariant = useColorScheme() === 'light' ? 'white' : useDarkColor
+  const colorVariant = useColorScheme() === "light" ? "white" : useDarkColor;
 
   const getTextColor = {
-    color: colorVariant
+    color: colorVariant,
   };
 
   const getDefaultBgColor = () => {
-    return { backgroundColor: defaultColor }
-  }
+    return { backgroundColor: defaultColor };
+  };
 
   const getSpace = () => {
-    return !!value ? [{ left: badgeWidth - 8 }, styles.badgeSpace] : styles.badgeSize
-  }
+    return !!value
+      ? [{ left: badgeWidth - 8 }, styles.badgeSpace]
+      : styles.badgeSize;
+  };
 
   const _renderBadgeText = useCallback((): React.JSX.Element | null => {
     return (
-      <View style={[
-        styles.badge, 
-          getDefaultBgColor(), 
+      <View
+        style={[
+          styles.badge,
+          getDefaultBgColor(),
           getSpace(),
           styles.shadowProp,
-          style, 
-        ]}>
-        <DNAText type="overline" style={getTextColor}>{value}</DNAText>
+          style,
+        ]}
+      >
+        <DNAText type="overline" style={getTextColor}>
+          {value}
+        </DNAText>
       </View>
-    )
-  },[getDefaultBgColor(), getSpace(), style, getTextColor, value]);
+    );
+  }, [getDefaultBgColor(), getSpace(), style, getTextColor, value]);
 
   return (
     <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>
       {_renderBadgeText()}
       {children}
     </View>
-  )
-}
+  );
+};
