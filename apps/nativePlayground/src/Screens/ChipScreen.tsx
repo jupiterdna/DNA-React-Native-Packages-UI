@@ -92,17 +92,22 @@ const ChipScreen = () => {
         <DNAChip variant="outlined" label="disabled" isDisabled />
       </View>
       <View style={styles.divider} />
-      <DNAText style={styles.labelStyle}>Console Logs:</DNAText>
-      {consoleLogs.map((log, index) => (
-        <DNAText key={index} style={styles.consoleLog}>
-          {log} {index === consoleLogs.length - 1 && '(new)'}
-        </DNAText>
-      ))}
-      {consoleLogs.length > 0 && (
-        <DNAText style={styles.clearButton} onPress={clearLogs}>
-          Clear Logs
-        </DNAText>
-      )}
+
+      <View style={styles.rowGap}>
+        <DNAText>Console Logs:</DNAText>
+        {consoleLogs.length > 0 && (
+          <DNAText style={styles.clearButton} onPress={clearLogs}>
+            Clear Logs
+          </DNAText>
+        )}
+      </View>
+      <View style={styles.scrollHeight}>
+        {consoleLogs.map((log, index) => (
+          <DNAText key={index} style={styles.consoleLog}>
+            {log} {index === consoleLogs.length - 1 && '(new)'}
+          </DNAText>
+        ))}
+      </View>
     </View>
   );
 };
@@ -136,9 +141,17 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   clearButton: {
-    marginTop: 10,
     color: 'blue',
     textDecorationLine: 'underline',
+  },
+  scrollHeight: {
+    minHeight: 200,
+  },
+  rowGap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    gap: 5,
   },
 });
 
