@@ -44,6 +44,7 @@ export const DNAChip = (props: DNAChipProps) => {
     onPress,
     onPressClose,
     borderRadius = "rounded",
+    style,
   } = props;
 
   const themeColor = useColor();
@@ -129,6 +130,7 @@ export const DNAChip = (props: DNAChipProps) => {
   return (
     <Pressable
       style={[
+        style,
         styles.chip,
         getVariantStyle(),
         borderRadiusCls[borderRadius],

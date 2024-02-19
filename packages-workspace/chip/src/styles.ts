@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native';
-import { useFonts } from "@rndna/theme-provider"
-import { HistoryIcon } from '@rndna/icon';
+import { StyleSheet } from "react-native";
+import { useFonts } from "@rndna/theme-provider";
+import { HistoryIcon } from "@rndna/icon";
 
 const size = useFonts();
 
@@ -12,6 +12,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     height: 26,
     gap: 4,
+    alignSelf: "flex-start",
   },
   buttonDisabled: {
     opacity: 0.5,
@@ -37,7 +38,7 @@ export const textSizeCls = {
 };
 
 export const chipSizeCls = {
-  xs:{
+  xs: {
     height: 20,
     paddingHorizontal: 6,
   },
@@ -57,7 +58,7 @@ export const chipSizeCls = {
     height: 30,
     paddingHorizontal: 12,
   },
-}
+};
 export const borderRadiusCls = {
   soft_edged: {
     borderRadius: 4,
@@ -65,4 +66,4 @@ export const borderRadiusCls = {
   rounded: {
     borderRadius: 999,
   },
-}
+};

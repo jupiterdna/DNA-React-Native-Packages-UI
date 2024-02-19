@@ -4,3 +4,4 @@ export {default as DropdownScreen} from './DropdownScreen';
 export {default as RadioButtonScreen} from './RadioButtonScreen';
 export {default as RippleScreen} from './RippleScreen';
 export {default as TextFieldScreen} from './TextFieldScreen';
+export {default as ChipScreen} from './ChipScreen';
