@@ -6,3 +6,4 @@ export {default as RippleScreen} from './RippleScreen';
 export {default as TextFieldScreen} from './TextFieldScreen';
 export {default as ChipScreen} from './ChipScreen';
 export {default as IconScreen} from './IconScreen';
+export {default as AvatarScreen} from './AvatarScreen';

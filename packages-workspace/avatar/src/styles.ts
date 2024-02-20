@@ -50,8 +50,8 @@ export const avatarSizeCls = {
     width: 24,
   },
   sm: {
-    height: 36,
-    width: 36,
+    height: 32,
+    width: 32,
   },
   md: {
     height: 40,

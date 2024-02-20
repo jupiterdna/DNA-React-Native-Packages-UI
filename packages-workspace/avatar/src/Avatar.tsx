@@ -76,7 +76,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
     }
   },[size]);
 
-  const _renderIcon = useCallback((): React.JSX.Element  => {
+  const _renderIcon = useCallback((): React.JSX.Element => {
     return typeof icon === "function"
       ? createElement(icon, {
         size: size !== 'xs' ? (textSizeCls[size].fontSize || -1) + 4 : textSizeCls[size].fontSize,
@@ -84,38 +84,44 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       })
       : icon;
   }, [icon, size, colorVariant])
+
    
-  const filteredName = useCallback((): string | undefined => {
+  const filteredName = useCallback((): string | null => {
     return (
-      name &&
+      name ?
         name
           .split(/\s+/)
           .slice(0, 2)
           .map(word => word.charAt(0).toUpperCase())
           .join("")
+      : null
     )
   },[name]);
     
-  const _renderOverlay = useCallback((): false | React.JSX.Element => {
-    return !!name && <View style={[styles.overlay, avatarSizeCls[size], borderRadiusCls[borderRadius]]} /> 
+  const _renderOverlay = useCallback((): React.JSX.Element | null => {
+    return !!name ? <View style={[styles.overlay, avatarSizeCls[size], borderRadiusCls[borderRadius]]} /> : null
   }, [size, borderRadius])
 
-  const _renderAvatar = useCallback((): React.JSX.Element => {
-    return (
-      !!imageSource ? (
-          <Image
-            style={[{ width: '100%', height: '100%'}, borderRadiusCls[borderRadius]]}
-            source={{ uri: imageSource }}
-            resizeMethod="auto"
-            alt={alt}
-          />
-      ) : !!name ?  (
+  const _renderAvatar = useCallback((): React.JSX.Element | null => {
+    if (imageSource) {
+      return (
+        <Image
+          style={[{ width: '100%', height: '100%'}, borderRadiusCls[borderRadius]]}
+          source={{ uri: imageSource }}
+          resizeMethod="auto"
+          alt={alt}
+        />
+      );
+    } else if (name) {
+      return (
         <DNAText style={getTextColor} type={getTextSize()}>{filteredName()}</DNAText>
-      ) : (
-        _renderIcon()
-      )
-    )
-  }, [imageSource, borderRadius, alt, name, filteredName, getTextColor])
+      );
+    } else if (icon) {
+      return _renderIcon();
+    } else {
+      return null
+    }
+  }, [imageSource, borderRadius, alt, name, filteredName, getTextColor, _renderIcon, getTextSize]);
 
   return (
     <Pressable

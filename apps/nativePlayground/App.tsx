@@ -13,6 +13,7 @@ import {
   RadioButtonScreen,
   RippleScreen,
   TextFieldScreen,
+  AvatarScreen,
 } from './src/Screens';
 
 const App = () => {
@@ -25,6 +26,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={CustomDrawerContent}>
+        <Drawer.Screen name="Avatar" component={AvatarScreen} />
         <Drawer.Screen name="Badge" component={BadgeScreen} />
         <Drawer.Screen name="Buttons" component={RippleScreen} />
         <Drawer.Screen name="Checkbox" component={CheckboxGroupScreen} />
