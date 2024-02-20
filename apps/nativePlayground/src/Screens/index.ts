@@ -8,3 +8,4 @@ export {default as ChipScreen} from './ChipScreen';
 export {default as IconScreen} from './IconScreen';
 export {default as FloatingActionButtonScreen} from './FloatingActionButtonScreen';
 export {default as ImageScreen} from './ImageScreen';
+export {default as TextScreen} from './TextScreen';

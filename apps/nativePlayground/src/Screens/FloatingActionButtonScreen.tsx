@@ -12,7 +12,7 @@ const FloatingActionButton = () => {
     <>
       <View style={[styles.container, styles.flex]}>
         <DNAText style={styles.label}>Default Fab With Add icon</DNAText>
-        <View style={styles.fabContainer}>
+        <View style={styles.fab}>
           <DNAFab
             size="md"
             items={[
@@ -53,6 +53,12 @@ const FloatingActionButton = () => {
 const styles = StyleSheet.create({
   flex: {
     flex: 1,
+  },
+  fab: {
+    maxWidth: '100%',
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
   },
   _fabContainer: {
     flexDirection: 'row',

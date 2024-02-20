@@ -1,6 +1,6 @@
 import {Linking, ScrollView, StyleSheet, View} from 'react-native';
 import React from 'react';
-import {optionItems, FabItems, avatarGroup} from './constants';
+import {avatarGroup} from './constants';
 import {DNAText} from '@rndna/text';
 import {DNAButton} from '@rndna/button';
 import {FileIcon} from '@rndna/icon';

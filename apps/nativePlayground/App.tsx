@@ -15,6 +15,7 @@ import {
   RadioButtonScreen,
   RippleScreen,
   TextFieldScreen,
+  TextScreen,
 } from './src/Screens';
 
 const App = () => {
@@ -39,6 +40,7 @@ const App = () => {
         <Drawer.Screen name="Image" component={ImageScreen} />
         <Drawer.Screen name="Menu" component={DropdownScreen} />
         <Drawer.Screen name="Radio Button" component={RadioButtonScreen} />
+        <Drawer.Screen name="Text" component={TextScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
       </Drawer.Navigator>
     </NavigationContainer>
