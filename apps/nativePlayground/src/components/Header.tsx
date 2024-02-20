@@ -20,7 +20,7 @@ const CustomDrawerContent = props => {
             height: 70,
           }}
         />
-        <DNAText>DNA React Native</DNAText>
+        <DNAText>DNA React Native UI</DNAText>
         <DNAText style={styles.subLabel}>Redefining Mobile Aesthetics</DNAText>
       </View>
       <DrawerItemList {...props} />

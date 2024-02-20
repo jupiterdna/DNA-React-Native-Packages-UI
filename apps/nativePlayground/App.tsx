@@ -9,7 +9,9 @@ import {
   CheckboxGroupScreen,
   ChipScreen,
   DropdownScreen,
+  FloatingActionButtonScreen,
   IconScreen,
+  ImageScreen,
   RadioButtonScreen,
   RippleScreen,
   TextFieldScreen,
@@ -29,7 +31,12 @@ const App = () => {
         <Drawer.Screen name="Buttons" component={RippleScreen} />
         <Drawer.Screen name="Checkbox" component={CheckboxGroupScreen} />
         <Drawer.Screen name="Chips" component={ChipScreen} />
+        <Drawer.Screen
+          name="Floating Action Button (FAB)"
+          component={FloatingActionButtonScreen}
+        />
         <Drawer.Screen name="Icon" component={IconScreen} />
+        <Drawer.Screen name="Image" component={ImageScreen} />
         <Drawer.Screen name="Menu" component={DropdownScreen} />
         <Drawer.Screen name="Radio Button" component={RadioButtonScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
