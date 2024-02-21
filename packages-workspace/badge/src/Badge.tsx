@@ -67,8 +67,6 @@ export const DNABadge = (props: DNABadgeProps) => {
         return styles.badgeTop
     }
   },[position])
-  
-  console.log("getPosition(position)", getPosition())
 
   const _renderBadgeText = useCallback((): React.JSX.Element | null => {
     return (
