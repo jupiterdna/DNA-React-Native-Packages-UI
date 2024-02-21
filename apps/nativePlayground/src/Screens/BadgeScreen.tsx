@@ -26,6 +26,15 @@ const BadgeScreen = () => {
         <DNABadge value="Badge" color="danger" position="bottom">
           <View style={styles.circle} />
         </DNABadge>
+        <DNAText style={styles.label}>
+          Badge with Text (Position Inline)
+        </DNAText>
+        <DNABadge value="Badge" position="inline">
+          <View style={styles.circle} />
+        </DNABadge>
+        <DNABadge value="Badge" color="danger" position="inline">
+          <View style={styles.circle} />
+        </DNABadge>
         <View style={styles.divider} />
         <DNAText style={styles.label}>Badge Dot</DNAText>
         <View style={styles.flexRow}>
@@ -39,6 +48,12 @@ const BadgeScreen = () => {
             <View style={styles.circle} />
           </DNABadge>
           <DNABadge color="danger" position="bottom">
+            <View style={styles.circle} />
+          </DNABadge>
+          <DNABadge position="inline">
+            <View style={styles.circle} />
+          </DNABadge>
+          <DNABadge color="danger" position="inline">
             <View style={styles.circle} />
           </DNABadge>
         </View>
