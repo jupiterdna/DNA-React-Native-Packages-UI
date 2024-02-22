@@ -17,7 +17,6 @@ import { useColor } from "@rndna/theme-provider";
  * import { DNARadioButton } from '@rndna/radiobutton';
  *
  * const MyComponent = () => {
- * const MyComponent = () => {
  *  return (
  *    <View style={styles.style}>
  *         <DNARadioButton
