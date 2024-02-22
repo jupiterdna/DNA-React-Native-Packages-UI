@@ -44,7 +44,6 @@ export const DNABadge: React.FC<DNABadgeProps> = React.forwardRef(
     const themeColor = useColor();
     const defaultColor = themeColor[color]["default"];
     const useDarkColor = themeColor[color][100];
-
     const colorVariant = useColorScheme() === "light" ? "white" : useDarkColor;
 
     const getTextColor = {

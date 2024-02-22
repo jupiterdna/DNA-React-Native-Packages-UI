@@ -51,18 +51,29 @@ export const DNAChip = (props: DNAChipProps) => {
   const defaultColor = themeColor[color]["default"];
   const secondaryColor = themeColor[color][100];
   const useDarkColor = darkmodeColor[color]["default"];
+  const colorScheme = useColorScheme();
 
-  const colorVariant =
-    useColorScheme() === "light"
-      ? variant === "solid"
-        ? "white"
-        : defaultColor
-      : variant === "solid"
-        ? secondaryColor
-        : useDarkColor;
+  const addSpace = { 
+    paddingLeft: chipSizeCls[size].paddingHorizontal + 2 };
+
+    const colorVariant = () => {
+      if (colorScheme === "light") {
+        if (variant === "solid") {
+          return "white";
+        } else {
+          return defaultColor;
+        }
+      } else {
+        if (variant === "solid") {
+          return secondaryColor;
+        } else {
+          return useDarkColor;
+        }
+      }
+  };
 
   const getTextColor = {
-    color: colorVariant,
+    color: colorVariant(),
   };
 
   const getVariantStyle = () => {
@@ -75,7 +86,7 @@ export const DNAChip = (props: DNAChipProps) => {
       },
       soft: {
         backgroundColor:
-          useColorScheme() === "light" ? useDarkColor : secondaryColor,
+          colorScheme === "light" ? useDarkColor : secondaryColor,
       },
     }[variant];
   };
@@ -84,7 +95,7 @@ export const DNAChip = (props: DNAChipProps) => {
     return !!icon && typeof icon === "function"
       ? createElement(icon, {
           size: textSizeCls[size].fontSize,
-          color: colorVariant,
+          color: colorVariant(),
         })
       : icon;
   }, [icon, size, colorVariant]);
@@ -111,14 +122,12 @@ export const DNAChip = (props: DNAChipProps) => {
     }
   },[size]);
 
-  const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 };
-
   const _renderCloseButton = useCallback((): React.JSX.Element | null => {
     return isClosable ? (
       <Pressable onPress={onPressClose} disabled={isDisabled}>
         <CloseSmallIcon
           size={textSizeCls[size].fontSize}
-          color={colorVariant}
+          color={colorVariant()}
         />
       </Pressable>
     ) : null;

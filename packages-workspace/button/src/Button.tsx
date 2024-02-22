@@ -65,14 +65,26 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const defaultColor = themeColor[color]["default"];
   const secondaryColor = themeColor[color][100];
   const useDarkColor = darkmodeColor[color]["default"];
+  const colorScheme = useColorScheme();
 
-  const colorVariant =
-    useColorScheme() === 'light'
-      ? variant === 'solid' ? 'white' : defaultColor
-      : variant === 'solid' ? secondaryColor : useDarkColor
+  const colorVariant = () => {
+    if (colorScheme === "light") {
+      if (variant === "solid") {
+        return "white";
+      } else {
+        return defaultColor;
+      }
+    } else {
+      if (variant === "solid") {
+        return secondaryColor;
+      } else {
+        return useDarkColor;
+      }
+    }
+  }
 
   const getTextColor = {
-    color: colorVariant
+    color: colorVariant(),
   };
   
   const iconBtnSizes = {
@@ -86,7 +98,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       solid: { backgroundColor: defaultColor },
       outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
       flat: {},
-      soft: { backgroundColor: useColorScheme() === 'light' ? useDarkColor : secondaryColor },
+      soft: { backgroundColor: colorScheme === 'light' ? useDarkColor : secondaryColor },
     }[variant];
   };
 
@@ -111,7 +123,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     return typeof icon === "function"
       ? createElement(icon, {
           size: iconSize,
-          color: colorVariant
+          color: colorVariant(),
         })
       : icon;
   }, [icon, size, colorVariant, variant, label])
@@ -155,7 +167,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     return (
       isLoading ? (
         <View style={styles.loadingSize}>
-          <ActivityIndicator color={colorVariant} /> 
+          <ActivityIndicator color={colorVariant()} /> 
         </View>
       ) : !!icon && _renderIcon() )
   }, [isLoading, icon, colorVariant, size, variant])
