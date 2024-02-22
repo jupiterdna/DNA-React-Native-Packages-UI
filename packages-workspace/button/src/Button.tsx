@@ -121,9 +121,14 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
    * The `size` prop can have one of five values. Each of these values corresponds to a different text size respectively.
    * 
    * 
-   * @returns A function that returns a string that represents the text size ().
+   * @returns A function that returns a string that represents the text size.
    */
-  const getTextSize = useCallback((): "caption" | "body2" | "body1" | "label" | "h6" => {
+  const getTextSize = useCallback((): 
+    | "caption" 
+    | "body2" 
+    | "body1" 
+    | "label" 
+    | "h6" => {
     switch(size) {
       case 'xs': 
         return 'caption'

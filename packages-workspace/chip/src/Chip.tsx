@@ -89,7 +89,12 @@ export const DNAChip = (props: DNAChipProps) => {
       : icon;
   }, [icon, size, colorVariant]);
 
-  const getTextSize = () => {
+  const getTextSize = useCallback(():
+    | "overline" 
+    | "caption" 
+    | "body2" 
+    | "body1" 
+    | "label" => {
     switch (size) {
       case "xs":
         return "overline";
@@ -104,7 +109,7 @@ export const DNAChip = (props: DNAChipProps) => {
       default:
         return "body2";
     }
-  };
+  },[size]);
 
   const addSpace = { paddingLeft: chipSizeCls[size].paddingHorizontal + 2 };
 

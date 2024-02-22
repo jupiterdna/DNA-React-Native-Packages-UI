@@ -79,7 +79,12 @@ const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
     const defaultColor = themeColor["default"][900];
     const disabledColor = themeColor["default"][400];
 
-    const getTextSize = useCallback((): "overline" | "caption" | "body2" | "body1" | "label" => {
+    const getTextSize = useCallback((): 
+      | "overline" 
+      | "caption" 
+      | "body2" 
+      | "body1" 
+      | "label" => {
       switch (size) {
         case "xs":
           return "overline";
