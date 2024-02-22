@@ -21,5 +21,5 @@ export interface DNABadgeProps {
    /**
    *  Property that changes the position of the badge either top or bottom
    */
-  position?: "top" | "bottom";
+  position?: "top" | "bottom" | "inline";
 }

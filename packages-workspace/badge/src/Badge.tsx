@@ -1,4 +1,4 @@
-import { View, useColorScheme } from "react-native";
+import { View, ViewStyle, useColorScheme } from "react-native";
 import React, { useCallback, useState } from "react";
 import { DNABadgeProps } from "./types";
 import { styles } from "./styles";
@@ -48,23 +48,33 @@ export const DNABadge = (props: DNABadgeProps) => {
     return { backgroundColor: defaultColor };
   };
 
-  const getSpace = () => {
-    return !!value
-      ? [{ left: badgeWidth - 8 }, styles.badgeSpace]
-      : styles.badgeSize;
-  };
 
-  const getPosition = () => {
-    return position === "top" ? { top: 0 } : { bottom: 0}
+  const getSpace = () => {
+    if (!!value) {
+      return [{ left: position !== 'inline' ? (badgeWidth - 8) : null }, styles.badgeSpace];
+    } else {
+      return styles.badgeSize;
+    }
   };
+ 
+  const getPosition = useCallback((): ViewStyle => {
+    switch(position) {
+      case 'bottom':
+        return styles.badgeBottom
+      case 'inline':
+        return styles.badgeInline
+      default: 
+        return styles.badgeTop
+    }
+  },[position])
 
   const _renderBadgeText = useCallback((): React.JSX.Element | null => {
     return (
       <View
         style={[
           styles.badge,
-          getDefaultBgColor(),
           getSpace(),
+          getDefaultBgColor(),
           getPosition(),
           styles.shadowProp,
           style,
@@ -77,10 +87,14 @@ export const DNABadge = (props: DNABadgeProps) => {
     );
   }, [getPosition, getDefaultBgColor, getSpace, style, getTextColor, value]);
 
+  const getPosInline = (): ViewStyle | null => {
+    return position === 'inline' ? { flexDirection: 'row', alignItems: 'center', gap: 8 } : null;
+  }
+  
   return (
-    <View style={styles.badgeWrapper} onLayout={onBadgeWrapperLayout}>
-      {_renderBadgeText()}
+    <View style={ getPosInline()} onLayout={onBadgeWrapperLayout}>
       {children}
+      {_renderBadgeText()}
     </View>
   );
 };
