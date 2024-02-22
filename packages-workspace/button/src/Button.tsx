@@ -96,9 +96,15 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const getVariantStyle = () => {
     return {
       solid: { backgroundColor: defaultColor },
-      outlined: { borderWidth: 1, borderColor: defaultColor, backgroundColor: 'transparent' },
+      outlined: {
+         borderWidth: 1, 
+         borderColor: defaultColor, 
+         backgroundColor: 'transparent' 
+      },
       flat: {},
-      soft: { backgroundColor: colorScheme === 'light' ? useDarkColor : secondaryColor },
+      soft: { 
+        backgroundColor:
+          colorScheme === 'light' ? useDarkColor : secondaryColor },
     }[variant];
   };
 
@@ -172,6 +178,12 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       ) : !!icon && _renderIcon() )
   }, [isLoading, icon, colorVariant, size, variant])
 
+  /**
+   * This function is created to handle the rendering of the button label.
+   * It first determines the label value. If `loadingLabel` is defined and `isLoading` is `true`, it sets `labelValue` to `loadingLabel`. Otherwise, it sets `labelValue` to `label`.
+   * 
+   * @returns A `DNAText` component that renders the button label.
+   */
   const _renderLabel = useCallback((): React.JSX.Element => {
     const labelValue = loadingLabel && isLoading ? loadingLabel : label
 
@@ -183,11 +195,11 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   }, [getTextColor, loadingLabel, isLoading, label])
 
   /**
- * This function is created to handle the rendering of the button content.
- * This function is memoized using useCallback to avoid unnecessary re-renders. It will only re-compute when any of the dependencies change.
- * 
- * @returns A function that returns a React component (JSX.Element) representing the button content.
- */
+   * This function is created to handle the rendering of the button content.
+   * This function is memoized using useCallback to avoid unnecessary re-renders. It will only re-compute when any of the dependencies change.
+   * 
+   * @returns A function that returns a React component (JSX.Element) representing the button content.
+   */
   const _getButtonContent = useCallback((): React.JSX.Element => {
     const ButtonComponent = enableRipple ? View : Pressable;
 
