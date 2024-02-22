@@ -17,46 +17,26 @@ import { useColor } from "@rndna/theme-provider";
  * import { DNARadioButton } from '@rndna/radiobutton';
  *
  * const MyComponent = () => {
- *  //Sample options
- *  const [options, setOptions] = useState([
- *    {id: '1', label: 'Option 1', checked: true},
- *    {id: '2', label: 'Option 2', checked: false},
- *    {id: '3', label: 'Option 3', checked: false},
- *  ]);
- *
- * const handleRadioButtonPress = (id: string) => {
- *   setOptions(prevOptions =>
- *     prevOptions.map(option => ({
- *       ...option,
- *       checked: option.id === id,
- *     })),
- *   );
- * };
- *
+ * const MyComponent = () => {
  *  return (
- *    <View style={styles.gap}>
- *       {options.map(option => (
+ *    <View style={styles.style}>
  *         <DNARadioButton
- *           key={option.id}
- *           id={option.id}
- *           checked={options.checked}
- *           label={option.label}
- *           onPress={() => handleRadioButtonPress(option.id)}
+ *           key={1}
+ *           id={1}
+ *           checked={false}
+ *           label="Option 1"
+ *           onPress={() => ()}
  *         />
- *       ))}
  *    </View>
  *   );
  * };
  *
  * const styles = StyleSheet.create({
- *    gap: {
- *      marginBottom: 8,
- *      gap: 4,
- *      justifyContent: 'center',
- *      alignItems: 'center',
+ *    style: {
+ *      alignItems: 'flex-start';
  *    },
  * });
- *
+ * 
  * export default MyComponent;
  * ```
  */

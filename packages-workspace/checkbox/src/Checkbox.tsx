@@ -13,7 +13,7 @@ import { useColor } from "@rndna/theme-provider";
 
 /**
  * This component meant for easy selection and decision-making.
- * By convention, only one button at a time can be selected
+ * By convention, multi buttons can be selected
  *
  * ## Usage
  * ```js
@@ -22,43 +22,22 @@ import { useColor } from "@rndna/theme-provider";
  * import { DNACheckbox } from '@rndna/Checkbox';
  *
  * const MyComponent = () => {
- *  //Sample options
- *  const [options, setOptions] = useState([
- *    {id: '1', label: 'Option 1', checked: true},
- *    {id: '2', label: 'Option 2', checked: false},
- *    {id: '3', label: 'Option 3', checked: false},
- *  ]);
- *
- * const handleCheckboxPress = (id: string) => {
- *   setCoptions(prevOptions =>
- *     prevOptions.map(option => ({
- *       ...option,
- *       checked: option.id === id ? !option.checked : option.checked,
- *     })),
- *   );
- * };
- *
  *  return (
- *    <View style={styles.gap}>
- *       {options.map(option => (
- *         <DNACheckbox
- *           key={option.id}
- *           id={option.id}
- *           checked={options.checked}
- *           label={option.label}
- *           onPress={() => handleCheckboxPress(option.id)}
- *         />
- *       ))}
+ *    <View style={styles.style}>
+*         <DNACheckbox
+*           key={1}
+*           id={1}
+*           checked={true}
+*           label="Option 1"
+*           onPress={() => ()}
+*         />
  *    </View>
  *   );
  * };
  *
  * const styles = StyleSheet.create({
- *    gap: {
- *      marginBottom: 8,
- *      gap: 4,
- *      justifyContent: 'center',
- *      alignItems: 'center',
+ *    style: {
+ *      alignItems: 'flex-start';
  *    },
  * });
  *
