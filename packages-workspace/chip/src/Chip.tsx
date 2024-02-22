@@ -1,5 +1,5 @@
 import React, { createElement, useCallback } from "react";
-import { useColorScheme, Pressable } from "react-native";
+import { useColorScheme, Pressable, View } from "react-native";
 import { chipSizeCls, textSizeCls, styles, borderRadiusCls } from "./styles";
 import { DNAChipProps } from "./types";
 import { useColor } from "@rndna/theme-provider";
@@ -32,8 +32,9 @@ import { darkmodeColor } from "@rndna/theme-provider";
  * ```
  */
 
-export const DNAChip = (props: DNAChipProps) => {
-  const {
+export const DNAChip: React.FC<DNAChipProps> = React.forwardRef(
+  (
+    {
     label = "Chip",
     icon,
     variant = "solid",
@@ -41,11 +42,13 @@ export const DNAChip = (props: DNAChipProps) => {
     isClosable = false,
     isDisabled = false,
     color = "primary",
-    onPress,
     onPressClose,
     borderRadius = "rounded",
     style,
-  } = props;
+      ...restProps
+    }: DNAChipProps,
+    ref: React.Ref<View>,
+  ) => {
 
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
@@ -91,6 +94,13 @@ export const DNAChip = (props: DNAChipProps) => {
     }[variant];
   };
 
+  /**
+   * This function is created to handle the rendering of the icon in the button component.
+   * 
+   * This function is memoized using useCallback to avoid unnecessary re-renders. It will only re-compute when any of the dependencies change.
+   * 
+   * @returns A function that returns a React component (JSX.Element) or undefined.
+   */
   const _renderIcon = useCallback((): React.JSX.Element | undefined => {
     return !!icon && typeof icon === "function"
       ? createElement(icon, {
@@ -100,6 +110,12 @@ export const DNAChip = (props: DNAChipProps) => {
       : icon;
   }, [icon, size, colorVariant]);
 
+  /**
+   * This function is created to map the `size` prop of the button to a corresponding text size.
+   * The `size` prop can have one of five values. Each of these values corresponds to a different text size respectively.
+   * 
+   * @returns A function that returns a string that represents the text size.
+   */
   const getTextSize = useCallback(():
     | "overline" 
     | "caption" 
@@ -122,6 +138,12 @@ export const DNAChip = (props: DNAChipProps) => {
     }
   },[size]);
 
+  /**
+   * This function is created to handle the rendering of the close button for the Chip component.
+   * It checks if the `isClosable` prop is `true`. If it is, it returns a `Pressable` component with the `onPress` prop set to `onPressClose` and the `disabled` prop set to `isDisabled`.
+   * 
+   * @returns A `Pressable` component that renders the close button if `isClosable` is `true`, or `null` otherwise.
+   */
   const _renderCloseButton = useCallback((): React.JSX.Element | null => {
     return isClosable ? (
       <Pressable onPress={onPressClose} disabled={isDisabled}>
@@ -133,6 +155,11 @@ export const DNAChip = (props: DNAChipProps) => {
     ) : null;
   }, [isClosable, isDisabled, size, colorVariant, onPressClose]);
 
+  /**
+   * This function is created to handle the rendering of the label for the Chip component.
+   * 
+   * @returns A `DNAText` component that renders the label for the Chip component.
+   */
   const _renderLabel = useCallback((): React.JSX.Element => {
     return (
       <DNAText style={getTextColor} type={getTextSize()}>
@@ -152,12 +179,13 @@ export const DNAChip = (props: DNAChipProps) => {
         isClosable && addSpace,
         isDisabled && styles.buttonDisabled,
       ]}
-      onPress={onPress}
       disabled={isDisabled}
+      ref={ref}
+      {...restProps}
     >
       {_renderIcon()}
       {_renderLabel()}
       {_renderCloseButton()}
     </Pressable>
   );
-};
+});

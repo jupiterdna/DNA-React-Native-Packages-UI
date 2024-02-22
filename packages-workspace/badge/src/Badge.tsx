@@ -138,7 +138,7 @@ export const DNABadge: React.FC<DNABadgeProps> = React.forwardRef(
       
     return (
       <View 
-      style={ getPosInline()} 
+      style={getPosInline()} 
       onLayout={onBadgeWrapperLayout}
       ref={ref}
       {...restProps}
