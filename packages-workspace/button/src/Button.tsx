@@ -74,6 +74,12 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const getTextColor = {
     color: colorVariant
   };
+  
+  const iconBtnSizes = {
+      width: buttonSizeCls[size].height,
+      height: buttonSizeCls[size].height,
+      paddingHorizontal: 0,
+  };
 
   const getVariantStyle = () => {
     return {
@@ -87,18 +93,36 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
   const getIconPositionStyle = () => {
     return iconPosition === 'right' ? styles.buttonIconRight : styles.buttonIconLeft
   }
-
+  /**
+   * This function is created to handle the rendering of the icon in the button component.
+   * 
+   * This function is memoized using useCallback to avoid unnecessary re-renders. It will only re-compute when any of the dependencies change.
+   * 
+   * @returns A function that returns a React component (JSX.Element) or undefined.
+   */
   const _renderIcon = useCallback((): React.JSX.Element | undefined => {
+    let iconSize;
+    if (variant === 'flat' && !label) {
+      iconSize = (textSizeCls[size].fontSize || -1) + 15;
+    } else {
+      iconSize = (textSizeCls[size].fontSize || -1) + 7;
+    }
+    
     return typeof icon === "function"
       ? createElement(icon, {
-        size: variant === 'flat' && !label
-          ? (textSizeCls[size].fontSize || -1) + 15 
-          : (textSizeCls[size].fontSize || -1) + 7,
-        color: colorVariant
-      })
+          size: iconSize,
+          color: colorVariant
+        })
       : icon;
   }, [icon, size, colorVariant, variant, label])
   
+  /**
+   * This function is created to map the `size` prop of the button to a corresponding text size.
+   * The `size` prop can have one of five values. Each of these values corresponds to a different text size respectively.
+   * 
+   * 
+   * @returns A function that returns a string that represents the text size ().
+   */
   const getTextSize = useCallback((): "caption" | "body2" | "body1" | "label" | "h6" => {
     switch(size) {
       case 'xs': 
@@ -115,13 +139,13 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
         return 'body1'
     }
   },[size])
-  
-  const iconBtnSizes = {
-      width: buttonSizeCls[size].height,
-      height: buttonSizeCls[size].height,
-      paddingHorizontal: 0,
-  };
 
+  /**
+   * This function is created to handle the rendering of the icon or loading indicator in the button component.
+   * 
+   * 
+   * @returns A function that returns a loading indicator as React JSX Element or icon or false
+   */
   const _renderIconState = useCallback((): false | React.JSX.Element | undefined => {
     return (
       isLoading ? (
@@ -133,11 +157,23 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
 
   const _renderLabel = useCallback((): React.JSX.Element => {
     const labelValue = loadingLabel && isLoading ? loadingLabel : label
-    return <DNAText style={getTextColor} type={getTextSize()}>{labelValue}</DNAText>
+
+    return (
+      <DNAText style={getTextColor} type={getTextSize()}>
+        {labelValue}
+      </DNAText>
+    )
   }, [getTextColor, loadingLabel, isLoading, label])
 
+  /**
+ * This function is created to handle the rendering of the button content.
+ * This function is memoized using useCallback to avoid unnecessary re-renders. It will only re-compute when any of the dependencies change.
+ * 
+ * @returns A function that returns a React component (JSX.Element) representing the button content.
+ */
   const _getButtonContent = useCallback((): React.JSX.Element => {
     const ButtonComponent = enableRipple ? View : Pressable;
+
     return (
       <ButtonComponent
         style={[
@@ -158,9 +194,24 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
         {_renderLabel()}
       </ButtonComponent>
     );
-  }, [enableRipple, loadingLabel, label, iconBtnSizes, getIconPositionStyle, getVariantStyle, borderRadius, size, fullWidth, isDisabled, isLoading, onPress, ref, _renderIconState, _renderLabel]);
+  }, [
+    enableRipple, 
+    loadingLabel, 
+    label, 
+    iconBtnSizes,
+    getIconPositionStyle,
+    getVariantStyle,
+    borderRadius,
+    size,
+    fullWidth,
+    isDisabled,
+    isLoading,
+    onPress,
+    ref,
+    _renderIconState,
+    _renderLabel
+  ]);
   
-
   return enableRipple ? (
     <RippleComponent 
       onPress={onPress} 
