@@ -4,7 +4,7 @@ import { borderRadiusCls } from "@rndna/base_style";
 import { DNAImageProps } from "./types";
 import { imageSizeCls, styles, imageRatioCls } from "./styles";
 import { useColor } from "@rndna/theme-provider";
-import FastImage from "react-native-fast-image";
+import FastImage, { FastImageProps } from "react-native-fast-image";
 
 /**
  * Image component to display different types of images, including network images, static resources,
@@ -26,7 +26,6 @@ import FastImage from "react-native-fast-image";
  * export default MyComponent;
  * ```
  */
-
 export const DNAImage: React.FC<DNAImageProps> = React.forwardRef(
   (
     {
@@ -40,18 +39,20 @@ export const DNAImage: React.FC<DNAImageProps> = React.forwardRef(
     ref: React.Ref<View>,
   ) => {
     const [isLoading, setIsLoading] = useState(true);
-    const [imgUri, setUri] = useState("");
-
-    const resizeFit = fit === "contain" ? FastImage.resizeMode.contain : FastImage.resizeMode.cover;
-
     const themeColor = useColor();
     const loadingColor = themeColor["primary"][500];
-
+    const resizeFit = fit === "contain" ? FastImage.resizeMode.contain : FastImage.resizeMode.cover;
 
     const onLoadEnd = () => {
         setIsLoading(false);
     };
 
+    /**
+     * This function '_renderLoading' is a memoized callback that returns a JSX element or null.
+     * It's used to render a loading indicator when the image is loading.
+     * 
+     * @returns A JSX element representing the loading indicator, or null if 'isLoading' is false.
+     */
     const _renderLoading = useCallback((): React.JSX.Element | null => {
       return (
         isLoading ? 
@@ -62,6 +63,13 @@ export const DNAImage: React.FC<DNAImageProps> = React.forwardRef(
       )
     }, [isLoading, size, loadingColor])
 
+    /**
+     * This function '_renderImage' is a memoized callback that returns a JSX element representing the 'FastImage' component.
+     * It's used to render the image with the specified source URI, resize mode, and additional props.
+     * The image's source is an object with the 'uri', 'priority', and 'cache' properties.
+     * 
+     * @returns A JSX element representing the 'FastImage' component.
+     */
     const _renderImage = useCallback((): React.JSX.Element => {
        return ( 
           <FastImage
@@ -76,7 +84,7 @@ export const DNAImage: React.FC<DNAImageProps> = React.forwardRef(
             {...restProps}
           />
         )
-      }, [borderRadius, src, resizeFit, onLoadEnd])
+    }, [borderRadius, src, resizeFit, onLoadEnd])
 
     return (
       <View
