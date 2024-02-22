@@ -1,6 +1,7 @@
 import { colorProps } from "@rndna/base_style";
+import { TouchableOpacityProps } from "react-native";
 
-export interface DNACollapsibleProps {
+export interface DNACollapsibleProps extends TouchableOpacityProps {
   /**
    * Where you can define the text on the panel header
    */
