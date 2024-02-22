@@ -18,6 +18,7 @@ import {
   AvatarScreen,
   TextScreen,
 } from './src/Screens';
+import HookScreen from './src/Screens/HookScreen';
 
 const App = () => {
   const Drawer = createDrawerNavigator();
@@ -29,6 +30,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={CustomDrawerContent}>
+        <Drawer.Screen name="HookScreen" component={HookScreen} />
         <Drawer.Screen name="Avatar" component={AvatarScreen} />
         <Drawer.Screen name="Badge" component={BadgeScreen} />
         <Drawer.Screen name="Buttons" component={RippleScreen} />
