@@ -54,7 +54,10 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       if (fabRef && fabRef.current) {
         fabRef.current.measureInWindow((pageX, pageY, width, height) => {
           setPosition({
-            pageX, pageY, width, height
+            pageX: Math.floor(pageX), 
+            pageY: Math.floor(pageY),
+            width: Math.floor(width),
+            height: Math.floor(height),
           })
         });
       }
@@ -73,7 +76,10 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       if (childRef && childRef.current) {
         childRef.current.measureInWindow((pageX, pageY, width, height) => {
           setChildPosition({
-            pageX, pageY, width, height
+            pageX: Math.floor(pageX), 
+            pageY: Math.floor(pageY),
+            width: Math.floor(width),
+            height: Math.floor(height),
           })
         });
       }
