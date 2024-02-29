@@ -19,6 +19,7 @@ import {
   TextScreen,
 } from './src/Screens';
 import HookScreen from './src/Screens/HookScreen';
+import SwitchScreen from './src/Screens/SwitchScreen';
 
 const App = () => {
   const Drawer = createDrawerNavigator();
@@ -44,6 +45,7 @@ const App = () => {
         <Drawer.Screen name="Image" component={ImageScreen} />
         <Drawer.Screen name="Menu" component={DropdownScreen} />
         <Drawer.Screen name="Radio Button" component={RadioButtonScreen} />
+        <Drawer.Screen name="Switch" component={SwitchScreen} />
         <Drawer.Screen name="Text" component={TextScreen} />
         <Drawer.Screen name="Textfields" component={TextFieldScreen} />
       </Drawer.Navigator>
