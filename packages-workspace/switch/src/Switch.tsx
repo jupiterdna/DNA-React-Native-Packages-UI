@@ -4,13 +4,42 @@ import {
     useColorScheme, 
     Switch as RNSwitch, 
     ViewStyle, 
-    Pressable
 } from 'react-native';
 import { DNASwitchProps } from './types';
 import { DNAText } from '@rndna/text';
 import { useColor } from "@rndna/theme-provider"
 import { styles } from './styles';
 
+
+/**
+ * A Switch is a component that allows the user to toggle between two states: on and off.
+ *
+ * ## Usage
+ * ```js
+ * import * as React from 'react';
+ * import { View, Text } from 'react-native';
+ * import { DNASwitch } from '@rndna/switch';
+ *
+ * const ComponentName = () => {
+ *    const [isChecked, setIsChecked] = useState(true);
+ *    const handleSwitchChange = (newValue: boolean) => {
+ *        setIsChecked(newValue);
+ *    };
+ *    <View>
+ *      <DNASwitch
+ *        labelLeft="OFF"
+ *        labelRight="ON"
+ *        iconLeft={SunIcon}
+ *        iconRight={MoonIcon}
+ *        checked={isChecked}
+ *        onValueChange={handleSwitchChange}
+ *      />
+ *    </View>
+ * }
+ *
+ * export default ComponentName;
+ * ```
+ */
 export const DNASwitch: React.FC<DNASwitchProps> = React.forwardRef(
     (
         {   
@@ -126,7 +155,6 @@ export const DNASwitch: React.FC<DNASwitchProps> = React.forwardRef(
           : null;
       }, [iconLeft, size, color]);
 
-
     /**
      * This function is used to render the right icon of the switch component.
      * 
@@ -187,31 +215,31 @@ export const DNASwitch: React.FC<DNASwitchProps> = React.forwardRef(
         )
     },[checked, disabled, getThumbColor, restProps, ref]);
     
-  /**
- * This function is used to render the title or label of the switch component.
- * @returns {React.JSX.Element | null} - It returns a JSX element that represents the title label of the switch. 
- */
-const _renderLabel = useCallback((): React.JSX.Element | null => {
-    return !!title ? <DNAText style={getTextColor}>{title}</DNAText> : null
-},[title, getTextColor])
+    /**
+     * This function is used to render the title or label of the switch component.
+     * @returns {React.JSX.Element | null} - It returns a JSX element that represents the title label of the switch. 
+     */
+    const _renderLabel = useCallback((): React.JSX.Element | null => {
+        return !!title ? <DNAText style={getTextColor}>{title}</DNAText> : null
+    },[title, getTextColor])
 
-/**
- * This function is used to render the left label of the switch component.
- * 
- * @returns {React.JSX.Element | null} - It returns a JSX element that represents the left label of the switch. 
- */
-const _renderLabelLeft = useCallback((): React.JSX.Element | null => {
-    return !!labelLeft ? <DNAText style={getTextColor}>{labelLeft}</DNAText> : null
-},[labelLeft, getTextColor])
+    /**
+     * This function is used to render the left label of the switch component.
+     * 
+     * @returns {React.JSX.Element | null} - It returns a JSX element that represents the left label of the switch. 
+     */
+    const _renderLabelLeft = useCallback((): React.JSX.Element | null => {
+        return !!labelLeft ? <DNAText style={getTextColor}>{labelLeft}</DNAText> : null
+    },[labelLeft, getTextColor])
 
-/**
- * This function is used to render the right label of the switch component.
- * 
- * @returns {React.JSX.Element | null} - It returns a JSX element that represents the right label of the switch.
- */
-const _renderLabelRight = useCallback((): React.JSX.Element | null => {
-    return !!labelRight ? <DNAText style={getTextColor}>{labelRight}</DNAText> : null
-},[labelRight, getTextColor])
+    /**
+     * This function is used to render the right label of the switch component.
+     * 
+     * @returns {React.JSX.Element | null} - It returns a JSX element that represents the right label of the switch.
+     */
+    const _renderLabelRight = useCallback((): React.JSX.Element | null => {
+        return !!labelRight ? <DNAText style={getTextColor}>{labelRight}</DNAText> : null
+    },[labelRight, getTextColor])
 
     return (
         <View style={[getLabelPlacement(), getAlignment, getTitleGap]}>
