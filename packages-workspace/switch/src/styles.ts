@@ -11,6 +11,10 @@ export const styles = StyleSheet.create({
   gap: {
       gap: 8,
   },
+  disabled: {
+    opacity: 0.5,
+    pointerEvents: 'none',
+  },
 });
 
 export const imageSizeCls = {

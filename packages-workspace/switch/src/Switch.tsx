@@ -242,7 +242,11 @@ export const DNASwitch: React.FC<DNASwitchProps> = React.forwardRef(
     },[labelRight, getTextColor])
 
     return (
-        <View style={[getLabelPlacement(), getAlignment, getTitleGap]}>
+        <View style={[
+            getLabelPlacement(), 
+            getAlignment, getTitleGap,
+            disabled ? styles.disabled : null
+        ]}>
         {_renderLabel()}
             <View style={[styles.container, getLabelsGap]}> 
                 {_renderLabelLeft()}
