@@ -13,7 +13,7 @@ import { useColor } from "@rndna/theme-provider";
 
 /**
  * This component meant for easy selection and decision-making.
- * By convention, only one button at a time can be selected
+ * By convention, multi buttons can be selected
  *
  * ## Usage
  * ```js
@@ -22,43 +22,22 @@ import { useColor } from "@rndna/theme-provider";
  * import { DNACheckbox } from '@rndna/Checkbox';
  *
  * const MyComponent = () => {
- *  //Sample options
- *  const [options, setOptions] = useState([
- *    {id: '1', label: 'Option 1', checked: true},
- *    {id: '2', label: 'Option 2', checked: false},
- *    {id: '3', label: 'Option 3', checked: false},
- *  ]);
- *
- * const handleCheckboxPress = (id: string) => {
- *   setCoptions(prevOptions =>
- *     prevOptions.map(option => ({
- *       ...option,
- *       checked: option.id === id ? !option.checked : option.checked,
- *     })),
- *   );
- * };
- *
  *  return (
- *    <View style={styles.gap}>
- *       {options.map(option => (
- *         <DNACheckbox
- *           key={option.id}
- *           id={option.id}
- *           checked={options.checked}
- *           label={option.label}
- *           onPress={() => handleCheckboxPress(option.id)}
- *         />
- *       ))}
+ *    <View style={styles.style}>
+*         <DNACheckbox
+*           key={1}
+*           id={1}
+*           checked={true}
+*           label="Option 1"
+*           onPress={() => ()}
+*         />
  *    </View>
  *   );
  * };
  *
  * const styles = StyleSheet.create({
- *    gap: {
- *      marginBottom: 8,
- *      gap: 4,
- *      justifyContent: 'center',
- *      alignItems: 'center',
+ *    style: {
+ *      alignItems: 'flex-start';
  *    },
  * });
  *
@@ -87,6 +66,20 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
 
     const checkColor = useColorScheme() === "light" ? "white" : secondaryColor;
 
+    const checkBtnCls = checked
+    ? { backgroundColor: disabled ? disabledColor : primaryColor }
+    : {
+      borderWidth: 1,
+      backgroundColor: "transparent",
+      borderColor: disabled ? disabledColor : defaultColor,
+    };
+
+    /**
+     * This function is created to map the `size` prop of the button to a corresponding text size.
+     * The `size` prop can have one of five values. Each of these values corresponds to a different text size respectively.
+     * 
+     * @returns A function that returns a string that represents the text size.
+     */
     const getTextSize = useCallback(():
       | "overline"
       | "caption"
@@ -108,21 +101,13 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
           return "body2";
       }
     }, [size]);
-
-    const checkBtnCls = checked
-      ? { backgroundColor: disabled ? disabledColor : primaryColor }
-      : {
-          borderWidth: 1,
-          backgroundColor: "transparent",
-          borderColor: disabled ? disabledColor : defaultColor,
-        };
-
-    const handlePress = (event: GestureResponderEvent) => {
-      if (onPress) {
-        onPress(event);
-      }
-    };
-
+    
+    /**
+     * This function is created to handle the rendering of the checkbox.
+     * It returns a `View` component with various styles. The styles are determined by the `size` prop and the `checkBtnCls` variable.
+     * 
+     *  @returns A function that returns a JSX.Element that indicates that checkbox is checked.
+     */
     const _renderCheckBox = useCallback((): React.JSX.Element => {
       return (
         <View style={[styles.innerWrapper, buttonSizeCls[size], checkBtnCls]}>
@@ -136,6 +121,12 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
       );
     }, [size, checked, checkColor, checkBtnCls]);
 
+    /**
+     * This function is created to handle the rendering of the checkbox label.
+     * It returns a `DNAText` component with the `type` prop set to the result of the `getTextSize` function
+     * 
+     * @returns A function that returns a JSX.Element that represents the label of the checkbox.
+     */
     const _renderCheckBoxLabel = useCallback((): React.JSX.Element => {
       return (
         <DNAText
@@ -146,6 +137,20 @@ export const DNACheckbox: React.FC<DNACheckboxProps> = React.forwardRef(
         </DNAText>
       );
     }, [disabled, disabledColor, label, getTextSize()]);
+
+    /**
+     * This function is created to handle the press event of the checkbox.
+     * It checks if the `onPress` prop is defined. If it is, it calls the `onPress` function with the `event` argument.
+     * 
+     * @param event - The event object associated with the press event.
+     * 
+     * @returns Nothing. The purpose of this function is to call the `onPress` function if it's defined.
+     */
+    const handlePress = (event: GestureResponderEvent) => {
+      if (onPress) {
+        onPress(event);
+      }
+    };
 
     return (
       <Pressable

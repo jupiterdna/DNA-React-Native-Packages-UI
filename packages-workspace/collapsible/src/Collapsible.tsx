@@ -24,25 +24,27 @@ import {DNAText} from '@rndna/text'
  * ```
  */
 
-export const DNACollapsible = (props: DNACollapsibleProps) => {
-
-  const { 
+export const DNACollapsible: React.FC<DNACollapsibleProps> = React.forwardRef((
+  {
     children, 
     title, 
     color = "primary", 
     height = 250,
     isOpen = false,
-  } = props
-
+    ...restProps
+  }: DNACollapsibleProps,
+  ref: React.Ref<TouchableOpacity>,
+) => {
   const [open, setOpen] = useState(false)
+  
+  useEffect(() => {
+    setOpen(isOpen);
+  }, [isOpen]);
+
   const themeColor = useColor();
   const defaultColor = themeColor[color]["default"];
   const panelBgColor = themeColor[color][50];
   const chevronIcon = !open ? ChevronDownSmallIcon : ChevronUpSmallIcon
-
-  useEffect(() => {
-    setOpen(isOpen);
-  }, [isOpen]);
 
   const panelBorderRadius: ViewStyle = {
       borderTopRightRadius: 4,
@@ -51,27 +53,53 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
       borderBottomLeftRadius: !open ? 4 : 0,
   };
 
+  /**
+   * This function is created to handle the rendering of the icon in the button component.
+   * 
+   * This function is memoized using useCallback to avoid unnecessary re-renders.
+   * 
+   * @returns A function that returns a React component (JSX.Element) or undefined.
+   */
   const _renderIcon = useCallback((): React.JSX.Element => {
     return createElement(chevronIcon, {
       size: 24,
       color: defaultColor
     });
   },[defaultColor])
-    
+  
+   /**
+   * This function '_renderChild' is a memoized callback that returns a JSX element or null.
+   * If 'open' is false, it returns null, effectively rendering nothing.
+   * 
+   * It only re-computes when 'open', 'children', or 'height' changes.
+   * 
+   * @returns A JSX element when 'open' is true, and null when 'open' is false.
+   */
   const _renderChild = useCallback((): React.JSX.Element | null => {
     return open ? <View style={[styles.panelBody,{ height: height }]}>
       {children}
     </View> : null
   },[open, children, height])
 
+  /**
+   * This function '_renderTitlePanel' is created to render the title panel of the collapsible component.
+   * It returns a TouchableOpacity component that toggles the 'open' state on press, effectively opening and closing the collapsible panel.
+   * 
+   * @returns A React component (JSX.Element) that represents the title panel of the collapsible component.
+   */
   const _renderTitlePanel = useCallback((): React.JSX.Element => {
      return (
-        <TouchableOpacity 
+        <TouchableOpacity
+            ref={ref}
+            {...restProps} 
             onPress={() => {
               setOpen(prev => !prev)
             }}
-            style={[styles.panelHeader, { backgroundColor: panelBgColor }, panelBorderRadius]}
-            >
+            style={[
+              styles.panelHeader, 
+              { backgroundColor: panelBgColor }, 
+              panelBorderRadius]
+            }>
             <DNAText style={{ color: defaultColor }}>{title}</DNAText>
             <View>
               {_renderIcon()}
@@ -86,4 +114,4 @@ export const DNACollapsible = (props: DNACollapsibleProps) => {
       {_renderChild()}
     </View>
   )
-}
+});

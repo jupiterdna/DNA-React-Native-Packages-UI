@@ -40,6 +40,17 @@ const AvatarWithStatus = (Component: React.FC<DNAAvatarProps>) =>
   const { option = "online", value } = status
 
   const themeColor = useColor();
+  const avatarSize = avatarSizeCls[size].width;
+
+  const getStatusSize = {
+    width: avatarSize * .25,
+    height: avatarSize * .25,
+  }
+
+  const getWrapperSize = {
+    width: avatarSize,
+    height: avatarSize,
+  }
 
   const getBgColor = () => {
     return {
@@ -61,14 +72,9 @@ const AvatarWithStatus = (Component: React.FC<DNAAvatarProps>) =>
       },
     }[option];
   }
-  
-  const getStatusSize = {
-    width: avatarSizeCls[size].width  * .25,
-    height: avatarSizeCls[size].height * .25,
-  }
-
+ 
   return (
-    <View>
+    <View style={getWrapperSize}>
       <Component {...props} />
       <View style={[getBgColor(), styles.status, getStatusSize]} />
     </View>

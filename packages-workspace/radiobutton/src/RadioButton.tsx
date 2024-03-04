@@ -17,46 +17,25 @@ import { useColor } from "@rndna/theme-provider";
  * import { DNARadioButton } from '@rndna/radiobutton';
  *
  * const MyComponent = () => {
- *  //Sample options
- *  const [options, setOptions] = useState([
- *    {id: '1', label: 'Option 1', checked: true},
- *    {id: '2', label: 'Option 2', checked: false},
- *    {id: '3', label: 'Option 3', checked: false},
- *  ]);
- *
- * const handleRadioButtonPress = (id: string) => {
- *   setOptions(prevOptions =>
- *     prevOptions.map(option => ({
- *       ...option,
- *       checked: option.id === id,
- *     })),
- *   );
- * };
- *
  *  return (
- *    <View style={styles.gap}>
- *       {options.map(option => (
+ *    <View style={styles.style}>
  *         <DNARadioButton
- *           key={option.id}
- *           id={option.id}
- *           checked={options.checked}
- *           label={option.label}
- *           onPress={() => handleRadioButtonPress(option.id)}
+ *           key={1}
+ *           id={1}
+ *           checked={false}
+ *           label="Option 1"
+ *           onPress={() => ()}
  *         />
- *       ))}
  *    </View>
  *   );
  * };
  *
  * const styles = StyleSheet.create({
- *    gap: {
- *      marginBottom: 8,
- *      gap: 4,
- *      justifyContent: 'center',
- *      alignItems: 'center',
+ *    style: {
+ *      alignItems: 'flex-start';
  *    },
  * });
- *
+ * 
  * export default MyComponent;
  * ```
  */
@@ -78,8 +57,24 @@ const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
     const primaryColor = themeColor["primary"]["default"];
     const defaultColor = themeColor["default"][900];
     const disabledColor = themeColor["default"][400];
+    const getDisabledColor = disabled ? disabledColor : primaryColor;
 
-    const getTextSize = useCallback((): "overline" | "caption" | "body2" | "body1" | "label" => {
+    const radioBorderStyle = checked
+    ? { borderColor: disabled ? disabledColor : primaryColor }
+    : { borderColor: disabled ? disabledColor : defaultColor };
+
+    /**
+     * This function is created to map the `size` prop of the button to a corresponding text size.
+     * The `size` prop can have one of five values. Each of these values corresponds to a different text size respectively.
+     * 
+     * @returns A function that returns a string that represents the text size.
+     */
+    const getTextSize = useCallback((): 
+      | "overline" 
+      | "caption" 
+      | "body2" 
+      | "body1" 
+      | "label" => {
       switch (size) {
         case "xs":
           return "overline";
@@ -96,18 +91,12 @@ const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       }
     },[size]);
 
-    const getDisabledColor = disabled ? disabledColor : primaryColor;
-
-    const radioBorderStyle = checked
-      ? { borderColor: disabled ? disabledColor : primaryColor }
-      : { borderColor: disabled ? disabledColor : defaultColor };
-
-    const handlePress = (event: GestureResponderEvent) => {
-      if (onPress) {
-        onPress(event);
-      }
-    };
-
+     /**
+     * This function is created to handle the rendering of the radiobutton.
+     * It returns a `View` component with various styles. The styles are determined by the `size` prop and the `buttonSizeCls` variable.
+     * 
+     *  @returns A function that returns a JSX.Element that indicates that radiobutton is checked.
+     */
     const _renderRadioButton = useCallback((): React.JSX.Element => {
       return (
         <View style={[styles.radioInner, buttonSizeCls[size], radioBorderStyle]}>
@@ -121,6 +110,12 @@ const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
       )
     }, [size, checked, getDisabledColor, radioBorderStyle])
 
+    /**
+     * This function is created to handle the rendering of the radiobutton label.
+     * It returns a `DNAText` component with the `type` prop set to the result of the `getTextSize` function
+     * 
+     * @returns A function that returns a JSX.Element that represents the label of the radiobutton.
+     */
     const _renderRadioLabel = useCallback((): React.JSX.Element => {
       return (
         <DNAText type={getTextSize()} style={disabled && { color: disabledColor }}>
@@ -128,6 +123,20 @@ const DNARadioButton: React.FC<DNARadioButtonProps> = React.forwardRef(
         </DNAText>
       )
     },[disabled, disabledColor, label, getTextSize()])
+
+    /**
+     * This function is created to handle the press event of the radiobutton.
+     * It checks if the `onPress` prop is defined. If it is, it calls the `onPress` function with the `event` argument.
+     * 
+     * @param event - The event object associated with the press event.
+     * 
+     * @returns Nothing. The purpose of this function is to call the `onPress` function if it's defined.
+     */
+    const handlePress = (event: GestureResponderEvent) => {
+      if (onPress) {
+        onPress(event);
+      }
+    };
 
     return (
       <Pressable

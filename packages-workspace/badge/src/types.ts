@@ -1,7 +1,7 @@
-import { StyleProp, ViewStyle } from "react-native";
+import { StyleProp, ViewProps, ViewStyle } from "react-native";
 import { colorProps } from "@rndna/base_style";
 
-export interface DNABadgeProps {
+export interface DNABadgeProps extends ViewProps{
   /**
    * Where you can define the text of the component
    */
