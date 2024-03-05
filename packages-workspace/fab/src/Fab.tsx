@@ -9,6 +9,7 @@ import {
   View, 
   Modal,
   GestureResponderEvent,
+  Dimensions,
 } from "react-native";
 import { fabSizeCls, styles } from "./styles";
 import { DNAText } from "@rndna/text";
@@ -54,10 +55,10 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       if (fabRef && fabRef.current) {
         fabRef.current.measureInWindow((pageX, pageY, width, height) => {
           setPosition({
-            pageX: Math.floor(pageX), 
-            pageY: Math.floor(pageY),
-            width: Math.floor(width),
-            height: Math.floor(height),
+            pageX,
+            pageY,
+            width,
+            height
           })
         });
       }
@@ -76,10 +77,10 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       if (childRef && childRef.current) {
         childRef.current.measureInWindow((pageX, pageY, width, height) => {
           setChildPosition({
-            pageX: Math.floor(pageX), 
-            pageY: Math.floor(pageY),
-            width: Math.floor(width),
-            height: Math.floor(height),
+            pageX,
+            pageY,
+            width,
+            height,
           })
         });
       }
@@ -169,7 +170,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
      * @returns A JSX element representing the main FAB, or null if 'childPosition' is not defined.
      */
     const _renderMainFab =  useCallback((): React.JSX.Element | null => (
-      <View style={{ width: childPosition?.width, alignItems: 'flex-end' }}>
+      <View>
         <TouchableOpacity
           onLayout={measure}
           style={[
@@ -216,6 +217,9 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
         return null;
       }
 
+      const windowWidth = Dimensions.get('window').width;
+      const drawerWidth = windowWidth * 0.7125; // 71.25% of the window width for the drawer (Subject to Change)
+
       return (
         <Modal
           animationType="fade"
@@ -232,7 +236,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
                 fabSizeCls[size],
                 styles.fab,
                 {
-                  left: position?.pageX,
+                  left: position?.pageX - drawerWidth,
                   top: position?.pageY,
                   position: 'absolute',
                   backgroundColor: primaryColor,
@@ -247,7 +251,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
                 styles.childrenStyle,
                 {
                   position: 'absolute',
-                  left: (position?.pageX + position?.width) - childPosition?.width, 
+                  left: (position?.pageX + position?.width) - childPosition?.width - drawerWidth, 
                   top: position?.pageY - childPosition?.height - styles.childrenStyle.gap,
                 }]}>
               {_renderChildItems()}
