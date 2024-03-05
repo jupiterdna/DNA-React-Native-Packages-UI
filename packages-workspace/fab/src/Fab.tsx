@@ -41,6 +41,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
     const defaultColor = themeColor["default"][900];
     const whiteColor = themeColor["default"][100];
     const animatedValues = items?.map(() => useSharedValue(0));
+    const ANIM_DURATION = 200;
 
   /**
    * This function 'measure' is a memoized callback that measures the dimensions and position of the 'fabRef' current element in the window.
@@ -114,11 +115,10 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
         const indexVal = open ? reverseIndex : index;
 
         animatedValues && (animatedValues[indexVal].value = withDelay(
-          index * 200,
-          withTiming(open ? 0 : 1, { duration: 200 }) 
+          index * ANIM_DURATION,
+          withTiming(open ? 0 : 1, { duration: ANIM_DURATION }) 
         ));
       });
-      setOpen(!open);
     }, [open]);
 
     /**
@@ -261,21 +261,31 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       )
     }, [open, position, measure, _renderAddIcon, _renderChildItems, size, childPosition])
 
-    /**
+   /**
      * This function 'handlePress' is an event handler for the 'onPress' event of the Floating Action Button (FAB).
      * If there are items, it calls the 'animateItems' function to animate the child items.
+     * If the FAB is currently open, it calculates a delay based on the number of items and the animation duration, 
+     * and then uses this delay to close the FAB after all the child items have finished animating.
+     * If the FAB is not open, it opens the FAB immediately.
      * If there are no child items, it calls the 'onPress' prop function, if it exists, and passes the event object to it.
      * 
-     * This function is useful for handling the press event of the FAB and performing different actions based on whether the FAB has child items or not.
+     * This function is useful for handling the press event of the FAB and performing different actions based on whether the FAB has child items or not, 
+     * and whether the FAB is currently open or not.
      * 
      * @param event - The event object from the 'onPress' event.
      */
     const handlePress = (event: GestureResponderEvent) => {
       if (items) {
-        animateItems()
-      } else {
-        onPress && onPress(event);
-      }
+        animateItems();
+        if (open) {
+          const totalDelay = items.length * ANIM_DURATION; 
+          setTimeout(() => {
+            setOpen(false);
+          }, totalDelay);
+        } 
+        return setOpen(true);
+      } 
+      return onPress && onPress(event);
     };
 
     return (
