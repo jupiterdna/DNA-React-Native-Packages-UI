@@ -150,17 +150,16 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
             alt={alt}
           />
         );
-      } else if (name) {
+      } if (name) {
         return (
           <DNAText style={getTextColor} type={getTextSize()}>
             {filteredName()}
           </DNAText>
         );
-      } else if (icon) {
+      } if (icon) {
         return _renderIcon();
-      } else {
-        return null;
       }
+      return null;
     }, [
       imageSource,
       borderRadius,

@@ -20,7 +20,7 @@ const ChipScreen = () => {
   return (
     <>
       <View style={[styles.container, styles.flex]}>
-        <DNAText style={styles.labelStyle}>Variant: solid</DNAText>
+        <DNAText style={styles.labelStyle}>Variant: solid </DNAText>
         <View style={styles.rowContainer}>
           <DNAChip
             label="chip"
