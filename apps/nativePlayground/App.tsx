@@ -20,6 +20,7 @@ import {
 } from './src/Screens';
 import HookScreen from './src/Screens/HookScreen';
 import SwitchScreen from './src/Screens/SwitchScreen';
+import ControlTestScreen from './src/Screens/ControlTestScreen';
 
 const App = () => {
   const Drawer = createDrawerNavigator();
@@ -31,6 +32,7 @@ const App = () => {
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={CustomDrawerContent}>
+        <Drawer.Screen name="TEst Screen" component={ControlTestScreen} />
         <Drawer.Screen name="HookScreen" component={HookScreen} />
         <Drawer.Screen name="Avatar" component={AvatarScreen} />
         <Drawer.Screen name="Badge" component={BadgeScreen} />
