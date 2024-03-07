@@ -29,6 +29,8 @@ const App = () => {
     SplashScreen.hide();
   }, []);
 
+  //return <FloatingActionButtonScreen />;
+
   return (
     <NavigationContainer>
       <Drawer.Navigator drawerContent={CustomDrawerContent}>

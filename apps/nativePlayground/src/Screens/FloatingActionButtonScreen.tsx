@@ -14,6 +14,7 @@ const FloatingActionButton = () => {
         <DNAText style={styles.label}>Default Fab With Add icon</DNAText>
         <View style={styles.fab}>
           <DNAFab
+            inDrawer
             items={[
               {
                 title: 'Option 1',

@@ -14,7 +14,7 @@ export interface DNAFabProps extends TouchableOpacityProps {
      */
     size?: sizeProps;
     /**
-     * Property that  the FabItems display
+     * Property that enables the FabItems display
      */
     isOpen?: boolean;
     /**
@@ -25,6 +25,10 @@ export interface DNAFabProps extends TouchableOpacityProps {
      * Handler when the component is clicked
     */
     onPress?: (event: GestureResponderEvent) => void | undefined;
+    /**
+     * Property that identify the if the fab is in the drawer.screen or not
+     */
+    inDrawer?: boolean;
 }
 
 export type DNAFabItemTypes = {

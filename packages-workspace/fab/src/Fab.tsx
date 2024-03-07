@@ -10,6 +10,7 @@ import {
   Modal,
   GestureResponderEvent,
   Dimensions,
+  Pressable,
 } from "react-native";
 import { fabSizeCls, styles } from "./styles";
 import { DNAText } from "@rndna/text";
@@ -26,6 +27,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       isOpen = false,
       items,
       onPress,
+      inDrawer = true,
       ...restProps
     }: DNAFabProps,
     ref: React.Ref<TouchableOpacity>,
@@ -218,7 +220,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
       }
 
       const windowWidth = Dimensions.get('window').width;
-      const drawerWidth = windowWidth * 0.7125; // 71.25% of the window width for the drawer (Subject to Change)
+      const drawerWidth = inDrawer ? windowWidth * 0.7125 : 0; // 71.25% of the window width for the drawer (Subject to Change)
 
       return (
         <Modal
@@ -227,10 +229,10 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
           visible={open}
           onDismiss={() => setOpen(false)}
           >
-          <TouchableOpacity 
+          <Pressable 
             style={styles.modalContainer} 
             onPress={(event) => handlePress(event)}
-            >
+            />
             <TouchableOpacity
               style={[
                 fabSizeCls[size],
@@ -256,10 +258,12 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
                 }]}>
               {_renderChildItems()}
             </View>
-          </TouchableOpacity>
         </Modal>
       )
     }, [open, position, measure, _renderAddIcon, _renderChildItems, size, childPosition])
+
+    console.log('position?.pageX', position?.pageX)
+    console.log('position?.x', position?.x)
 
    /**
      * This function 'handlePress' is an event handler for the 'onPress' event of the Floating Action Button (FAB).
