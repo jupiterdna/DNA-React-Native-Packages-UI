@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
   },
   container: {
     padding: 20,
-    gap: 20,
   },
   circle: {
     width: 40,

@@ -172,7 +172,7 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
      * @returns A JSX element representing the main FAB, or null if 'childPosition' is not defined.
      */
     const _renderMainFab =  useCallback((): React.JSX.Element | null => (
-      <View>
+      <View style={{ width: childPosition?.width, alignItems: 'flex-end'}}>
         <TouchableOpacity
           onLayout={measure}
           style={[
@@ -221,6 +221,8 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
 
       const windowWidth = Dimensions.get('window').width;
       const drawerWidth = inDrawer ? windowWidth * 0.7125 : 0; // 71.25% of the window width for the drawer (Subject to Change)
+      const fabWidth = fabSizeCls[size].width;
+      const rightValue = windowWidth - position?.pageX - fabWidth + drawerWidth
 
       return (
         <Modal
@@ -228,42 +230,42 @@ export const DNAFab: React.FC<DNAFabProps> = React.forwardRef(
           transparent
           visible={open}
           onDismiss={() => setOpen(false)}
-          >
-          <Pressable 
-            style={styles.modalContainer} 
+        >
+          <Pressable
+            style={styles.modalContainer}
             onPress={(event) => handlePress(event)}
-            />
-            <TouchableOpacity
-              style={[
-                fabSizeCls[size],
-                styles.fab,
-                {
-                  left: position?.pageX - drawerWidth,
-                  top: position?.pageY,
-                  position: 'absolute',
-                  backgroundColor: primaryColor,
-                  zIndex: 99,
-                }
-              ]}
-              onPress={(event) => handlePress(event)}
-            >
-                {_renderAddIcon()}
-            </TouchableOpacity>
-            <View style={[
-                styles.childrenStyle,
-                {
-                  position: 'absolute',
-                  left: (position?.pageX + position?.width) - childPosition?.width - drawerWidth, 
-                  top: position?.pageY - childPosition?.height - styles.childrenStyle.gap,
-                }]}>
-              {_renderChildItems()}
-            </View>
+          />
+          <TouchableOpacity
+            style={[
+              fabSizeCls[size],
+              styles.fab,
+              {
+                position: 'absolute',
+                right: rightValue,
+                top: position?.pageY,
+                backgroundColor: primaryColor,
+                zIndex: 99,
+              },
+            ]}
+            onPress={(event) => handlePress(event)}
+          >
+            {_renderAddIcon()}
+          </TouchableOpacity>
+          <View
+            style={[
+              styles.childrenStyle,
+              {
+                position: 'absolute',
+                right: rightValue,
+                top: position?.pageY - childPosition?.height - styles.childrenStyle.gap,
+              },
+            ]}
+          >
+            {_renderChildItems()}
+          </View>
         </Modal>
-      )
+      );
     }, [open, position, measure, _renderAddIcon, _renderChildItems, size, childPosition])
-
-    console.log('position?.pageX', position?.pageX)
-    console.log('position?.x', position?.x)
 
    /**
      * This function 'handlePress' is an event handler for the 'onPress' event of the Floating Action Button (FAB).

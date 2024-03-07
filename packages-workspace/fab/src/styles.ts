@@ -19,7 +19,7 @@ export const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     alignItems: 'center',
-    alignSelf: 'flex-end',
+    justifyContent: 'flex-end',
     gap: 8,
   },
   modalContainer: {
