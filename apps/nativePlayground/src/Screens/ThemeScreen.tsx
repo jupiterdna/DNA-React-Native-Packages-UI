@@ -7,7 +7,6 @@ import {
   darkmodeColor,
   themeConfig,
 } from '@rndna/theme-provider';
-import AnimatedScreen from './TextFieldScreen';
 
 import RippleScreen from './RippleScreen';
 
@@ -20,8 +19,8 @@ const Native = () => {
         }
       : {
           ...themeConfig,
-          colors: darkmodeColor,
           fonts: {...themeConfig.fonts, fontFamily: 'Roboto'},
+          colors: {...themeConfig.colors, danger: 'red', default: 'black'},},
         };
 
   return (

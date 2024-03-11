@@ -4,55 +4,16 @@ sidebar_position: 2
 
 # Installation
 
-Docusaurus can manage multiple versions of your docs.
+Each component is constructed independently, requiring the installation of the specific control you intend to use.
 
-## Create a docs version
-Release a version 1.0 of your project:
+**For Example:**
 
-## Create a docs version2
-
-Release a version 1.0 of your project:
-
-```bash
-npm run docusaurus docs:version 1.0
+```bash npm2yarn
+npm install @rndna/theme-provider @rndna/button
 ```
+Additionally, for the iOS platform, it is necessary to link the native components of the library.
 
-The `docs` folder is copied into `versioned_docs/version-1.0` and `versions.json` is created.
-
-Your docs now have 2 versions:
-
-- `1.0` at `http://localhost:3000/docs/` for the version 1.0 docs
-- `current` at `http://localhost:3000/docs/next/` for the **upcoming, unreleased docs**
-
-## Add a Version Dropdown
-
-To navigate seamlessly across versions, add a version dropdown.
-
-Modify the `docusaurus.config.js` file:
-
-```js title="docusaurus.config.js"
-export default {
-  themeConfig: {
-    navbar: {
-      items: [
-        // highlight-start
-        {
-          type: 'docsVersionDropdown',
-        },
-        // highlight-end
-      ],
-    },
-  },
-};
+```bash 
+cd ios 
+pod install
 ```
-
-The docs version dropdown appears in your navbar:
-
-![Docs Version Dropdown](./img/docsVersionDropdown.png)
-
-## Update an existing version
-
-It is possible to edit versioned docs in their respective folder:
-
-- `versioned_docs/version-1.0/hello.md` updates `http://localhost:3000/docs/hello`
-- `docs/hello.md` updates `http://localhost:3000/docs/next/hello`

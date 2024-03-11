@@ -44,7 +44,10 @@ const config: Config = {
 
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-          remarkPlugins: [require('./plugins/remarkSnackplayer')],
+          remarkPlugins: [require('./plugins/remarkSnackplayer'),
+          [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+        ],
+          
         },
         blog: {
           showReadingTime: true,
@@ -52,11 +55,19 @@ const config: Config = {
           // Remove this to remove the "edit this page" links.
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            remarkPlugins: [
+              [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+            ]
         },
      
         theme: {
           customCss: './src/css/custom.css',
         },
+        pages:{
+          remarkPlugins: [
+            [require('@docusaurus/remark-plugin-npm2yarn'), {sync: true}],
+          ],
+        }
       } satisfies Preset.Options,
     ],
   ],
