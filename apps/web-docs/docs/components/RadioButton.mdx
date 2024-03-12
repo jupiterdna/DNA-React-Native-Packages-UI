@@ -1,0 +1,39 @@
+---
+id: radio-button
+title: Radio Button
+---
+
+import CodeBlock from "@theme/CodeBlock";
+
+# Radio Button
+
+This component meant for easy selection and decision-making. By convention, only one button at a time can be selected
+
+## Usage
+
+<div class="row inline-flex-center items-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { DNA } from '@rndna/radiobutton';`}</CodeBlock>
+  </div>
+</div>
+
+## Props
+
+
+<div class='table-responsive'>
+
+| Name                    | Type                                                       | Default                                           | Description                                                                                                                                                  |
+| ----------------------- | ---------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `id`                    | string                                                     | `undefined`                                       | Property that is used to pass in the id parameter of code.                                                                                                   |
+| `value`                 | string                                                     | `undefined`                                       | Property that defines the value of the selected option.                                                                                                      |
+| `label`                 | string                                                     | `undefined`                                       | Property that defines the label of the option.                                                                                                               |
+| `disabled`              | boolean                                                    | `false`                                           | Property where the user can enable or disable the certain option                                                                                             |
+| `checked`               | boolean                                                    | `false`                                           | Property where the user can checked or unchecked the certain option                                                                                          |
+| `size`                  |  `xs`, `sm`, `md`, `lg`, `xl`                              | `md`                                              | Property that defines the size of the component or a selection.                                                                                              |
+| `onPress`               | `((event: GestureResponderEvent) => void)`, `undefined`    | `undefined`                                       | Handler when the component is pressed                                                                                                                        |
+
+</div>
+

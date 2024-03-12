@@ -58,7 +58,7 @@ const sidebars: SidebarsConfig = {
         "components/image",
         "components/popover",
         "components/progress",
-        "components/radio_button",
+        "components/radio-button",
         "components/rte",
         "components/spinner",
         "components/switch",

@@ -37,7 +37,7 @@ export interface DNAChipProps extends PressableProps{
    */
   isDisabled?: boolean;
   /**
-   * Property where the user can enable or disable the certain attribute or field
+   *  Property that changes theme/state of the selection i.e. background and text color
    */
   color?: colorProps;
   /**

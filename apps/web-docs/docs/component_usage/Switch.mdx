@@ -1,0 +1,27 @@
+import './styles/style.css'
+
+```SnackPlayer name=Switch&description=This%20is%20a%20description&dependencies=@rndna/switch&platform=web
+import * as React from 'react';
+import { View, Text } from 'react-native';
+import { DNASwitch } from '@rndna/switch';
+
+const YourApp = () => {
+    const [isChecked, setIsChecked] = useState(true);
+    const handleSwitchChange = (newValue: boolean) => {
+        setIsChecked(newValue);
+    };
+    <View>
+      <DNASwitch
+        labelLeft="OFF"
+        labelRight="ON"
+        iconLeft={SunIcon}
+        iconRight={MoonIcon}
+        checked={isChecked}
+        onValueChange={handleSwitchChange}
+      />
+    </View>
+ }
+
+ export default YourApp;
+ ```
+```

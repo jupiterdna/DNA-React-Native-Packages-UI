@@ -1,0 +1,49 @@
+import './styles/style.css'
+
+```SnackPlayer name=Image&description=This%20is%20a%20description&dependencies=@rndna/fab,@rndna/icon&platform=web
+ import * as React from 'react';
+ import { DNAFab } from '@rndna/fab';
+ import { FileIcon } from '@rndna/icon';
+
+ const YourApp = () => (
+  <View style={[styles.flex]}>
+    <View style={styles.fab}>
+      <DNAFab
+        inDrawer
+        items={[
+          {
+            title: 'Option 1',
+            icon: <FileIcon size={20} color={'#adabab'} />,
+            onPress: () => {},
+          },
+          {
+            title: 'Option 2',
+            icon: <FileIcon size={20} color={'#adabab'} />,
+            onPress: () => {},
+          },
+          {
+            title: 'Option 3',
+            icon: <FileIcon size={20} color={'#adabab'} />,
+            onPress: () => {},
+          },
+        ]}
+      />
+    </View>
+  </View>
+ );
+
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+    padding: 0,
+  },
+  fab: {
+    maxWidth: '100%',
+    position: 'absolute',
+    bottom: 20,
+    right: 20,
+  },
+});
+ export default YourApp;
+ ```
+```

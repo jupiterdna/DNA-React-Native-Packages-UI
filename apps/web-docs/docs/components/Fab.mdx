@@ -1,0 +1,37 @@
+---
+id: fab
+title: Fab
+---
+
+import CodeBlock from "@theme/CodeBlock";
+
+# Fab
+
+Fab components for displaying small graphical representations of programs or files from various sources: network, static, local, camera roll.
+
+## Usage
+
+<div class="row inline-flex-center items-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { DNAFab } from '@rndna/fab';`}</CodeBlock>
+  </div>
+</div>
+
+## Props
+
+
+<div class='table-responsive'>
+
+| Name                    | Type                                                       | Default                                           | Description                                                                                                                                                  |
+| ----------------------- | ---------------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `size`                  | `xs`, `sm`, `md`, `lg`, `xl`                               | `md`                                              | Property that defines the size of the component.                                                                                                             |
+| `isOpen`                | boolean                                                    | `false`                                           | Property that enables the FabItems display                                                                                                                   |
+| `items`                 | Array                                                      | `[]`                                              | Defines the options or items.                                                                                                                                |
+| `onPress`               | `(event: GestureResponderEvent) => void`, `undefined`      | `() => {}`                                        | Handler when the component is clicked                                                                                                                        |
+| `inDrawer`              | boolean                                                    | `false`                                           | Property that identify the if the fab is in the drawer.screen or not                                                                                                |
+
+</div>
+
