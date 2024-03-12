@@ -11,3 +11,4 @@ export { default as Image } from "./Image.mdx";
 export { default as Icon } from "./Icon.mdx";
 export { default as Fab } from "./Fab.mdx";
 export { default as Chip } from "./Chip.mdx";
+export { default as Text } from "./Text.mdx";

@@ -63,6 +63,7 @@ const sidebars: SidebarsConfig = {
         "components/spinner",
         "components/switch",
         "components/tabs",
+        "components/text",
         "components/textinput",
       ],
     },
