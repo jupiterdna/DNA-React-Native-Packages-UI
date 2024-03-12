@@ -1,0 +1,76 @@
+import './styles/style.css'
+
+```SnackPlayer name=Checkbox%20Group&description=This%20is%20a%20description&dependencies=@rndna/checkbox,&platform=web
+import {Linking, StyleSheet, View,} from 'react-native';
+import React, {useState} from 'react';
+import {DNACheckBoxGroup, DNACheckbox, DNACheckboxProps} from '@rndna/checkbox';
+
+
+const YourApp = () => {
+
+  const [options, setOptions] = useState<DNACheckboxProps[]>([
+    {
+      id: '1',
+      label: 'Option 1',
+      value: 'Option 1',
+      checked: true,
+    },
+    {
+      id: '2',
+      label: 'Option 2',
+      value: 'Option 2',
+    },
+    {
+      id: '3',
+      label: 'Option 3',
+      value: 'Option 3',
+    },
+  ]);
+
+  const handleSelect = (option: DNACheckboxProps) => {
+    const newOptions = options.map(op => {
+      if (op.id === option.id) {
+        return {
+          ...op,
+          checked: !op.checked,
+        };
+      }
+      return op;
+    });
+    setOptions(newOptions);
+  };
+
+
+  return (
+     <>
+     <View style={[styles.container, styles.flex]}>
+        <DNACheckBoxGroup
+          orientation="vertical"
+          label="Checkbox Group Vertical"
+          children={options.map(op => {
+            return (
+              <DNACheckbox
+                {...op}
+                key={op.id}
+                checked={op.checked}
+                onPress={() => {
+                  handleSelect(op);
+                }}
+              />
+            );
+          })}
+          required
+        />
+      </View>
+    </>
+     
+  );
+}
+const styles = StyleSheet.create({
+  mainContainer: {flex: 1, padding: 30},
+  divider: {marginVertical: 20},
+});
+
+
+export default YourApp;
+```

@@ -1,0 +1,37 @@
+---
+id: checkbox
+title: Checkbox
+---
+
+import CodeBlock from "@theme/CodeBlock";
+
+# Checkbox
+
+component is a user interface element that allows users to toggle between two states, typically checked and unchecked. It's commonly used in forms or settings screens where users need to make binary choices.
+
+## Usage
+
+<div class="row inline-flex-center items-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { DNACheckbox } from '@rndna/checkbox';`}</CodeBlock>
+  </div>
+</div>
+
+## Props
+
+<div class='table-responsive'>
+
+| Name                    | Type                                                       | Default                                           | Description                                                                             |
+| ----------------------- | ---------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------|
+| `testID`                | String                                                     | `Undefined`                                       | Property to be used for testing                                                         |
+| `id`                      | String                                                     | `Undefined`                                       | Property that is used to pass in the id parameter of code.                            |
+| `value`                      | String                                                     | `Undefined`                                       | Property that defines the value of the selected option.                             |
+| `label`                      | String                                                     | `Undefined`                                       | Property that defines the label of the option.                                      |
+| `disabled`                      | boolean                                                     | `false`                                       | Property that defines the label of the option.                                       |
+| `checked`                      | boolean                                                     | `false`                                       | Property where the user can checked or unchecked the certain option             |
+| `size`                      | sizeProps                                                     | `false`                                       | Property that defines the size of the component or a selection         |
+| `onPress`                      | `(event: GestureResponderEvent) => void`                     | `Undefined`                                       | Handler when the component is pressed      |
+</div>

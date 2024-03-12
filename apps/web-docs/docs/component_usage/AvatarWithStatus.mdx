@@ -1,18 +1,81 @@
 import './styles/style.css'
 
 ```SnackPlayer name=Avatar%20With%20Status&description=This%20is%20a%20description&dependencies=@rndna/button&platform=web
+import {Linking, StyleSheet, View, ScrollView} from 'react-native';
 import React from 'react';
-import { Text, View } from 'react-native';
-import { DNAButton } from '@rndna/button';
+import {
+  DNAAvatarWithStatus,
+} from '@rndna/avatar';
+
 
 const YourApp = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Avatar With Status</Text>
-      <DNAButton label="test"/>
-    </View>
+    <>
+      <View style={[styles.container, styles.flex]}>
+        <View style={styles.rowContainer}>
+          <DNAAvatarWithStatus
+            status={{
+              option: 'busy',
+              value: 'busy',
+            }}
+          />
+          <DNAAvatarWithStatus
+            status={{
+              option: 'inactive',
+              value: 'inactive',
+            }}
+          />
+          <DNAAvatarWithStatus
+            status={{
+              option: 'online',
+              value: 'online',
+            }}
+          />
+          <DNAAvatarWithStatus
+            status={{
+              option: 'offline',
+              value: 'offline',
+            }}
+          />
+        </View>
+      </View>
+
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
+  viewDocs: {
+    width: '100%',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  labelStyle: {
+    marginBottom: 7,
+  },
+  container: {
+    padding: 20,
+  },
+  rowContainer: {
+    display: 'flex',
+    columnGap: 15,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  divider: {
+    height: 20,
+  },
+  rowGap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    gap: 5,
+  },
+});
+
 
 export default YourApp;
 ```

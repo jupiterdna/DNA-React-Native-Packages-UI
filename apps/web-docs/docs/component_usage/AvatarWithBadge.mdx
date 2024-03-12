@@ -1,18 +1,92 @@
 import './styles/style.css'
 
-```SnackPlayer name=Avatar%20With%20badge&description=This%20is%20a%20description&dependencies=@rndna/button&platform=web
+```SnackPlayer name=Avatar%20With%20Badge&description=This%20is%20a%20description&dependencies=@rndna/button&platform=web
+import {Linking, StyleSheet, View, ScrollView} from 'react-native';
 import React from 'react';
-import { Text, View } from 'react-native';
-import { DNAButton } from '@rndna/button';
+
+import {
+  DNAAvatarWithBadge,
+} from '@rndna/avatar';
 
 const YourApp = () => {
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Avatar With Badge</Text>
-      <DNAButton label="test"/>
-    </View>
+    <>
+      <View style={[styles.container, styles.flex]}>
+          <View style={styles.rowContainer}>
+          <DNAAvatarWithBadge
+            badge={{
+              color: 'primary',
+              value: '+1',
+            }}
+          />
+          <DNAAvatarWithBadge
+            badge={{
+              color: 'danger',
+              value: '+1',
+            }}
+          />
+          <DNAAvatarWithBadge
+            badge={{
+              color: 'success',
+              value: '+1',
+            }}
+          />
+          <DNAAvatarWithBadge
+            badge={{
+              color: 'info',
+              value: '+1',
+            }}
+          />
+          <DNAAvatarWithBadge
+            badge={{
+              color: 'default',
+              value: '+1',
+            }}
+          />
+          <DNAAvatarWithBadge
+            badge={{
+              color: 'secondary',
+              value: '+1',
+            }}
+          />
+        </View>
+      </View>
+    </>
   );
 }
+
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
+  viewDocs: {
+    width: '100%',
+    alignContent: 'center',
+    justifyContent: 'center',
+  },
+  labelStyle: {
+    marginBottom: 7,
+  },
+  container: {
+    padding: 20,
+  },
+  rowContainer: {
+    display: 'flex',
+    columnGap: 15,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+  },
+  divider: {
+    height: 20,
+  },
+  rowGap: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    gap: 5,
+  },
+});
+
 
 export default YourApp;
 ```

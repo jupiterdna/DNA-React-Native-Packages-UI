@@ -1,0 +1,32 @@
+import './styles/style.css'
+
+```SnackPlayer name=Checkbox&description=This%20is%20a%20description&dependencies=@rndna/checkbox,&platform=web
+import {Linking, StyleSheet, View,} from 'react-native';
+import React from 'react';
+import {DNACheckbox} from '@rndna/checkbox';
+
+
+const YourApp = () => {
+  return (
+     <>
+     <View style={[styles.container, styles.flex]}>
+        <DNACheckbox label="Option 1" disabled={disabled} />
+      </View>
+    </>
+     
+  );
+}
+const styles = StyleSheet.create({
+  flex: {
+    flex: 1,
+  },
+  container: {
+    padding: 20,
+    alignItems: 'flex-start',
+    gap: 20,
+  },
+});
+
+
+export default YourApp;
+```

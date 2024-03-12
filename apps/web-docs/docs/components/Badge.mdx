@@ -1,0 +1,37 @@
+---
+id: badge
+title: Badge
+---
+
+import CodeBlock from "@theme/CodeBlock";
+
+# Badge
+
+Badge is a component that is used to display a small amount of information, such as a number or an icon, on top of another component. often as a visual indicator like a colored circle or a number. Badges are commonly used to indicate notifications, unread messages, alerts, or any other piece of information that needs to be highlighted.
+
+## Usage
+
+<div class="row inline-flex-center items-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { DNABadge } from '@rndna/badge';`}</CodeBlock>
+  </div>
+</div>
+
+## Props
+
+<div class='table-responsive'>
+
+| Name                    | Type                                                       | Default                                           | Description                                                                             |
+| ----------------------- | ---------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------|
+| `testID`                | String                                                     | `Undefined`                                       | Property to be used for testing                                                         |
+| `value`                 | String                                                     | `Undefined`                                       | Where you can define the text of the component                                   |
+| `children`              | React.ReactNode                                            | `undefined`                                       | Property that defines the source URL of the image/element to be used.                   |
+| `style`                 | `StyleProp<ViewStyle>   `                                  | `undefined`                                       | Property that defines the size of the component.                                        |
+| `color`                 | colorProps                                                 | `primary`                                         | Property that defines the size of the component.                                        |
+| `position`              | `"top" , "bottom" , "inline"    `                          | `top`                                             | Property that defines the size of the component.                                        |
+</div>
+
+

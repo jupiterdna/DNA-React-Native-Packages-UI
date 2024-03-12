@@ -1,0 +1,52 @@
+---
+id: button
+title: Button
+---
+
+
+import CodeBlock from "@theme/CodeBlock";
+
+# Button
+
+Button are found all over ui design from lists to profile screens. They are commonly used to represent a user and can contain photos, icons, or even text.
+
+## Usage
+
+<div class="row inline-flex-center items-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { DNAButton } from '@rndna/button';`}</CodeBlock>
+  </div>
+</div>
+
+## Props
+
+<div class='table-responsive'>
+
+| Name                    | Type                                                       | Default                                           | Description                                                                             |
+| ----------------------- | ---------------------------------------------------------- | ------------------------------------------------- | ----------------------------------------------------------------------------------------|
+| `testID`                | String                                                     | `Undefined`                                       | Property to be used for testing                                                         |
+| `label`                  | String                                                    | `Undefined`                                       | Property that defines the label of the button.                                      |
+| `iconPosition`           | string / ImageSrc                                         | `undefined`                                       | ProProperty that toggles the positon of icon on left or right               |
+| `size`                  | SizeProps `( "xs","sm","md","lg", "xl")`                   | `false`                                              | Property that defines the size of the component.                                        |
+| `isLoading`               | Boolean                                                  | `undefined`                                       | Property that enables or disables the loading property of component.                          |
+| `color`                 | colorProps `("primary", "secondary","info", "success", "warning", "danger", "default")`       | `default`                 | Property that changes theme of the component, i.e. background and text color,   |
+| `icon`                  | React.JSX.Element                                          | `undefined`                                       | Property that enables user to select icon from icon library.                            |
+| `onPress`               | `(event: GestureResponderEvent) => void`                   | `undefined`                                       | Handler when the component is clicked.                                                  |
+| `loadingLabel`          | String                                                     | `undefined`                                       | Property that helps in esbalishing loading text.                                       |
+| `variant`               | `solid`, `outlined`, `flat`, `soft`                        | `solid`                                           | Changes the variation of the element. |
+| `borderRadius`          | borderRadiusProps                                          | `soft_edged`                                      | Defines the border dimensions of the component. |
+| `isDisabled`          | Boolean                                                      | `false`                                            | Property where the user can enable or disable the certain attribute or field |
+| `fullWidth`          | boolean                                                       | `false`                                            | Enables the control to be 100% width inside the parent container. |
+| `onPress`             | `onPress?: () => void`                                       | `undefined`                                            |  Handler when the component is clicked" with "Enables the control to be 100% width inside the parent container. |
+| `rippleColor`             | string                                       | `undefined`                                            |  Property that defines the color of the ripple effect. |
+| `rippleOpacity`             | number                                       | `undefined`                                            |  Property that defines opacity of the ripple effect. |
+| `rippleDuration`             | number                                       | `undefined`                                            |  Property that defines the duration of ripple effect animation. |
+| `rippleSize`             | number                                       | `undefined`                                            |  Property that defines the size of the ripple effect. |
+| `rippleCentered`             | boolean                                       | `false`                                            |  Property that defines whether the ripple effect should be centered on the press point.|
+| `rippleSequential`             | boolean                                       | `false`                                            |  Property that defines whether the ripple effect should fade out.|
+| `rippleFades`             | boolean                                       | `false`                                            |  Property that defines whether the ripple effect should fade out.|
+| `enableRipple`             | boolean                                       | `false`                                            |  Property that defines whether the ripple effect should be enabled.|
+</div>
