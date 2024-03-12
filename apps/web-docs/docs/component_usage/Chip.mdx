@@ -1,0 +1,22 @@
+import './styles/style.css'
+
+```SnackPlayer name=Chip&description=This%20is%20a%20description&dependencies=@rndna/chip,@rnda/icon&platform=web
+ import * as React from 'react';
+ import { DNAChip } from '@rndna/chip';
+ import { UserIcon } from '@rndna/icon';
+
+ const YourApp = () => (
+    <DNAChip
+      label="Chip"
+      isClosable
+      isLoading
+      icon={UserIcon}
+      size="md"
+      onPress={() => console.log('pressed')}
+      onPressClose={() => console.log('closed')}
+      />
+ );
+
+ export default YourApp;
+ ```
+```

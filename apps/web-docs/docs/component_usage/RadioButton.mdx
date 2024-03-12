@@ -1,0 +1,30 @@
+import './styles/style.css'
+
+```SnackPlayer name=Radio%20Button&description=This%20is%20a%20description&dependencies=@rndna/radiobutton&platform=web
+import * as React, { useState } from 'react';
+import { View, StyleSheet } from 'react-native';
+import { DNARadioButton } from '@rndna/radiobutton';
+
+const YourApp = () => {
+  return (
+    <View style={styles.style}>
+        <DNARadioButton
+          key={1}
+          id={1}
+          checked={false}
+          label="Option 1"
+          onPress={() => ()}
+        />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  style: {
+    alignItems: 'flex-start';
+  },
+});
+
+export default YourApp;
+ ```
+```
