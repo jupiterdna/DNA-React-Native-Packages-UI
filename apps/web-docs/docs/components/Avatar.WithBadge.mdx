@@ -1,13 +1,13 @@
 ---
-id: avatar
-title: Avatar
+id: avatar-with-badge
+title: Avatar With Badge
 ---
 
 import CodeBlock from "@theme/CodeBlock";
 
-# Avatar
+# Avatar With Badge
 
-Avatars are prevalent in UI design, appearing in various contexts such as lists and profile screens. They serve as visual representations of users and can incorporate photos, icons, or text to convey identity or information.
+Avatar with badge component typically refers to a user interface element that combines an avatar (profile picture or icon) with a badge, which is usually a small visual indicator such as a colored dot or a number. This type of component is commonly used in applications to display user profiles, notifications, or status indicators.
 
 ## Usage
 
@@ -16,7 +16,7 @@ Avatars are prevalent in UI design, appearing in various contexts such as lists 
     <h4>Import</h4>
   </div>
   <div class="col col--9">
-    <CodeBlock>{`import { DNAAvatar } from '@rndna/avatar';`}</CodeBlock>
+    <CodeBlock>{`import { DNAAvatarWithBadge } from '@rndna/avatar';`}</CodeBlock>
   </div>
 </div>
 
@@ -31,10 +31,11 @@ Avatars are prevalent in UI design, appearing in various contexts such as lists 
 | `imageSource`           | string / ImageSrc                                          | `undefined`                                       | Property that defines the source URL of the image/element to be used.                   |
 | `size`                  | SizeProps `( "xs","sm","md","lg", "xl")`                   | `md`                                              | Property that defines the size of the component.                                        |
 | `borderRadius`          | `("squared", "soft_edged", "rounded")`                     | `undefined`                                       | Property that defines the border dimensions of the component.                           |
-| `color`                 | `("primary", "secondary","info", "success", "warning", "danger", "default")`       | `default`                 | Property that changes theme of the component, i.e. background and text color,           |
+| `color`                 | colorProps `("primary", "secondary","info", "success", "warning", "danger", "default")`       | `default`                 | Property that changes theme of the component, i.e. background and text color,           |
 | `alt`                   | String                                                     | `undefined`                                       | Property that defines the alternative text of the image in the avatar.                  |
 | `icon`                  | React.JSX.Element                                          | `undefined`                                       | Property that enables user to select icon from icon library.                            |
 | `onPress`               | `(event: GestureResponderEvent) => void`                   | `undefined`                                       | Handler when the component is clicked.                                                  |
+| `badge`                 | IWithBadgeType `{color?: colorProps, value?: string}`      | `undefined`                                       | Property that defines badge of the avatar                                              |
 </div>
 
 
