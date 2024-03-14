@@ -71,10 +71,6 @@ export const styles = StyleSheet.create({
   },
 });
 
-import { useFonts } from "@rndna/theme-provider";
-
-const size = useFonts();
-
 export const drop_styles = StyleSheet.create({
   button: {
     height: 40,
@@ -115,24 +111,6 @@ export const drop_styles = StyleSheet.create({
     height: 20,
   },
 });
-
-export const textSizeCls = {
-  xs: {
-    fontSize: size.fontSize?.caption,
-  },
-  sm: {
-    fontSize: size.fontSize?.body2,
-  },
-  md: {
-    fontSize: size.fontSize?.body1,
-  },
-  lg: {
-    fontSize: size.fontSize?.label,
-  },
-  xl: {
-    fontSize: size.fontSize?.h6,
-  },
-};
 
 export const buttonSizeCls = {
   xs: {

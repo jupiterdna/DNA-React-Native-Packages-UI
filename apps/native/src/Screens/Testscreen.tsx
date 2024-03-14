@@ -16,7 +16,7 @@ import {
   DNAAvatarWithBadge,
   DNAAvatarWithStatus,
 } from '@rndna/avatar';
-import {DNAAvatarGroup} from '@rndna/avatar_group';
+import {DNAAvatarGroup} from '@rndna/avatargroup';
 import {DNAButton} from '@rndna/button';
 import {DNAChip} from '@rndna/chip';
 import {InfoCircleIcon, UserIcon} from '@rndna/icon';

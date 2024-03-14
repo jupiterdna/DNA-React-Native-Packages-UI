@@ -2,7 +2,6 @@
   "name": "@rndna/collapsible",
   "version": "0.0.0",
   "author": "Juphet Vitualla",
-  "private": true,
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
@@ -15,12 +14,14 @@
     "tsup": "^8.0.1",
     "typescript": "^5.3.2",
     "@rndna/base_style": "*",
-    "@rndna/text": "*",
     "@rndna/typescript-config": "*",
-    "@rndna/theme-provider": "*",
-    "@rndna/icon": "*"
+    "@rndna/theme-provider": "*"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@rndna/icon": "*",
+    "react-native-svg": "14.1.0",
+    "@rndna/text": "*"
+  },
   "peerDependencies": {
     "react": "*",
     "react-native": "*"

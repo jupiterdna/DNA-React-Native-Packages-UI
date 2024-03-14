@@ -1,10 +1,10 @@
 import React from "react";
-import { DNAAvatar } from "../../Avatar"
+import { DNAAvatar } from "../../Avatar";
 import { DNAAvatarProps, DNAAvatarPropsWithBadge } from "../../types";
 import { DNABadge } from "@rndna/badge";
 
 /**
- * An Avatar With Badge control can be used to display small components 
+ * An Avatar With Badge control can be used to display small components
  * on the upper right corner of your avatar typically a numerical value.
  *
  * ## Usage
@@ -25,20 +25,18 @@ import { DNABadge } from "@rndna/badge";
  * ```
  */
 
-const AvatarWithBadge = (Component: React.FC<DNAAvatarProps>) =>
-  (props: DNAAvatarPropsWithBadge) => {
-    const {
-      badge,
-    } = props;
+const AvatarWithBadge =
+  (Component: React.FC<DNAAvatarProps>) => (props: DNAAvatarPropsWithBadge) => {
+    const { badge } = props;
 
-  const { color = "danger", value } = badge
+    const { color = "danger", value } = badge;
 
-  return (
-    <DNABadge value={value} color={color}>
-      <Component {...props} />
-    </DNABadge>
-  );
-};
+    return (
+      <DNABadge value={value} color={color}>
+        <Component {...props} />
+      </DNABadge>
+    );
+  };
 
 const DNAAvatarWithBadge = AvatarWithBadge(DNAAvatar);
 

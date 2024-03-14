@@ -27,13 +27,13 @@
   },
   "peerDependencies": {
     "react": "*",
-    "react-native": "*",
-    "@rndna/icon": "*",
-    "@rndna/text": "*"
+    "react-native": "*"
   },
   "dependencies": {
     "@rndna/hooks": "*",
     "@rndna/theme-provider": "*",
-    "react-native-reanimated": "^3.6.2"
+    "react-native-reanimated": "^3.6.2",
+    "@rndna/icon": "*",
+    "@rndna/text": "*"
   }
 }

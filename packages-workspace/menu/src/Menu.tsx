@@ -30,8 +30,7 @@ import { DropdownProps } from "./types";
 import { styles } from "./styles";
 import { MenuKebabIcon } from "@rndna/icon";
 import { DNAText } from "@rndna/text";
-import { textSizeCls } from "./styles";
-import { useColor } from "@rndna/theme-provider";
+import { useColor, useFonts } from "@rndna/theme-provider";
 
 const { isTablet } = useDetectDevice;
 const statusBarHeight: number = StatusBar.currentHeight || 0;
@@ -95,10 +94,29 @@ const MenuComponent: <T>(
     }, [W, orientation]);
 
     const themeColor = useColor();
+    const font = useFonts();
     const defaultTextColor = themeColor[color]["default"];
     const defaultBgColor = themeColor[color]["50"];
     const activeColor = themeColor[color]["default"];
     const activeTextColor = themeColor[color]["50"];
+
+    const textSizeCls = {
+      xs: {
+        fontSize: font.fontSize?.caption,
+      },
+      sm: {
+        fontSize: font.fontSize?.body2,
+      },
+      md: {
+        fontSize: font.fontSize?.body1,
+      },
+      lg: {
+        fontSize: font.fontSize?.label,
+      },
+      xl: {
+        fontSize: font.fontSize?.h6,
+      },
+    };
 
     useImperativeHandle(currentRef, () => {
       return { open: eventOpen, close: eventClose };

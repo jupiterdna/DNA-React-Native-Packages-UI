@@ -1,7 +1,4 @@
-import { StyleSheet } from 'react-native';
-import { useFonts } from "@rndna/theme-provider"
-
-const size = useFonts();
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   avatar: {
@@ -9,7 +6,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
   },
   overlay: {
-    backgroundColor: 'rgba(0,0,0,0.3)',
+    backgroundColor: "rgba(0,0,0,0.3)",
     position: "absolute",
     top: 0,
     right: 0,
@@ -18,31 +15,13 @@ export const styles = StyleSheet.create({
   },
   status: {
     borderRadius: 99,
-    position: 'absolute',
+    position: "absolute",
     borderWidth: 1,
     bottom: 1,
     right: 1,
     zIndex: 999,
   },
 });
-
-export const textSizeCls = {
-  xs: {
-    fontSize: size.fontSize?.overline,
-  },
-  sm: {
-    fontSize: size.fontSize?.caption,
-  },
-  md: {
-    fontSize: size.fontSize?.body2,
-  },
-  lg: {
-    fontSize: size.fontSize?.body1,
-  },
-  xl: {
-    fontSize: size.fontSize?.h6,
-  },
-};
 
 export const avatarSizeCls = {
   xs: {
@@ -65,4 +44,4 @@ export const avatarSizeCls = {
     height: 56,
     width: 56,
   },
-}
+};

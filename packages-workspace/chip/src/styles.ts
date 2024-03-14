@@ -1,8 +1,4 @@
 import { StyleSheet } from "react-native";
-import { useFonts } from "@rndna/theme-provider";
-import { HistoryIcon } from "@rndna/icon";
-
-const size = useFonts();
 
 export const styles = StyleSheet.create({
   chip: {
@@ -18,24 +14,6 @@ export const styles = StyleSheet.create({
     opacity: 0.5,
   },
 });
-
-export const textSizeCls = {
-  xs: {
-    fontSize: size.fontSize?.overline,
-  },
-  sm: {
-    fontSize: size.fontSize?.caption,
-  },
-  md: {
-    fontSize: size.fontSize?.body2,
-  },
-  lg: {
-    fontSize: size.fontSize?.body1,
-  },
-  xl: {
-    fontSize: size.fontSize?.label,
-  },
-};
 
 export const chipSizeCls = {
   xs: {

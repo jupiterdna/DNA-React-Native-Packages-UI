@@ -9,7 +9,7 @@ import {
   DNAAvatarWithBadge,
   DNAAvatarWithStatus,
 } from '@rndna/avatar';
-import {DNAAvatarGroup} from '@rndna/avatar_group';
+import {DNAAvatarGroup} from '@rndna/avatar-group';
 import {avatarGroup} from './constants';
 
 const AvatarScreen = () => {

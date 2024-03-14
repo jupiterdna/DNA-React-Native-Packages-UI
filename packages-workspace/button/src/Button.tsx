@@ -5,10 +5,10 @@ import {
   View,
   useColorScheme,
 } from "react-native";
-import { buttonSizeCls, textSizeCls, styles } from "./styles";
+import { buttonSizeCls, styles } from "./styles";
 import { DNAButtonProps } from "./types";
 import { borderRadiusCls } from "@rndna/base_style";
-import { darkmodeColor, useColor } from "@rndna/theme-provider";
+import { darkmodeColor, useColor, useFonts } from "@rndna/theme-provider";
 import { DNAText } from "@rndna/text";
 import RippleComponent from "./RippleComponent/RippleComponent";
 
@@ -61,6 +61,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     ref: React.Ref<View>
   ) => {
     const themeColor = useColor();
+    const font = useFonts();
     const defaultColor = themeColor[color]["default"];
     const secondaryColor = themeColor[color][100];
     const useDarkColor = darkmodeColor[color]["default"];
@@ -80,6 +81,24 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
           return useDarkColor;
         }
       }
+    };
+
+    const textSizeCls = {
+      xs: {
+        fontSize: font.fontSize?.caption,
+      },
+      sm: {
+        fontSize: font.fontSize?.body2,
+      },
+      md: {
+        fontSize: font.fontSize?.body1,
+      },
+      lg: {
+        fontSize: font.fontSize?.label,
+      },
+      xl: {
+        fontSize: font.fontSize?.h6,
+      },
     };
 
     const getTextColor = {
@@ -248,19 +267,21 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     ]);
 
     return enableRipple ? (
-      <RippleComponent
-        onPress={onPress}
-        rippleColor={rippleColor}
-        rippleOpacity={rippleOpacity}
-        rippleDuration={rippleDuration}
-        rippleSize={rippleSize}
-        rippleCentered={rippleCentered}
-        rippleSequential={rippleSequential}
-        rippleFades={rippleFades}
-        disabled={isDisabled || isLoading}
-      >
-        {_getButtonContent()}
-      </RippleComponent>
+      <>
+        <RippleComponent
+          onPress={onPress}
+          rippleColor={rippleColor}
+          rippleOpacity={rippleOpacity}
+          rippleDuration={rippleDuration}
+          rippleSize={rippleSize}
+          rippleCentered={rippleCentered}
+          rippleSequential={rippleSequential}
+          rippleFades={rippleFades}
+          disabled={isDisabled || isLoading}
+        >
+          {_getButtonContent()}
+        </RippleComponent>
+      </>
     ) : (
       _getButtonContent()
     );

@@ -14,7 +14,6 @@
   "dependencies": {
     "@rndna/textfield": "*",
     "@rndna/avatar": "*",
-    "@rndna/avatar_group": "*",
     "@rndna/badge": "*",
     "@rndna/button": "*",
     "@rndna/checkbox": "*",
@@ -33,7 +32,7 @@
     "@rndna/fab": "*",
     "react": "18.2.0",
     "react-native": "0.73.1",
-    "react-native-svg": "13.14.0",
+    "react-native-svg": "14.1.0",
     "react-native-fast-image": "^8.6.3",
     "react-native-reanimated": "^3.6.2"
   },

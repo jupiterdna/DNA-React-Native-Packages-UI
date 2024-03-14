@@ -1,6 +1,6 @@
 {
   "name": "@rndna/theme-provider",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "DNA Micro Mobile Team",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -28,9 +28,6 @@
   "peerDependencies": {
     "expo": "*",
     "react": "*",
-    "react-native": "*",
-    "@rndna/typescript-config": "*",
-    "@rndna/base_style": "*",
-    "@rndna/fonts": "*"
+    "react-native": "*"
   }
 }

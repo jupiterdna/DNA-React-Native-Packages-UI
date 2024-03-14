@@ -4,14 +4,15 @@
     "apps/*",
     "packages-workspace/*",
     "config-workspace/*",
-    "component-template-workspace/*"
+    "component-template-workspace/*",
+    "testing-workspace/*"
   ],
   "scripts": {
     "dev": "turbo run dev --concurrency=100",
     "build": "turbo run build --concurrency=100%",
     "clean": "turbo run clean && rm -rf node_modules",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\" --ignore-path .gitignore",
-    "release": "yarn build && changeset publish"
+    "release": "yarn && yarn build && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",

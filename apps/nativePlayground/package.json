@@ -1,6 +1,6 @@
 {
   "name": "nativePlayground",
-  "version": "0.0.1",
+  "version": "0.0.5",
   "private": true,
   "workspaces": {
     "nohoist": [
@@ -22,7 +22,7 @@
     "@react-navigation/native-stack": "^6.9.18",
     "@react-navigation/stack": "^6.3.21",
     "@rndna/avatar": "*",
-    "@rndna/avatar_group": "*",
+    "@rndna/avatar-group": "*",
     "@rndna/badge": "*",
     "@rndna/button": "*",
     "@rndna/checkbox": "*",
@@ -33,7 +33,7 @@
     "@rndna/fab": "*",
     "@rndna/fonts": "*",
     "@rndna/hooks": "*",
-    "@rndna/icon": "0.0.0",
+    "@rndna/icon": "0.0.4",
     "@rndna/icon_button": "*",
     "@rndna/image": "*",
     "@rndna/menu": "*",

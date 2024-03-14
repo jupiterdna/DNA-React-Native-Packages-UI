@@ -1,6 +1,6 @@
 {
   "name": "@rndna/icon",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "author": "Juphet Vitualla",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -49,13 +49,13 @@
     "@svgr/plugin-svgo": "^5.5.0"
   },
   "dependencies": {
+    "react-native-svg": "14.1.0",
     "@svgr/core": "^5.5.0",
     "@svgr/plugin-jsx": "^5.5.0"
   },
   "peerDependencies": {
     "expo": "*",
     "react": "*",
-    "react-native": "*",
-    "react-native-svg": "14.1.0"
+    "react-native": "*"
   }
 }

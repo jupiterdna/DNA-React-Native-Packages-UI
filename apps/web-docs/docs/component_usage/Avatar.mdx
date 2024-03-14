@@ -1,13 +1,13 @@
 import './styles/style.css'
 
 ```SnackPlayer name=Avatar&description=This%20is%20a%20description&dependencies=@rndna/avatar&platform=web
+import React from 'react'
 import {Linking, StyleSheet, View, ScrollView} from 'react-native';
-import React from 'react';
 import {
   DNAAvatar,
 } from '@rndna/avatar';
 
-const YourApp = () => {
+const App = () => {
   return (
     <>
       <View style={[styles.container, styles.flex]}>
@@ -56,5 +56,5 @@ const styles = StyleSheet.create({
 });
 
 
-export default YourApp;
+export default App;
 ```

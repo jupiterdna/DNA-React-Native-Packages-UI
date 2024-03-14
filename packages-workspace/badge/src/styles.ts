@@ -1,16 +1,16 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   badgeWrapper: {
-    position: 'relative',
+    position: "relative",
   },
   badge: {
     zIndex: 99,
     borderRadius: 99,
   },
-  shadowProp:{
+  shadowProp: {
     elevation: 2,
-    shadowColor: 'rgb(0, 0, 0)',
+    shadowColor: "rgb(0, 0, 0)",
     shadowOffset: {
       width: 0,
       height: 2,
@@ -20,13 +20,13 @@ export const styles = StyleSheet.create({
   },
   badgdeText: {
     fontSize: 12,
-    color: '#ffffff',
+    color: "#ffffff",
   },
   badgeSpace: {
     paddingVertical: 2,
     paddingHorizontal: 4,
     minHeight: 18,
-    justifyContent: 'center',
+    justifyContent: "center",
   },
   badgeSize: {
     width: 10,
@@ -34,14 +34,14 @@ export const styles = StyleSheet.create({
     right: 1,
   },
   badgeTop: {
-    position: 'absolute',
+    position: "absolute",
     top: 0,
   },
   badgeBottom: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
   },
   badgeInline: {
-    position: 'relative',
-  }
+    position: "relative",
+  },
 });

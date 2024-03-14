@@ -1,9 +1,9 @@
 import React, { createElement, useCallback } from "react";
 import { Pressable, useColorScheme, Image, View } from "react-native";
-import { avatarSizeCls, styles, textSizeCls } from "./styles";
+import { avatarSizeCls, styles } from "./styles";
 import { DNAText } from "@rndna/text";
 import { borderRadiusCls } from "@rndna/base_style";
-import { useColor } from "@rndna/theme-provider";
+import { useColor, useFonts } from "@rndna/theme-provider";
 import { DNAAvatarProps } from "./types";
 import { UserIcon } from "@rndna/icon";
 
@@ -45,6 +45,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
     ref: React.Ref<View>
   ) => {
     const themeColor = useColor();
+    const font = useFonts();
     const defaultColor = themeColor[color]["default"];
     const secondaryColor = themeColor[color][100];
 
@@ -57,6 +58,24 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
 
     const getBgColor = {
       backgroundColor: defaultColor,
+    };
+
+    const textSizeCls = {
+      xs: {
+        fontSize: font.fontSize?.overline,
+      },
+      sm: {
+        fontSize: font.fontSize?.caption,
+      },
+      md: {
+        fontSize: font.fontSize?.body2,
+      },
+      lg: {
+        fontSize: font.fontSize?.body1,
+      },
+      xl: {
+        fontSize: font.fontSize?.h6,
+      },
     };
 
     const getTextSize = useCallback(():
@@ -150,13 +169,15 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
             alt={alt}
           />
         );
-      } if (name) {
+      }
+      if (name) {
         return (
           <DNAText style={getTextColor} type={getTextSize()}>
             {filteredName()}
           </DNAText>
         );
-      } if (icon) {
+      }
+      if (icon) {
         return _renderIcon();
       }
       return null;

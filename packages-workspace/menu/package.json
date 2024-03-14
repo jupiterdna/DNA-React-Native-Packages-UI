@@ -28,12 +28,12 @@
   "dependencies": {
     "@rndna/theme-provider": "*",
     "@rndna/icon": "*",
-    "@rndna/text": "*"
+    "@rndna/text": "*",
+    "react-native-svg": "14.1.0"
   },
   "peerDependencies": {
     "expo": "*",
     "react": "*",
-    "react-native": "*",
-    "react-native-svg": "*"
+    "react-native": "*"
   }
 }
