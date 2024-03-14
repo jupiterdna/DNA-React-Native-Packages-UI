@@ -1,4 +1,4 @@
-# @repo/textfield
+# @rndna/fab
 
 ## 0.0.1
 
@@ -7,13 +7,6 @@
 - updates styles issues about hooks
 - Updated dependencies
   - @rndna/theme-provider@0.0.2
-  - @rndna/fonts@0.0.2
-  - @rndna/hooks@0.0.2
+  - @rndna/button@0.0.16
   - @rndna/icon@0.0.5
   - @rndna/text@0.0.2
-
-## 1.0.0
-
-### Major Changes
-
-- Y

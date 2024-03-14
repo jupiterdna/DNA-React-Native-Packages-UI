@@ -1,5 +1,11 @@
 # @repo/textfield
 
+## 0.0.5
+
+### Patch Changes
+
+- updates styles issues about hooks
+
 ## 0.0.4
 
 ### Patch Changes

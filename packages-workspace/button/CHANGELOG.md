@@ -1,5 +1,14 @@
 # @repo/button
 
+## 0.0.16
+
+### Patch Changes
+
+- updates styles issues about hooks
+- Updated dependencies
+  - @rndna/icon@0.0.5
+  - @rndna/text@0.0.2
+
 ## 0.0.15
 
 ### Patch Changes

@@ -1,6 +1,6 @@
 {
   "name": "@rndna/badge",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Juphet Vitualla",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

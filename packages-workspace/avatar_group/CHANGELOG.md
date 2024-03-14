@@ -1,4 +1,4 @@
-# @rndna/icon_button
+# @rndna/avatar-group
 
 ## 0.0.1
 
@@ -6,4 +6,4 @@
 
 - updates styles issues about hooks
 - Updated dependencies
-  - @rndna/button@0.0.16
+  - @rndna/icon@0.0.5
