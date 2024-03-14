@@ -1,5 +1,11 @@
 # @rndna/fab
 
+## 0.0.3
+
+### Patch Changes
+
+- remove hooks in styles
+
 ## 0.0.2
 
 ### Patch Changes
