@@ -1,5 +1,11 @@
 # @repo/button
 
+## 0.0.17
+
+### Patch Changes
+
+- added lodash
+
 ## 0.0.16
 
 ### Patch Changes

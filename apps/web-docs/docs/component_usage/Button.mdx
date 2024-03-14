@@ -1,97 +1,277 @@
 import './styles/style.css'
 
-```SnackPlayer name=Button&description=This%20is%20a%20description&dependencies=@rndna/badge,@rndna/button,@rndna/icon,@rndna/text,@rndna/icon&platform=web
-import {Linking, StyleSheet, View, ScrollView} from 'react-native';
+```SnackPlayer name=Button&description=This%20is%20a%20description&dependencies=@rndna/badge,@rndna/button,@rndna/icon,@rndna/text,@rndna/icon,react-native-svg,lodash&platform=web
+import {Linking, StyleSheet, View, useColorScheme} from 'react-native';
 import React from 'react';
-import {DNABadge} from '@rndna/badge';
-import {DNAText} from '@rndna/text';
 import {DNAButton} from '@rndna/button';
-import {FileIcon} from '@rndna/icon';
+import {FileIcon, UploadCloudIconOutline} from '@rndna/icon';
+import {DNAText} from '@rndna/text';
 
-
-const YourApp = () => {
+const App = () => {
   return (
-     <>
-     <View style={[styles.container, styles.flex]}>
-        <DNAText style={styles.label}>Badge with Text (Position Top)</DNAText>
-        <DNABadge value="Badge">
-          <View style={styles.circle} />
-        </DNABadge>
-        <DNABadge value="Badge" color="danger">
-          <View style={styles.circle} />
-        </DNABadge>
-        <DNAText style={styles.label}>
-          Badge with Text (Position Bottom)
-        </DNAText>
-        <DNABadge value="Badge" position="bottom">
-          <View style={styles.circle} />
-        </DNABadge>
-        <DNABadge value="Badge" color="danger" position="bottom">
-          <View style={styles.circle} />
-        </DNABadge>
-        <DNAText style={styles.label}>
-          Badge with Text (Position Inline)
-        </DNAText>
-        <DNABadge value="Badge" position="inline">
-          <View style={styles.circle} />
-        </DNABadge>
-        <DNABadge value="Badge" color="danger" position="inline">
-          <View style={styles.circle} />
-        </DNABadge>
-        <View style={styles.divider} />
-        <DNAText style={styles.label}>Badge Dot</DNAText>
-        <View style={styles.flexRow}>
-          <DNABadge>
-            <View style={styles.circle} />
-          </DNABadge>
-          <DNABadge color="danger">
-            <View style={styles.circle} />
-          </DNABadge>
-          <DNABadge position="bottom">
-            <View style={styles.circle} />
-          </DNABadge>
-          <DNABadge color="danger" position="bottom">
-            <View style={styles.circle} />
-          </DNABadge>
-          <DNABadge position="inline">
-            <View style={styles.circle} />
-          </DNABadge>
-          <DNABadge color="danger" position="inline">
-            <View style={styles.circle} />
-          </DNABadge>
+    <>
+      <View
+        style={[
+          styles.container,
+          {backgroundColor: useColorScheme() === 'light' ? 'white' : '#2c2c2c'},
+        ]}>
+        <View style={styles.gap}>
+          <DNAText>Variant: flat</DNAText>
+          <View style={styles.horizontal}>
+            <DNAButton
+              label="Button"
+              variant="flat"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Custom"
+              variant="flat"
+              color="success"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Disabled"
+              isDisabled
+              variant="flat"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon"
+              variant="flat"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              isLoading
+              label="Loading"
+              variant="flat"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon right"
+              iconPosition="right"
+              variant="flat"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+          </View>
+          <View style={{marginTop: 10}} />
+        </View>
+        <View style={styles.gap}>
+          <DNAText>Variant: outlined</DNAText>
+          <View style={styles.horizontal}>
+            <DNAButton
+              label="Button"
+              variant="outlined"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Custom"
+              variant="outlined"
+              color="success"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Disabled"
+              isDisabled
+              variant="outlined"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon"
+              variant="outlined"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              isLoading
+              label="Loading"
+              variant="outlined"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon right"
+              iconPosition="right"
+              variant="outlined"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+          </View>
+          <View style={{marginTop: 10}} />
+        </View>
+        <View style={styles.gap}>
+          <DNAText>Variant: soft</DNAText>
+          <View style={styles.horizontal}>
+            <DNAButton
+              label="Button"
+              variant="soft"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Custom"
+              variant="soft"
+              color="success"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Disabled"
+              isDisabled
+              variant="soft"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon"
+              variant="soft"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              isLoading
+              label="Loading"
+              variant="soft"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon right"
+              iconPosition="right"
+              variant="soft"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+          </View>
+          <View style={{marginTop: 10}} />
+        </View>
+        <View style={styles.gap}>
+          <DNAText>Variant: solid</DNAText>
+          <View style={styles.horizontal}>
+            <DNAButton
+              label="Button"
+              variant="solid"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Custom"
+              variant="solid"
+              color="success"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Disabled"
+              isDisabled
+              variant="solid"
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon"
+              variant="solid"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              isLoading
+              label="Loading"
+              variant="solid"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+            <DNAButton
+              label="Icon right"
+              iconPosition="right"
+              variant="solid"
+              icon={UploadCloudIconOutline}
+              onPress={() => {
+                console.log('onPress 2');
+              }}
+            />
+          </View>
+          <View style={{marginTop: 10}} />
         </View>
       </View>
+      <View>
+        <DNAButton
+          label="Read Docs"
+          color="primary"
+          size="lg"
+          onPress={() => {
+            Linking.openURL(WebDocs_URL + 'docs/components/button');
+          }}
+          icon={<FileIcon size={20} color={'#fff'} />}
+        />
+      </View>
     </>
-     
   );
-}
+};
 const styles = StyleSheet.create({
-  flex: {
-    flex: 1,
-  },
-  flexRow: {
-    flexDirection: 'row',
-    columnGap: 10,
-  },
-  divider: {
-    height: 15,
-  },
-  label: {
-    fontSize: 14,
-  },
   container: {
+    flex: 1,
     padding: 20,
-    alignItems: 'flex-start',
-    gap: 20,
   },
-  circle: {
-    width: 40,
-    height: 40,
-    borderRadius: 20,
-    backgroundColor: 'lightgrey',
+  gap: {
+    gap: 8,
+    alignItems: 'flex-start',
+  },
+  horizontal: {
+    flexDirection: 'row',
+    gap: 8,
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+  },
+  vertical: {
+    gap: 8,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
   },
 });
 
+export default App;
 
-export default YourApp;
 ```
