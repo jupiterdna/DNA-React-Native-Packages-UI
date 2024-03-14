@@ -1,5 +1,11 @@
 # @repo/textfield
 
+## 0.0.2
+
+### Patch Changes
+
+- update package json
+
 ## 0.0.1
 
 ### Patch Changes
