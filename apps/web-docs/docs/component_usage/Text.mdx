@@ -2,13 +2,29 @@ import './styles/style.css'
 
 ```SnackPlayer name=Text&description=This%20is%20a%20description&dependencies=@rndna/text&platform=web
  import React from 'react';
- import { View } from 'react-native';
+ import { View, StyleSheet } from 'react-native';
  import { DNAText } from '@rndna/text';
 
- const YourApp = () => (
-    <DNAText type="h1">Hello World</DNAText>
- );
+ const YourApp = () => {
+    return (
+      <View  style={styles.container}>
+        <DNAText type='h2'>Heading</DNAText>
+        <DNAText type='h3'>Heading</DNAText>
+        <DNAText type='h4'>Heading</DNAText>
+        <DNAText type='h5'>Heading</DNAText>
+        <DNAText type='body1'>body1</DNAText>
+        <DNAText type='body2'>body2</DNAText>
+        <DNAText type='caption'>caption</DNAText>
+     </View>
+   )
+ };
+
+  const styles = StyleSheet.create({
+   container:{
+     flex: 1,
+     padding: 20
+   }
+ })
 
  export default YourApp;
- ```
 ```
