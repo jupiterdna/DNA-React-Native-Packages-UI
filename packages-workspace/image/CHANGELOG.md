@@ -1,5 +1,11 @@
 # @rndna/image
 
+## 0.0.2
+
+### Patch Changes
+
+- remove hooks issue
+
 ## 0.0.1
 
 ### Patch Changes
