@@ -1,18 +1,36 @@
 import './styles/style.css'
 
-```SnackPlayer name=Icon&description=This%20is%20a%20description&dependencies=@rndna/icon&platform=web
+```SnackPlayer name=Icon&description=This%20is%20a%20description&dependencies=@rndna/icon,react-native-svg&platform=web
  import * as React from 'react';
- import { View } from 'react-native';
- import { UserIcon } from '@rndna/icon';
+ import { View, StyleSheet } from 'react-native';
+ import { UserIcon,  AccountingIcon, CalendarIcon } from '@rndna/icon';
 
  const YourApp = () => (
-    <View>
+    <View style={styles.container}>
       <UserIcon
-      size={24}
-      color="#000"
+        size={24}
+        color="#000"
       />
+      
+      <AccountingIcon
+        size={34}
+        color="red"
+      />
+      
+       <CalendarIcon
+        size={34}
+        color="#666"
+      />
+      
+
    </View>
  );
+
+const styles = StyleSheet.create({
+  container: {
+    padding: 20
+  }
+})
 
  export default YourApp;
  ```
