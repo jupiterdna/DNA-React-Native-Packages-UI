@@ -1,5 +1,11 @@
 # @rndna/fab
 
+## 0.0.2
+
+### Patch Changes
+
+- update dependencies
+
 ## 0.0.1
 
 ### Patch Changes

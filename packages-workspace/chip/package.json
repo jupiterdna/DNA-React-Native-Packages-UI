@@ -1,9 +1,15 @@
 {
   "name": "@rndna/chip",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "DNA Micro Mobile Team",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "files": [
+    "dist/",
+    "src/",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "build": "tsup",
     "clean": "rm -rf dist"
