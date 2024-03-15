@@ -33,7 +33,7 @@
     "@rndna/fab": "*",
     "@rndna/fonts": "*",
     "@rndna/hooks": "*",
-    "@rndna/icon": "0.0.5",
+    "@rndna/icon": "*",
     "@rndna/icon_button": "*",
     "@rndna/image": "*",
     "@rndna/menu": "*",

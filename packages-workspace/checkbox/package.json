@@ -22,7 +22,8 @@
     "tsup": "^8.0.1",
     "@rndna/theme-provider": "*",
     "@rndna/hooks": "*",
-    "typescript": "^5.3.2"
+    "typescript": "^5.3.2",
+    "lodash": "^4.17.21"
   },
   "dependencies": {
     "@rndna/text": "*",

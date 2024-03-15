@@ -39,6 +39,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       color = "default",
       name,
       alt,
+      disabled = false,
       icon = UserIcon,
       ...restProps
     }: DNAAvatarProps,
@@ -46,6 +47,7 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
   ) => {
     const themeColor = useColor();
     const font = useFonts();
+
     const defaultColor = themeColor[color]["default"];
     const secondaryColor = themeColor[color][100];
 
@@ -78,6 +80,10 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       },
     };
 
+    /**
+     * Returns the text size based on the provided size prop.
+     * @returns One of the following text sizes: "overline", "caption", "body2", "body1", "h6".
+     */
     const getTextSize = useCallback(():
       | "overline"
       | "caption"
@@ -124,14 +130,14 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
      *
      * @returns The filtered name or null.
      */
-    const filteredName = useCallback((): string | null => {
+    const filteredName = useCallback((): string | undefined => {
       return name
         ? name
             .split(/\s+/)
             .slice(0, 2)
             .map((word) => word.charAt(0).toUpperCase())
             .join("")
-        : null;
+        : undefined;
     }, [name]);
 
     /**
@@ -160,6 +166,9 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       if (imageSource) {
         return (
           <Image
+            accessible={true}
+            accessibilityLabel={alt}
+            accessibilityRole="image"
             style={[
               { width: "100%", height: "100%" },
               borderRadiusCls[borderRadius],
@@ -172,7 +181,13 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
       }
       if (name) {
         return (
-          <DNAText style={getTextColor} type={getTextSize()}>
+          <DNAText
+            accessible
+            accessibilityLabel={filteredName() ? filteredName() : alt}
+            accessibilityRole="text"
+            style={getTextColor}
+            type={getTextSize()}
+          >
             {filteredName()}
           </DNAText>
         );
@@ -194,6 +209,10 @@ export const DNAAvatar: React.FC<DNAAvatarProps> = React.forwardRef(
 
     return (
       <Pressable
+        accessible={true}
+        accessibilityLabel="avatar"
+        accessibilityRole="imagebutton"
+        accessibilityState={{ disabled: disabled }}
         style={[
           styles.avatar,
           avatarSizeCls[size],

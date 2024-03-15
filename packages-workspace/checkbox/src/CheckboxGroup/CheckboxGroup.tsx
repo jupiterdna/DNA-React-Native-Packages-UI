@@ -255,7 +255,14 @@ const CheckboxGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
      */
     const _renderCheckboxes = () => {
       return Children.map(children, (c) => {
-        return <DNACheckbox {...c?.props} disabled={disabled} />;
+        return (
+          <DNACheckbox
+            {...c?.props}
+            disabled={disabled}
+            accessibilityLabel="This is Checkbox"
+            accessibilityState={{ disabled: disabled }}
+          />
+        );
       });
     };
 
@@ -265,7 +272,6 @@ const CheckboxGroup: React.FC<CheckBoxGroupTypes> = forwardRef(
           {label}
           {required && (
             <>
-              {" "}
               <DNAText style={[labelStyle, styles.required]}>*</DNAText>
             </>
           )}
