@@ -67,22 +67,7 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
     const useDarkColor = darkmodeColor[color]["default"];
     const colorScheme = useColorScheme();
 
-    const colorVariant = () => {
-      if (colorScheme === "light") {
-        if (variant === "solid") {
-          return "white";
-        } else {
-          return defaultColor;
-        }
-      } else {
-        if (variant === "solid") {
-          return secondaryColor;
-        } else {
-          return useDarkColor;
-        }
-      }
-    };
-
+    // declared viables
     const textSizeCls = {
       xs: {
         fontSize: font.fontSize?.caption,
@@ -100,17 +85,36 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
         fontSize: font.fontSize?.h6,
       },
     };
-
-    const getTextColor = {
-      color: colorVariant(),
-    };
-
     const iconBtnSizes = {
       width: buttonSizeCls[size].height,
       height: buttonSizeCls[size].height,
       paddingHorizontal: 0,
     };
 
+    const colorVariant = () => {
+      if (colorScheme === "light") {
+        if (variant === "solid") {
+          return "white";
+        } else {
+          return defaultColor;
+        }
+      } else {
+        if (variant === "solid") {
+          return secondaryColor;
+        } else {
+          return useDarkColor;
+        }
+      }
+    };
+
+    const getTextColor = {
+      color: colorVariant(),
+    };
+
+    /**
+     * Returns the style object based on the variant of the button.
+     * @returns The style object for the button variant.
+     */
     const getVariantStyle = () => {
       return {
         solid: { backgroundColor: defaultColor },
@@ -127,6 +131,10 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
       }[variant];
     };
 
+    /**
+     * Returns the CSS class for the icon position based on the `iconPosition` prop.
+     * @returns The CSS class for the icon position.
+     */
     const getIconPositionStyle = () => {
       return iconPosition === "right"
         ? styles.buttonIconRight
@@ -230,6 +238,10 @@ export const DNAButton: React.FC<DNAButtonProps> = React.forwardRef(
 
       return (
         <ButtonComponent
+          accessible
+          accessibilityRole="button"
+          accessibilityState={{ disabled: isDisabled || isLoading }}
+          accessibilityLabel="Button"
           style={[
             styles.button,
             !!loadingLabel || !!label ? styles.gapSize : iconBtnSizes,

@@ -1,20 +1,30 @@
-import React, { useState, useRef, FC } from 'react';
-import { View, Pressable, Animated, Easing, StyleSheet, LayoutChangeEvent, StyleProp, ViewStyle, GestureResponderEvent } from 'react-native';
-import { pick } from 'lodash';
+import React, { useState, useRef, FC } from "react";
+import {
+  View,
+  Pressable,
+  Animated,
+  Easing,
+  StyleSheet,
+  LayoutChangeEvent,
+  StyleProp,
+  ViewStyle,
+  GestureResponderEvent,
+} from "react-native";
+import { pick } from "lodash";
 
 const radius = 10;
 const styles = StyleSheet.create({
   container: {
     ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'transparent',
-    overflow: 'hidden',
+    backgroundColor: "transparent",
+    overflow: "hidden",
   },
   ripple: {
     width: radius * 2,
     height: radius * 2,
     borderRadius: radius,
-    overflow: 'hidden',
-    position: 'absolute',
+    overflow: "hidden",
+    position: "absolute",
   },
 });
 
@@ -51,13 +61,13 @@ const RippleComponent: FC<RippleComponentProps> = ({
   onPressOut,
   onLongPress,
   onLayout,
-  rippleColor= 'rgb(250, 250, 250)',
-  rippleOpacity= 0.5,
-  rippleDuration= 400,
-  rippleSize= 150,
-  rippleCentered= false,
-  rippleSequential= false,
-  rippleFades= true,
+  rippleColor = "rgb(250, 250, 250)",
+  rippleOpacity = 0.5,
+  rippleDuration = 400,
+  rippleSize = 150,
+  rippleCentered = false,
+  rippleSequential = false,
+  rippleFades = true,
   style,
   contentStyle,
   children,
@@ -67,21 +77,24 @@ const RippleComponent: FC<RippleComponentProps> = ({
   const [height, setHeight] = useState(0);
   const [ripples, setRipples] = useState<Ripple[]>([]);
   const animationValues = useRef<Animated.Value[]>([]);
-  const rippleCounter = useRef<number>(0); 
+  const rippleCounter = useRef<number>(0);
 
   const startRipple = (event?: GestureResponderEvent) => {
     const { nativeEvent } = event || {};
     const { locationX, locationY } = nativeEvent || {};
     const w2 = 0.5 * width;
     const h2 = 0.5 * height;
-    
+
     const rippleLocationX = rippleCentered ? w2 : locationX ?? w2;
     const rippleLocationY = rippleCentered ? h2 : locationY ?? h2;
-  
+
     const offsetX = Math.abs(w2 - rippleLocationX);
     const offsetY = Math.abs(h2 - rippleLocationY);
-    const R = rippleSize > 0 ? 0.5 * rippleSize : Math.sqrt(Math.pow(w2 + offsetX, 2) + Math.pow(h2 + offsetY, 2));
-  
+    const R =
+      rippleSize > 0
+        ? 0.5 * rippleSize
+        : Math.sqrt(Math.pow(w2 + offsetX, 2) + Math.pow(h2 + offsetY, 2));
+
     const newRipple: Ripple = {
       unique: rippleCounter.current++, // Assign unique identifier
       progress: new Animated.Value(0),
@@ -89,23 +102,25 @@ const RippleComponent: FC<RippleComponentProps> = ({
       locationY: rippleLocationY,
       R,
     };
-  
+
     const animation = Animated.timing(newRipple.progress, {
       toValue: 1,
       easing: Easing.out(Easing.ease),
       duration: rippleDuration,
       useNativeDriver: true,
     });
-  
+
     animation.start(({ finished }) => {
       if (finished) {
-        setRipples((prevRipples) => prevRipples.filter((ripple) => ripple.unique !== newRipple.unique));
+        setRipples((prevRipples) =>
+          prevRipples.filter((ripple) => ripple.unique !== newRipple.unique)
+        );
       }
     });
-  
+
     // Add the Animated.Value to the animationValues array
     animationValues.current[newRipple.unique] = newRipple.progress;
-  
+
     // Add the new ripple to the ripples array
     if (rippleSequential) {
       // If sequential, start only the latest ripple
@@ -116,7 +131,13 @@ const RippleComponent: FC<RippleComponentProps> = ({
     }
   };
 
-  const renderRipple = ({ unique, progress, locationX, locationY, R }: Ripple) => {
+  const renderRipple = ({
+    unique,
+    progress,
+    locationX,
+    locationY,
+    R,
+  }: Ripple) => {
     const rippleStyle = {
       top: locationY - radius,
       left: locationX - radius,
@@ -124,13 +145,24 @@ const RippleComponent: FC<RippleComponentProps> = ({
       height: radius * 2,
       borderRadius: radius,
       backgroundColor: rippleColor,
-      opacity: rippleFades ? progress.interpolate({ inputRange: [0, 1], outputRange: [rippleOpacity, 0] }) : rippleOpacity,
-      transform: [{ scale: progress.interpolate({ inputRange: [0, 1], outputRange: [0.5 / radius, R / radius] }) }],
+      opacity: rippleFades
+        ? progress.interpolate({
+            inputRange: [0, 1],
+            outputRange: [rippleOpacity, 0],
+          })
+        : rippleOpacity,
+      transform: [
+        {
+          scale: progress.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0.5 / radius, R / radius],
+          }),
+        },
+      ],
     };
 
     return <Animated.View style={[styles.ripple, rippleStyle]} key={unique} />;
   };
-
 
   const handlePress = () => {
     onPress && onPress();
@@ -166,10 +198,25 @@ const RippleComponent: FC<RippleComponentProps> = ({
       onLayout={handleLayout}
       style={style}
       disabled={disabled}
+      accessible
+      accessibilityRole="button"
+      accessibilityState={{ disabled }}
+      accessibilityLabel="Button"
     >
       <Animated.View style={contentStyle} pointerEvents="box-only">
         {children}
-        <View style={[styles.container, pick(StyleSheet.flatten(style), ['borderRadius', 'borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomLeftRadius', 'borderBottomRightRadius'])]}>
+        <View
+          style={[
+            styles.container,
+            pick(StyleSheet.flatten(style), [
+              "borderRadius",
+              "borderTopLeftRadius",
+              "borderTopRightRadius",
+              "borderBottomLeftRadius",
+              "borderBottomRightRadius",
+            ]),
+          ]}
+        >
           {ripples.map(renderRipple)}
         </View>
       </Animated.View>
