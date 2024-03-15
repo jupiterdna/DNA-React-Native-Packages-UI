@@ -1,4 +1,9 @@
-import { GestureResponderEvent, PressableProps, StyleProp, ViewStyle } from "react-native";
+import {
+  GestureResponderEvent,
+  PressableProps,
+  StyleProp,
+  ViewStyle,
+} from "react-native";
 import {
   sizeProps,
   variantProps,
@@ -11,7 +16,7 @@ import { SvgProps, NumberProp } from "react-native-svg";
 interface IProps extends SvgProps {
   size?: NumberProp;
 }
-export interface DNAChipProps extends PressableProps{
+export interface DNAChipProps extends PressableProps {
   /**
    * Where you can define the label of the component.
    */

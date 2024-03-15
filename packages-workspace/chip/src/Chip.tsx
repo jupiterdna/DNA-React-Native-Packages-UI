@@ -60,21 +60,6 @@ export const DNAChip: React.FC<DNAChipProps> = React.forwardRef(
       paddingLeft: chipSizeCls[size].paddingHorizontal + 2,
     };
 
-    const colorVariant = () => {
-      if (colorScheme === "light") {
-        if (variant === "solid") {
-          return "white";
-        } else {
-          return defaultColor;
-        }
-      } else {
-        if (variant === "solid") {
-          return secondaryColor;
-        } else {
-          return useDarkColor;
-        }
-      }
-    };
     const textSizeCls = {
       xs: {
         fontSize: font.fontSize?.overline,
@@ -93,10 +78,35 @@ export const DNAChip: React.FC<DNAChipProps> = React.forwardRef(
       },
     };
 
+    /**
+     * Determines the color variant based on the color scheme and variant.
+     *
+     * @returns The color variant based on the color scheme and variant.
+     */
+    const colorVariant = () => {
+      if (colorScheme === "light") {
+        if (variant === "solid") {
+          return "white";
+        } else {
+          return defaultColor;
+        }
+      } else {
+        if (variant === "solid") {
+          return secondaryColor;
+        } else {
+          return useDarkColor;
+        }
+      }
+    };
+
     const getTextColor = {
       color: colorVariant(),
     };
 
+    /**
+     * Returns the style object based on the variant prop.
+     * @returns The style object for the specified variant.
+     */
     const getVariantStyle = () => {
       return {
         solid: { backgroundColor: defaultColor },
@@ -164,7 +174,14 @@ export const DNAChip: React.FC<DNAChipProps> = React.forwardRef(
      */
     const _renderCloseButton = useCallback((): React.JSX.Element | null => {
       return isClosable ? (
-        <Pressable onPress={onPressClose} disabled={isDisabled}>
+        <Pressable
+          onPress={onPressClose}
+          disabled={isDisabled}
+          accessibilityLabel="close chip button"
+          accessible
+          accessibilityRole="button"
+          accessibilityState={{ disabled: isDisabled }}
+        >
           <CloseSmallIcon
             size={textSizeCls[size].fontSize}
             color={colorVariant()}
@@ -188,6 +205,10 @@ export const DNAChip: React.FC<DNAChipProps> = React.forwardRef(
 
     return (
       <Pressable
+        accessible
+        accessibilityRole="button"
+        accessibilityLabel="chip"
+        accessibilityState={{ disabled: isDisabled }}
         style={[
           style,
           styles.chip,
