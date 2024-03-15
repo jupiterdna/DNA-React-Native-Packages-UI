@@ -29,16 +29,15 @@ import { DNAText } from "@rndna/text";
 export const DNABadge: React.FC<DNABadgeProps> = React.forwardRef(
   (
     {
-      children, 
+      children,
       value,
-      style, 
-      color = "primary", 
+      style,
+      color = "primary",
       position = "top",
       ...restProps
     }: DNABadgeProps,
-    ref: React.Ref<View>,
+    ref: React.Ref<View>
   ) => {
-
     const [badgeWidth, setBadgeWidth] = useState(0);
 
     const themeColor = useColor();
@@ -65,7 +64,7 @@ export const DNABadge: React.FC<DNABadgeProps> = React.forwardRef(
      */
     const getSpace = () => {
       let leftValue;
-      if (position !== 'inline') {
+      if (position !== "inline") {
         leftValue = badgeWidth - 8;
       } else {
         leftValue = null;
@@ -73,25 +72,25 @@ export const DNABadge: React.FC<DNABadgeProps> = React.forwardRef(
 
       if (!!value) {
         return [{ left: leftValue }, styles.badgeSpace];
-      } 
+      }
       return styles.badgeSize;
     };
-  
+
     /**
      * Returns a memoized function that provides the style object based on the 'position' prop.
      *
      * @returns A function that returns a style object. The function is re-computed when 'position' changes.
      */
     const getPosition = useCallback((): ViewStyle => {
-      switch(position) {
-        case 'bottom':
-          return styles.badgeBottom
-        case 'inline':
-          return styles.badgeInline
-        default: 
-          return styles.badgeTop
+      switch (position) {
+        case "bottom":
+          return styles.badgeBottom;
+        case "inline":
+          return styles.badgeInline;
+        default:
+          return styles.badgeTop;
       }
-    },[position])
+    }, [position]);
 
     /**
      * Returns a memoized function that renders the badge text.
@@ -115,14 +114,7 @@ export const DNABadge: React.FC<DNABadgeProps> = React.forwardRef(
           </DNAText>
         </View>
       );
-    }, [
-      getPosition, 
-      getDefaultBgColor, 
-      getSpace, 
-      style, 
-      getTextColor, 
-      value
-    ]);
+    }, [getPosition, getDefaultBgColor, getSpace, style, getTextColor, value]);
 
     /**
      * Returns a style object if the 'position' prop is 'inline', otherwise returns null.
@@ -130,22 +122,24 @@ export const DNABadge: React.FC<DNABadgeProps> = React.forwardRef(
      * @returns A style object with specific properties if 'position' is 'inline', or null otherwise.
      */
     const getPosInline = (): ViewStyle | null => {
-      if (position === 'inline') {
-        return { flexDirection: 'row', alignItems: 'center', gap: 8} 
-      } 
-      return null
-    }
-      
+      if (position === "inline") {
+        return { flexDirection: "row", alignItems: "center", gap: 8 };
+      }
+      return null;
+    };
+
     return (
-      <View 
-      style={getPosInline()} 
-      onLayout={onBadgeWrapperLayout}
-      ref={ref}
-      {...restProps}
+      <View
+        accessibilityRole="text"
+        accessibilityLabel="badge"
+        style={getPosInline()}
+        onLayout={onBadgeWrapperLayout}
+        ref={ref}
+        {...restProps}
       >
         {children}
         {_renderBadgeText()}
       </View>
     );
-  },
+  }
 );

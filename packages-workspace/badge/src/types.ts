@@ -1,7 +1,7 @@
 import { StyleProp, ViewProps, ViewStyle } from "react-native";
 import { colorProps } from "@rndna/base_style";
 
-export interface DNABadgeProps extends ViewProps{
+export interface DNABadgeProps extends ViewProps {
   /**
    * Where you can define the text of the component
    */
@@ -18,7 +18,7 @@ export interface DNABadgeProps extends ViewProps{
    *  Property that changes theme/state of the selection i.e. background and text color
    */
   color?: colorProps;
-   /**
+  /**
    *  Property that changes the position of the badge either top or bottom
    */
   position?: "top" | "bottom" | "inline";
