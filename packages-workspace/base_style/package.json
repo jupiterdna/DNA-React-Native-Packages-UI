@@ -1,6 +1,6 @@
 {
   "name": "@rndna/base_style",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "Juphet Vitualla",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

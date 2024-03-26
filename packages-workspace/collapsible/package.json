@@ -1,6 +1,6 @@
 {
   "name": "@rndna/collapsible",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Juphet Vitualla",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -20,7 +20,8 @@
   "dependencies": {
     "@rndna/icon": "*",
     "react-native-svg": "14.1.0",
-    "@rndna/text": "*"
+    "@rndna/text": "*",
+    "react-native-reanimated": "^3.6.2"
   },
   "peerDependencies": {
     "react": "*",

@@ -1,5 +1,5 @@
-import { colorProps } from "@rndna/base_style";
-import { TouchableOpacityProps } from "react-native";
+import {colorProps} from '@rndna/base_style';
+import {TouchableOpacityProps} from 'react-native';
 
 export interface DNACollapsibleProps extends TouchableOpacityProps {
   /**
@@ -23,7 +23,15 @@ export interface DNACollapsibleProps extends TouchableOpacityProps {
    */
   isOpen?: boolean;
   /**
-   * Propert that set the component to be disabled
+   * Property that set the component to be disabled
    */
   isDisabled?: boolean;
+  /**
+   * Property that set the component to be loading
+   */
+  isLoading?: boolean;
+  /**
+   * Property that set the component to be scrollable
+   */
+  scrollable?: boolean;
 }

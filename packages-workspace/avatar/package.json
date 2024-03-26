@@ -1,6 +1,6 @@
 {
   "name": "@rndna/avatar",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "DNA Micro Mobile Team",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

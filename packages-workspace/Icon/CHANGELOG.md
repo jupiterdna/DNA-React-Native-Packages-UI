@@ -1,5 +1,11 @@
 # @repo/textfield
 
+## 0.0.6
+
+### Patch Changes
+
+- update packages and stylings
+
 ## 0.0.5
 
 ### Patch Changes

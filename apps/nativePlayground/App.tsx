@@ -20,7 +20,7 @@ import {
 } from './src/Screens';
 import HookScreen from './src/Screens/HookScreen';
 import SwitchScreen from './src/Screens/SwitchScreen';
-import ControlTestScreen from './src/Screens/ControlTestScreen';
+import ControlTestScreen from './src/Screens/CollapsableScreen';
 
 const App = () => {
   const Drawer = createDrawerNavigator();

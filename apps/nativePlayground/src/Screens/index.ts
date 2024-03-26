@@ -10,3 +10,4 @@ export {default as AvatarScreen} from './AvatarScreen';
 export {default as FloatingActionButtonScreen} from './FloatingActionButtonScreen';
 export {default as ImageScreen} from './ImageScreen';
 export {default as TextScreen} from './TextScreen';
+export {default as CollapsableScreen} from './CollapsableScreen';
