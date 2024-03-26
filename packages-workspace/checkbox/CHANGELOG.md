@@ -1,5 +1,11 @@
 # @repo/textfield
 
+## 0.0.4
+
+### Patch Changes
+
+- added period
+
 ## 0.0.3
 
 ### Patch Changes

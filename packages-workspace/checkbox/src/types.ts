@@ -23,7 +23,7 @@ export interface DNACheckboxProps extends PressableProps {
    */
   checked?: boolean;
   /**
-   * Property that defines the size of the component or a selection
+   * Property that defines the size of the component or a selection.
    */
   size?: sizeProps;
   /**
